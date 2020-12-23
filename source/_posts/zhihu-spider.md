@@ -1,0 +1,154 @@
+---
+title: 提取知乎问题下回答和评论数据
+urlname: zhihu-spider
+date: 2018-12-30 23:22:06
+updated: 2018-12-30 23:22:06
+tags:
+- 爬虫
+- Python
+categories:
+- 计算机
+- 技术
+---
+惊闻知乎上某高中生声称证明了哥德巴赫猜想，并要在2019年1月1日在知乎贴出证明过程。
+作为新年第一瓜、这个当然不能错过了。
+<!--more-->
+作为高级吃瓜群众，在围观的同时还要分析一波**教育程度对盲目看戏的影响**，并以一月一日前的关注者作为样本，统计这些用户在一月一日后的情况。因变量为是否取关，自变量为用户信息。基于一月一日这个自然实验，把教育分为高教育组和低教育组（或分性别），然后用DiD的方法判定目标组与对照组取关的差异。（好了，编不下去了...）
+具体可到项目地址[Goldbach Research Group](https://github.com/Goldbach-Research-Group)查看。
+
+<hr>
+
+正值期末考完军训前难得的空闲日子，利用这个项目学习一下科研范式与python爬虫也是不错的。
+本文记录如何爬取知乎问题下回答和评论数据。
+以下均以知乎问题[如果高中生能证明哥德巴赫猜想，会被清华北大数学系保送吗？](https://www.zhihu.com/question/306537777)为例分析，如需爬取其他问题，只需切换questionID即可。
+
+# 分析API
+这部分是有前端大佬已经分析出来的，这里就简要记录一下。~~（自己也不是很懂）~~
+用浏览器打开知乎问题，F12调出控制台，切换到网络，刷新，查看类型为json的请求，把其中的网址逐个排查可以得到以下API。
+
+answer
+
+https://www.zhihu.com/api/v4/questions/306537777/answers?include=data%5B%2A%5D.is_normal%2Cadmin_closed_comment%2Creward_info%2Cis_collapsed%2Cannotation_action%2Cannotation_detail%2Ccollapse_reason%2Cis_sticky%2Ccollapsed_by%2Csuggest_edit%2Ccomment_count%2Ccan_comment%2Ccontent%2Ceditable_content%2Cvoteup_count%2Creshipment_settings%2Ccomment_permission%2Ccreated_time%2Cupdated_time%2Creview_info%2Crelevant_info%2Cquestion%2Cexcerpt%2Crelationship.is_authorized%2Cis_author%2Cvoting%2Cis_thanked%2Cis_nothelp%2Cis_labeled%3Bdata%5B%2A%5D.mark_infos%5B%2A%5D.url%3Bdata%5B%2A%5D.author.follower_count%2Cbadge%5B%2A%5D.topics&limit=1&offset=0&platform=desktop&sort_by=default
+
+comment
+
+https://www.zhihu.com/api/v4/answers/559871763/root_comments?include=data%5B*%5D.author%2Ccollapsed%2Creply_to_author%2Cdisliked%2Ccontent%2Cvoting%2Cvote_count%2Cis_parent_author%2Cis_author&order=normal&limit=1&offset=0&status=open
+
+
+child_comments
+https://www.zhihu.com/api/v4/comments/565399549/child_comments?include=%24%5B%2A%5D.author%2Creply_to_author%2Ccontent%2Cvote_count&limit=1&offset=0&include=%24%5B*%5D.author%2Creply_to_author%2Ccontent%2Cvote_count&tdsourcetag=s_pctim_aiomsg
+
+# python程序
+以下是比较完整的python程序，可以爬取该问题下所有的回答、评论、子评论数据。
+注意：由于水平有限，未写多线程，因此此程序运行较慢。
+
+```python
+#coding=utf-8
+
+
+import requests
+import json
+import sys
+import os
+
+#questionId = 306537777
+questionId = 307595822
+
+startAns = 0
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0'}
+
+##Get URL
+def getAnsUrl(num):
+    url = 'https://www.zhihu.com/api/v4/questions/'+str(questionId)+'/answers' \
+			'?include=data%5B%2A%5D.is_normal%2Cadmin_closed_comment%2Creward_info%2Cis_collapsed' \
+			'%2Cannotation_action%2Cannotation_detail%2Ccollapse_reason%2Cis_sticky%2Ccollapsed_by%2' \
+			'Csuggest_edit%2Ccomment_count%2Ccan_comment%2Ccontent%2Ceditable_content%2Cvoteup_count%2' \
+			'Creshipment_settings%2Ccomment_permission%2Ccreated_time%2Cupdated_time%2Creview_info%2Crele' \
+			'vant_info%2Cquestion%2Cexcerpt%2Crelationship.is_authorized%2Cis_author%2Cvoting%2Cis_thanked' \
+			'%2Cis_nothelp%2Cis_labeled%3Bdata%5B%2A%5D.mark_infos%5B%2A%5D.url%3Bdata%5B%2A%5D.' \
+			'author.follower_count%2Cbadge%5B%2A%5D.topics&limit=1&offset='+str(num)+'&platform=' \
+			'desktop&sort_by=default'
+    return url
+	
+def getComUrl(ansId,offset):
+    url = 'https://www.zhihu.com/api/v4/answers/'+str(ansId)+'/root_comments' \
+			'?include=data%5B*%5D.author%2Ccollapsed%2Creply_to_author%2Cdisliked%2Ccontent%2Cvoting%2C' \
+			'vote_count%2Cis_parent_author%2Cis_author&order=normal&limit=1&offset='+str(offset)+'&status=open'
+    return url
+
+def getChildComUrl(comId,offset):
+    url = 'https://www.zhihu.com/api/v4/comments/'+str(comId)+'/child_comments' \
+			'?include=%24%5B%2A%5D.author%2Creply_to_author%2Ccontent%2Cvote_count&limit=1' \
+			'&offset='+str(offset)+'&include=%24%5B*%5D.author%2Creply_to_author%2C'\
+			'content%2Cvote_count&tdsourcetag=s_pctim_aiomsg'
+    return url
+## Make dir
+def mkdir(path):
+    isExists = os.path.exists(path)
+    #print(isExists)
+    if not isExists:
+        os.makedirs(path)
+
+mkdir('./answers')
+mkdir('./comments')
+mkdir('./child_comments')
+
+##Get Answer Num
+ansUrl = getAnsUrl(0)
+ansResponse = requests.get(ansUrl,headers = headers)
+ansJson = json.loads(ansResponse.text)
+#print(firstJson['paging']['totals'])
+totalAns = ansJson['paging']['totals']
+
+
+##Get Json
+#os.chdir('answers')
+for i in range(startAns,totalAns):
+#for i in range(0,2):
+    print('Get answer'+str(i)+'.json')
+    ansUrl = getAnsUrl(i)
+    ansResponse = requests.get(ansUrl,headers = headers)
+    ansJson = json.loads(ansResponse.text)
+    f = open("./answers/answer"+str(i)+".json","w",encoding='utf-8')
+    f.write(ansResponse.text)
+    f.close()
+    if ansJson['data']:
+        ansId = ansJson['data'][0]['id']
+
+        ##Get Comment Num
+        comUrl = getComUrl(ansId,0)
+        comResponse = requests.get(comUrl,headers = headers)
+        comJson = json.loads(comResponse.text)
+        
+        
+        totalCom = comJson['paging']['totals']
+        # 0-14 for Selected Comments
+        if totalCom > 0:
+            mkdir('./comments/answer'+str(i))
+            for j in range(0,totalCom):
+                print('Get answer'+str(i)+'--comment'+str(j)+'.json')
+                comUrl = getComUrl(ansId,j)
+                comResponse = requests.get(comUrl,headers = headers)
+                f = open("./comments/answer"+str(i)+"/comment"+str(j)+".json","w",encoding='utf-8')
+                f.write(comResponse.text)
+                f.close()
+                comJson = json.loads(comResponse.text)
+                if comJson['data']:
+                    comId = comJson['data'][0]['id']
+                    totalChCom = comJson['data'][0]['child_comment_count']
+                    ##Get Child Comment 
+                    if totalChCom > 0 :
+                        mkdir('./child_comments/answer'+str(i))
+                        mkdir('./child_comments/answer'+str(i)+'/comment'+str(j))
+                        for k in range(0,totalChCom):
+                            print('Get answer'+str(i)+'--comment'+str(j)+''+'--child_comment'+str(k)+'.json')
+                            chComUrl = getChildComUrl(comId,k)
+                            comResponse = requests.get(chComUrl,headers = headers)
+                            f = open("./child_comments/answer"+str(i)+"/comment"+str(j)+"/child_comment"+str(k)+".json","w",encoding='utf-8')
+                            f.write(comResponse.text)
+f.close()
+```
+
+# 后记
+证明准时发布，被指出明显错误，（not even wrong）题主注销帐号，一场闹剧就此结束。
+2018年结束，2019年开始。

@@ -1,0 +1,398 @@
+---
+title: 批量下载网易云音乐歌单歌曲
+urlname: 163music-spider
+date: 2018-12-21 23:24:47
+updated: 2018-12-21 23:24:47
+categories:
+- 计算机
+- 技术
+---
+# 可执行文件下载链接
+
+下载链接：http://pk7zp438g.bkt.clouddn.com/tootal/exe/NetCloudMusicPlaylistDownload.exe
+百度云分享链接：https://pan.baidu.com/s/1DjqqwqvoCxuEPTwei8BPjw
+
+<!--more-->
+
+# 网易云音乐链接格式
+[歌曲网页链接](https://music.163.com/song?id=1331322046)
+[歌单网页链接](https://music.163.com/playlist?id=2017449331)
+[歌曲MP3外链](http://music.163.com/song/media/outer/url?id=551816010.mp3)
+注意外链获取的文件名是乱码。
+
+
+
+# 批量下载网易云歌单歌曲
+由于python还不熟悉，暂时用C++写的下载程序。
+## 获取html源码
+用于读取歌单名称创建文件夹，以及获取歌单包含的歌曲名、歌曲ID。
+分离ID，支持粘贴页面网址。
+https://music.163.com/playlist?id=2017449331&userid=390866393
+https://music.163.com/#/playlist?id=814646918
+
+## 分离歌单名
+
+<title>失落少年｜如果你太累 及时地道别没有罪 - 歌单 - 网易云音乐</title>
+
+## 分离歌曲名以及歌曲ID
+
+<ul class="f-hide"><li><a href="/song?id=1062676">Have Yourself A Merry Little Christmas</a></li><li><a href="/song?id=34324036">Firestone (Live Acoustic Version)</a></li><li><a href="/song?id=27556211">All of Me</a></li><li><a href="/song?id=18658918">No Tears</a></li><li><a href="/song?id=35956839">In Time</a></li></ul>
+
+发现歌单html里面竟然没有每首歌的作者！！
+先不弄作者了，以后有时间再加上去。
+<a href=\"/song?id=
+强烈谴责VS的自动加空格行为，使得字符串查找频繁出BUG。
+
+## 下载歌曲
+
+中文一直有乱码问题。
+已经可以下载。
+已经解决中文乱码问题。
+默认输出到文件的编码是UTF8，但在windows下中文的编码是GBK。
+
+有时会出现一两首歌曲下载失败。
+有时会出现某些歌单不能下载，找不出问题，先这样吧。
+
+## 下载单曲
+
+https://music.163.com/song?id=1330348068
+已经可以下载，文件名为songs.mp3
+
+有些歌曲仍然无法下载，比如love story。
+http://music.163.com/song/media/outer/url?id=19292984.mp3
+## 专辑下载
+
+https://music.163.com/album?id=39723739
+有问题，可能会下载一些奇妙的东西。
+
+
+# 目前代码
+
+pch.h头文件：
+
+```cpp
+
+#ifndef PCH_H
+#define PCH_H
+
+#include <Windows.h>
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <cstdio>
+#include <direct.h>
+#include <cstdlib>
+#include <io.h>
+
+#endif //PCH_H
+
+```
+
+主程序：
+
+```cpp
+#include "pch.h"
+#pragma comment(lib,"URlmon")
+using namespace std;
+static char* U2G(const char* utf8) {
+	int len = MultiByteToWideChar(CP_UTF8, 0, utf8, -1, NULL, 0);
+	wchar_t* wstr = new wchar_t[len + 1];
+	memset(wstr, 0, len + 1);
+	MultiByteToWideChar(CP_UTF8, 0, utf8, -1, wstr, len);
+	len = WideCharToMultiByte(CP_ACP, 0, wstr, -1, NULL, 0, NULL, NULL);
+	char* str = new char[len + 1];
+	memset(str, 0, len + 1);
+	WideCharToMultiByte(CP_ACP, 0, wstr, -1, str, len, NULL, NULL);
+	if (wstr) delete[] wstr;
+	return str;
+}
+/*
+void get_downlist_and_songsname(const char *html_source_name,const char *download_link_name,const char *song_name) {
+	const string pre_song_id = "data-res-id=\"";
+	const string pre_song_name = "data-res-name=\"";
+	const string pre_author_name = "data-res-author=\"";
+	const string link_type_pre = "http://music.163.com/song/media/outer/url?id=";
+	const string file_type_suf = ".mp3";
+	const string songs_name_mid = " - ";
+	ifstream fin1(html_source_name);
+	ofstream fout1(download_link_name);
+	ofstream fout2(song_name);
+	string s;
+	while (getline(fin1, s)) {
+		int pos_id = s.find(pre_song_id) + pre_song_id.length();
+		int pos_song_name = s.find(pre_song_name) + pre_song_name.length();
+		int pos_author_name = s.find(pre_author_name) + pre_author_name.length();
+
+		//get downlist
+		fout1 << link_type_pre;
+		while (s[pos_id] != '\"') {
+			fout1 << s[pos_id];
+			pos_id++;
+		}
+		fout1 << file_type_suf << endl;
+
+		//get songname and author
+		while (s[pos_author_name] != '\"') {
+			fout2 << s[pos_author_name];
+			pos_author_name++;
+		}
+		fout2 << songs_name_mid;
+		while (s[pos_song_name] != '\"') {
+			fout2 << s[pos_song_name];
+			pos_song_name++;
+		}
+		fout2 << file_type_suf << endl;
+	}
+	fin1.close();
+	fout2.close();
+	fout2.close();
+}
+*/
+int urldownload(const char *URL, const char *save_name, const char *save_folder = "") {
+	char buffer[MAX_PATH];
+	_getcwd(buffer, MAX_PATH);
+	strcat_s(buffer, "\\");
+	//cout << "test:save_folder=" << save_folder << endl;
+	if (strlen(save_folder) > 1) {
+		strcat_s(buffer, save_folder);
+		//_mkdir(buffer);
+		//cout << "test:buffer=" << buffer << endl;
+		CreateDirectory(buffer, NULL);
+		strcat_s(buffer, "\\");
+	}
+	strcat_s(buffer, U2G(save_name));
+	//cout << "_getcwd=" << buffer << endl; getchar(); return 0;
+	HRESULT Result = URLDownloadToFileA(NULL, URL, buffer, 0, NULL);
+	switch (Result) {
+	case S_OK:printf("The %s download successfully!\n", U2G(save_name)); break;
+	case E_OUTOFMEMORY: printf("The buffer length is invalid, or there is insufficient memory to complete the operation.\n"); break;
+	}
+	return 0;
+}
+
+void download_them(const char *link_file_path, const char *name_file_path, const char *folder_name = "") {
+	ifstream fin1(link_file_path);
+	ifstream fin2(name_file_path);
+	/*string folder_name_read;
+	if (folder_name.length() > 1) {
+		ifstream fin3(folder_name.c_str());
+		getline(fin3, folder_name_read);
+		fin3.close();
+	}*/
+	//cout << "test:folder_name=" << folder_name << endl;
+	string dlink, fname;
+	while (getline(fin1, dlink)) {
+		getline(fin2, fname);
+		//cout << "dlink=" << dlink << ' ' << "fname=" << fname << endl; return;
+		//urldownload(dlink.c_str(), fname.c_str(), folder_name_read);
+		urldownload(dlink.c_str(), fname.c_str(), folder_name);
+	}
+	fin1.close();
+	fin2.close();
+}
+void get_source(const char *html_path) {
+	const char *foldername_save = "foldername.txt";
+	const char *downlink_save = "downlink.txt";
+	const char *songsname_save = "songname.txt";
+
+	//get foldname
+	ifstream fin1(html_path);
+	ofstream fout1(foldername_save);
+	//fout1 << "This is a test message!" << endl;
+	const string find_foldname_substr = "<title>";
+	const string find_foldname_midstr = "- 歌单 - 网易云音乐</title>";
+	const string find_foldname_sufstr = "</title>";
+	string read_html;
+	while (getline(fin1, read_html)) {
+		int foldername_flag = read_html.find(find_foldname_substr);
+		//cout << "test:flag=" << foldername_flag << endl;
+		if (foldername_flag == -1)continue;
+		else {
+			foldername_flag += find_foldname_substr.length();
+			//cout << "test:flag=" << foldername_flag << endl;
+			int foldername_pos = read_html.find(find_foldname_sufstr);
+			//cout << "test:pos=" << foldername_pos << endl;
+			while (foldername_flag < foldername_pos - find_foldname_midstr.length()) {
+				fout1 << read_html[foldername_flag];
+				foldername_flag++;
+			}
+			fout1 << endl;
+		}
+	}
+	fin1.close();
+	fout1.close();
+	cout << "Get songs list name successfully!\n";
+	//get songs name and songs id
+	ifstream fin2(html_path);
+	ofstream fout2(songsname_save);
+	ofstream fout3(downlink_save);
+	const string find_songs_place_substr = "<ul class=\"f-hide\"><li>";
+	const string find_songs_id_prestr = "<a href=\"/song?id=";
+	const string link_type_pre = "http://music.163.com/song/media/outer/url?id=";
+	while (getline(fin2, read_html)) {
+		int find_songs_place_flag = read_html.find(find_songs_place_substr);
+		//if(read_html[1]=='u')cout << "test:" << read_html << endl;
+		//cout << "test:flag=" << find_songs_place_flag << endl;
+		if (find_songs_place_flag == -1) continue;
+		else {
+			//cout << "test:true!\n";
+			int find_html_pos = 0;
+			int find_songs_id_pos = read_html.find(find_songs_id_prestr);
+			while (find_songs_id_pos != -1) {
+				find_songs_id_pos += find_songs_id_prestr.length();
+				//cout << "test:pos=" << find_songs_id_pos << endl;
+				string songs_id_download_link = link_type_pre;
+				while (read_html[find_songs_id_pos] != '\"') {
+					songs_id_download_link += read_html[find_songs_id_pos];
+					find_songs_id_pos++;
+				}
+				fout3 << songs_id_download_link << endl;
+				find_songs_id_pos += 2;
+				while (read_html[find_songs_id_pos] != '<') {
+					fout2 << read_html[find_songs_id_pos];
+					find_songs_id_pos++;
+				}
+				fout2 << ".mp3\n";
+				find_html_pos = find_songs_id_pos;
+				find_songs_id_pos = read_html.find(find_songs_id_prestr, find_html_pos);
+			}
+		}
+	}
+	fin2.close();
+	fout2.close();
+	fout3.close();
+	cout << "Get songs name and ID successfully!\n";
+}
+/*
+void temp_main() {
+	get_downlist_and_songsname("source.txt", "downlink.txt", "songname.txt");
+	//urldownload("http://music.163.com/song/media/outer/url?id=29734857.mp3", "Hans Zimmer - Cornfield Chase.mp3","震撼心灵的史诗音乐");
+	string folder_name;
+	ifstream fin1("foldername.txt");
+	getline(fin1, folder_name);
+	download_them("downlink.txt", "songname.txt", folder_name.c_str());
+	cout << "All songs are download successfully!Press enter to exit." << endl;
+	getchar();
+}*/
+string get_id(string pre, int &flag) {
+	const string songs_check = "song?id=";
+	const string find_playlist_pos = "playlist?id=";
+	const string find_album = "album?id=";
+	if (pre.find(songs_check) != -1) {
+		flag = 0;
+		string id_temp;
+		int pos_id = pre.find(songs_check) + songs_check.length();
+		while (pos_id < pre.length() && pre[pos_id] >= '0' && pre[pos_id] <= '9') {
+			id_temp += pre[pos_id];
+			pos_id++;
+		}
+		return id_temp;
+	}
+	else if (pre.find(find_playlist_pos) != -1) {
+		flag = 1;
+		string id_temp;
+		int pos_id = pre.find(find_playlist_pos) + find_playlist_pos.length();
+		while (pos_id < pre.length() && pre[pos_id] >= '0' && pre[pos_id] <= '9') {
+			id_temp += pre[pos_id];
+			pos_id++;
+		}
+		return id_temp;
+	}
+	else if (pre.find(find_album) != -1) {
+		flag = 1;
+		string id_temp;
+		int pos_id = pre.find(find_album) + find_album.length();
+		while (pos_id < pre.length() && pre[pos_id] >= '0' && pre[pos_id] <= '9') {
+			id_temp += pre[pos_id];
+			pos_id++;
+		}
+		return id_temp;
+	}
+	return pre;
+}
+void get_html_source(string playlist_id,int flag) {
+	const string playlist_type_link = "https://music.163.com/playlist?id=";
+	const string songs_type_link = "https://music.163.com/song?id=";
+	const string album_type_link = "https://music.163.com/album?id=";
+	string download_list_html_link;
+	if (flag == 0)download_list_html_link = songs_type_link;
+	else if (flag == 1)download_list_html_link = playlist_type_link;
+	else if (flag == 2)download_list_html_link = album_type_link;
+	download_list_html_link += playlist_id;
+	urldownload(download_list_html_link.c_str(), "playlist.html");
+	cout << "Download playlist html source successfully!\n";
+}
+int main1() {
+	//temp_main();
+	string playlist_id_pre;
+	cout << "Please input paste the link:\n";
+	getline(cin, playlist_id_pre);
+	int download_flag = -1;
+	string playlist_id = get_id(playlist_id_pre, download_flag);
+	//cout << "playlist_id=" << playlist_id << endl; getchar(); return 0;
+	//urldownload("https://music.163.com/playlist?id=2017449331", "test.html");
+	get_html_source(playlist_id, download_flag);
+	if (download_flag == 1) {
+		get_source("playlist.html");
+		string foldername_read;
+		ifstream finf("foldername.txt");
+		getline(finf, foldername_read);
+		finf.close();
+		//_mkdir(foldername.c_str());
+		//cout << "test:foldername_read=" << U2G(foldername_read.c_str()) << endl; getchar(); return 0;
+		download_them("downlink.txt", "songname.txt", U2G(foldername_read.c_str()));
+		//download_them("downlink.txt", "songname.txt", "foldername.txt");
+		//download_them("downlink.txt", "songname.txt", foldername);
+		//string temp_cmd = "ren abc " + foldername;
+		//system(temp_cmd.c_str());
+		cout << "All songs are download successfully!Press enter to exit." << endl;
+		remove("playlist.html");
+		remove("downlink.txt");
+		remove("foldername.txt");
+		remove("songname.txt");
+	}
+	else if (download_flag == 2) {
+		get_source("playlist.html");
+		string foldername_read;
+		ifstream finf("foldername.txt");
+		getline(finf, foldername_read);
+		finf.close();
+		//_mkdir(foldername.c_str());
+		//cout << "test:foldername_read=" << U2G(foldername_read.c_str()) << endl; getchar(); return 0;
+		download_them("downlink.txt", "songname.txt", U2G(foldername_read.c_str()));
+		//download_them("downlink.txt", "songname.txt", "foldername.txt");
+		//download_them("downlink.txt", "songname.txt", foldername);
+		//string temp_cmd = "ren abc " + foldername;
+		//system(temp_cmd.c_str());
+		cout << "All songs are download successfully!Press enter to exit." << endl;
+		remove("playlist.html");
+		remove("downlink.txt");
+		remove("foldername.txt");
+		remove("songname.txt");
+	}
+	else if (download_flag == 0) {
+		urldownload(string("http://music.163.com/song/media/outer/url?id="+ playlist_id+".mp3").c_str(), "songs.mp3");
+		remove("playlist.html");
+	}
+	return 0;
+}
+/*
+void test_main() {
+	//get_source("playlist.html");
+	//system("ren abc 钢琴与爵士的完美邂逅");
+	//cout << "中文测试！\n";
+	ifstream fin("文件读写测试.txt");
+	string ss_temp;
+	while(getline(fin, ss_temp))
+		cout << "测试输出文件内容:" << ss_temp << endl;
+	fin.close();
+}
+*/
+int main() {
+	main1();
+
+	//test_main();
+	getchar();
+	return 0;
+}
+```

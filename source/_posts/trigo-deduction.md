@@ -1,0 +1,52 @@
+---
+title: 三角函数和差化积、积化和差公式推导记忆
+urlname: trigo-deduction
+date: 2018-12-21 23:00:47
+updated: 2018-12-21 23:00:47
+tags:
+- 数学
+categories:
+- 大学课程
+- 数学分析
+---
+三角函数的和差化积和积化和差公式在求积分和极限时经常出现，但公式又种类繁多，不便记忆。在此记录公式的推导过程，以便日后回顾。
+<!--more-->
+
+# 和差化积
+核心代换过程
+
+$$
+\begin{cases}
+\alpha = \frac{\alpha+\beta}{2}+\frac{\alpha-\beta}{2}\\
+\beta = \frac{\alpha+\beta}{2}-\frac{\alpha-\beta}{2}\\
+\end{cases}
+$$
+
+由此即可推导出所有和差化积公式，例如：
+
+
+$$
+\begin{align}
+&\quad\ \cos\alpha-\cos\beta\\
+&=\cos(\frac{\alpha+\beta}{2}+\frac{\alpha-\beta}{2})-\cos(\frac{\alpha+\beta}{2}-\frac{\alpha-\beta}{2})\\
+&=\cos(\frac{\alpha+\beta}{2})\cos(\frac{\alpha-\beta}{2})-\sin(\frac{\alpha+\beta}{2})\sin(\frac{\alpha-\beta}{2})-\cos(\frac{\alpha+\beta}{2})\cos(\frac{\alpha-\beta}{2})-\sin(\frac{\alpha+\beta}{2})\sin(\frac{\alpha-\beta}{2})\\
+&=-2\sin(\frac{\alpha+\beta}{2})\sin(\frac{\alpha-\beta}{2})
+\end{align}
+$$
+
+# 积化和差
+核心代换过程
+
+$$
+\sin\alpha\cos\beta=\frac{1}{2}(\sin\alpha\cos\beta+\cos\alpha\sin\beta+\sin\alpha\cos\beta-\cos\alpha\sin\beta)\\
+\cos\alpha\cos\beta=\frac{1}{2}(\cos\alpha\cos\beta+\sin\alpha\sin\beta+\cos\alpha\cos\beta-\sin\alpha\sin\beta)\\
+$$
+
+即凑出和差角公式形式，例如：
+
+$$
+\begin{align}
+\sin\alpha\sin\beta&=\frac{1}{2}\left[(\cos\alpha\cos\beta+\sin\alpha\sin\beta)-(\cos\alpha\cos\beta-\sin\alpha\sin\beta)\right]\\
+ & =\frac{1}{2}\left[\cos(\alpha-\beta)-\cos(\alpha+\beta)\right]
+\end{align}
+$$
