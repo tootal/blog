@@ -1,0 +1,213 @@
+html{
+	font-size: 16px;
+}
+body{
+	margin: 0;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;
+}
+img{
+	vertical-align: middle;
+}
+.nav{
+	background-color: #996;
+}
+.nav a{
+	text-decoration: none;
+}
+.nav-brand{
+	font-size: 1.25rem;
+	color: #f6e203;
+	float: left;
+	margin-right: 1rem;
+}
+.nav-content{
+	width: 100%;
+	height: 50px;
+}
+.nav-list{
+	list-style-type: none;
+	margin: 0;
+}
+.nav-item{
+	display: block;
+	margin-top: 0.8rem;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+	padding-bottom: 1rem;
+}
+.nav-link{
+	color: white;
+}
+.nav-link:focus{
+	/*color: gray;*/
+}
+.nav-link:hover{
+	color: gray;
+}
+.nav-left{
+	float: left;
+}
+.nav-right{
+	float: right;
+}
+.content{
+	background: #f0f0f0;
+	margin-left: 7rem;
+	margin-right: 7rem;
+	margin-bottom: 6rem;
+	padding-left: 3rem;
+	padding-right: 3rem;
+	padding-top: 1rem;
+	padding-bottom: 3rem;
+}
+.content h1,h2,h3,h4,h5,h6{
+	margin-top: 0;
+	padding-top: 2rem;
+}
+.content p,ol{
+	line-height: 30px;
+}
+.content h3+p:before{
+	content: "\2003\2003";
+}
+.footer{
+	width: 100%;
+	height: 40px;
+	padding-bottom: 2rem;
+	/*border-top-style: solid;*/
+	border-top-width: 1px;
+	text-align: center;
+}
+.footer a{
+	text-decoration: none;
+	color: black;
+}
+.footer p{
+	margin-top: 0;
+	margin-bottom: 0;
+}
+button.close{
+	background: transparent;
+	border: none;
+	/*text-shadow: 0 1px 0 #fff;*/
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: #989191;
+	cursor: pointer;
+}
+.ModalClose{
+	float: right;
+	margin-right: 10px;
+	margin-top: 12px;
+}
+.modal{
+	display: none;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 10px;
+	border-color: rgba(0,0,0,.2);
+	width: 300px;
+	margin: 80px auto;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: white;
+	z-index: 100;
+	opacity: 1;
+}
+.modal input{
+    border: 1px solid #ccc;
+    padding: 7px 0px;
+    border-radius: 3px;
+    padding-left: 8px;
+
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+
+}
+.modal input:focus{
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+}
+.ModalHeader{
+	width: 300px;
+	height: 55px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: rgba(0,0,0,.2);
+}
+.ModalTitle{
+	float: left;
+	margin-left: 12px;
+	margin-top: 10px;
+	color: black;
+	font-size: 1.5rem;
+}
+.ModalContent{
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.ModalContent input{
+	margin: 10px 0;
+}
+.ModalButton{
+	margin: 10px 0;
+}
+.ModalFooter{
+	text-align: center;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: rgba(0,0,0,.2);
+}
+.ModalFooter button{
+	color: #fff;
+	background-color: #025aa5;
+	border-color: #01549b;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 5px;
+	border-color: transparent;
+	padding: .5rem 1rem;
+	cursor: pointer;
+}
+.ModalFooter button:hover{
+	background-color: #064479;
+}
+.modalCover{
+	display: none;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	position: fixed;
+	background-color: rgba(0,0,0,0.5);
+	z-index: 1;
+}
+.dropdown-menu{
+	position: fixed;
+	display: none;
+	background-color: #997;
+	top: 50px;
+	left: 300px;
+}
+.dropdown-menu ul{
+	list-style: none;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.dropdown-menu li{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+}
+.dropdown-menu a{
+	text-decoration: none;
+	color: white;
+}

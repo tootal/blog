@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>C++ 内置数据类型性质</title>
+</head>
+<body>
+有时候因为不熟悉C++内置数据类型的精度经常吃亏， <a href="https://ac.nowcoder.com/acm/contest/874/D">有道题</a>要求结果保留30位小数，结果我还用long double试了几次。。
+<br>
+今天就总结一下，主要涉及两个头文件 <a href="http://www.cplusplus.com/reference/climits/">climits</a>和 <a href="http://www.cplusplus.com/reference/cfloat/">cfloat</a>。
+下表是用 <a href="https://raw.githubusercontent.com/tootal/SCL/master/typeinfo.cpp">这个程序</a>输出的。
+<br>
+C
+<a href="http://www.cplusplus.com/reference/cstdio/scanf/">输入</a>
+<a href="http://www.cplusplus.com/reference/cstdio/printf/">输出</a>
+<br>
+仅供参考。
+<hr>
+<pre>
+
+char:
+	size: 1
+	bits: 8
+	multibyte character bytes: 16
+	scanf: %c
+	printf: %c
+	example: a b '\n' '\100' '\x4a'
+	range: -128 ~ 127
+
+signed char:
+	size: 1
+	scanf: %hhd %hhi
+	printf: %hhd %hhi
+	range: -128 ~ 127
+
+unsigned char:
+	size: 1
+	scanf: %hhu %hho %hhx
+	printf: %hhu %hho %hhx
+	range: 0 ~ 255
+
+short int:
+	size: 2
+	scanf: %hd %hi
+	printf: %hd %hi
+	example: -1 -31073
+	range: -32768 ~ 32767
+
+unsigned short int:
+	size: 2
+	scanf: %hu %ho %hx
+	printf: %hu %ho %hx %hX
+	example: 65535 10 a A
+	range: 0 ~ 65535
+
+int:
+	size: 4
+	scanf: %d %i
+	printf: %d %i
+	example: 97 1
+	range: -2147483648 ~ 2147483647
+
+unsigned int:
+	size: 4
+	scanf: %u %o %x
+	printf: %u %o %x %X
+	example: 15 10u 0U 990u 0100U
+	range: 0 ~ -1
+
+long int:
+	size: 8
+	scanf: %li %ld
+	printf: %li %ld
+	example: 63 -1l 100L 030l 0x3fl
+	range: -9223372036854775808 ~ 9223372036854775807
+
+unsigned long int:
+	size: 8
+	scanf: %lu %lo %lx
+	printf: %lu %lo %lx %lX
+	example: 100 1000lu,0LU,0xfflU,019Lu
+	range: 0 ~ 18446744073709551615
+
+long long int:
+	size: 8
+	scanf: %lld %lli
+	printf: %lld %lli
+	example: 100 10LL,99LL,067LL,0x9ell
+	range: -9223372036854775808 ~ 9223372036854775807
+
+unsigned long long int:
+	size: 8
+	scanf: %llu %llo %llx
+	printf: %llu %llo %llx %llX
+	example: 100 1000lLu,1000Llu,1000LLu,1000llu
+	range: 0 ~ 18446744073709551615
+
+__int128:
+	size: 16
+	range: -170141183460469231731687303715884105727 ~ 170141183460469231731687303715884105727
+
+float:
+	radix: 2
+	size: 4
+	scanf: %f %e %g %a
+	printf: %f %F %e %E %g %G %a %A
+	example: 0.006 13.48f 1e5f .6E-2F
+	digits: 6
+	mantissa digits: 24
+	range: 1.17549e-38 ~ 3.40282e+38
+	epsilon: 1.19209e-07
+	exp range: -125 ~ 128
+	exp (10) range: -37 ~ 38
+	round: to nearest
+	evaluation method: evaluate just to the range and precision of the type
+
+double:
+	size: 8
+	scanf: %lf %le %lg %la
+	printf: %f %F %e %E %g %G %a %A
+	example: 0.006 60.24 1E5 .6e-2
+	digits: 15
+	mantissa digits: 53
+	range: 2.22507e-308 ~ 1.79769e+308
+	epsilon: 2.22045e-16
+	exp range: -1021 ~ 1024
+	exp (10) range: -307 ~ 308
+
+long double:
+	size: 16
+	scanf: %Lf %Le %Lg %La
+	printf: %Lf %LF %Le %LE %Lg %LG %La %LA
+	example: 0.0000000000000006 60.24L 1e5l .6E-2l
+	digits: 18
+	mantissa digits: 64
+	range: 3.3621e-4932 ~ 1.18973e+4932
+	epsilon: 1.0842e-19
+	exp range: -16381 ~ 16384
+	exp (10) range: -4931 ~ 4932
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Telnet</title>
+</head>
+<body>
+<a href="http://baijiahao.baidu.com/s?id=1603601217145312063&wfr=spider&for=pc">教程</a>
+以163邮箱为例:<br>
+
+<ul>
+	<li>
+		<b>telnet smtp.163.com 25</b>
+	</li>
+	<li>
+		成功将看到 <b>220 163.com Anti-spam GT for Coremail System</b>
+	</li>
+	<li>
+		<b>helo 163.com</b>
+	</li>
+	<li>
+		成功后，服务器则会返回250 OK
+	</li>
+	<li>
+		<b>auth login</b>
+	</li>
+	<li>
+		出现334后，表明服务器已响应。
+	</li>
+	<li>
+		输入 <b>Base64编码过的邮箱地址和授权码</b>
+	</li>
+	<li>
+		成功将显示 235 Authentication successful
+	</li>
+</ul>
+</body>
+</html>

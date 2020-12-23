@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Git</title>
+</head>
+<body>
+<h3>
+	<a href="https://www.cnblogs.com/shines77/p/3460274.html">永久删除文件(包括历史记录)</a>
+</h3>
+<b>
+	git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch path-to-your-remove-file' --prune-empty --tag-name-filter cat -- --all
+</b>
+<p>
+	其中path-to-your-remove-file是要删除的文件的相对路径(相对于git仓库的跟目录), 替换成要删除的文件即可. 
+</p>
+<p>
+	如果要删除的目标不是文件，而是文件夹，那么请在 git rm --cached 命令后面添加 -r 命令，表示递归的删除（子）文件夹和文件夹下的文件，类似于 rm -rf 命令。
+</p>
+<b>git push origin master --force</b>
+<p>
+	以强制覆盖的方式推送repo
+</p>
+<b>git push origin master --force --tags</b>
+<p>
+	从打了 tag 的版本中也删除指定的文件或文件夹
+</p>
+<b>rm -rf .git/refs/original/</b>
+<br>
+<b>git reflog expire --expire=now --all</b>
+<br>
+<b>git gc --prune=now</b>
+<br>
+<b>git gc --aggressive --prune=now</b>
+<p>
+	虽然上面已经删除了文件, 但是repo里面仍然保留了这些objects, 等待垃圾回收(GC), 所以要用命令彻底清除它, 并收回空间.
+</p>
+<h3>
+	<a href="https://www.cnblogs.com/kpengfang/p/5962233.html">warning: LF will be replaced by CRLF in file</a>
+</h3>
+<b>
+	git config core.autocrlf false	
+</b>
+<h3>
+	<a href="https://www.v2ex.com/t/154202">Git bash ls中文显示乱码</a>
+	
+</h3>
+<p>
+	<b>
+	vi ~/.bashrc
+	</b>
+	<br>
+	<p>输入</p>
+<b>
+	export LANG=en_US.utf-8
+	<br>
+
+alias ls='ls --show-control-chars --color=auto'
+</b>
+</p>
+<h3 id="menu">
+	<a href="https://blog.csdn.net/johnnymartin/article/details/80802425">
+		添加git bash here 右键菜单（shift）
+	</a>
+</h3>
+<b>Win+R</b><br>
+<b>regedit</b><br>
+<b>HKEY_CLASSES_ROOT\Directory\Background\shell</b><br>
+<b>shell下右键 新建项 Git bash here</b><br>
+<b>Git bash here下右键-新建-字符串值，命名为Icon,双击编辑</b><br>
+<b>C:\Program Files\Git\mingw64\share\git\git-for-windows.ico</b>(为菜单加图标)<br>
+<b>在Git Bash Here下右键-新建-项，命名为command,其值为</b><br>
+<b>C:\Program Files\Git\bin\bash.exe</b><br>
+<b>在Git Bash Here 下右键-> 新建字符串值，命名为 Extended </b> （shell） <br>
+</body>
+</html>

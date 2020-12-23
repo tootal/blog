@@ -1,0 +1,35 @@
+body{
+	font-family: Open Sans,Seravek,Segoe UI,Verdana,PingFang SC,Hiragino Sans GB,Lantinghei SC,Microsoft Yahei,WenQuanYi Micro Hei,sans;
+	font-weight: 400;
+	font-size: 1rem;
+	line-height: 1;
+	background-color: #edf0f2;
+}
+h1{
+	text-align: center;
+}
+.problem-panel{
+	margin: 15px auto;
+	width: 600px;
+}
+.problem-table{
+	margin: 5px auto;
+	border-collapse: collapse;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 3px;
+}
+.problem-table td{
+	border-style: solid;
+	border-width: 1px;
+	padding: 5px 5px;
+	text-align: center;
+}
+.problem-table td a{
+	color: #3498db;
+	text-decoration: none;
+}
+.problem-table td a:hover{
+	color: #0056b3;
+	text-decoration: underline;
+}

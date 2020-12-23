@@ -39,6 +39,7 @@ skip_render:
   - 'html/**'
   - 'css/**'
   - 'js/**'
+  - '.github'
 
 # Writing
 new_post_name: :title.md # File name of new posts

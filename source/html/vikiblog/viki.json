@@ -1,0 +1,21 @@
+{
+    "brand": "头头世界",
+    "title": "头头世界",
+    "favicon": "css/logo.ico",
+    "footer": "",
+    "show_suffix": false,
+    "load_before_search": true,
+    "fuzzy_search": false,
+    "markdown":
+    {
+        "html": true,
+        "breaks": true,
+        "linkify": false,
+        "typographer": false,
+        "lang_prefix": "lang-",
+        "image_caption": false,
+        "plantuml_server": "https://www.plantuml.com/plantuml",
+        "plantuml_format": "svg",
+        "code_block_line_number": false
+    }
+}

@@ -1,0 +1,33 @@
+name: Sync
+on: page_build
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Sync to Gitee
+        uses: wearerequired/git-mirror-action@master
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
+        with:
+          source-repo: git@github.com:tootal/tootal.github.io.git
+          destination-repo: git@gitee.com:tootal/tootal.git
+      - name: Build Gitee Pages
+        uses: yanglbme/gitee-pages-action@main
+        with:
+          gitee-username: tootal
+          gitee-password: ${{ secrets.GT_PWD }}
+          gitee-repo: tootal/tootal
+          branch: master
+      - name: Upload to Qiniu Cloud
+        run: |
+          wget http://devtools.qiniu.com/qshell-linux-x64-v2.4.2.zip
+          unzip qshell-linux-x64-v2.4.2.zip
+          mv qshell-linux-x64-v2.4.2 qshell
+          chmod +x qshell
+          ./qshell account ${{ secrets.QN_AK }} ${{ secrets.QN_SK }} tootal_qiniu
+          git clone https://github.com/tootal/tootal.github.io blog
+          ./qshell qupload2 --overwrite --log-file upload.log --src-dir /home/runner/work/tootal.github.io/tootal.github.io/blog --bucket tootalblog --skip-fixed-strings .git --check-exists --check-size --rescan-local --skip-suffixes .vswp --thread-count 100
+          cat upload.log
+          echo http://blog.tootal.xyz/ > refresh_url.txt
+          cat refresh_url.txt
+          ./qshell cdnrefresh --dirs -i refresh_url.txt

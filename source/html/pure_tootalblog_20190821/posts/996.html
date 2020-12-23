@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>996</title>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<p>
+今天做<a href="https://acm.ecnu.edu.cn/contest/169/">ECNU 比赛</a>的时候发现有一道题是讲996的。我这才知道了996是怎么来的。</p>
+<p>
+	As a programmer, you might know that programmers have a self-invented way to represent their workinghours, namely <b>std</b>, which means, start working at <b>s</b> a.m., end working at <b>t</b> p.m.  and working <b>d</b> days a week.  You might also know that recently there has been a campaign called <a href="https://996.icu">996.ICU</a> which objects to long working hours and demands rights.
+</p>
+<p>输入类似std的表达式</p>
+<input type="text" id="std">
+<button onclick="calcSTD()">计算每周工作时间</button><br>
+<p id="answer"></p>
+<script type="text/javascript">
+	function calcSTD(){
+		//alert("hello world!");
+		var s=String(document.getElementById("std").value);
+		var len=s.length;
+		var st,t,d;
+		d=s[len-1]-'0';
+		// alert(d);
+		var p=1;
+		if(s[p-1]=='1'){
+			st=10+Number(s[p])-'0';
+			p+=2;
+		}else{
+			st=s[p-1]-'0';
+			p+=1;
+		}
+		// alert(st);
+		if(s[p-1]=='1'){
+			t=10+Number(s[p])-'0';
+			p+=2;
+		}else{
+			t=s[p-1]-'0';
+			p+=1;
+		}
+		// alert(t);
+		document.getElementById("answer").innerHTML=(t-st+12)*d;
+	}
+</script>
+</body>
+</html>

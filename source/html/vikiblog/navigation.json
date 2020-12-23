@@ -1,0 +1,29 @@
+{
+    "navigation":
+    [
+        {
+            "text": "Home",
+            "target": "index.md",
+            "toc": false
+        },
+        {
+            "text": "Markdown",
+            "target": "vnotebook/计算机/Markdown测试页面.md",
+            "toc": false
+        },
+        {
+            "text": "Notebook",
+            "target": "vnotebook/_vnote.json",
+            "navi_index": "vnotebook/计算机/Markdown测试页面.md",
+            "navi": true
+        }
+    ],
+    "actions":
+    [
+        {
+            "text": "Github",
+            "icon": "css/github.svg",
+            "target": "https://github.com/tootal/"
+        }
+    ]
+}

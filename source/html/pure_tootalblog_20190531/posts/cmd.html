@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>CMD</title>
+</head>
+<body>
+	<del>颜值即正义</del><br>
+	<h3>
+		正确显示中文
+	</h3>
+	如果在windows下用命令行编译程序，常常遇到中文无法正确显示的问题。这一般是因为源文件中的字符是UTF-8编码，而MS-DOS是ANSI编码的，这时可以用
+	<br>
+	<b>chcp 65001</b>
+	<br>
+	切换到UTF-8编码
+	<br>
+	<b>
+		chcp 936
+	</b>
+	<br>
+	可以切换回来。
+	<br>
+	注意修改时暂时的，下次还会改回默认值。
+	<br>
+	如果要永久修改，可以参考 <a href="https://blog.csdn.net/qq_35038153/article/details/78430359">这里</a>。
+	<br>
+	简而言之就是在注册表的
+	<br>
+	<b>
+		HKEY_CURRENT_USER\Console\%SystemRoot%_system32_cmd.exe
+	</b>
+	<br>
+	下新建一个DWORD （32位）命名为 <b>CodePage</b>，值设为 <b>65001</b>
+	<br>
+	<h3>
+		修改字体颜色、窗口大小、透明度
+	</h3>
+	<p>
+		在窗口标题栏右键即可。
+	</p>
+	<h3>
+		<a href="http://www.cnblogs.com/fstang/archive/2013/04/06/3002006.html">CMD设置命令别名</a>
+	</h3>
+	<b>
+		cmd /？
+	</b>
+	<br>
+	可以查看注册表路径。
+	<h3>
+		修改启动时提示符
+	</h3>
+	<pre>
+@echo off
+cls
+echo Welcome to Command Processor!  %date% %time:~0,5%
+echo= 
+echo 天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。
+echo 人之为学有难易乎？学之，则难者亦易矣；不学，则易者亦难矣。
+echo=
+doskey gg=git add . $t git commit -m 'update' $t git push
+doskey vi=vim $*
+doskey ls=dir /w $*
+doskey ll=dir $*
+doskey l=dir /w $*
+doskey cat=type $*
+doskey man=help $*
+doskey cp=copy $*
+doskey rm=del $*
+doskey pwd=cd
+doskey diff=fc $*
+doskey whereis=where $*
+doskey who=net user
+doskey whoami=echo %username%
+	</pre>
+	<br>
+	<p>
+		注意bat文件要用ANSI编码才能正确显示中文。
+	</p>
+忽然发现微软官方也在改进命令行，那我还是坐等 <a href="https://github.com/microsoft/Terminal">新的Terminal</a>发布吧。
+<hr>
+<br>
+<pre>
+在那里，我们躲开俗务的纷繁。
+在那里，我们躲进梦乡的灵幻。
+在那里，心情可以编织，编织成温柔且宜人的湖畔。
+在那里，信念也在生长，生长成连绵而坚固的山峦。
+在那里，你会在我的邻川，默默地为我们劳作那永不着凉的菜饭。
+在那里，我会在你的对岸，静静地为我们打造那行将远行的风帆。	
+										
+										————回到2049
+</pre>
+</body>
+</html>

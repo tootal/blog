@@ -1,0 +1,205 @@
+<!--
+This is a html document which created at 20190131.
+This time is my second time to study html and web knowledge.
+Compare with the First, I use wamp to preview this text.
+This allow me test more tools like JavaScript,PHP,Sql and so on.
+此次测试更加专注于我感兴趣的部分，而对一些复杂的语法进行直接跳过。
+by tootal.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>hello</title>
+	<meta charset="utf-8">
+</head>
+<body>
+hello world!<br>
+测试中文。 <br>
+
+<h1>标题</h1>
+
+<h1>This is a 1 heading.</h1>
+<h2>This is a 2 heading.</h2>
+<h3>This is a 3 heading.</h3>
+<h4>This is a 4 heading.</h4>
+<h5>This is a 5 heading.</h5>
+<h6>This is a 6 heading.</h6>
+
+<h1>段落</h1>
+
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+
+<h1>表格</h1>
+
+<table border="1">
+    <tr>
+        <td>row 1, cell 1</td>
+        <td>row 1, cell 2</td>
+    </tr>
+    <tr>
+        <td>row 2, cell 1</td>
+        <td>row 2, cell 2</td>
+    </tr>
+</table>
+
+
+<h1>链接</h1>
+<a href="http://www.baidu.com">This is a link.</a>
+
+<h1>图像</h1>
+<img src="queue.webp" width="500" height="">
+
+<h1>音频</h1>
+Magnolia<br>
+<audio controls="controls" src="magnolia.mp3"></audio>
+
+<h1>视频</h1>
+霍比特人-五军之战<br>
+<video src="starsky.mp4" controls="controls"></video>
+
+<h1>PDF文档</h1>
+<object data="839.pdf" height="1440" width="830"><a href="839.pdf">839.pdf</a></object>
+
+<h1>表单</h1>
+<!-- method="post" or "get" -->
+
+<form action="hello.php" method="post">
+	<br>
+	Your Name:<br>
+	<input type="text" name="name"><br>
+
+	<br>
+	Your Password:<br>
+	<input type="password" name="password"><br>
+
+	<br>
+	Your Gender:<br>
+	<input type="radio" name="sex" value="male">Male <br>
+	<input type="radio" name="sex" value="female">Female <br>
+
+	<br>
+	Your Like:<br>
+	<input type="checkbox" name="likeit" value="apple">I like apple. <br>
+	<input type="checkbox" name="likeit" value="banana">I like banana. <br>
+	<input type="checkbox" name="likeit" value="lolipop">I like lolipop. <br>
+
+	<br>
+	Your Color:<br>
+	<input type="color" name="likecolor"><br>
+
+	<br>
+	Your Birthday:<br>
+	<input type="date" name="birthday"><br>
+
+	<br>
+	Your Age:<br>
+	<input type="number" name="age" min="0" max="150" step="1" value="18"><br>
+
+	<br>
+	Your Time:<br>
+	<input type="time" name="usr_time"><br>
+
+	<br>
+	Your Email:<br>
+	<input type="email" name="email"><br>
+
+	<br>
+	Your Website:<br>
+	<input type="url" name="website"><br>
+
+	<br>
+	Your Language:<br>
+ 	<select name="language">
+ 		<option value="cpp">C++</option>
+ 		<option value="c">C</option>
+ 		<option value="java">Java</option>
+ 		<option value="python">Python</option>
+ 		<option value="pascal">Pascal</option>
+ 	</select>
+	<br>
+
+	<br>
+	Your Message:<br>
+	<textarea cols="40" rows="10" name="leave_message" required></textarea>
+
+	<br>
+	<input type="submit" value="Submit">
+</form>
+<br><br><br>
+
+
+<h1>JavaScript</h1>
+
+
+<p id="change_html_p_1"></p>
+<script>
+	document.getElementById("change_html_p_1").innerHTML="此内容由javascript脚本生成";
+</script>
+
+
+<p id=showHelloWorld_button></p>
+<button type="button" onclick="showHelloWorld()">Show Hello World use JavaScript!</button>
+<br>
+<script type="text/javascript">
+	function showHelloWorld(){
+		document.getElementById("showHelloWorld_button").innerHTML="Hello world!";
+	}
+</script>
+
+使用外部脚本文件 <br>
+
+<button onclick="alert_hello()">Alert Hello World!</button>
+<br>
+
+
+
+<p id="show_num"></p>
+<button onclick="show_all_num(100)">展示1~100</button><br>
+
+
+
+
+<script type="text/javascript" src="hello.js"></script>
+
+
+<h1>PHP</h1>
+
+<?php
+	echo "hello world!"
+?>
+
+上传文件 <br>
+<br>
+<form action="upload.php" method="post" enctype="multipart/form-data">
+Choose your file.
+<br>
+<input type="file" name="file" id="file"><br>
+<input type="submit" name="submit" value="upload">	<br>
+</form>
+
+
+<h1>MySQL</h1>
+<h2>命令行操作</h2>
+登录MySQL：先运行服务端程序mysqld,在另开一个窗口输入命令mysql -uroot -p <br>
+初始密码为空，直接回车即可。
+重置root用户密码：若忘记了设置的密码，在my.ini文件末尾加上skip-grant-tables即可跳过密码直接登录。 <br>
+然后输入：update mysql.user set authentication_string = password('my_new_password')
+where User = 'root' and Host = 'localhost';
+flush privileges; <br>
+之后去掉skip-grant-tables重新登录即可。 <br>
+
+目前导入了一些数据（ <a href="StudentsPerformance.csv">StudentsPerformance.csv</a>）来练习mysql使用。 <br>
+数据来源于 <a href="https://www.kaggle.com">Kaggle</a> <br>
+
+<a href="mysql.php">查询数据</a> <br>
+
+<br>
+PHP中SELECT语句加反引号！！(不含空格的也可不加) <br>
+例如：$sql="SELECT `parental level of education`,`math score` FROM `studentsperformance`"; <br>
+
+<div align="center">
+	<?php include 'footer.php';?>
+</div>
+</body>
+</html>

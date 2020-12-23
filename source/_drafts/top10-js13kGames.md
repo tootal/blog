@@ -14,41 +14,41 @@ tags:
 期末复习累了？不如来玩玩小游戏放松一下吧！点击标题可以访问官网对应页面，点击图片可以直接开始游戏！
 <!-- more -->
 ### [Ninja vs EVILCORP](https://js13kgames.com/entries/ninja-vs-evilcorp)
-[![](/images/20201205005223500_11406.webp)](/html/game/Ninja%20vs%20EVILCORP.html)
+[![](20201205005223500_11406.webp)](/html/game/Ninja%20vs%20EVILCORP.html)
 
 
 ### [Edge Not Found](https://js13kgames.com/entries/edge-not-found)
-[![](/images/20201205005232490_30797.webp)](/html/game/Edge%20Not%20Found.html)
+[![](20201205005232490_30797.webp)](/html/game/Edge%20Not%20Found.html)
 
 
 ### [CHOCH](https://js13kgames.com/entries/choch)
-[![](/images/20201205005243421_31825.webp)](/html/game/CHOCH.html)
+[![](20201205005243421_31825.webp)](/html/game/CHOCH.html)
 
 
 ### [Track not found?!](https://js13kgames.com/entries/track-not-found)
-[![](/images/20201205005255141_25710.webp)](/html/game/Track%20not%20found_!/index.html)
+[![](20201205005255141_25710.webp)](/html/game/Track%20not%20found_!/index.html)
 
 
 ### [Stolen Sword](https://js13kgames.com/entries/stolen-sword)
-[![](/images/20201205005305729_4551.webp)](/html/game/Stolen%20Sword.html)
+[![](20201205005305729_4551.webp)](/html/game/Stolen%20Sword.html)
 
 
 ### [The Last Spartan](https://js13kgames.com/entries/the-last-spartan)
-[![](/images/20201205005314565_21023.webp)](/html/game/The%20Last%20Spartan.html)
+[![](20201205005314565_21023.webp)](/html/game/The%20Last%20Spartan.html)
 
 
 ### [FOURFOLD](https://js13kgames.com/entries/fourfold)
-[![](/images/20201205005322252_2979.webp)](/html/game/FOURFOLD/index.html)
+[![](20201205005322252_2979.webp)](/html/game/FOURFOLD/index.html)
 
 
 ### [I want to google the game](https://js13kgames.com/entries/i-want-to-google-the-game)
-[![](/images/20201205005328587_13407.webp)](/html/game/I%20want%20to%20google%20the%20game.html)
+[![](20201205005328587_13407.webp)](/html/game/I%20want%20to%20google%20the%20game.html)
 
 
 ### [Highway 404](https://js13kgames.com/entries/highway-404)
-[![](/images/20201205005335253_11132.webp)](/html/game/Highway%20404.html)
+[![](20201205005335253_11132.webp)](/html/game/Highway%20404.html)
 
 
 ### [MINIPUNK](https://js13kgames.com/entries/minipunk)
-[![](/images/20201205005343626_24230.webp)](/html/game/MINIPUNK.html)
+[![](20201205005343626_24230.webp)](/html/game/MINIPUNK.html)
 

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>头头世界</title>
+	<link rel="icon" type="image/x-ico" href="static/img/logo.ico" />
+
+	<!-- BEGIN CSS -->
+	<link rel="stylesheet" type="text/css" href="static/css/main.css">
+	<link rel="stylesheet" type="text/css" href="static/css/nav.css">
+	<link rel="stylesheet" type="text/css" href="static/css/content.css">
+	<link rel="stylesheet" type="text/css" href="static/css/footer.css">
+	<!-- END CSS -->
+
+	<!-- BEGIN JAVASCRIPT -->
+	<script src="static/js/main.js"></script>
+	<!-- END JAVASCRIPT -->
+
+	<!-- BEGIN MARKDOWN -->
+	<!-- <script src="/pack/marked/marked.min.js"></script> -->
+	<!-- <script type="text/javascript">
+		marked.setOptions({
+			breaks: true,
+			highlight: function(code){
+				return hljs.highlightAuto(code).value;
+			}
+		});
+	</script> -->
+	<!-- END MARKDOWN -->
+
+	<!-- BEGIN HIGHLIGHT -->
+	<!-- <link rel="stylesheet" href="/pack/highlight/styles/default.css">
+	<script src="/pack/highlight/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script> -->
+	<!-- END HIGHLIGHT -->
+
+	<!-- BEGIN LATEX -->
+	<!-- END LATEX -->
+</head>
+<body>
+	<nav class="nav">
+		<a href="/" class="nav-brand nav-left">
+			<img src="static/img/logo.ico" alt="Danboard" height="50px" width="50px">
+			头头世界
+		</a>
+		<div class="nav-content">
+			<ul class="nav-list">
+				<li id="nav-blog" class="nav-item nav-left">
+					<a class="nav-link" href="javascript:void(0)">博客</a>
+				</li>
+				<li id="nav-message" class="nav-item nav-left">
+					<a class="nav-link" href="javascript:void(0)">留言</a>
+				</li>
+				<li id="nav-awesome" class="nav-item nav-left">
+					<a class="nav-link" href="javascript:void(0)">收藏</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="content">
+		<script type="text/html" id="content-markdown-src">
+# Markdown测试页面
+Markdown是一种轻量级的易用的书写语法。本文是Markdown的介绍页面，在这里可以查询Markdown的各种语法，也可以测试页面的渲染是否正常。
+
+## 语法指南
+### 标题
+```md
+# 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题
+```
+# 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题
+
+```cpp
+#include <iostream>
+using namespace std;
+int main(){
+	cout<<"hello world!"<<endl;
+	return 0;
+}
+```
+		</script>
+		<div class="content-markdown" id="content-markdown-show"></div>
+	</div>
+	<div class="footer">
+		<ul class="footer-social">
+			<li class="footer-social-item">
+				<a href="mailto:tootal@yeah.net" target="_blank">
+					<img src="static/img/email.svg" alt="邮箱" class="footer-social-item-img">
+				</a>
+			</li>
+			<li class="footer-social-item">
+				<a href="https://mp.weixin.qq.com/profile?src=3&timestamp=1562657440&ver=1&signature=70qwf4DSjLxC8A8cl5zo1y6iLPiJeXUnfObPqt*FleQ9N18r7vGu2kGpCtj0qn8vDx*t0CSi8EFv96A72FgciQ==" target="_blank">
+					<img src="static/img/weixin.svg" alt="微信公众号" class="footer-social-item-img">
+				</a>
+			</li>
+			<li class="footer-social-item">
+				<a href="https://github.com/tootal" target="_blank">
+					<img src="static/img/github.svg" alt="GitHub" class="footer-social-item-img">
+				</a>
+			</li>
+			<li class="footer-social-item">
+				<a href="https://www.zhihu.com/people/toto-78-30/activities" target="_blank">
+					<img src="static/img/zhihu.svg" alt="知乎" class="footer-social-item-img">
+				</a>
+			</li>
+			<li class="footer-social-item">
+				<a href="https://space.bilibili.com/41684252" target="_blank">
+					<img src="static/img/bilibili.svg" alt="bilibili" class="footer-social-item-img">
+				</a>
+			</li>
+		</ul>
+		<p class="footer-item">
+			© 2018 黄智权
+			<a href="http://icp.chinaz.com/info?q=tootal.xyz" target="_blank">赣ICP备18016795号-1</a>
+		</p>
+		<p class="footer-item">
+			现在时间：<span class="footer-time"></span>
+		</p>
+	</div>
+</body>
+</html>

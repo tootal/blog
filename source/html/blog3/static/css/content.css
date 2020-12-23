@@ -1,0 +1,12 @@
+.content{
+	margin-top: 3rem;
+	margin-left: 10rem;
+	margin-right: 10rem;
+
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-left-color: rgba(0,0,0,.1);
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: rgba(0,0,0,.1);
+}

@@ -1,0 +1,29 @@
+{
+    "attachment_folder": "_v_attachments",
+    "created_time": "2019-06-01T06:33:03Z",
+    "files": [
+    ],
+    "image_folder": "",
+    "recycle_bin_folder": "_v_recycle_bin",
+    "sub_directories": [
+        {
+            "name": "计算机"
+        },
+        {
+            "name": "数学分析"
+        },
+        {
+            "name": "Java程序设计"
+        },
+        {
+            "name": "Minecraft"
+        },
+        {
+            "name": "笔记"
+        }
+    ],
+    "tags": [
+        "牛客多校"
+    ],
+    "version": "1"
+}

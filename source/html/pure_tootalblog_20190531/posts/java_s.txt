@@ -1,0 +1,41 @@
+
+const int sz=1574;
+    QString drag[]={"中医内科","中医外科","中医妇科","中医儿科","中医养生","针灸推拿"};
+    int id=ui->spinBox->value();
+    QString path=QFileDialog::getSaveFileName(this,tr("保存文件"),QString("./%1.txt").arg(id),QString("Text Files(%1.txt)").arg(id));
+    if(!path.isEmpty()){
+        QFile file(path);
+        if(file.open(QIODevice::WriteOnly|QIODevice::Text)){
+            QTextStream out(&file);
+            for(int i=(id-1)*sz+1;i<(id-1)*sz+1574;i++){
+                if(i>rawData.size()){
+                    QMessageBox::warning(this,"错误","数据缺失");
+                    break;
+                }
+                QString defaultChoice=rawData[i].left(4);
+                out<<i;
+                if(qrand()%10<6){
+                    //选默认
+                    out<<"\t"<<defaultChoice;
+                }else{
+                    if(qrand()%10<7){
+                        //随机选一个
+                        out<<"\t"<<drag[qrand()%6];
+                    }else{
+                        if(qrand()%10<6){
+                            //随机选两个
+                            QString temp=rawData[i];
+                            int p=qrand()%6,q=qrand()%6;
+                            while(p==q)p=qrand()%6;
+                            out<<"\t"<<drag[p]<<"\t"<<drag[q];
+                        }else{
+                            //不选
+                        }
+                    }
+                }
+                out<<"\t\t"<<rawData[i]<<"\n";
+            }
+        }
+    }
+    //qDebug()<<(qrand()%10);
+    statusBar()->showMessage(tr("已生成答案"));

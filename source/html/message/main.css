@@ -1,0 +1,65 @@
+body{
+	background-color: WhiteSmoke;
+	/*background-image: url('bg.jpg');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: 100% 100%;*/
+}
+.header{
+	text-align: center;
+	/*position: fixed;
+	width: 70%;
+	height: 50px;
+	top: 5;*/
+}
+.menu{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.menu li{
+	display: inline;
+}
+.menu a:link,
+.menu a:visited{
+	color: Gray;
+	padding: 7px;
+	text-align: center;
+	text-decoration: none;
+}
+.menu a:hover,
+.menu a:active{
+	color: Black;
+}
+.content{
+	margin: 6px;
+	text-align: center;
+}
+.message{
+	width: 300px;
+	height: 100px;
+	resize: none;
+}
+
+#msgtb{
+    border-collapse:collapse;
+    width: 60%;
+    margin: auto;
+}
+#msgtb td
+{
+    border: 1px solid black;
+}
+#msgid{
+	color: red;
+	margin-bottom: 5px;
+}
+#msgTime{
+	color: Gray;
+	font-size: 10px;
+	margin-top: 12px;
+}
+.footer{
+	text-align: center;
+}

@@ -1,0 +1,5 @@
+# 忽略vnote文件夹下的回收站
+/vnote/_v_recycle_bin
+# 静态js库
+/js/jquery.min.js
+/js/marked.min.js
