@@ -8,7 +8,6 @@ tags:
 - web
 - javascript
 - 游戏
-cover: /images/1_0RDwDv_X_pgXMyY5tOLBVg.webp
 ---
 今天偶然发现一个比赛叫[js13kGames](https://js13kgames.com/)，目标是制作一个HTML5小游戏，文件大小总和不能超过13kb。从2012年开始，在每年的8月13日至9月13日举行。今年的主题是404。
 

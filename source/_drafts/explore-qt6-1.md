@@ -7,7 +7,6 @@ toc: true
 tags:
 - C++
 - Qt
-cover: 
 ---
 今天Qt 6.0 正式发布。
 <!-- more -->
