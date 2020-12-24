@@ -8,7 +8,15 @@ class Twikoo extends Component {
       jsUrl,
     } = this.props;
     const js = `twikoo.init({
-      envId: '${envId}'
+      envId: '${envId}',
+      katex: {
+        delimiters: 
+        [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false}
+        ],
+        throwOnError: false
+      }
     });`;
     return (
       <Fragment>

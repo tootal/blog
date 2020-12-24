@@ -71,7 +71,8 @@ var KaTeX = /*#__PURE__*/function (_Component) {
           [
             {left: "$$", right: "$$", display: true},
             {left: "$", right: "$", display: false}
-          ]
+          ],
+          throwOnError: false
         };
         window.addEventListener("load", function() {
           document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
