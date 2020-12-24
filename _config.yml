@@ -118,20 +118,15 @@ theme: icarus
 #   type: git
 #   repo: 'https://github.com/tootal/tootal.github.io'
 #   branch: [master]
-# feed:
-#   enable: true
-#   type: atom
-#   path: atom.xml
-#   limit: 0
-#   hub:
-#   content: true
-#   content_limit: 140
-#   content_limit_delim: ' '
-#   order_by: -date
-#   icon: icon.png
-#   autodiscovery: true
-#   template:
-
+feed:
+  enable: true
+  type: atom
+  path: atom.xml
+  limit: 5
+  content_limit: 50
+  content_limit_delim: ' '
+  order_by: -date
+  autodiscovery: true
 
 # Markdown-it config
 ## Docs: https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki
