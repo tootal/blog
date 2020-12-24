@@ -124,6 +124,8 @@ footer:
         View on GitHub:
             icon: fab fa-github
             url: 'https://github.com/tootal/tootal.github.io'
+    # 网站底部显示备案号
+    beian: 赣ICP备20007667号-1
 # Article related configurations
 article:
     # Code highlight settings

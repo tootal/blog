@@ -12,7 +12,8 @@ class Footer extends Component {
             author,
             links,
             showVisitorCounter,
-            visitorCounterTitle
+            visitorCounterTitle,
+            beianTitle
         } = this.props;
 
         let footerLogo = '';
@@ -40,6 +41,10 @@ class Footer extends Component {
                             {showVisitorCounter ? <br /> : null}
                             {showVisitorCounter ? <span id="busuanzi_container_site_uv"
                                 dangerouslySetInnerHTML={{ __html: visitorCounterTitle }}></span> : null}
+                            {beianTitle ? <br /> : null}
+                            {beianTitle ? <a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener"
+                             dangerouslySetInnerHTML={{ __html: `${beianTitle}` }}></a> : null}
+                            
                         </p>
                     </div>
                     <div class="level-end">
@@ -75,6 +80,10 @@ module.exports = cacheComponent(Footer, 'common.footer', props => {
             };
         });
     }
+    var beianTitle = null;
+    if (footer && footer.beian) {
+        beianTitle = footer.beian;
+    }
 
     return {
         logo,
@@ -85,6 +94,7 @@ module.exports = cacheComponent(Footer, 'common.footer', props => {
         author,
         links,
         showVisitorCounter: plugins && plugins.busuanzi === true,
-        visitorCounterTitle: _p('plugin.visitor_count', '<span id="busuanzi_value_site_uv">0</span>')
+        visitorCounterTitle: _p('plugin.visitor_count', '<span id="busuanzi_value_site_uv">0</span>'),
+        beianTitle
     };
 });
