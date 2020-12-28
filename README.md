@@ -1,4 +1,6 @@
 # 头头博客
+[Github部署仓库](https://github.com/tootal/tootal.github.io)
+[Gitee部署仓库](https://gitee.com/tootal/tootal)
 
 ## 初始化配置
 ```

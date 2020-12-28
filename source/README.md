@@ -1,4 +1,5 @@
 # 头头博客
+[![Sync](https://github.com/tootal/tootal.github.io/workflows/Sync/badge.svg)](https://github.com/tootal/tootal.github.io/actions?query=workflow%3ASync)
 
 此项目是个人博客网站源代码仓库。
 
