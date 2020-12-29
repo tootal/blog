@@ -95,6 +95,20 @@ article
                 .message-body
                     border: none
 
+            .header-anchor
+                opacity: 0;
+                margin-left: .75rem
+                &:hover
+                    opacity: 1
+                    text-decoration: underline
+
+            h1, h2, h3, h4, h5
+                &:hover
+                    .header-anchor
+                        opacity: .8
+                        color: #3273dc
+                        
+
 .rtl
     direction: rtl
 

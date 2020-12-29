@@ -130,8 +130,19 @@ feed:
 
 # Markdown-it config
 ## Docs: https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki
-# markdown:
-#   render:
-#     html: true # Doesn't escape HTML content
-#     breaks: true # Parser produces `<br>` tags every time there is a line break in the source document.
-#     linkify: true # Returns text links as text.
+markdown:
+  preset: 'default'
+  render:
+    html: true
+    xhtmlOut: false
+    breaks: true
+    linkify: true
+  anchors:
+    level: 2
+    collisionSuffix: ''
+    permalink: true
+    permalinkClass: 'header-anchor'
+    permalinkSide: 'right'
+    permalinkSymbol: '#'
+    case: 0
+    separator: '-'
