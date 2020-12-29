@@ -226,18 +226,22 @@ OK，开始博客迁移。
 
 放弃子模块了。
 
-## 构建记录
+## 七牛云操作
+
+### 上传
 
 ```cmd
 @echo off
 hexo clean
 hexo g
-qshell qupload2 --overwrite --log-file upload.log --src-dir C:\Users\tootal\Documents\blog\public --bucket tootalblog --skip-fixed-strings .git --check-exists --check-size --rescan-local --skip-suffixes .vswp
-echo http://blog.tootal.xyz/ > refresh_url.txt
+qshell qupload2 --overwrite --log-file upload.log --src-dir C:\Users\tootal\Documents\blog\public --bucket tootalblog --skip-fixed-strings .git --check-exists --check-size --rescan-local --skip-suffixes .vswp --thread-count 100
 qshell cdnrefresh --dirs -i refresh_url.txt
-del refresh_url.txt
+```
 
-@REM Delete All file in tootalblog
-@REM qshell listbucket tootalblog -o tootalblog.list.txt
-@REM qshell batchdelete --force tootalblog -i tootalblog.list.txt
+### 删除所有文件
+
+```cmd
+qshell listbucket tootalblog -o tootalblog.list.txt
+qshell batchdelete --force tootalblog -i tootalblog.list.txt
+del tootalblog.list.txt
 ```

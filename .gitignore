@@ -8,3 +8,4 @@ public/
 
 # VNote swap file
 *.vswp
+/refresh_url.txt
