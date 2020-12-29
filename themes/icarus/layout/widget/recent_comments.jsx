@@ -72,4 +72,4 @@ RecentComments.Cacheable = cacheComponent(RecentComments, 'widget.profile', prop
     };
 });
 
-module.exports = Profile;
+module.exports = RecentComments;
