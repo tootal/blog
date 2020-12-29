@@ -18,7 +18,8 @@ common:
     next: 'Next'
 widget:
     follow: 'Follow'
-    recents: 'Recents'
+    recents: 'Recent posts'
+    recent_comments: 'Recent comments'
     links: 'Links'
     catalogue: 'Catalogue'
     subscribe_email: 'Subscribe for updates'
