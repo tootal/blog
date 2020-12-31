@@ -28,6 +28,4 @@ jobs:
           git clone https://github.com/tootal/tootal.github.io blog
           ./qshell qupload2 --overwrite --log-file upload.log --src-dir /home/runner/work/tootal.github.io/tootal.github.io/blog --bucket tootalblog --skip-fixed-strings .git --check-exists --check-size --rescan-local --skip-suffixes .vswp --thread-count 100
           cat upload.log
-          echo http://blog.tootal.xyz/ > refresh_url.txt
-          cat refresh_url.txt
           ./qshell cdnrefresh --dirs -i refresh_url.txt
