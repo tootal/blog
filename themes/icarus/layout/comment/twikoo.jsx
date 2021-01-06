@@ -6,10 +6,12 @@ class Twikoo extends Component {
     const {
       path,
       envId,
+      region,
       jsUrl,
     } = this.props;
     const js = `twikoo.init({
       envId: '${envId}',
+      region: '${region}',
       path: "'/${path}'",
       katex: {
         delimiters: 
@@ -35,6 +37,7 @@ Twikoo.Cacheable = cacheComponent(Twikoo, 'comment.twikoo', (props) => {
   return {
     path: page.path,
     envId: comment.envId,
+    region: comment.region,
     jsUrl: comment.jsUrl || `https://cdn.jsdelivr.net/npm/twikoo@${comment.version}/dist/twikoo.all.min.js`,
   };
 });

@@ -173,8 +173,9 @@ search:
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Comment/
 comment:
     type: twikoo
-    envId: tootal-0gfd320q0433ea1f
-    version: '0.4.5'
+    envId: tootal-6g2y019v6b37e4be
+    version: '0.5.1'
+    region: ap-guangzhou
 # Donate plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Donation/
 donates:
