@@ -118,7 +118,7 @@ navbar:
         存档: /archives
         分类: /categories
         标签: /tags
-        笔记: 'http://note.tootal.xyz'
+        笔记: 'https://note.tootal.xyz'
         关于: /about
     # Links to be shown on the right of the navigation bar
     links:
@@ -282,8 +282,8 @@ widgets:
         # Names and URLs of the sites
         links:
             头头商城: 'http://mall.tootal.xyz'
-            头头笔记: 'http://note.tootal.xyz'
-            章又贡: 'http://gan.tootal.xyz'
+            头头笔记: 'https://note.tootal.xyz'
+            章又贡: 'https://gan.tootal.xyz'
     # Categories widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar

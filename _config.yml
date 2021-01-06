@@ -16,7 +16,7 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: http://blog.tootal.xyz
+url: https://blog.tootal.xyz
 root: /
 permalink: posts/:urlname/
 permalink_defaults:
@@ -114,10 +114,11 @@ theme: icarus
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
-# deploy:
-#   type: git
-#   repo: 'https://github.com/tootal/tootal.github.io'
-#   branch: [master]
+deploy:
+- type: git
+  repo: 'https://github.com/tootal/tootal.github.io'
+  branch: [master]
+- type: tcb
 feed:
   enable: true
   type: atom
