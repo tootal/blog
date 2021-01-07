@@ -139,7 +139,7 @@ markdown:
     breaks: true
     linkify: true
   anchors:
-    level: 2
+    level: 1
     collisionSuffix: ''
     permalink: true
     permalinkClass: 'header-anchor'

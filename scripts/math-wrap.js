@@ -9,7 +9,7 @@ const fs = require('hexo-fs');
 // 使用html标签包裹公式
 function math_wrap(s) {
     var n = s.length;
-    var t = '';
+    var t = s[0];
     var mathFlag = false;
     var lineMath = false;
     for (var i = 1; i < n; i++) {
