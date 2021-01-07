@@ -281,6 +281,7 @@ widgets:
         type: links
         # Names and URLs of the sites
         links:
+            头头世界: 'https://www.tootal.xyz'
             头头商城: 'http://mall.tootal.xyz'
             头头笔记: 'https://note.tootal.xyz'
             章又贡: 'https://gan.tootal.xyz'
