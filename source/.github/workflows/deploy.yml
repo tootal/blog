@@ -18,15 +18,11 @@ jobs:
           gitee-password: ${{ secrets.GT_PWD }}
           gitee-repo: tootal/tootal
           branch: master
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          submodules: true
-          fetch-depth: 1
       - name: Deploy static to Tencent CloudBase
         shell: bash
         run: |
-          pwd
+          cd /home/runner/work/tootal.github.io/tootal.github.io/
+          ls
           sudo npm i -g @cloudbase/cli
           tcb login --apiKeyId ${{ secrets.SECRET_ID }} --apiKey ${{ secrets.SECRET_KEY }}
           sudo rm -rf .git .github
