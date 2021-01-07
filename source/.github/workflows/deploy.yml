@@ -18,14 +18,15 @@ jobs:
           gitee-password: ${{ secrets.GT_PWD }}
           gitee-repo: tootal/tootal
           branch: master
-      - name: Upload to Qiniu Cloud
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+          fetch-depth: 1
+      - name: Deploy static to Tencent CloudBase
+        shell: bash
         run: |
-          wget http://devtools.qiniu.com/qshell-linux-x64-v2.4.2.zip
-          unzip qshell-linux-x64-v2.4.2.zip
-          mv qshell-linux-x64-v2.4.2 qshell
-          chmod +x qshell
-          ./qshell account ${{ secrets.QN_AK }} ${{ secrets.QN_SK }} tootal_qiniu
-          git clone https://github.com/tootal/tootal.github.io blog
-          ./qshell qupload2 --overwrite --log-file upload.log --src-dir /home/runner/work/tootal.github.io/tootal.github.io/blog --bucket tootalblog --skip-fixed-strings .git --check-exists --check-size --rescan-local --skip-suffixes .vswp --thread-count 100
-          cat upload.log
-          ./qshell cdnrefresh --dirs -i refresh_url.txt
+          sudo npm i -g @cloudbase/cli
+          tcb login --apiKeyId ${{ secrets.SECRET_ID }} --apiKey ${{ secrets.SECRET_KEY }}
+          rm -rf .git .github
+          tcb hosting deploy . -e ${{ secrets.ENV_ID }} -r ap-guangzhou
