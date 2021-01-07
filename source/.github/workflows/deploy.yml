@@ -21,7 +21,7 @@ jobs:
       - name: Deploy static to Tencent CloudBase
         shell: bash
         run: |
-          cd /home/runner/work/tootal.github.io/tootal.github.io/
+          cd /home/runner/work/tootal.github.io/tootal.github.io/tootal.github.io.git
           ls
           sudo npm i -g @cloudbase/cli
           tcb login --apiKeyId ${{ secrets.SECRET_ID }} --apiKey ${{ secrets.SECRET_KEY }}
