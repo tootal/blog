@@ -11,7 +11,9 @@ keywords:
   - 算法
   - 技术
 author: 黄智权
-language: zh-CN
+language: 
+- zh-CN
+- en
 timezone: 'Asia/Shanghai'
 
 # URL
