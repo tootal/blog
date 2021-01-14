@@ -36,8 +36,10 @@ article:
         other: 'About %d words'
     licensing:
         author: 'Author'
-        created_at: 'Posted on'
-        updated_at: 'Updated on'
+        original_author: 'Original author'
+        original_created_at: 'Original posted on'
+        created_at: 'Article posted on'
+        updated_at: 'Article updated on'
         licensed_under: 'Licensed under'
 donate:
     title: 'Like this article? Support the author with'

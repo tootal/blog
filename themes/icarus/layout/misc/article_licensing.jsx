@@ -32,10 +32,14 @@ const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 class ArticleLicensing extends Component {
   render() {
     const {
+      reprint,
       title,
       link,
       author,
+      originalAuthorTitle,
       authorTitle,
+      originalCreatedAt,
+      originalCreatedTitle,
       createdAt,
       createdTitle,
       updatedAt,
@@ -48,16 +52,34 @@ class ArticleLicensing extends Component {
         <div class="licensing-title">
           {title ? <p>{title}</p> : null}
           <p>
-            <a href={link}>{link}</a>
+            {reprint && reprint.link ? 
+              <a href={reprint.link}>{reprint.link}</a> 
+              : <a href={link}>{link}</a>}
           </p>
         </div>
         <div class="licensing-meta level is-mobile">
           <div class="level-left">
-            {author ? (
+            {reprint ? (
+              reprint.author ? 
+              <div class="level-item is-narrow">
+                <div>
+                  <h6>{originalAuthorTitle}</h6>
+                  <p>{reprint.author}</p>
+                </div>
+              </div> : null
+            ) : ( author ?
               <div class="level-item is-narrow">
                 <div>
                   <h6>{authorTitle}</h6>
                   <p>{author}</p>
+                </div>
+              </div>
+             : null)}
+            {originalCreatedAt ? (
+              <div class="level-item is-narrow">
+                <div>
+                  <h6>{originalCreatedTitle}</h6>
+                  <p>{originalCreatedAt}</p>
                 </div>
               </div>
             ) : null}
@@ -77,7 +99,7 @@ class ArticleLicensing extends Component {
                 </div>
               </div>
             ) : null}
-            {licenses && Object.keys(licenses).length ? (
+            {!reprint && licenses && Object.keys(licenses).length ? (
               <div class="level-item is-narrow">
                 <div>
                   <h6>{licensedTitle}</h6>
@@ -145,10 +167,14 @@ ArticleLicensing.Cacheable = cacheComponent(ArticleLicensing, 'misc.articlelicen
   }
 
   return {
+    reprint: page.reprint,
     title: page.title,
     link: decodeURI(page.permalink),
     author: page.author || config.author,
     authorTitle: helper.__('article.licensing.author'),
+    originalAuthorTitle: helper.__('article.licensing.original_author'),
+    originalCreatedAt: page.reprint && page.reprint.date ? helper.date(page.reprint.date) : null,
+    originalCreatedTitle: helper.__('article.licensing.original_created_at'),
     createdAt: page.date ? helper.date(page.date) : null,
     createdTitle: helper.__('article.licensing.created_at'),
     updatedAt: page.updated ? helper.date(page.updated) : null,

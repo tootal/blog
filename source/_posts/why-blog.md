@@ -7,8 +7,8 @@ tags:
 - 博客
 reprint:
   author: 刘未鹏
-  url: http://mindhacks.cn/2009/02/15/why-you-should-start-blogging-now/
-  data: 2009-02-15
+  link: http://mindhacks.cn/2009/02/15/why-you-should-start-blogging-now/
+  date: 2009-02-15
 ---
 
 为什么要写博客？以下摘录[刘未鹏](http://mindhacks.cn/)09年的一篇[文章](http://mindhacks.cn/2009/02/15/why-you-should-start-blogging-now/)，加入了我自己的一些注解，希望能对你我有所启发。

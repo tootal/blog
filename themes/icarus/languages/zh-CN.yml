@@ -36,8 +36,10 @@ article:
         other: '大约%d个字'
     licensing:
         author: '作者'
-        created_at: '发布于'
-        updated_at: '更新于'
+        original_author: '原文作者'
+        original_created_at: '原文发布于'
+        created_at: '本文发布于'
+        updated_at: '本文更新于'
         licensed_under: '许可协议'
 donate:
     title: '喜欢这篇文章？打赏一下作者吧'
