@@ -1,38 +1,10 @@
-"use strict";
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-var _inferno = require("inferno");
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 /**
  * A JSX component that renders article licensing block.
  * @module view/misc/article_licensing
  */
-var _require = require('inferno'),
-    Component = _require.Component;
+const { Component } = require('inferno');
+const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 
-var _require2 = require('hexo-component-inferno/lib/util/cache'),
-    cacheComponent = _require2.cacheComponent;
 /**
  * A JSX component that renders article licensing block.
  *
@@ -57,48 +29,80 @@ var _require2 = require('hexo-component-inferno/lib/util/cache'),
  *     }}
  *     licensedTitle="Licensed under" />
  */
-
-
-var ArticleLicensing = /*#__PURE__*/function (_Component) {
-  _inherits(ArticleLicensing, _Component);
-
-  var _super = _createSuper(ArticleLicensing);
-
-  function ArticleLicensing() {
-    _classCallCheck(this, ArticleLicensing);
-
-    return _super.apply(this, arguments);
+class ArticleLicensing extends Component {
+  render() {
+    const {
+      title,
+      link,
+      author,
+      authorTitle,
+      createdAt,
+      createdTitle,
+      updatedAt,
+      updatedTitle,
+      licenses,
+      licensedTitle,
+    } = this.props;
+    return (
+      <div class="article-licensing box">
+        <div class="licensing-title">
+          {title ? <p>{title}</p> : null}
+          <p>
+            <a href={link}>{link}</a>
+          </p>
+        </div>
+        <div class="licensing-meta level is-mobile">
+          <div class="level-left">
+            {author ? (
+              <div class="level-item is-narrow">
+                <div>
+                  <h6>{authorTitle}</h6>
+                  <p>{author}</p>
+                </div>
+              </div>
+            ) : null}
+            {createdAt ? (
+              <div class="level-item is-narrow">
+                <div>
+                  <h6>{createdTitle}</h6>
+                  <p>{createdAt}</p>
+                </div>
+              </div>
+            ) : null}
+            {updatedAt ? (
+              <div class="level-item is-narrow">
+                <div>
+                  <h6>{updatedTitle}</h6>
+                  <p>{updatedAt}</p>
+                </div>
+              </div>
+            ) : null}
+            {licenses && Object.keys(licenses).length ? (
+              <div class="level-item is-narrow">
+                <div>
+                  <h6>{licensedTitle}</h6>
+                  <p>
+                    {Object.keys(licenses).map((name) => (
+                      <a
+                        rel="noopener"
+                        target="_blank"
+                        title={name}
+                        class={licenses[name].icon ? 'icon' : ''}
+                        href={licenses[name].url}>
+                        {licenses[name].icon ? <i class={licenses[name].icon}></i> : name}
+                      </a>
+                    ))}
+                  </p>
+                </div>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      </div>
+    );
   }
+}
 
-  _createClass(ArticleLicensing, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          title = _this$props.title,
-          link = _this$props.link,
-          author = _this$props.author,
-          authorTitle = _this$props.authorTitle,
-          createdAt = _this$props.createdAt,
-          createdTitle = _this$props.createdTitle,
-          updatedAt = _this$props.updatedAt,
-          updatedTitle = _this$props.updatedTitle,
-          licenses = _this$props.licenses,
-          licensedTitle = _this$props.licensedTitle;
-      return (0, _inferno.createVNode)(1, "div", "article-licensing box", [(0, _inferno.createVNode)(1, "div", "licensing-title", [title ? (0, _inferno.createVNode)(1, "p", null, title, 0) : null, (0, _inferno.createVNode)(1, "p", null, (0, _inferno.createVNode)(1, "a", null, link, 0, {
-        "href": link
-      }), 2)], 0), (0, _inferno.createVNode)(1, "div", "licensing-meta level is-mobile", (0, _inferno.createVNode)(1, "div", "level-left", [author ? (0, _inferno.createVNode)(1, "div", "level-item is-narrow", (0, _inferno.createVNode)(1, "div", null, [(0, _inferno.createVNode)(1, "h6", null, authorTitle, 0), (0, _inferno.createVNode)(1, "p", null, author, 0)], 4), 2) : null, createdAt ? (0, _inferno.createVNode)(1, "div", "level-item is-narrow", (0, _inferno.createVNode)(1, "div", null, [(0, _inferno.createVNode)(1, "h6", null, createdTitle, 0), (0, _inferno.createVNode)(1, "p", null, createdAt, 0)], 4), 2) : null, updatedAt ? (0, _inferno.createVNode)(1, "div", "level-item is-narrow", (0, _inferno.createVNode)(1, "div", null, [(0, _inferno.createVNode)(1, "h6", null, updatedTitle, 0), (0, _inferno.createVNode)(1, "p", null, updatedAt, 0)], 4), 2) : null, licenses && Object.keys(licenses).length ? (0, _inferno.createVNode)(1, "div", "level-item is-narrow", (0, _inferno.createVNode)(1, "div", null, [(0, _inferno.createVNode)(1, "h6", null, licensedTitle, 0), (0, _inferno.createVNode)(1, "p", null, Object.keys(licenses).map(function (name) {
-        return (0, _inferno.createVNode)(1, "a", licenses[name].icon ? 'icon' : '', licenses[name].icon ? (0, _inferno.createVNode)(1, "i", licenses[name].icon) : name, 0, {
-          "rel": "noopener",
-          "target": "_blank",
-          "title": name,
-          "href": licenses[name].url
-        });
-      }), 0)], 4), 2) : null], 0), 2)], 4);
-    }
-  }]);
-
-  return ArticleLicensing;
-}(Component);
 /**
  * A JSX component that renders article licensing block.
  * <p>
@@ -125,24 +129,17 @@ var ArticleLicensing = /*#__PURE__*/function (_Component) {
  *         url_for: function() {...}
  *     }} />
  */
+ArticleLicensing.Cacheable = cacheComponent(ArticleLicensing, 'misc.articlelicensing', (props) => {
+  const { config, page, helper } = props;
+  const { licenses } = config.article || {};
 
-
-ArticleLicensing.Cacheable = cacheComponent(ArticleLicensing, 'misc.articlelicensing', function (props) {
-  var config = props.config,
-      page = props.page,
-      helper = props.helper;
-
-  var _ref = config.article || {},
-      licenses = _ref.licenses;
-
-  var links = {};
-
+  const links = {};
   if (licenses) {
-    Object.keys(licenses).forEach(function (name) {
-      var license = licenses[name];
+    Object.keys(licenses).forEach((name) => {
+      const license = licenses[name];
       links[name] = {
         url: helper.url_for(typeof license === 'string' ? license : license.url),
-        icon: license.icon
+        icon: license.icon,
       };
     });
   }
@@ -157,7 +154,8 @@ ArticleLicensing.Cacheable = cacheComponent(ArticleLicensing, 'misc.articlelicen
     updatedAt: page.updated ? helper.date(page.updated) : null,
     updatedTitle: helper.__('article.licensing.updated_at'),
     licenses: links,
-    licensedTitle: helper.__('article.licensing.licensed_under')
+    licensedTitle: helper.__('article.licensing.licensed_under'),
   };
 });
+
 module.exports = ArticleLicensing;

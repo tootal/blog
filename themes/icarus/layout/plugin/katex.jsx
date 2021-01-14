@@ -1,38 +1,10 @@
-"use strict";
-
-var _inferno = require("inferno");
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 /**
  * KaTeX math renderer plugin JSX component.
  * @module view/plugin/katex
  */
-var _require = require('inferno'),
-    Component = _require.Component;
+const { Component } = require('inferno');
+const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 
-var _require2 = require('hexo-component-inferno/lib/util/cache'),
-    cacheComponent = _require2.cacheComponent;
 /**
  * KaTeX math renderer plugin JSX component.
  *
@@ -44,66 +16,39 @@ var _require2 = require('hexo-component-inferno/lib/util/cache'),
  *     autoRenderUrl="/path/to/auto-render.js"
  *     mhchemUrl="/path/to/mhchem.js" />
  */
+class KaTeX extends Component {
+  render() {
+    const { cssUrl, jsUrl, autoRenderUrl, mhchemUrl } = this.props;
 
+    const js = `
+    var katex_config = {
+      delimiters: 
+      [
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false}
+      ],
+      throwOnError: false
+    };
+    window.addEventListener("load", function() {
+      document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+        renderMathInElement(element, katex_config);
+      });
+      document.querySelectorAll('#toc .level-item').forEach(function(element) {
+        renderMathInElement(element, katex_config);
+      });
+    });`;
 
-var KaTeX = /*#__PURE__*/function (_Component) {
-  _inherits(KaTeX, _Component);
-
-  var _super = _createSuper(KaTeX);
-
-  function KaTeX() {
-    _classCallCheck(this, KaTeX);
-
-    return _super.apply(this, arguments);
+    return (
+      <>
+        <link rel="stylesheet" href={cssUrl} />
+        <script src={jsUrl} defer={true}></script>
+        <script src={autoRenderUrl} defer={true}></script>
+        <script src={mhchemUrl} defer={true}></script>
+        <script dangerouslySetInnerHTML={{ __html: js }}></script>
+      </>
+    );
   }
-
-  _createClass(KaTeX, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          cssUrl = _this$props.cssUrl,
-          jsUrl = _this$props.jsUrl,
-          autoRenderUrl = _this$props.autoRenderUrl,
-          mhchemUrl = _this$props.mhchemUrl;
-      var js = `
-        var katex_config = {
-          delimiters: 
-          [
-            {left: "$$", right: "$$", display: true},
-            {left: "$", right: "$", display: false}
-          ],
-          throwOnError: false
-        };
-        window.addEventListener("load", function() {
-          document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
-            renderMathInElement(element, katex_config);
-          });
-          document.querySelectorAll('#toc .level-item').forEach(function(element) {
-            renderMathInElement(element, katex_config);
-          });
-        });`;
-      return (0, _inferno.createFragment)([(0, _inferno.createVNode)(1, "link", null, null, 1, {
-        "rel": "stylesheet",
-        "href": cssUrl
-      }), (0, _inferno.createVNode)(1, "script", null, null, 1, {
-        "src": jsUrl,
-        "defer": true
-      }), (0, _inferno.createVNode)(1, "script", null, null, 1, {
-        "src": autoRenderUrl,
-        "defer": true
-      }), (0, _inferno.createVNode)(1, "script", null, null, 1, {
-        "src": mhchemUrl,
-        "defer": true
-      }), (0, _inferno.createVNode)(1, "script", null, null, 1, {
-        "dangerouslySetInnerHTML": {
-          __html: js
-        }
-      })], 4);
-    }
-  }]);
-
-  return KaTeX;
-}(Component);
+}
 /**
  * Cacheable KaTeX math renderer plugin JSX component.
  * <p>
@@ -116,23 +61,18 @@ var KaTeX = /*#__PURE__*/function (_Component) {
  *     head={true}
  *     helper={{ cdn: function() {...} }} />
  */
-
-
-KaTeX.Cacheable = cacheComponent(KaTeX, 'plugin.katex', function (props) {
-  var head = props.head,
-      helper = props.helper;
-
+KaTeX.Cacheable = cacheComponent(KaTeX, 'plugin.katex', (props) => {
+  const { head, helper } = props;
   if (head) {
     return null;
   }
-
   var version = props.plugin.version || '0.11.1';
-
   return {
     jsUrl: helper.cdn('katex', version, 'dist/katex.min.js'),
     cssUrl: helper.cdn('katex', version, 'dist/katex.min.css'),
     autoRenderUrl: helper.cdn('katex', version, 'dist/contrib/auto-render.min.js'),
-    mhchemUrl: helper.cdn('katex', version, 'dist/contrib/mhchem.js')
+    mhchemUrl: helper.cdn('katex', version, 'dist/contrib/mhchem.js'),
   };
 });
+
 module.exports = KaTeX;
