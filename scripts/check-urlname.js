@@ -4,6 +4,7 @@ const logger = require('hexo-log')();
 
 hexo.extend.filter.register('before_post_render', function (data) {
     // 检查urlname
+    if (data.layout === 'page') return data;
     if (data.urlname === undefined || (data.urlname === null)) {
         if (data.title === undefined) {
             console.log(data);

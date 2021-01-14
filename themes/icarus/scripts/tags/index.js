@@ -2,11 +2,14 @@
 
 'use strict';
 
-const postTabs = require('./tabs')(hexo);
+const fs = require('hexo-fs');
+const path = require('path')
 
-hexo.extend.tag.register('tabs', postTabs, true);
-
-
-const postMsg = require('./msg')(hexo);
-
-hexo.extend.tag.register('msg', postMsg, true);
+// auto load all tags
+fs.readdirSync(__dirname)
+  .filter((t) => t !== 'index.js' && t.endsWith('.js'))
+  .map((t) => {
+    const tag = path.basename(t, '.js')
+    const func = require('./' + tag)(hexo);
+    hexo.extend.tag.register(tag, func, func.length === 2);
+  });
