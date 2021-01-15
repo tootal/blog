@@ -79,9 +79,9 @@ is a complete subgraph on $k$ vertices, and has great significance in network an
 (Chap. 11 of{% cite HR05 %} and Chap. 2 of{% cite J10 %}).
 Indeed, just the special case of $k=3$ (triangle counting) has a rich history in modern
 network science. General clique counting has received much attention in recent times
-\cite{JhSePi15, MarcusS10,AhNe+15,Escape,JS17,FFF15,DBS18}. There is a line of recent
+{% cite JhSePi15, MarcusS10,AhNe+15,Escape,JS17,FFF15,DBS18 %}. There is a line of recent
 work on exploiting clique counts for community detection and dense subgraph discovery
-\cite{SaSePi14,Ts15,BeGlLe16,TPM17,lu2018community,YiBiKe19}.
+{% cite SaSePi14,Ts15,BeGlLe16,TPM17,lu2018community,YiBiKe19 %}.
 
 Despite much effort on this problem, it has been challenging to get scalable algorithms for
 clique counting.  
@@ -145,7 +145,7 @@ useful than global counts{% cite SaSePi14,Ts15,BeGlLe16,TPM17,lu2018community,Yi
 
 **Challenges:** Even the simplest problem of getting global 
 clique counts subsumes a number of recent results on clique counting
-\cite{FFF15,JS17,DBS18}. The main challenge
+{% cite FFF15,JS17,DBS18 %}. The main challenge
 is combinatorial explosion: for example, the *web-Stanford* web graph
 with 2M edges has *3000 trillion* $15$-cliques. These numbers are even
 more astronomical for larger graphs. Any method that tries to enumerate
