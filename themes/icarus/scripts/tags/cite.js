@@ -1,11 +1,6 @@
 'use strict';
 
+// 原样返回，使用过滤器统一处理页面内所有引用
 module.exports = ctx => function(args) {
-  const cites = args.join(' ').split(',');
-  let s = '';
-  for (let cite of cites) {
-    let c = cite.trim();
-    s += `<span id="cite-${c}">[0]</span>`
-  }
-  return s;
+  return `{% cite ${args.join(' ')} %}`
 };

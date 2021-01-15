@@ -974,4 +974,4 @@ Shweta Jain and C. Seshadhri acknowledge the support of NSF Awards CCF-1740850, 
 
 ## REFERENCES
 
-{% cite %}
+{% cite @references %}

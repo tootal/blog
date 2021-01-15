@@ -73,10 +73,10 @@ can be read off efficiently.
 Subgraph counting (also known as motif counting, graphlet counting) is a fundamental algorithmic
 problem in network analysis, widely applied in domains such as
 social network analysis,
-bioinformatics, cybersecurity, and physics (refer to tutorial~\cite{SeTi19} and references within).
+bioinformatics, cybersecurity, and physics (refer to tutorial{% cite SeTi19 %} and references within).
 One of the most important cases is that of *clique counting*. A $k$-clique
 is a complete subgraph on $k$ vertices, and has great significance in network analysis
-(Chap. 11 of~\cite{HR05} and Chap. 2 of~\cite{J10}).
+(Chap. 11 of{% cite HR05 %} and Chap. 2 of{% cite J10 %}).
 Indeed, just the special case of $k=3$ (triangle counting) has a rich history in modern
 network science. General clique counting has received much attention in recent times
 \cite{JhSePi15, MarcusS10,AhNe+15,Escape,JS17,FFF15,DBS18}. There is a line of recent
@@ -86,10 +86,10 @@ work on exploiting clique counts for community detection and dense subgraph disc
 Despite much effort on this problem, it has been challenging to get scalable algorithms for
 clique counting.  
 There is a large literature for counting $3$-cliques (triangles) and 
-some of these methods have been extended to counting cliques upto size $5$~\cite{JhSePi15, MarcusS10,AhNe+15,Escape}. However, practical algorithms for counting cliques beyond size $5$ have proven to be much harder, and the reason for this is combinatorial explosion. Essentially, as $k$ increases, 
+some of these methods have been extended to counting cliques upto size $5${% cite JhSePi15, MarcusS10,AhNe+15,Escape %}. However, practical algorithms for counting cliques beyond size $5$ have proven to be much harder, and the reason for this is combinatorial explosion. Essentially, as $k$ increases, 
 the number of $k$-cliques blows up. 
 For large graphs, some recent practical algorithms have succeeded in counting
-up to (around) 10-cliques~\cite{FFF15,JS17,DBS18}. They either use randomized approximation
+up to (around) 10-cliques{% cite FFF15,JS17,DBS18 %}. They either use randomized approximation
 or parallelism to speed up their counting. Besides the obvious problem that they do not scale
 for larger $k$, it is difficult to obtain more refined clique counts (such 
 as counts for every vertex or every edge).
@@ -140,7 +140,7 @@ of the input, and we want results for all values of $k$.
 The per-vertex and per-edge counts are sometimes called *local counts*.
 In clustering applications, the local counts
 are used as vertex or edge weights, and are therefore even more
-useful than global counts~\cite{SaSePi14,Ts15,BeGlLe16,TPM17,lu2018community,YiBiKe19}.
+useful than global counts{% cite SaSePi14,Ts15,BeGlLe16,TPM17,lu2018community,YiBiKe19 %}.
 
 
 **Challenges:** Even the simplest problem of getting global 
@@ -156,7 +156,7 @@ uses parallel algorithms to count beyond trillions of cliques.
 But even their algorithm fails to get all global clique counts for a number
 of datasets. Randomized methods
 have been used with some success, but even they cannot estimate
-all clique counts~\cite{FFF15,JS17}.
+all clique counts{% cite FFF15,JS17 %}.
 
 Local counting, for all $k$, is even harder, especially given the sheer
 size of the output. Parallel methods would eventually need to store
@@ -185,7 +185,7 @@ perform an *enumeration*, in that the algorithm explicitly "visits" every clique
 this method cannot scale to counting larger cliques, since the number of cliques is simply too large.
 Our main insight is that the method of *pivoting*, used  
 to reduce recursion trees for maximal clique 
-enumeration~\cite{BK73,ELS13}, can be applied to counting cliques of all sizes. 
+enumeration{% cite BK73,ELS13 %}, can be applied to counting cliques of all sizes. 
 
 **Succinct Clique Trees through Pivoting:** We prove that pivoting can be used
 to construct a special data structure called the *Succinct Clique Tree* (SCT).
@@ -198,7 +198,7 @@ and various local counts in the graph. Remarkably, we can get all counts without
 For global clique counting, PIVOTER is able to process graphs of up to tens of millions
 of edges in *minutes*. Previous results either work only for small values of $k$ (typically up to $10$) or take much longer.
 Consider {% figure timings %}, where the time of PIVOTER is compared
-with that of kClist (the state of the art parallel algorithm for clique counting)~\cite{DBS18}. 
+with that of kClist (the state of the art parallel algorithm for clique counting){% cite DBS18 %}. 
 In the instances shown kClist did not terminate even after running for 3 days. By
 contrast, for the largest {\tt com-orkut} social network with
 more than 100M edges, PIVOTER gets all values of $C_k$ within two hours.
@@ -214,7 +214,7 @@ This allows us to get data shown in {% figure soc-pokec-occurrences %} and {% fi
 that plots the frequency distribution
 of $k$-cliques. (In other words, for every number $r$, we plot the number of vertices
 that participate in $r$ $k$-cliques.) As mentioned earlier, this information is
-used for dense subgraph discovery~\cite{SaSePi14,Ts15}. 
+used for dense subgraph discovery{% cite SaSePi14,Ts15 %}. 
 To the best of our knowledge, this is the first algorithm that is able to get
 such information for real-world graphs. 
 
@@ -224,31 +224,31 @@ such information for real-world graphs.
 
 Subgraph counting has an immensely rich history in network science, ranging from applications
 across social network analysis, bioinformatics, recommendation systems, graph clustering
-(we refer the reader to the tutorial~\cite{SeTi19} and references within). We only
+(we refer the reader to the tutorial{% cite SeTi19 %} and references within). We only
 describe work directly relevant to clique counting.
 
 The simplest case of clique counting is *triangle counting*, which has 
 received much attention from the data mining and algorithms communities. Recent work
 has shown the relevance of counts of large subgraphs (4, 5 vertex patterns)
-~\cite{BeHe+11,UganderBK13,SGB16,RKKS17,YiBiKe18}. Local clique counts
+{% cite BeHe+11,UganderBK13,SGB16,RKKS17,YiBiKe18 %}. Local clique counts
 have played a significant role in a flurry of work on faster and better algorithms
-for dense subgraph discovery and community detection~\cite{SaSePi14,Ts15,BeGlLe16,TPM17}.
+for dense subgraph discovery and community detection{% cite SaSePi14,Ts15,BeGlLe16,TPM17 %}.
 The latter results define the "motif conductance", where cuts are measured by the
 number of subgraphs (not just edges) cut. This has been related to higher order
-clustering coefficients~\cite{YiBiKe18,YiBiKe19}. These quantities
+clustering coefficients{% cite YiBiKe18,YiBiKe19 %}. These quantities
 are computed using local clique counts, underscoring the importance of these numbers.
 
 The problem of counting cliques (and variants such as counting maximal cliques) has received much attention 
-both from the applied and theoretical computer science communities~\cite{ChNi85,AlYuZw94,CHKX04,V09}.
-Classic techniques like color-coding~\cite{BetzlerBFKN11,ZhWaBu+12} and
-path sampling~\cite{SePiKo14,JhSePi15,WaZh+18} have been employed for counting cliques up to size $5$.
+both from the applied and theoretical computer science communities{% cite ChNi85,AlYuZw94,CHKX04,V09 %}.
+Classic techniques like color-coding{% cite BetzlerBFKN11,ZhWaBu+12 %} and
+path sampling{% cite SePiKo14,JhSePi15,WaZh+18 %} have been employed for counting cliques up to size $5$.
 
 For larger cliques, Finocchi-Finocchi-Fusco gave a MapReduce algorithm that uses
-orientation and sampling techniques~\cite{FFF15}. Jain and Seshadhri
-use methods from extremal combinatorics to give a fast sampling algorithm~\cite{JS17},
+orientation and sampling techniques{% cite FFF15 %}. Jain and Seshadhri
+use methods from extremal combinatorics to give a fast sampling algorithm{% cite JS17 %},
 that is arguably the fastest approximate clique counter to date. In a remarkable
 result, Danisch-Balalau-Sozio gave a parallel implementation (kClist) of a classic algorithm
-of Chiba-Nishizeki, which is able to enumerate upto trillions of cliques~\cite{DBS18}.
+of Chiba-Nishizeki, which is able to enumerate upto trillions of cliques{% cite DBS18 %}.
 For exact counting, we consider kClist as the state of the art.
 Despite the collection of clever techniques, none of these methods really scale beyond
 counting (say) 10-cliques for large graphs.
@@ -270,14 +270,14 @@ local counting.
 of work of maximal clique enumeration. A *maximal clique*
 is one that is not contained in a larger clique. Unlike the combinatorial explosion
 of $k$-cliques, maximal cliques tend to be much fewer. The first algorithm for this problem
-is the classic Bron-Kerbosch backtracking procedure from the 70s~\cite{BK73,A73}.
+is the classic Bron-Kerbosch backtracking procedure from the 70s{% cite BK73,A73 %}.
 They also introduced an idea called *pivoting*, that prunes the recursion tree for
 efficiency.
 Tomita-Tanaka-Takahashi gave the first theoretical analysis of pivoting rules,
-and showed asymptotic improvements~\cite{Tomita04}. Eppstein-L\"{o}effler-
+and showed asymptotic improvements{% cite Tomita04 %}. Eppstein-L\"{o}effler-
 Strash
 combined these ideas with orientation methods to give a practical and provably fast
-algorithm for maximal clique enumeration~\cite{ES11,ELS13}. An important empirical
+algorithm for maximal clique enumeration{% cite ES11,ELS13 %}. An important empirical
 observation of this line of work is that the underlying recursion tree created with pivoting
 is typically small for real-world graphs. This is the starting point 
 for our work.
@@ -310,7 +310,7 @@ method to eliminate multiple productions of a clique is *acyclic orientations*.
 Simply orient the graph as a DAG, and only make recursive calls on out-neighborhoods.
 Typically, an orientation is chosen by degeneracy/core decomposition or degree orderings,
 so that out-neighborhood sizes are minimized. This is a central technique in all
-recent applied algorithms on clique counting~\cite{FFF15,JS17,DBS18}. Yet it
+recent applied algorithms on clique counting{% cite FFF15,JS17,DBS18 %}. Yet it
 is not feasible to construct the recursion tree to completion, and it is typically truncated
 at some depth ($\leq 10$) for large graphs.
 
@@ -319,7 +319,7 @@ representation of all cliques?
 
 **The power of pivoting:** We discover a suprising answer, 
 in pivoting. This was discovered by Bron-Kerbosch in the context 
-of *maximal* cliques~\cite{BK73}. 
+of *maximal* cliques{% cite BK73 %}. 
 We describe, at an intuitive level, how it can be applied for global and local clique counting.
 For the recursive call at $S$, first pick a *pivot* vertex $p \in S$. 
 Observe that the cliques in $S$ can be partitioned into three classes as follows.
@@ -388,7 +388,7 @@ is $O(\alpha^3 |\sct(G)| + m + n)$. The storage cost is $O(m+n)$.
 
 Empirically, we observe that the SCT is quite small. In the worst-case,
 $|\sct(G)|  = O(n 3^{\alpha/3})$, which follows
-from arguments by Eppstein-L\"{o}effler-Strash~\cite{ELS13} and Tomita-Tanaka-Takahashi~\cite{Tomita04} (an exponential dependence is necessary because of the NP-hardness of maximum clique). We give a detailed description in \Sec{count}
+from arguments by Eppstein-L\"{o}effler-Strash{% cite ELS13 %} and Tomita-Tanaka-Takahashi{% cite Tomita04 %} (an exponential dependence is necessary because of the NP-hardness of maximum clique). We give a detailed description in \Sec{count}
 
 ## PRELIMINARIES
 
@@ -406,14 +406,14 @@ We use the following notation for neighborhoods.
 Alternately, this is the neighborhood of $v$ in $S$.
 
 We will use *degeneracy orderings* (or core decompositions) to reduce
-the recursion tree. This is a standard technique for clique counting~\cite{ChNi85,FFF15,JS17,DBS18}.
+the recursion tree. This is a standard technique for clique counting{% cite ChNi85,FFF15,JS17,DBS18 %}.
 This ordering is obtained by iteratively removing the minimum degree vertex,
-and can be computed in linear time~\cite{MB83}. Typically, one uses this
+and can be computed in linear time{% cite MB83 %}. Typically, one uses this
 ordering to convert $G$ into a DAG. The largest *out-degree* is the 
 graph degeneracy, denoted $\alpha$. We state this fact as a lemma,
 which is considered a classic fact in graph theory and network science.
 
-\begin{lemma} {% label lem:degen %}~\cite{MB83} Given a graph $G = (V,E)$, there is a 
+\begin{lemma} {% label lem:degen %}{% cite MB83 %} Given a graph $G = (V,E)$, there is a 
 linear time algorithm that constructs an ayclic orientation of $G$
 such that all outdegrees are at most $\alpha$.
 \end{lemma}
@@ -621,7 +621,7 @@ proves the correctness of \Step{ppt}.
 
 **Running time (in terms of $|\sct(G)|$):** Consider the procedure $\scr(G)$. Note that the size of **$T$**
 is at least $n$, so we can replace any running time dependence on $n$ by $|\bT|$.
-The degeneracy orientation can be found in $O(m+n)$~\cite{MB83}. For the actual building
+The degeneracy orientation can be found in $O(m+n)${% cite MB83 %}. For the actual building
 of the tree, the main cost is in determining the pivot and constructing the children
 of a node. Suppose a non-root node labeled $S$ is processed. The above mentioned steps can be done
 by constructing the subgraph induced on $S$. This can be done in $O(|S|^2)$ time. Since
@@ -665,7 +665,7 @@ Moreover,
 
 This is because $p$ has the largest neighborhood in $S$ and $p$'s neighborhood is of size atmost $s-r$, and since $|S|\geq 1, s-r \leq s-1$.
 
-Thus, Lemma 2 and Theorem 3 from ~\cite{Tomita04} hold, which implies that $T(s)=O(3^{s/3})$. Since there are $n$ vertices and their outdegree is atmost $\alpha$, the worst case running time of \scr{} (which is also an upper bound for $|sct(G)|$) is $nT(\alpha)=O(n3^{\alpha/3})$ and hence, worst case running times of PIVOTER for obtaining global, per-vertex and per-edge clique counts are $O(n\alpha 3^{\alpha/3})$, $O(n\alpha^2 3^{\alpha/3})$ and $O(n\alpha^3 3^{\alpha/3})$, respectively.
+Thus, Lemma 2 and Theorem 3 from {% cite Tomita04 %} hold, which implies that $T(s)=O(3^{s/3})$. Since there are $n$ vertices and their outdegree is atmost $\alpha$, the worst case running time of \scr{} (which is also an upper bound for $|sct(G)|$) is $nT(\alpha)=O(n3^{\alpha/3})$ and hence, worst case running times of PIVOTER for obtaining global, per-vertex and per-edge clique counts are $O(n\alpha 3^{\alpha/3})$, $O(n\alpha^2 3^{\alpha/3})$ and $O(n\alpha^3 3^{\alpha/3})$, respectively.
 
 \end{proof}
 
@@ -687,7 +687,7 @@ for all the labels on a path. As mentioned earlier in the
 proof of \Thm{main}, all non-root
 nodes are labeled with sets of size at most $\alpha$. The length
 of the path is at most $\alpha$, so the total storage is $O(\alpha^2)$.
-A classic bound on the degeneracy is $\alpha \leq \sqrt{2m}$ (Lemma 1 of~\cite{ChNi85}),
+A classic bound on the degeneracy is $\alpha \leq \sqrt{2m}$ (Lemma 1 of{% cite ChNi85 %}),
 so the storage, including the input, is $O(m+n)$.
 
 \end{proof}
@@ -696,7 +696,7 @@ so the storage, including the input, is $O(m+n)$.
 we can easily implement a parallel version of PIVOTER for *global* clique counts.
 We stress that our aim was not to delve into complicated parallel algorithms,
 and merely to see if there was a way to parallelize the counting involving minimal code changes.
-The idea is simple, and is an easier variant of the parallelism in kCList~\cite{DBS18}. 
+The idea is simple, and is an easier variant of the parallelism in kCList{% cite DBS18 %}. 
 Observe that the children of the root
 of $\sct(G)$ correspond to finding cliques in the sets $N^+(v)$, for all $v$.
 Clique counting in each of these sets can be treated as an independent problem,
@@ -731,14 +731,14 @@ A number of these graphs have more than 10 million edges, and the largest has mo
 100 million edges.  Basic properties of these graphs are presented in \Tab{main}. 
 
 The data sets are split into two parts, in \Tab{main}. The upper part are
-instances feasibly solved with past work (notably kClist40~\cite{DBS18}), while
+instances feasibly solved with past work (notably kClist40{% cite DBS18 %}), while
 the lower part has instances that cannot be solved with previous algorithm (even
 after days). We give more details in \Sec{time}.
 
 **Competing algorithms:** We compare with (what we consider) are the state
-of the art clique counting algorithms: Tur\'{a}n-Shadow (TS)~\cite{JS17} and kClist40~\cite{DBS18}.
+of the art clique counting algorithms: Tur\'{a}n-Shadow (TS){% cite JS17 %} and kClist40{% cite DBS18 %}.
 
-**kClist40:** This algorithm by Danisch-Balalau-Sozio~\cite{DBS18} uses 
+**kClist40:** This algorithm by Danisch-Balalau-Sozio{% cite DBS18 %} uses 
 degeneracy orientations and parallelization to enumerate all cliques. 
 The kClist40 algorithm, to the best of our knowledge, is the only existing algorithm
 that can feasibly compute all global counts for some graphs. Hence, our main focus
@@ -761,7 +761,7 @@ and note significant improvements in running time.
 In all our runs, for consistency, we run kClist with 40 threads. 
 Note that we compare the *sequential* PIVOTER with the *parallel* kClist40.
 
-**TS:** This is an approximate clique counting algorithm for $k$ upto $10$ ~\cite{JS17}. 
+**TS:** This is an approximate clique counting algorithm for $k$ upto $10$ {% cite JS17 %}. 
 It mines dense subgraphs (shadows) and samples cliques within the dense subgraphs
 to give an estimate. For fast randomized estimates, it is arguably the fastest algorithm.
 It runs significantly faster than a sequential implementation of kClist, but is typically comparable
@@ -777,7 +777,7 @@ For most of the graphs, PIVOTER was able to count all $k$-cliques in seconds or 
 For the largest {\tt com-orkut} graph, PIVOTER ran in 1.5 hours. 
 This is a huge improvement on the state of the art. For the "infeasible"
 instances in \Tab{main}, we do not get results even in two days using previous algorithms.
-(This is consistent with results in Table 2 of~\cite{DBS18}, where some of the graphs are also
+(This is consistent with results in Table 2 of{% cite DBS18 %}, where some of the graphs are also
 listed as "very large graphs" for which clique counting is hard.)
 
 A notable hard instance is {\tt com-lj} where PIVOTER is unable to get all
@@ -909,7 +909,7 @@ these algorithms for up to 100 times the running time of PIVOTER or two days, wh
 is shorter. We try to count the largest feasible clique count.
 
 Let us focus on kClist40, where we cannot go beyond counting 13-cliques
-(we note that this is consistent with results reported in~\cite{DBS18}). 
+(we note that this is consistent with results reported in{% cite DBS18 %}). 
 Notably, in the {\tt BerkStan} graph, kClist40 needs more than 2 days to count
 13-cliques, while PIVOTER gets all clique counts in a minute. As mentioned
 earlier, clique counting on the large {\tt com-orkut} graph is done in a few
@@ -949,7 +949,7 @@ we show a few examples in this section.
 As mentioned earlier, local clique counts are an important aspect
 of graph processing. In {% figure soc-pokec-occurrences %} and {% figure web-Stanford-occurrences %}, we plot the per-vertex
 clique distributions, also called the *graphlet* degree
-distribution in bioinformatics~\cite{Pr07} for the as-skitter and web-Stanford graphs. We choose values
+distribution in bioinformatics{% cite Pr07 %} for the as-skitter and web-Stanford graphs. We choose values
 of $k = 5, 10, 15, 20, 25$. Then, we plot the function $f_k(b)$
 that is the number of vertices that participate in $b$ $k$-cliques.
 We notice interesting trends. While the as-skitter graph
@@ -964,7 +964,7 @@ from the maximum clique in the {\tt com-orkut} graph, but not
 so in the {\tt soc-pokec} graph.
 
 In {% figure trends-dblp %}, we plot the $k$-clique counts (vs $k$)
-for two different versions across time for the DBLP citation network~\cite{Aminer}. 
+for two different versions across time for the DBLP citation network{% cite Aminer %}. 
 Interestingly, despite the later version only having less than twice as many edges, 
 the clique distribution (plotted in semilog) has a much bigger difference. It appears
 that the graph is becoming significantly dense in certain part.
@@ -976,14 +976,14 @@ This sort of analysis may help in understanding dynamic graphs.
 
 We provide an exact clique counting algorithm that counts all $k$-cliques in a fraction of the time of other state-of-the-art parallel algorithms. One of the key ideas is the use of pivoting to create
 the SCT, and succinct representation of all the cliques of the
-graph. The success of~\cite{DBS18} in using parallelization
+graph. The success of{% cite DBS18 %} in using parallelization
 for clique counting suggests combining their ideas with our pivoting
 techniques. We may be able to come up with an efficient parallel
 building of the SCT that is much faster than our current implementation. Indeed, the results on the {\tt com-lj} graph suggest
 that even PIVOTER has its limits for real data.
 
 An orthogonal approach would be to exploit the sampling techniques
-in the Tur\'{a}n-Shadow algorithm~\cite{JS17}. For many subgraph
+in the Tur\'{a}n-Shadow algorithm{% cite JS17 %}. For many subgraph
 counting problems, randomization has been the key to truly practical
 algorithms. We believe that PIVOTER could be made faster with 
 these ideas.
@@ -997,4 +997,4 @@ Shweta Jain and C. Seshadhri acknowledge the support of NSF Awards CCF-1740850, 
 
 ## REFERENCES
 
-{% cite %}
+{% cite @references %}
