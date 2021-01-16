@@ -43,9 +43,9 @@ can be built without actually enumerating all cliques, and provides a succinct
 data structure from which exact clique statistics ($k$-clique counts, local counts)
 can be read off efficiently.
 
-## INTRODUCTION
-
 {% label sec:intro %}
+
+## INTRODUCTION
 
 Subgraph counting (also known as motif counting, graphlet counting) is a fundamental algorithmic
 problem in network analysis, widely applied in domains such as
@@ -89,10 +89,9 @@ as counts for every vertex or every edge).
 
 {% endfigure %}
 
+{% label sec:problem %}
 
 ### Problem Statement
-
-{% label sec:problem %}
 
 We are given an undirected, simple graph $G(V,E)$. For $k \geq 3$, a $k$-clique 
 is a set of $k$ vertices that induce a complete subgraph (it contains all edges
@@ -143,9 +142,9 @@ This raises the main question:
 To the best of our knowedge, there is no previous algorithm that can solve these problems
 on even moderate-sized graphs with a few million edges. 
 
-### Main contributions
-
 {% label sec:contri %}
+
+### Main contributions
 
 Our main contribution is a new practical algorithm PIVOTER for the global and local clique counting
 problems. 
@@ -170,7 +169,7 @@ of edges in *minutes*. Previous results either work only for small values of $k$
 Consider {% fig timings %}, where the time of PIVOTER is compared
 with that of kClist (the state of the art parallel algorithm for clique counting){% cite DBS18 %}. 
 In the instances shown kClist did not terminate even after running for 3 days. By
-contrast, for the largest {\tt com-orkut} social network with
+contrast, for the largest *com-orkut* social network with
 more than 100M edges, PIVOTER gets all values of $C_k$ within two hours.
 (Typically, in this time, kClist gets $k-$clique counts only up to $k \leq 13$.)
 
@@ -188,9 +187,9 @@ used for dense subgraph discovery{% cite SaSePi14,Ts15 %}.
 To the best of our knowledge, this is the first algorithm that is able to get
 such information for real-world graphs. 
 
-### Related Work
-
 {% label sec:related %}
+
+### Related Work
 
 Subgraph counting has an immensely rich history in network science, ranging from applications
 across social network analysis, bioinformatics, recommendation systems, graph clustering
@@ -252,9 +251,9 @@ observation of this line of work is that the underlying recursion tree created w
 is typically small for real-world graphs. This is the starting point 
 for our work.
 
-## MAIN IDEAS
-
 {% label sec:ideas %}
+
+## MAIN IDEAS
 
 Inspired by the success of maximal clique enumeration through pivoting, 
 we design the Succinct Clique Tree (SCT) of a graph for clique counting.
@@ -344,7 +343,7 @@ for exact clique counting by orders of magnitude.
 
 Our main theorem follows. Basically, clique counts can be obtained
 in time proportional to the size of the SCT. 
-All the technical terms will be formally defined in \Sec{prelims}.
+All the technical terms will be formally defined in {% sec prelims %}.
 
 {% theorem main %}
 Let $G$ be an input graph
@@ -361,9 +360,9 @@ Empirically, we observe that the SCT is quite small. In the worst-case,
 $|SCT(G)|  = O(n 3^{\alpha/3})$, which follows
 from arguments by Eppstein-L&ouml;effler-Strash{% cite ELS13 %} and Tomita-Tanaka-Takahashi{% cite Tomita04 %} (an exponential dependence is necessary because of the NP-hardness of maximum clique). We give a detailed description in {% sec count %}
 
-## PRELIMINARIES
-
 {% label sec:prelims %}
+
+## PRELIMINARIES
 
 We start with the mathematical formalism required to describe the main
 algorithm and associated proofs. The input is a simple, undirected
@@ -390,27 +389,27 @@ linear time algorithm that constructs an ayclic orientation of $G$
 such that all outdegrees are at most $\alpha$.
 {% endlemma %}
 
-The most important construct we design is the *Succinct Clique Tree* (SCT) **$T$**.
+The most important construct we design is the *Succinct Clique Tree* (SCT) $\bm T$.
 The SCT stores special node and link attributes that are key to getting global and local
 clique counts, for all values of $k$.
 The construction and properties of the SCT are given in the next section. Here, 
-we list out technical notation associated with the SCT **$T$**.
+we list out technical notation associated with the SCT $\bm T$.
 
-Formally, **$T$** is a tree where nodes are labeled with subsets of $V$, with the following
+Formally, $\bm T$ is a tree where nodes are labeled with subsets of $V$, with the following
 properties.
 
 * The root is labeled $V$.
 * Parent labels are strict supersets of child labels.
 * Leaves are labeled with the empty set $\emptyset$.
 
-An important aspect of **$T$** are *link labels*. A link label is a
+An important aspect of $\bm T$ are *link labels*. A link label is a
 pair with a vertex of $V$ and a "call type".
 The label is of the form $(v,\mathfrak{p})$ or $(v,\mathfrak{h})$,
 where $\mathfrak{p}$ is shorthand for "pivot" and $\mathfrak{h}$ for "hold".
 For a link label $(v,\cdot)$ of the link $(S,S')$ (where $S \supset S'$ is the parent),
 $v$ will be an element of $S$.
 
-Consider a root to leaf path $T$ of **$T$**. We have the following associated
+Consider a root to leaf path $T$ of $\bm T$. We have the following associated
 set of vertices. It is convenient to think of $T$ as a set of tree links.
 
 * $H(T)$: This is the set of vertices associated with "hold" call types, among the links of $T$. Formally, $H(T)$ is $\{v | \textrm{$(v,\mathfrak{h})$ is label of link in $T$}\}$.
@@ -422,14 +421,14 @@ formalization and proving correctness. The implementation is a recursive
 version of the same algorithm, which is more space efficient. This
 is explained in the proof of {% thm main %}.
 
+{% label sec:scr %}
 ## BUILDING THE SCT
 
-{% label sec:scr %}
 
 We give the algorithm to construct the SCT. 
 We keep track
 of various attributes to appropriately label the edges.
-The algorithm will construct the SCT **$T$** in a breadth-first manner. Every
+The algorithm will construct the SCT $\bm T$ in a breadth-first manner. Every
 time a node is processed, the algorithm creates its children and labels all the new
 nodes and links created.
 
@@ -438,19 +437,19 @@ SCTBuilder($G$)
 Output: SCT of $G$ 
 <!-- algorithm-more -->
 Find degeneracy orientation of $G$, and let $N^+(v)$ denote the outneighborhood of a vertex $v$.  
-Initialize tree **$T$** with root labeled $V$.  
+Initialize tree $\bm T$ with root labeled $V$.  
 For every $v \in V$, create a child of root with node label $N^+(v)$. Set the edge label to $(v,\mathfrak{h})$.  
 Insert all these child nodes into a queue $\bQ$.  
 While $\bQ$ is non-empty:  
     Dequeue to get node $\gamma$. Let node label be $S$.  
     If $S = \emptyset$, continue.  
     Find $p \in S$ with largest $N(S,p)$ value. {% label step:pivot %}  
-    Create child node of $\gamma$ with vertex label $N(S,p)$. Add this node to **$T$** and set the link label (of the new link) to $(p,\mathfrak{p})$. Also, add this node to $\bQ$. {% label step:pcall %}  
+    Create child node of $\gamma$ with vertex label $N(S,p)$. Add this node to $\bm T$ and set the link label (of the new link) to $(p,\mathfrak{p})$. Also, add this node to $\bQ$. {% label step:pcall %}  
     Let $S \setminus (p \cup N(p)) = \{v_1, v_2, \ldots, v_\ell\}$ (listed in arbitrary order).  
     For each $i \leq \ell$: create child node of $\gamma$ labeled  
-$N(S,v_i) \setminus \{v_1, v_2, \ldots, v_{i-1}\}$. Add this node to **$T$** and set link label to $(v_i, \mathfrak{h})$.  
+$N(S,v_i) \setminus \{v_1, v_2, \ldots, v_{i-1}\}$. Add this node to $\bm T$ and set link label to $(v_i, \mathfrak{h})$.  
 Also add this node to $\bQ$. {% label step:nncall %}  
-Return **$T$**.  
+Return $\bm T$.  
 {% endalgorithm %}
 
 As mentioned earlier, the child of the node labeled $S$ has one child corresponding
@@ -462,7 +461,7 @@ Now for our main theorem about SCT.
 
 {% theorem scr %}
 Every clique $C$ (in $G$) can be *uniquely*
-represented as $H(T) \cup Q$, where $Q \subseteq P(T)$ and $T$ is a root to leaf path in **$T$**.
+represented as $H(T) \cup Q$, where $Q \subseteq P(T)$ and $T$ is a root to leaf path in $\bm T$.
 (Meaning, for any other root to leaf path $T' \neq T$, $\forall Q \subseteq P(T')$,
 $C \neq H(T') \cup Q$.)
 {% endtheorem %}
@@ -470,12 +469,12 @@ $C \neq H(T') \cup Q$.)
 We emphasize the significance of this theorem. Every root to leaf
 path $T$ represents a clique, given by the vertex set $H(T) \cup P(T)$. Every clique $C$ 
 is a subset of potentially many such sets; and there is no obvious bound on this number. So one can think of
-$C$ "occurring" multiple times in the tree **$T$**. But {% thm scr %} asserts that 
+$C$ "occurring" multiple times in the tree $\bm T$. But {% thm scr %} asserts that 
 if we take the labels into account ($H(T)$ vs $P(T)$),
 then there is a *unique* representation or "single occurrence" of $C$.
 
 {% proof %} (of {% thm scr %}) 
-Consider a node $\gamma$ of **$T$** labeled $S$. We prove, by induction on $|S|$,
+Consider a node $\gamma$ of $\bm T$ labeled $S$. We prove, by induction on $|S|$,
 that every clique $C \subseteq S$ can be expressed as $H(T) \cup Q$,
 where $T$ is a path from $\gamma$ to a leaf, and $Q \subseteq P(T)$. The theorem
 follows by setting $\gamma$ to the root.
@@ -528,19 +527,19 @@ Note that $H(T') = H(T) \cup v_i$, so $C = H(T') \cup Q$. The uniqueness of $T$
 implies the uniquesness of $T'$.
 {% endproof %}
 
-## GETTING GLOBAL AND LOCAL COUNTS
-
 {% label sec:count %}
 
-The tree **$T$** is succinct and yet one can extract fine-grained information from it about all cliques.
+## GETTING GLOBAL AND LOCAL COUNTS
+
+The tree $\bm T$ is succinct and yet one can extract fine-grained information from it about all cliques.
 
 {% algorithm %}
 PIVOTER($G$)
 Output: Clique counts of $G$
 <!-- algorithm-more -->
-Let $\bT = SCTBuilder(G)$. 
+Let $\bm T = SCTBuilder(G)$. 
 Initialize all clique counts to zero. 
-For every root to leaf path $T$ in **$T$**: 
+For every root to leaf path $T$ in $\bm T$: 
     For every $0 \leq i \leq |P(T)|$, increment $C_{|H(T)|+i}$ by ${P(T) \choose i}$. 
     For every $v \in H(T)$ and every $0 \leq i \leq |P(T)|$, increment $c_{|H(T)|+i}(v)$ by ${P(T) \choose i}$. {% label step:ht %}  
     For every $v \in P(T)$ and every $0 \leq i \leq |P(T)|-1$, increment $c_{|H(T)|+i+1}(v)$ by ${ {P(T)-1} \choose i}$. {% label step:pt %}  
@@ -555,7 +554,7 @@ since this is required to store the tree. In the proof of {% thm main %}, we exp
 to reduce the storage.
 
 {% proof %}
-(of {% thm main %}) **Correctness:** By {% thm scr %}, a root to leaf path $T$ of **$T$** represents exactly
+(of {% thm main %}) **Correctness:** By {% thm scr %}, a root to leaf path $T$ of $\bm T$ represents exactly
 $2^{P(T)}$ different cliques, with ${P(T) \choose i}$ of size $|H(T)| + i$. Moreover,
 over all $T$, this accounts for all cliques in the graph. This proves the correctness
 of global counts.
@@ -579,17 +578,17 @@ proves the correctness of {% step ppt %}.
 
 {% endproof %}
 
-**Running time (in terms of $|SCT(G)|$):** Consider the procedure $SCTBuilder(G)$. Note that the size of **$T$**
-is at least $n$, so we can replace any running time dependence on $n$ by $|\bT|$.
+**Running time (in terms of $|SCT(G)|$):** Consider the procedure $SCTBuilder(G)$. Note that the size of $\bm T$
+is at least $n$, so we can replace any running time dependence on $n$ by $|**T**|$.
 The degeneracy orientation can be found in $O(m+n)${% cite MB83 %}. For the actual building
 of the tree, the main cost is in determining the pivot and constructing the children
 of a node. Suppose a non-root node labeled $S$ is processed. The above mentioned steps can be done
 by constructing the subgraph induced on $S$. This can be done in $O(|S|^2)$ time. Since
 this is not a root node, $|S| \leq \alpha$ (this is the main utility of the degeneracy
-ordering). Thus, the running time of $SCTBuilder(G) = O(\alpha^2|\bT|) = O(\alpha^2 |SCT(G)|)$.
+ordering). Thus, the running time of $SCTBuilder(G) = O(\alpha^2|\bm T|) = O(\alpha^2 |SCT(G)|)$.
 
 Now we look at PIVOTER. Note that the subsequent counting steps do *not*
-need the node labels in **$T$**; for all path $T$, one only needs $P(T)$ and $H(T)$.
+need the node labels in $\bm T$; for all path $T$, one only needs $P(T)$ and $H(T)$.
 The paths can be looped over by a DFS from the root. For each path,
 there are precisely $|P(T)|+1$ updates to global clique counts,
 and at most $|H(T) \cup P(T)| \times (|P(T)|+1)$ updates to per-vertex clique counts.
@@ -643,7 +642,7 @@ We do not give full pseudocode, since it is somewhat
 of a distraction. (The details can be found in the code.) Essentially,
 instead of constructing $SCT(G)$ completely in breadth-first manner,
 we construct it depth-first through recursion. This will loop
-over all the paths of **$T$**, but only store a single path at any stage.
+over all the paths of $\bm T$, but only store a single path at any stage.
 The updates to the clique counts are done as soon as any root to leaf
 path is constructed. The total storage of a path is the storage
 for all the labels on a path. As mentioned earlier in the
@@ -676,9 +675,9 @@ aggregate all counts. We leave this for future work.
 
 **Counting $k$-cliques for a specific $k$:** PIVOTER can be modified to obtain clique counts upto a certain user specified $k$ (instead of counting for all $k$). Whenever the number of links marked $\mathfrak{h}$ becomes greater than $k$ in any branch of the computation, we simply truncate the branch (as further calls in the branch will only yield cliques of larger sizes). 
 
-## EXPERIMENTAL RESULTS
-
 {% label sec:results %}
+
+## EXPERIMENTAL RESULTS
 
 **Preliminaries:** All code for PIVOTER is available here: [https://bitbucket.org/sjain12/pivoter/](https://bitbucket.org/sjain12/pivoter/). We implemented our algorithms in C
 and ran our experiments on a commodity machine equipped
@@ -690,12 +689,12 @@ infrastructure networks
 from SNAP [49]. 
 The graphs are simple and undirected (for graphs that are directed, we ignore the direction).
 A number of these graphs have more than 10 million edges, and the largest has more than
-100 million edges.  Basic properties of these graphs are presented in \Tab{main}. 
+100 million edges.  Basic properties of these graphs are presented in {% tab main %}. 
 
-The data sets are split into two parts, in \Tab{main}. The upper part are
+The data sets are split into two parts, in {% tab main %}. The upper part are
 instances feasibly solved with past work (notably kClist40{% cite DBS18 %}), while
 the lower part has instances that cannot be solved with previous algorithm (even
-after days). We give more details in \Sec{time}.
+after days). We give more details in {% sec time %}.
 
 **Competing algorithms:** We compare with (what we consider) are the state
 of the art clique counting algorithms: Tur\'{a}n-Shadow (TS){% cite JS17 %} and kClist40{% cite DBS18 %}.
@@ -712,7 +711,7 @@ that would require more expensive data structure updates. Furthermore, there wou
 be overhead in combining the counts for independent threads, and it is not
 immediately obvious how to distribute the underlying data structure storing
 local counts. As a result, we are
-unaware of any algorithm that computes local counts (at the scale of dataset in \Tab{main}).
+unaware of any algorithm that computes local counts (at the scale of dataset in {% tab main %}).
 
 We perform a simple optimization of kClist40, to make counting faster.
 Currently, when kClist40 encounters a clique, it enumerates every smaller clique contained inside it. 
@@ -730,159 +729,128 @@ It runs significantly faster than a sequential implementation of kClist, but is 
 with a parallel implementation of kClist.
 It requires the entire shadow to be available for sampling which can require considerable space. 
 
-### Running time and comparison with other algorithms
-
 {% label sec:time %}
 
-**Running time for global counting:** We show the running time results in \Tab{main}.
+### Running time and comparison with other algorithms
+
+**Running time for global counting:** We show the running time results in {% tab main %}.
 For most of the graphs, PIVOTER was able to count all $k$-cliques in seconds or minutes.
-For the largest {\tt com-orkut} graph, PIVOTER ran in 1.5 hours. 
+For the largest *com-orkut* graph, PIVOTER ran in 1.5 hours. 
 This is a huge improvement on the state of the art. For the "infeasible"
-instances in \Tab{main}, we do not get results even in two days using previous algorithms.
+instances in {% tab main %}, we do not get results even in two days using previous algorithms.
 (This is consistent with results in Table 2 of{% cite DBS18 %}, where some of the graphs are also
 listed as "very large graphs" for which clique counting is hard.)
 
-A notable hard instance is {\tt com-lj} where PIVOTER is unable to get all
+A notable hard instance is *com-lj* where PIVOTER is unable to get all
 clique counts in a day. Again, previous work also notes this challenge,
-and only gives counts of $7$-cliques. We can get some partial results for {\tt com-lj},
+and only gives counts of $7$-cliques. We can get some partial results for *com-lj*,
 as explained later.
 
-\begin{table*}[t]
-\centering
-% \caption{Graph properties}
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-\hline
-**Graph**         & **Vertices**     & **Edges**      & **Degen**  & **Max clique**
-& \multicolumn{1}{|p{1.2cm}|}{\centering PIVOTER \\ **($C_k$)**}
-& \multicolumn{1}{|p{1.4cm}|}{\centering PIVOTER \\ **($c_k(v)$)**}
-& \multicolumn{1}{|p{1.4cm}|}{\centering PIVOTER \\ **($c_k(e)$)**}
-& \multicolumn{1}{|p{1.2cm}|}{\centering PIVOTER \\ **($C_k$ parallel)**} \\
-\hline
-\multicolumn{9}{|c|}{Feasible by previous algorithms} \\
-\hline
-dblp-v5 & 1.56E+06 & 2.08E+06 & 15 & 10 & 7 & 7 & 8 & 19 \\
-dblp-v7 & 3.67E+06 & 4.18E+06 & 19 & 12 & 15 & 16 & 19 & 34 \\
-% dblp & 3.17E+05 & 1.04E+06 & 113 & 114 & 2 & 2 & 3 & 3 \\
-amazon0601 & 4.03E+05  &  2.44E+06   & 10  &11&  4  & 5  & 6 & 4 \\
-web-Google & 8.76E+05  &  4.32E+06   & 44 & 44 & 8 & 9 &15 & 9\\
-youtube &1.13E+06   & 2.99E+06  &  51  &17  &7 & 8  &11 & 9 \\
-cit-Patents &3.77E+06    &1.65E+07   & 64 & 11 & 40  &41 & 53 & 46 \\
-soc-pokec  & 1.63E+06  &  2.23E+07  &  47 & 29 & 68& 75 &93 & 44 \\
-\hline
-\multicolumn{9}{|c|}{Not feasible for previous algorithms} \\
-\hline
-Stanford  &  2.82E+05   & 1.99E+06  &  71 &  61 & 5 &  5 & 38 & 3 \\
-BerkStan  &  6.85E+05  &  6.65E+06   & 201 &201 &25 & 26  &237  & 9\\
-as-skitter  & 1.70E+06   & 1.11E+07 &   111 & 67  & 120 & 200 &9245  & 75\\
-com-orkut  & 3.07E+06  &  1.17E+08  &  253 & 51 & 5174   & 8802  & 99389  & 3441 \\ \hline
-com-lj  & 4.00E+06  &  3.47E+07  &  360 & - & -   & -  & -  & 108000* \\ %6.4/42.5 hrs
-% com-lj  & 4.00E+06  &  3.47E+07  &  360 & - & -   & -  & -  & 4029/7355* \\
-\hline
-\end{tabular}
-\end{adjustbox}
-\caption{Table shows the sizes, degeneracy, maximum clique size, and the time taken (in seconds) by PIVOTER to obtain global $k-$clique counts, per-vertex and per edge $k-$cliques counts for all k. *For the com-lj graph, we were not able to get all $k-$clique counts in 1 day so we tested for the maximum $k$ we could count in about a day. PIVOTER was able to count the number of 9-cliques in 30 hours whereas kClist40 had not terminated even after 6 days.}
-{% label tab:main %}
-\end{table*}
+{% table main %}
+Graph properties
+<!-- table-header -->
+
+|                Graph                 | Vertices |  Edges   | Degen | Max clique | PIVOTER($C_k$) | PIVOTER($c_k(v)$) | PIVOTER($c_k(e)$) | PIVOTER($C_k$) parallel |
+| ------------------------------------ | -------- | -------- | ----- | ---------- | -------------- | ----------------- | ----------------- | ----------------------- |
+| Feasible by previous algorithms      |          |          |       |            |                |                   |                   |                         |
+| dblp-v5                              | 1.56E+06 | 2.08E+06 | 15    | 10         | 7              | 7                 | 8                 | 19                      |
+| dblp-v7                              | 3.67E+06 | 4.18E+06 | 19    | 12         | 15             | 16                | 19                | 34                      |
+| amazon0601                           | 4.03E+05 | 2.44E+06 | 10    | 11         | 4              | 5                 | 6                 | 4                       |
+| web-Google                           | 8.76E+05 | 4.32E+06 | 44    | 44         | 8              | 9                 | 15                | 9                       |
+| youtube                              | 1.13E+06 | 2.99E+06 | 51    | 17         | 7              | 8                 | 11                | 9                       |
+| cit-Patents                          | 3.77E+06 | 1.65E+07 | 64    | 11         | 40             | 41                | 53                | 46                      |
+| soc-pokec                            | 1.63E+06 | 2.23E+07 | 47    | 29         | 68             | 75                | 93                | 44                      |
+| Not feasible for previous algorithms |          |          |       |            |                |                   |                   |                         |
+| Stanford                             | 2.82E+05 | 1.99E+06 | 71    | 61         | 5              | 5                 | 38                | 3                       |
+| BerkStan                             | 6.85E+05 | 6.65E+06 | 201   | 201        | 25             | 26                | 237               | 9                       |
+| as-skitter                           | 1.70E+06 | 1.11E+07 | 111   | 67         | 120            | 200               | 9245              | 75                      |
+| com-orkut                            | 3.07E+06 | 1.17E+08 | 253   | 51         | 5174           | 8802              | 99389             | 3441                    |
 
 
-\begin{table}[]
-\centering
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{|l|r|r|r|}
-\hline
-\hline
-Stanford  & 230 & 12600 &5 \\ %210
-BerkStan  & 1198 &   > 172800 &25 \\ %1055 2 days
-as-skitter & 798 & 12480 &120 \\ %715
-com-orkut  & > 28800 &  > 172800  &5174\\ %36902 days
-\hline
-\end{tabular}
-\end{adjustbox}
-\caption{Time taken in seconds by the state-of-the-art randomized (TS, short for Tur\'anShadow) and parallel (kClist40) algorithms. Note that PIVOTER obtains **all** $k-$clique counts for these graphs in a fraction of the time taken by other methods to count just 13-cliques.} 
-{% label tab:comparison %}
-\end{table}
+<!-- table-more -->
+Table shows the sizes, degeneracy, maximum clique size, and the time taken (in seconds) by PIVOTER to obtain global $k-$clique counts, per-vertex and per edge $k-$cliques counts for all k. *For the com-lj graph, we were not able to get all $k-$clique counts in 1 day so we tested for the maximum $k$ we could count in about a day. PIVOTER was able to count the number of 9-cliques in 30 hours whereas kClist40 had not terminated even after 6 days.
+{% endtable %}
 
-\begin{table}[]
-\centering
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{|l|r|r|r|}
-\hline
-**k**          & **$k$-cliques** &  **kClist40**  & **PIVOTER** \\ %\cline{7-7}
-\hline
-7 & 4.49E+15 & 2.2 hours & 1.2 hours \\
-8  & 1.69E+16 & 42.5 hours & 6.4 hours \\ %210
-9 &  5.87E+17 & > 6 days & 30 hours \\ %715
-10  & 1.89E+19 & > 6 days & 5.9 days \\ %3690
-\hline
-\end{tabular}
-\end{adjustbox}
-\caption{Table shows the time taken to count $k$-cliques for com-lj graph. For $k$=9, PIVOTER terminated in about 30 hours where kClist40 had not terminated in 6 days.} 
-{% label tab:com-lj %}
-\end{table}
+{% table comparison %}
+
+|   Graph    | k=13,TS | k=13, kClist40 | all k, Pivoter |
+| ---------- | ------- | -------------- | -------------- |
+| Stanford   | 230     | 12600          | 5              |
+| BerkStan   | 1198    | > 172800       | 25             |
+| as-skitter | 798     | 12480          | 120            |
+| com-orkut  | > 28800 | > 172800       | 5174           |
+
+<!-- table-more -->
+Time taken in seconds by the state-of-the-art randomized (TS, short for Tur&aacute;nShadow) and parallel (kClist40) algorithms. Note that PIVOTER obtains **all** $k-$clique counts for these graphs in a fraction of the time taken by other methods to count just 13-cliques.
+{% endtable %}
+
+{% table com-lj %}
+
+|  k  | $k$-cliques |  kClist40  |  PIVOTER  |
+| --- | ----------- | ---------- | --------- |
+| 7   | 4.49E+15    | 2.2 hours  | 1.2 hours |
+| 8   | 1.69E+16    | 42.5 hours | 6.4 hours |
+| 9   | 5.87E+17    | > 6 days   | 30 hours  |
+| 10  | 1.89E+19    | > 6 days   | 5.9 days  |
+
+<!-- table-more -->
+Table shows the time taken to count $k$-cliques for com-lj graph. For $k$=9, PIVOTER terminated in about 30 hours where kClist40 had not terminated in 6 days.
+{% endtable %}
 
 
-\begin{figure*}[t!]
-    \begin{subfigure}[b]{0.33\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{Figures/nCalls_vs_m.pdf}
-        \caption{Number of nodes in SCT vs m}
-        {% label fig:treesize %}
-    \end{subfigure}
-~
-\begin{subfigure}[b]{0.33\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{Figures/trends.pdf}
-    \caption{Trends in different graphs}
-    {% label fig:trends %}
-    \end{subfigure}
-~
-    \begin{subfigure}[b]{0.33\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{Figures/trends-dblp.pdf}{}
-    \caption{Trends in dblp over time.}
-    {% label fig:trends-dblp %}
-    \end{subfigure}
-     
-\caption{ {% fig treesize %} shows the number of nodes in the SCT vs the number of edges (m) for different graphs. The running time of PIVOTER is directly proportional to the SCT size which seems to be roughly linear in the number of edges. {% fig trends %} shows the trends in clique counts for a number of graphs. For some of the graphs, the complete distribution of their clique counts has been obtained for the first time. {% fig trends-dblp %} shows the trends in the clique counts of 2 different versions over time of the dblp graph. }
+{% figure %}
 
-\end{figure*}
+{% subfigure treesize %}
+![Number of nodes in SCT vs m](Figures/nCalls_vs_m.png)
+{% endsubfigure %}
+
+{% subfigure trends %}
+![Trends in different graphs](Figures/trends.png)
+{% endsubfigure %}
+
+{% subfigure trends-dblp %}
+![Trends in dblp over time.](Figures/trends-dblp.png)
+{% endsubfigure %}
+
+{% fig treesize %} shows the number of nodes in the SCT vs the number of edges (m) for different graphs. The running time of PIVOTER is directly proportional to the SCT size which seems to be roughly linear in the number of edges. {% fig trends %} shows the trends in clique counts for a number of graphs. For some of the graphs, the complete distribution of their clique counts has been obtained for the first time. {% fig trends-dblp %} shows the trends in the clique counts of 2 different versions over time of the dblp graph.
+
+{% endfigure %}
 
 **Feasible local counting:** Notably, PIVOTER can get per-vertex
 counts in less than twice the time of global clique counting. Thus, we get 
-results for more graphs in a few minutes, and can process the {\tt com-orkut}
+results for more graphs in a few minutes, and can process the *com-orkut*
 graph within 3 hours. We consider this a significant achievement, given
 the combinatorial explosion of clique counting.
 
 PIVOTER is also able to get per-edge clique counts, though
 it can take an order of magnitude more time than global clique counting. Note that for obtaining the per-vertex and per-edge $k-$clique counts, the result data structure can become extremely large. Indeed, most of the time is spent in updating the data structure, rather than in constructing the SCT.
-Nonetheless, for all but the {\tt as-skitter} and {\tt com-orkut} graph,
+Nonetheless, for all but the *as-skitter* and *com-orkut* graph,
 it runs in minutes. 
 
 **Comparison with state of the art:** We only focus on the "infeasible"
-instances of \Tab{main}. For all the other instances, both PIVOTER and kClist40
+instances of {% tab main %}. For all the other instances, both PIVOTER and kClist40
 get results within two minutes. For space considerations, we do not report all
 the running times for such instances. It is worth noting that the sequential
 PIVOTER is comparable to the parallel kClist40 (when they both terminate).
 
-In \Tab{comparison}, we report times on TS and kClist40 on the hard datasets.
+In {% tab comparison %}, we report times on TS and kClist40 on the hard datasets.
 We are unable to get all values of $C_k$ using either of these two method. We run
 these algorithms for up to 100 times the running time of PIVOTER or two days, whichever
 is shorter. We try to count the largest feasible clique count.
 
 Let us focus on kClist40, where we cannot go beyond counting 13-cliques
 (we note that this is consistent with results reported in{% cite DBS18 %}). 
-Notably, in the {\tt BerkStan} graph, kClist40 needs more than 2 days to count
+Notably, in the *BerkStan* graph, kClist40 needs more than 2 days to count
 13-cliques, while PIVOTER gets all clique counts in a minute. As mentioned
-earlier, clique counting on the large {\tt com-orkut} graph is done in a few
+earlier, clique counting on the large *com-orkut* graph is done in a few
 hours by PIVOTER, while even counting 13-cliques takes kClist40 more than two days.
 
-TS also does not scale well for larger cliques and PIVOTER is faster than TS. For example, for the {\tt Stanford} graph, TS required 230 seconds to estimate the number of 13-cliques whereas PIVOTER obtained all $k-$clique counts in 5 seconds. Similar trends are observed with other graphs. 
+TS also does not scale well for larger cliques and PIVOTER is faster than TS. For example, for the *Stanford* graph, TS required 230 seconds to estimate the number of 13-cliques whereas PIVOTER obtained all $k-$clique counts in 5 seconds. Similar trends are observed with other graphs. 
 
-**Parallel global clique counting:** As mentioned in \Sec{count}, we do a simple
+**Parallel global clique counting:** As mentioned in {% sec count %}, we do a simple
 parallelization of the global clique counting of PIVOTER using 30 threads. It gives moderate benefits
 for most instances, and about a factor two speedup for large instances.
-For the challenging {\tt com-lj} instances, the effect is much more dramatic. 
+For the challenging *com-lj* instances, the effect is much more dramatic. 
 We are able to count $7$-cliques in an hour using the parallel PIVOTER, while
 the sequential version takes more than a day.
 
@@ -890,7 +858,7 @@ the sequential version takes more than a day.
 The sequential version of PIVOTER for counting all $k$-cliques did not terminate within a day, 
 so we used the parallel version of our algorithm to show a comparison for global
 counts upto $k=10$. We can truncate the SCT to get cliques of some fixed size.
-\Tab{com-lj} shows the results. Even for this graph, the parallel version of PIVOTER is faster than kClist40 for $k=7$ and beyond. kClist40 did not terminate after six days,
+{% tab com-lj %} shows the results. Even for this graph, the parallel version of PIVOTER is faster than kClist40 for $k=7$ and beyond. kClist40 did not terminate after six days,
 for $k = 9$ and beyond. We note the astronomical number
 of 10-cliques ($> 10^{19}$), which makes enumeration infeasible, but PIVOTER
 was able to get the exact count.
@@ -920,10 +888,10 @@ in web-Stanford. It would be interesting to design models
 that can capture such behavior in the local clique counts.
 
 In {% fig trends %}, we plot the $C_k$ values for a number of graphs.
-We notice, for example, that the {\tt soc-pokec} network has a "flatter" distribution of $C_k$ for some of the initial values,
-while the {\tt com-orkut} graph looks much closer to a binomial distribution. The latter suggests that the bulk of cliques are coming
-from the maximum clique in the {\tt com-orkut} graph, but not
-so in the {\tt soc-pokec} graph.
+We notice, for example, that the *soc-pokec* network has a "flatter" distribution of $C_k$ for some of the initial values,
+while the *com-orkut* graph looks much closer to a binomial distribution. The latter suggests that the bulk of cliques are coming
+from the maximum clique in the *com-orkut* graph, but not
+so in the *soc-pokec* graph.
 
 In {% fig trends-dblp %}, we plot the $k$-clique counts (vs $k$)
 for two different versions across time for the DBLP citation network{% cite Aminer %}. 
@@ -941,11 +909,11 @@ the SCT, and succinct representation of all the cliques of the
 graph. The success of{% cite DBS18 %} in using parallelization
 for clique counting suggests combining their ideas with our pivoting
 techniques. We may be able to come up with an efficient parallel
-building of the SCT that is much faster than our current implementation. Indeed, the results on the {\tt com-lj} graph suggest
+building of the SCT that is much faster than our current implementation. Indeed, the results on the *com-lj* graph suggest
 that even PIVOTER has its limits for real data.
 
 An orthogonal approach would be to exploit the sampling techniques
-in the Tur\'{a}n-Shadow algorithm{% cite JS17 %}. For many subgraph
+in the Tur&aacute;n-Shadow algorithm{% cite JS17 %}. For many subgraph
 counting problems, randomization has been the key to truly practical
 algorithms. We believe that PIVOTER could be made faster with 
 these ideas.
