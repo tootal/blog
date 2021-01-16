@@ -82,7 +82,8 @@ function generate_cites(data) {
             for (let i = 0; i < all_cites.length; i++) {
                 let t = all_cites_res[i];
                 let si = '<li class="cite-item">';
-                si += `<span class="cite-label" id="cite-${i+1}">${i+1}</span>`;
+                si += `<div class="cite-label" id="cite-${i+1}">[${i+1}]</div>`;
+                si += '<div class="cite-content">';
                 if (t.Author) si += `<span class="cite-author">${t.Author}</span>`;
                 if (t.Year) si += `<span class="cite-year">${t.Year}</span>`;
                 if (t.Title) si += `<span class="cite-title">${t.Title}</span>`;
@@ -90,6 +91,7 @@ function generate_cites(data) {
                 if (t.Volume) si += `<span class="cite-volume">${t.Volume}</span>`;
                 if (t.Timestamp) si += `<span class="cite-timestamp">(${t.Timestamp})</span>`;
                 if (t.Pages) si += `<span class="cite-pages">(${t.Pages})</span>`;
+                si += '</div>';
                 si += '</li>'
                 s += si;
             }
