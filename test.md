@@ -134,7 +134,7 @@ size of the output. Parallel methods would eventually need to store
 local counts for every subproblem, which would increase the overall memory footprint.
 For local counts, sampling would require far too many random variables, each of which
 need to be sampled many times for convergence.
-(We give more explanation in \Sec{related}.)
+(We give more explanation in {% sec related %}.)
 
 This raises the main question:
 
@@ -178,7 +178,7 @@ more than 100M edges, PIVOTER gets all values of $C_k$ within two hours.
 in at most twice the time for global counts. The times for local clique counting
 are given in {% fig timings %}. Even for the extremely challenging problem
 of per-edge counts, in most instances PIVOTER gets these numbers in a few hours.
-(For the {\tt com-orkut} social network though, it takes a few days.) 
+(For the *com-orkut* social network though, it takes a few days.) 
 
 This allows us to get data shown in {% fig soc-pokec-occurrences %} and {% fig web-Stanford-occurrences %}, 
 that plots the frequency distribution
@@ -244,7 +244,7 @@ is the classic Bron-Kerbosch backtracking procedure from the 70s{% cite BK73,A73
 They also introduced an idea called *pivoting*, that prunes the recursion tree for
 efficiency.
 Tomita-Tanaka-Takahashi gave the first theoretical analysis of pivoting rules,
-and showed asymptotic improvements{% cite Tomita04 %}. Eppstein-L\"{o}effler-
+and showed asymptotic improvements{% cite Tomita04 %}. Eppstein-L&ouml;effler-
 Strash
 combined these ideas with orientation methods to give a practical and provably fast
 algorithm for maximal clique enumeration{% cite ES11,ELS13 %}. An important empirical
@@ -346,19 +346,20 @@ Our main theorem follows. Basically, clique counts can be obtained
 in time proportional to the size of the SCT. 
 All the technical terms will be formally defined in \Sec{prelims}.
 
-\begin{theorem} {% label thm:main %} Let $G$ be an input graph
-with $n$ vertices, $m$ edges, and degeneracy $\alpha$. Let $\sct(G)$ be the 
+{% theorem main %}
+Let $G$ be an input graph
+with $n$ vertices, $m$ edges, and degeneracy $\alpha$. Let $SCT(G)$ be the 
 Succinct Clique Tree of graph $G$.
 
 The procedure PIVOTER$(G)$ correctly outputs
 all global and local counts. For global and per-vertex counts, the running
-time is $O(\alpha^2 |\sct(G)| + m + n)$. For per-edge counts, the running time
-is $O(\alpha^3 |\sct(G)| + m + n)$. The storage cost is $O(m+n)$.
-\end{theorem}
+time is $O(\alpha^2 |SCT(G)| + m + n)$. For per-edge counts, the running time
+is $O(\alpha^3 |SCT(G)| + m + n)$. The storage cost is $O(m+n)$.
+{% endtheorem %}
 
 Empirically, we observe that the SCT is quite small. In the worst-case,
-$|\sct(G)|  = O(n 3^{\alpha/3})$, which follows
-from arguments by Eppstein-L\"{o}effler-Strash{% cite ELS13 %} and Tomita-Tanaka-Takahashi{% cite Tomita04 %} (an exponential dependence is necessary because of the NP-hardness of maximum clique). We give a detailed description in \Sec{count}
+$|SCT(G)|  = O(n 3^{\alpha/3})$, which follows
+from arguments by Eppstein-L&ouml;effler-Strash{% cite ELS13 %} and Tomita-Tanaka-Takahashi{% cite Tomita04 %} (an exponential dependence is necessary because of the NP-hardness of maximum clique). We give a detailed description in {% sec count %}
 
 ## PRELIMINARIES
 
@@ -383,10 +384,11 @@ ordering to convert $G$ into a DAG. The largest *out-degree* is the
 graph degeneracy, denoted $\alpha$. We state this fact as a lemma,
 which is considered a classic fact in graph theory and network science.
 
-\begin{lemma} {% label lem:degen %}{% cite MB83 %} Given a graph $G = (V,E)$, there is a 
+{% lemma degen %}
+{% cite MB83 %} Given a graph $G = (V,E)$, there is a 
 linear time algorithm that constructs an ayclic orientation of $G$
 such that all outdegrees are at most $\alpha$.
-\end{lemma}
+{% endlemma %}
 
 The most important construct we design is the *Succinct Clique Tree* (SCT) **$T$**.
 The SCT stores special node and link attributes that are key to getting global and local
@@ -418,7 +420,7 @@ We now describe our algorithm. We stress that the presentation here is different
 from the implementation. The following presentation is easier for mathematical
 formalization and proving correctness. The implementation is a recursive 
 version of the same algorithm, which is more space efficient. This
-is explained in the proof of \Thm{main}.
+is explained in the proof of {% thm main %}.
 
 ## BUILDING THE SCT
 
@@ -431,32 +433,25 @@ The algorithm will construct the SCT **$T$** in a breadth-first manner. Every
 time a node is processed, the algorithm creates its children and labels all the new
 nodes and links created.
 
-\begin{algorithm}
-\caption{\scr($G$) \newline
+{% algorithm %}
+SCTBuilder($G$)
 Output: SCT of $G$ 
-}
-Find degeneracy orientation of $G$, and let $N^+(v)$ denote the outneighborhood of a vertex $v$.\\
-Initialize tree **$T$** with root labeled $V$.\\
-For every $v \in V$, create a child of root with node label $N^+(v)$. Set the 
-edge label to $(v,\mathfrak{h})$. \\
-Insert all these child nodes into a queue $\bQ$. \\
-While $\bQ$ is non-empty: \\
-\ \ \ \ Dequeue to get node $\gamma$. Let node label be $S$.\\
-\ \ \ \ If $S = \emptyset$, continue. \\
-\ \ \ \ Find $p \in S$ with largest $N(S,p)$ value. {% label step:pivot %} \\
-\ \ \ \ Create child node of $\gamma$ with vertex label $N(S,p)$. Add this node to **$T$** and set the link
-label (of the new link) to $(p,\mathfrak{p})$. Also, add this node to $\bQ$. {% label step:pcall %}\\
-\ \ \ \ Let $S \setminus (p \cup N(p)) = \{v_1, v_2, \ldots, v_\ell\}$ (listed
-in arbitrary order). \\
-\ \ \ \ For each $i \leq \ell$: create child node of $\gamma$ labeled
-$N(S,v_i) \setminus \{v_1, v_2, \ldots, v_{i-1}\}$. Add this node to **$T$** and set link label to $(v_i, \mathfrak{h})$.
-Also add this node to $\bQ$. {% label step:nncall %}\\
-Return **$T$**. 
-% Declare global hash tables $T_k, T_V, T_E$.  \\
-% Order $V$ by degeneracy ordering and convert $G$ into a DAG. For $v\in V$, let $N^+_v$ denote the outneighborhood of $v$. \\
-% For $v$ in $V$: \\ {% label step:for-parallel %}
-% \ \ \ \ $\mainalgrec{(\{v\}, \emptyset, N^+_v)}$ 
-\end{algorithm}
+<!-- algorithm-more -->
+Find degeneracy orientation of $G$, and let $N^+(v)$ denote the outneighborhood of a vertex $v$.  
+Initialize tree **$T$** with root labeled $V$.  
+For every $v \in V$, create a child of root with node label $N^+(v)$. Set the edge label to $(v,\mathfrak{h})$.  
+Insert all these child nodes into a queue $\bQ$.  
+While $\bQ$ is non-empty:  
+    Dequeue to get node $\gamma$. Let node label be $S$.  
+    If $S = \emptyset$, continue.  
+    Find $p \in S$ with largest $N(S,p)$ value. {% label step:pivot %}  
+    Create child node of $\gamma$ with vertex label $N(S,p)$. Add this node to **$T$** and set the link label (of the new link) to $(p,\mathfrak{p})$. Also, add this node to $\bQ$. {% label step:pcall %}  
+    Let $S \setminus (p \cup N(p)) = \{v_1, v_2, \ldots, v_\ell\}$ (listed in arbitrary order).  
+    For each $i \leq \ell$: create child node of $\gamma$ labeled  
+$N(S,v_i) \setminus \{v_1, v_2, \ldots, v_{i-1}\}$. Add this node to **$T$** and set link label to $(v_i, \mathfrak{h})$.  
+Also add this node to $\bQ$. {% label step:nncall %}  
+Return **$T$**.  
+{% endalgorithm %}
 
 As mentioned earlier, the child of the node labeled $S$ has one child corresponding
 to the pivot vertex $p$, and children for all non-neighbors of $p$. Importantly,
@@ -465,20 +460,21 @@ unique representations of all the cliques.
 
 Now for our main theorem about SCT.
 
-\begin{theorem} {% label thm:scr %} Every clique $C$ (in $G$) can be *uniquely*
+{% theorem scr %}
+Every clique $C$ (in $G$) can be *uniquely*
 represented as $H(T) \cup Q$, where $Q \subseteq P(T)$ and $T$ is a root to leaf path in **$T$**.
 (Meaning, for any other root to leaf path $T' \neq T$, $\forall Q \subseteq P(T')$,
 $C \neq H(T') \cup Q$.)
-\end{theorem}
+{% endtheorem %}
 
 We emphasize the significance of this theorem. Every root to leaf
 path $T$ represents a clique, given by the vertex set $H(T) \cup P(T)$. Every clique $C$ 
 is a subset of potentially many such sets; and there is no obvious bound on this number. So one can think of
-$C$ "occurring" multiple times in the tree **$T$**. But \Thm{scr} asserts that 
+$C$ "occurring" multiple times in the tree **$T$**. But {% thm scr %} asserts that 
 if we take the labels into account ($H(T)$ vs $P(T)$),
 then there is a *unique* representation or "single occurrence" of $C$.
 
-\begin{proof} (of \Thm{scr}) 
+{% proof %} (of {% thm scr %}) 
 Consider a node $\gamma$ of **$T$** labeled $S$. We prove, by induction on $|S|$,
 that every clique $C \subseteq S$ can be expressed as $H(T) \cup Q$,
 where $T$ is a path from $\gamma$ to a leaf, and $Q \subseteq P(T)$. The theorem
@@ -486,7 +482,7 @@ follows by setting $\gamma$ to the root.
 
 The base case is vacuously tree, since for empty $S$, all relevant sets are empty.
 Now for the induction. We will have three cases. Let $p$ be the pivot chosen
-in \Step{pivot}. (If $S$ is the root, then there is no pivot. We will directly go
+in {% step pivot %}. (If $S$ is the root, then there is no pivot. We will directly go
 to Case (iii) below.)
 
 *Case (i): $p \in C$.* By construction, there is a link labeled $(p,\mathfrak{p})$
@@ -530,7 +526,7 @@ there is a unique path $T$ rooted at $N_i$ such that $C \setminus v_i = H(T) \cu
 for $Q \subseteq P(T)$. Let $T'$ be the path that extends $T$ to $\gamma$.
 Note that $H(T') = H(T) \cup v_i$, so $C = H(T') \cup Q$. The uniqueness of $T$
 implies the uniquesness of $T'$.
-\end{proof}
+{% endproof %}
 
 ## GETTING GLOBAL AND LOCAL COUNTS
 
@@ -538,65 +534,59 @@ implies the uniquesness of $T'$.
 
 The tree **$T$** is succinct and yet one can extract fine-grained information from it about all cliques.
 
-\begin{algorithm}
-\caption{PIVOTER($G$) \newline
+{% algorithm %}
+PIVOTER($G$)
 Output: Clique counts of $G$
-}
-Let $\bT = \scr(G)$.\\
-Initialize all clique counts to zero.\\
-For every root to leaf path $T$ in **$T$**:\\
-\ \ \ \ For every $0 \leq i \leq |P(T)|$, increment $C_{|H(T)|+i}$ by ${P(T) \choose i}$.\\
-\ \ \ \ For every $v \in H(T)$ and every $0 \leq i \leq |P(T)|$, increment $c_{|H(T)|+i}(v)$
-by ${P(T) \choose i}$. {% label step:ht %} \\
-\ \ \ \ For every $v \in P(T)$ and every $0 \leq i \leq |P(T)|-1$, increment $c_{|H(T)|+i+1}(v)$
-by ${ {P(T)-1} \choose i}$. {% label step:pt %} \\
-\ \ \ \ For every edge $e(u,v), u \in H(T), v \in H(T), u \neq v$ and every $0 \leq i \leq |P(T)|$, increment $c_{|H(T)|+i}(e)$
-by ${ {P(T)} \choose i}$. {% label step:hht %} \\
-\ \ \ \ For every edge $e(u,v), u \in P(T), v \in H(T)$ and every $0 \leq i \leq |P(T)|-1$, increment $c_{|H(T)|+i+1}(e)$
-by ${ {P(T)-1} \choose i}$. {% label step:pht %} \\
-\ \ \ \ For every edge $e(u,v), u \in P(T), v \in P(T), u \neq v$ and every $0 \leq i \leq |P(T)|-2$, increment $c_{|H(T)|+i+2}(e)$
-by ${ {P(T)-2} \choose i}$. {% label step:ppt %} \\
-% \ \ \ \ For every $v \in P(T)$ and every $u \in P(T), u \noteq v$, for every $0 \leq i \leq |P(T)|-2$, increment $c_{|H(T)|+i+1}(e)$
-% by ${ {P(T)-2} \choose i}$. {% label step:pt %} \\
-% every $0 \leq i \leq |P(T)|-1$, increment $c_{|H(T)|+i+1}(v)$
-% by ${ {P(T)-1} \choose i}$. {% label step:pt %} \\
+<!-- algorithm-more -->
+Let $\bT = SCTBuilder(G)$. 
+Initialize all clique counts to zero. 
+For every root to leaf path $T$ in **$T$**: 
+    For every $0 \leq i \leq |P(T)|$, increment $C_{|H(T)|+i}$ by ${P(T) \choose i}$. 
+    For every $v \in H(T)$ and every $0 \leq i \leq |P(T)|$, increment $c_{|H(T)|+i}(v)$ by ${P(T) \choose i}$. {% label step:ht %}  
+    For every $v \in P(T)$ and every $0 \leq i \leq |P(T)|-1$, increment $c_{|H(T)|+i+1}(v)$ by ${ {P(T)-1} \choose i}$. {% label step:pt %}  
+    For every edge $e(u,v), u \in H(T), v \in H(T), u \neq v$ and every $0 \leq i \leq |P(T)|$, increment $c_{|H(T)|+i}(e)$ by ${ {P(T)} \choose i}$. {% label step:hht %}  
+    For every edge $e(u,v), u \in P(T), v \in H(T)$ and every $0 \leq i \leq |P(T)|-1$, increment $c_{|H(T)|+i+1}(e)$ by ${ {P(T)-1} \choose i}$. {% label step:pht %}  
+    For every edge $e(u,v), u \in P(T), v \in P(T), u \neq v$ and every $0 \leq i \leq |P(T)|-2$, increment $c_{|H(T)|+i+2}(e)$ by ${ {P(T)-2} \choose i}$. {% label step:ppt %}  
 Output the sets of values $\{C_k\}$, $\{c_k(v)\}$ and $\{c_k(e)\}$.
-\end{algorithm}
+{% endalgorithm %}
 
-The storage complexity of the algorithm, as given, is potentially $O(\alpha^2 |\sct(G)|)$,
-since this is required to store the tree. In the proof of \Thm{main}, we explain how
+The storage complexity of the algorithm, as given, is potentially $O(\alpha^2 |SCT(G)|)$,
+since this is required to store the tree. In the proof of {% thm main %}, we explain how
 to reduce the storage.
 
-\begin{proof} (of \Thm{main}) **Correctness:** By \Thm{scr}, a root to leaf path $T$ of **$T$** represents exactly
+{% proof %}
+(of {% thm main %}) **Correctness:** By {% thm scr %}, a root to leaf path $T$ of **$T$** represents exactly
 $2^{P(T)}$ different cliques, with ${P(T) \choose i}$ of size $|H(T)| + i$. Moreover,
 over all $T$, this accounts for all cliques in the graph. This proves the correctness
 of global counts.
 
 Pick a vertex $v \in H(T)$. For every subset of $P(T)$, we get a different
-clique containing $v$ (that is uniquely represented by \Thm{scr}). This 
-proves the correctness of \Step{ht}. For a vertex $v \in P(T)$,
+clique containing $v$ (that is uniquely represented by {% thm scr %}). This 
+proves the correctness of {% step ht %}. For a vertex $v \in P(T)$,
 we look at all subsets containing $v$. Equivalently, we get a different
 represented clique containing $v$ for every subset of $P(T)\setminus v$. This 
-proves the correctness of \Step{pt}.
+proves the correctness of {% step pt %}.
 
 Pick an edge $e=(u,v), u \in H(T), v \in H(T)$. For every subset of $P(T)$, we get a different
-clique containing $e$ (that is uniquely represented by \Thm{scr}). This 
-proves the correctness of \Step{hht}. For an edge $e=(u,v), u \in P(T), v \in H(T)$,
+clique containing $e$ (that is uniquely represented by {% thm scr %}). This 
+proves the correctness of {% step hht %}. For an edge $e=(u,v), u \in P(T), v \in H(T)$,
 we look at all subsets of $P(T)$ containing $u$. Equivalently, we get a different
 represented clique containing $e$ for every subset of $P(T)\setminus u$. This 
-proves the correctness of \Step{pht}. For an edge $e=(u,v), u \in P(T), v \in P(T)$,
+proves the correctness of {% step pht %}. For an edge $e=(u,v), u \in P(T), v \in P(T)$,
 we look at all subsets of $P(T)$ containing both $u$ and $v$. Equivalently, we get a different
 represented clique containing $e$ for every subset of $P(T)\setminus v \setminus u$. This 
-proves the correctness of \Step{ppt}.
+proves the correctness of {% step ppt %}.
 
-**Running time (in terms of $|\sct(G)|$):** Consider the procedure $\scr(G)$. Note that the size of **$T$**
+{% endproof %}
+
+**Running time (in terms of $|SCT(G)|$):** Consider the procedure $SCTBuilder(G)$. Note that the size of **$T$**
 is at least $n$, so we can replace any running time dependence on $n$ by $|\bT|$.
 The degeneracy orientation can be found in $O(m+n)${% cite MB83 %}. For the actual building
 of the tree, the main cost is in determining the pivot and constructing the children
 of a node. Suppose a non-root node labeled $S$ is processed. The above mentioned steps can be done
 by constructing the subgraph induced on $S$. This can be done in $O(|S|^2)$ time. Since
 this is not a root node, $|S| \leq \alpha$ (this is the main utility of the degeneracy
-ordering). Thus, the running time of $\scr(G) = O(\alpha^2|\bT|) = O(\alpha^2 |\sct(G)|)$.
+ordering). Thus, the running time of $SCTBuilder(G) = O(\alpha^2|\bT|) = O(\alpha^2 |SCT(G)|)$.
 
 Now we look at PIVOTER. Note that the subsequent counting steps do *not*
 need the node labels in **$T$**; for all path $T$, one only needs $P(T)$ and $H(T)$.
@@ -604,63 +594,65 @@ The paths can be looped over by a DFS from the root. For each path,
 there are precisely $|P(T)|+1$ updates to global clique counts,
 and at most $|H(T) \cup P(T)| \times (|P(T)|+1)$ updates to per-vertex clique counts.
 The length of $T$ is at most $\alpha$, and thus both these quantities
-are $O(\alpha^2)$. Thus, the total running time is $O(\alpha^2 |\sct(G)|)$ for global and per-vertex clique counting.
+are $O(\alpha^2)$. Thus, the total running time is $O(\alpha^2 |SCT(G)|)$ for global and per-vertex clique counting.
 
-Similarly, for each path, at most $|H(T) \cup P(T)|^2 \times (|P(T)|+1)$ updates are made to per-edge clique counts. This quantity is $O(\alpha^3)$. Thus, the total running time is $O(\alpha^3 |\sct(G)|)$.
+Similarly, for each path, at most $|H(T) \cup P(T)|^2 \times (|P(T)|+1)$ updates are made to per-edge clique counts. This quantity is $O(\alpha^3)$. Thus, the total running time is $O(\alpha^3 |SCT(G)|)$.
 
-**Running time (in terms of $n$ and $\alpha$):** One crucial difference between the algorithm of Bron-Kerbosch and \scr{} is that in Bron-Kerbosch, the pivot vertex can be chosen not only from $S$ but also from a set of already processed vertices. Hence, the tree obtained in Bron-Kerbosch can potentially be smaller than that of PIVOTER. Despite this difference, the recurrence and bound on the worst case running time of $\scr{}$ is the same as Bron-Kerbosch. 
+**Running time (in terms of $n$ and $\alpha$):** One crucial difference between the algorithm of Bron-Kerbosch and $SCTBUILDER$ is that in Bron-Kerbosch, the pivot vertex can be chosen not only from $S$ but also from a set of already processed vertices. Hence, the tree obtained in Bron-Kerbosch can potentially be smaller than that of PIVOTER. Despite this difference, the recurrence and bound on the worst case running time of $SCTBUILDER$ is the same as Bron-Kerbosch. 
 
-\begin{theorem} {% label thm:main-BK %} Worst case running time of \scr{} is $O(n3^{\alpha/3})$. 
-\end{theorem}
+{% theorem main-BK %}
+Worst case running time of $SCTBUILDER$ is $O(n3^{\alpha/3})$. 
+{% endtheorem %}
 
-\begin{proof}
-Let $T(s)$ be the worst case running time required by \scr{} to process $S$ where $s=|S|$.
+{% proof %}
+Let $T(s)$ be the worst case running time required by $SCTBUILDER$ to process $S$ where $s=|S|$.
 
 Let $R=S \setminus N(p)$. Let $T_r(s)$ be the worst case running time of processing $S$ when $|R|=r$. Note that when $S$ is being processed it creates a total of $r$ child nodes. 
 
 Thus, $T(s)=\max\limits_r\{T_r(s)\}$. 
 
-Note that all steps other than \Step{pcall} and \Step{nncall} take time $O(s^2)$. Say, they take time $p_1s^2$, where $p_1>0$ is a constant.
+Note that all steps other than {% step pcall %} and {% step nncall %} take time $O(s^2)$. Say, they take time $p_1s^2$, where $p_1>0$ is a constant.
 
 Thus, we have that:
-\begin{align}
-    T_r(s) \leq \sum\limits_{v \in R}{T(|N(S,v)|) 
-    + p_1s^2}.
-\end{align}
+
+$$
+T_r(s) \leq \sum\limits_{v \in R}{T(|N(S,v)|) 
++ p_1s^2}.
+$$
 
 Moreover, 
-\begin{align}
-    |N(S,v)| \leq s-r \leq s-1,\forall v \in R. 
-\end{align}
+
+$$
+|N(S,v)| \leq s-r \leq s-1,\forall v \in R. 
+$$
 
 This is because $p$ has the largest neighborhood in $S$ and $p$'s neighborhood is of size atmost $s-r$, and since $|S|\geq 1, s-r \leq s-1$.
 
-Thus, Lemma 2 and Theorem 3 from {% cite Tomita04 %} hold, which implies that $T(s)=O(3^{s/3})$. Since there are $n$ vertices and their outdegree is atmost $\alpha$, the worst case running time of \scr{} (which is also an upper bound for $|sct(G)|$) is $nT(\alpha)=O(n3^{\alpha/3})$ and hence, worst case running times of PIVOTER for obtaining global, per-vertex and per-edge clique counts are $O(n\alpha 3^{\alpha/3})$, $O(n\alpha^2 3^{\alpha/3})$ and $O(n\alpha^3 3^{\alpha/3})$, respectively.
+Thus, Lemma 2 and Theorem 3 from {% cite Tomita04 %} hold, which implies that $T(s)=O(3^{s/3})$. Since there are $n$ vertices and their outdegree is atmost $\alpha$, the worst case running time of $SCTBUILDER$ (which is also an upper bound for $|sct(G)|$) is $nT(\alpha)=O(n3^{\alpha/3})$ and hence, worst case running times of PIVOTER for obtaining global, per-vertex and per-edge clique counts are $O(n\alpha 3^{\alpha/3})$, $O(n\alpha^2 3^{\alpha/3})$ and $O(n\alpha^3 3^{\alpha/3})$, respectively.
 
-\end{proof}
+{% endproof %}
 
 **Storage cost:** Currently, PIVOTER is represented through
-two parts: the construction of $\sct(G)$ and then processing it to get
+two parts: the construction of $SCT(G)$ and then processing it to get
 clique counts. Conceptually, this is cleaner to think about and it makes the proof
-transparent. On the other hand, it requires storing $\sct(G)$, which is potentially
+transparent. On the other hand, it requires storing $SCT(G)$, which is potentially
 larger than the input graph. A more space efficient implementation is obtained
 by combining these steps. 
 
 We do not give full pseudocode, since it is somewhat
 of a distraction. (The details can be found in the code.) Essentially,
-instead of constructing $\sct(G)$ completely in breadth-first manner,
+instead of constructing $SCT(G)$ completely in breadth-first manner,
 we construct it depth-first through recursion. This will loop
 over all the paths of **$T$**, but only store a single path at any stage.
 The updates to the clique counts are done as soon as any root to leaf
 path is constructed. The total storage of a path is the storage
 for all the labels on a path. As mentioned earlier in the
-proof of \Thm{main}, all non-root
+proof of {% thm main %}, all non-root
 nodes are labeled with sets of size at most $\alpha$. The length
 of the path is at most $\alpha$, so the total storage is $O(\alpha^2)$.
 A classic bound on the degeneracy is $\alpha \leq \sqrt{2m}$ (Lemma 1 of{% cite ChNi85 %}),
 so the storage, including the input, is $O(m+n)$.
 
-\end{proof}
 
 **Parallel version of PIVOTER:** While this is not central to our results,
 we can easily implement a parallel version of PIVOTER for *global* clique counts.
@@ -668,7 +660,7 @@ We stress that our aim was not to delve into complicated parallel algorithms,
 and merely to see if there was a way to parallelize the counting involving minimal code changes.
 The idea is simple, and is an easier variant of the parallelism in kCList{% cite DBS18 %}. 
 Observe that the children of the root
-of $\sct(G)$ correspond to finding cliques in the sets $N^+(v)$, for all $v$.
+of $SCT(G)$ correspond to finding cliques in the sets $N^+(v)$, for all $v$.
 Clique counting in each of these sets can be treated as an independent problem,
 and can be handled by an independent thread/subprocess. Each subprocess
 maintains its own array of global clique counts. The final result
@@ -680,7 +672,7 @@ afford (storage-wise) to store an entire copy of the local count data structure.
 The aggregation step would be more challenging. Nonetheless, it should be feasible
 for each subprocess to create local counts for $N^+(v)$, and appropriately
 aggregate all counts. We leave this for future work.
-% We also implement a node-parallel version of this algorithm by running the "for" loop of \Step{for-parallel} in parallel for each $v \in V$. We only implement for counting $k-$cliques and not for per-vertex and per-edge $k-$cliques. The update of the result data structures $T_k, T_V, T_E$ cannot happen in parallel and to deal with this, we use the inbuilt primitives which essentially create a copy of these data structures, one copy for each thread. Since these structures can become very large when obtaining per-vertex and per-edge counts, we skip parallelization for them. Note that this is a solvable problem since at any time, a given thread is dealing with a subgraph of size atmost $\alpha$ and hence, instead of replicating the entire resultant data structure, we can simply create a smaller data structure for each thread and combine the results once all the threads have finished executing. However, this optimization is out of the scope of this paper. 
+% We also implement a node-parallel version of this algorithm by running the "for" loop of {% step for-parallel %} in parallel for each $v \in V$. We only implement for counting $k-$cliques and not for per-vertex and per-edge $k-$cliques. The update of the result data structures $T_k, T_V, T_E$ cannot happen in parallel and to deal with this, we use the inbuilt primitives which essentially create a copy of these data structures, one copy for each thread. Since these structures can become very large when obtaining per-vertex and per-edge counts, we skip parallelization for them. Note that this is a solvable problem since at any time, a given thread is dealing with a subgraph of size atmost $\alpha$ and hence, instead of replicating the entire resultant data structure, we can simply create a smaller data structure for each thread and combine the results once all the threads have finished executing. However, this optimization is out of the scope of this paper. 
 
 **Counting $k$-cliques for a specific $k$:** PIVOTER can be modified to obtain clique counts upto a certain user specified $k$ (instead of counting for all $k$). Whenever the number of links marked $\mathfrak{h}$ becomes greater than $k$ in any branch of the computation, we simply truncate the branch (as further calls in the branch will only yield cliques of larger sizes). 
 
@@ -903,8 +895,8 @@ for $k = 9$ and beyond. We note the astronomical number
 of 10-cliques ($> 10^{19}$), which makes enumeration infeasible, but PIVOTER
 was able to get the exact count.
 
-**Size of $\sct(G)$:** In {% fig treesize %}, we plot
-the number of nodes of $\sct(G)$ as a function of the number
+**Size of $SCT(G)$:** In {% fig treesize %}, we plot
+the number of nodes of $SCT(G)$ as a function of the number
 of edges in $G$. We observe that for most graphs, the size
 is quite close to $m$, explaining why PIVOTER is efficient.
 

@@ -407,10 +407,11 @@ ordering to convert $G$ into a DAG. The largest *out-degree* is the
 graph degeneracy, denoted $\alpha$. We state this fact as a lemma,
 which is considered a classic fact in graph theory and network science.
 
-\begin{lemma} {% label lem:degen %}{% cite MB83 %} Given a graph $G = (V,E)$, there is a 
+{% lemma degen %}
+{% cite MB83 %} Given a graph $G = (V,E)$, there is a 
 linear time algorithm that constructs an ayclic orientation of $G$
 such that all outdegrees are at most $\alpha$.
-\end{lemma}
+{% endlemma %}
 
 The most important construct we design is the *Succinct Clique Tree* (SCT) **$T$**.
 The SCT stores special node and link attributes that are key to getting global and local
@@ -459,27 +460,21 @@ nodes and links created.
 SCTBuilder($G$)
 Output: SCT of $G$ 
 <!-- algorithm-more -->
-Find degeneracy orientation of $G$, and let $N^+(v)$ denote the outneighborhood of a vertex $v$.
-Initialize tree **$T$** with root labeled $V$.
-For every $v \in V$, create a child of root with node label $N^+(v)$. Set the edge label to $(v,\mathfrak{h})$. 
-Insert all these child nodes into a queue $\bQ$.
-While $\bQ$ is non-empty:
-    Dequeue to get node $\gamma$. Let node label be $S$.
-    If $S = \emptyset$, continue.
-    Find $p \in S$ with largest $N(S,p)$ value. {% label step:pivot %}
-    Create child node of $\gamma$ with vertex label $N(S,p)$. Add this node to **$T$** and set the link
-label (of the new link) to $(p,\mathfrak{p})$. Also, add this node to $\bQ$. {% label step:pcall %}\\
-    Let $S \setminus (p \cup N(p)) = \{v_1, v_2, \ldots, v_\ell\}$ (listed
-in arbitrary order). \\
-    For each $i \leq \ell$: create child node of $\gamma$ labeled
-$N(S,v_i) \setminus \{v_1, v_2, \ldots, v_{i-1}\}$. Add this node to **$T$** and set link label to $(v_i, \mathfrak{h})$.
-Also add this node to $\bQ$. {% label step:nncall %}\\
-Return **$T$**. 
-% Declare global hash tables $T_k, T_V, T_E$.  \\
-% Order $V$ by degeneracy ordering and convert $G$ into a DAG. For $v\in V$, let $N^+_v$ denote the outneighborhood of $v$. \\
-% For $v$ in $V$: \\ {% label step:for-parallel %}
-%     $\mainalgrec{(\{v\}, \emptyset, N^+_v)}$ 
-\end{algorithm}
+Find degeneracy orientation of $G$, and let $N^+(v)$ denote the outneighborhood of a vertex $v$.  
+Initialize tree **$T$** with root labeled $V$.  
+For every $v \in V$, create a child of root with node label $N^+(v)$. Set the edge label to $(v,\mathfrak{h})$.  
+Insert all these child nodes into a queue $\bQ$.  
+While $\bQ$ is non-empty:  
+    Dequeue to get node $\gamma$. Let node label be $S$.  
+    If $S = \emptyset$, continue.  
+    Find $p \in S$ with largest $N(S,p)$ value. {% label step:pivot %}  
+    Create child node of $\gamma$ with vertex label $N(S,p)$. Add this node to **$T$** and set the link label (of the new link) to $(p,\mathfrak{p})$. Also, add this node to $\bQ$. {% label step:pcall %}  
+    Let $S \setminus (p \cup N(p)) = \{v_1, v_2, \ldots, v_\ell\}$ (listed in arbitrary order).  
+    For each $i \leq \ell$: create child node of $\gamma$ labeled  
+$N(S,v_i) \setminus \{v_1, v_2, \ldots, v_{i-1}\}$. Add this node to **$T$** and set link label to $(v_i, \mathfrak{h})$.  
+Also add this node to $\bQ$. {% label step:nncall %}  
+Return **$T$**.  
+{% endalgorithm %}
 
 As mentioned earlier, the child of the node labeled $S$ has one child corresponding
 to the pivot vertex $p$, and children for all non-neighbors of $p$. Importantly,
@@ -488,11 +483,12 @@ unique representations of all the cliques.
 
 Now for our main theorem about SCT.
 
-\begin{theorem} {% label thm:scr %} Every clique $C$ (in $G$) can be *uniquely*
+{% theorem scr %}
+Every clique $C$ (in $G$) can be *uniquely*
 represented as $H(T) \cup Q$, where $Q \subseteq P(T)$ and $T$ is a root to leaf path in **$T$**.
 (Meaning, for any other root to leaf path $T' \neq T$, $\forall Q \subseteq P(T')$,
 $C \neq H(T') \cup Q$.)
-\end{theorem}
+{% endtheorem %}
 
 We emphasize the significance of this theorem. Every root to leaf
 path $T$ represents a clique, given by the vertex set $H(T) \cup P(T)$. Every clique $C$ 
@@ -509,7 +505,7 @@ follows by setting $\gamma$ to the root.
 
 The base case is vacuously tree, since for empty $S$, all relevant sets are empty.
 Now for the induction. We will have three cases. Let $p$ be the pivot chosen
-in \Step{pivot}. (If $S$ is the root, then there is no pivot. We will directly go
+in {% step pivot %}. (If $S$ is the root, then there is no pivot. We will directly go
 to Case (iii) below.)
 
 *Case (i): $p \in C$.* By construction, there is a link labeled $(p,\mathfrak{p})$
@@ -589,20 +585,22 @@ of global counts.
 
 Pick a vertex $v \in H(T)$. For every subset of $P(T)$, we get a different
 clique containing $v$ (that is uniquely represented by {% thm scr %}). This 
-proves the correctness of \Step{ht}. For a vertex $v \in P(T)$,
+proves the correctness of {% step ht %}. For a vertex $v \in P(T)$,
 we look at all subsets containing $v$. Equivalently, we get a different
 represented clique containing $v$ for every subset of $P(T)\setminus v$. This 
-proves the correctness of \Step{pt}.
+proves the correctness of {% step pt %}.
 
 Pick an edge $e=(u,v), u \in H(T), v \in H(T)$. For every subset of $P(T)$, we get a different
 clique containing $e$ (that is uniquely represented by {% thm scr %}). This 
-proves the correctness of \Step{hht}. For an edge $e=(u,v), u \in P(T), v \in H(T)$,
+proves the correctness of {% step hht %}. For an edge $e=(u,v), u \in P(T), v \in H(T)$,
 we look at all subsets of $P(T)$ containing $u$. Equivalently, we get a different
 represented clique containing $e$ for every subset of $P(T)\setminus u$. This 
-proves the correctness of \Step{pht}. For an edge $e=(u,v), u \in P(T), v \in P(T)$,
+proves the correctness of {% step pht %}. For an edge $e=(u,v), u \in P(T), v \in P(T)$,
 we look at all subsets of $P(T)$ containing both $u$ and $v$. Equivalently, we get a different
 represented clique containing $e$ for every subset of $P(T)\setminus v \setminus u$. This 
-proves the correctness of \Step{ppt}.
+proves the correctness of {% step ppt %}.
+
+{% endproof %}
 
 **Running time (in terms of $|SCT(G)|$):** Consider the procedure $SCTBuilder(G)$. Note that the size of **$T$**
 is at least $n$, so we can replace any running time dependence on $n$ by $|\bT|$.
@@ -636,7 +634,7 @@ Let $R=S \setminus N(p)$. Let $T_r(s)$ be the worst case running time of process
 
 Thus, $T(s)=\max\limits_r\{T_r(s)\}$. 
 
-Note that all steps other than \Step{pcall} and \Step{nncall} take time $O(s^2)$. Say, they take time $p_1s^2$, where $p_1>0$ is a constant.
+Note that all steps other than {% step pcall %} and {% step nncall %} take time $O(s^2)$. Say, they take time $p_1s^2$, where $p_1>0$ is a constant.
 
 Thus, we have that:
 
@@ -678,7 +676,6 @@ of the path is at most $\alpha$, so the total storage is $O(\alpha^2)$.
 A classic bound on the degeneracy is $\alpha \leq \sqrt{2m}$ (Lemma 1 of{% cite ChNi85 %}),
 so the storage, including the input, is $O(m+n)$.
 
-{% endproof %}
 
 **Parallel version of PIVOTER:** While this is not central to our results,
 we can easily implement a parallel version of PIVOTER for *global* clique counts.
@@ -698,7 +695,7 @@ afford (storage-wise) to store an entire copy of the local count data structure.
 The aggregation step would be more challenging. Nonetheless, it should be feasible
 for each subprocess to create local counts for $N^+(v)$, and appropriately
 aggregate all counts. We leave this for future work.
-% We also implement a node-parallel version of this algorithm by running the "for" loop of \Step{for-parallel} in parallel for each $v \in V$. We only implement for counting $k-$cliques and not for per-vertex and per-edge $k-$cliques. The update of the result data structures $T_k, T_V, T_E$ cannot happen in parallel and to deal with this, we use the inbuilt primitives which essentially create a copy of these data structures, one copy for each thread. Since these structures can become very large when obtaining per-vertex and per-edge counts, we skip parallelization for them. Note that this is a solvable problem since at any time, a given thread is dealing with a subgraph of size atmost $\alpha$ and hence, instead of replicating the entire resultant data structure, we can simply create a smaller data structure for each thread and combine the results once all the threads have finished executing. However, this optimization is out of the scope of this paper. 
+% We also implement a node-parallel version of this algorithm by running the "for" loop of {% step for-parallel %} in parallel for each $v \in V$. We only implement for counting $k-$cliques and not for per-vertex and per-edge $k-$cliques. The update of the result data structures $T_k, T_V, T_E$ cannot happen in parallel and to deal with this, we use the inbuilt primitives which essentially create a copy of these data structures, one copy for each thread. Since these structures can become very large when obtaining per-vertex and per-edge counts, we skip parallelization for them. Note that this is a solvable problem since at any time, a given thread is dealing with a subgraph of size atmost $\alpha$ and hence, instead of replicating the entire resultant data structure, we can simply create a smaller data structure for each thread and combine the results once all the threads have finished executing. However, this optimization is out of the scope of this paper. 
 
 **Counting $k$-cliques for a specific $k$:** PIVOTER can be modified to obtain clique counts upto a certain user specified $k$ (instead of counting for all $k$). Whenever the number of links marked $\mathfrak{h}$ becomes greater than $k$ in any branch of the computation, we simply truncate the branch (as further calls in the branch will only yield cliques of larger sizes). 
 
