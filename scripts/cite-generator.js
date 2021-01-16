@@ -20,10 +20,23 @@ function find_close_bracket(s, from, tips) {
     process.exit(-1);
 }
 
+function replace_special(s) {
+    let rSPEC = /\{\\(['"c])\{?([a-zA-Z])\}?\}/g;
+    return s.replace(rSPEC, function(full, flag, letter) {
+        if (flag === 'c') {
+            return `&${letter}cedil;`;
+        } else if (flag === '"') {
+            return `&${letter}uml;`;
+        } else if (flag === "'") {
+            return `&${letter}acute;`;
+        }
+    });
+}
+
 function parse_bibtex(s, bibtype, cite) {
     let res = {
-        Type: bibtype,
-        Key: cite
+        type: bibtype,
+        key: cite
     };
     s = s.replace(/\n/g, ' ');
     let c = 0;
@@ -32,7 +45,7 @@ function parse_bibtex(s, bibtype, cite) {
     for (i++; i < s.length; i++) {
         let p = i;
         while (i < s.length && s[i] !== '=') i++;
-        let l = s.substring(p, i).trim();
+        let l = s.substring(p, i).trim().toLowerCase();
         i++;
         p = i;
         while (i < s.length && c >= 0 && (c !== 0 || s[i] !== ',')) {
@@ -45,6 +58,7 @@ function parse_bibtex(s, bibtype, cite) {
             r = r.slice(1, r.length - 1).trim();
         if (r[r.length - 1] === '}')
             r = r.slice(0, r.length - 1).trim();
+        r = replace_special(r);
         res[l] = r;
         if (s[i] === '}') c--;
         if (c === -1 && s[i] === '}') break;
@@ -84,13 +98,13 @@ function generate_cites(data) {
                 let si = '<li class="cite-item">';
                 si += `<div class="cite-label" id="cite-${i+1}">[${i+1}]</div>`;
                 si += '<div class="cite-content">';
-                if (t.Author) si += `<span class="cite-author">${t.Author}</span>`;
-                if (t.Year) si += `<span class="cite-year">${t.Year}</span>`;
-                if (t.Title) si += `<span class="cite-title">${t.Title}</span>`;
-                if (t.Journal) si += `<span class="cite-journal">${t.Journal}</span>`;
-                if (t.Volume) si += `<span class="cite-volume">${t.Volume}</span>`;
-                if (t.Timestamp) si += `<span class="cite-timestamp">(${t.Timestamp})</span>`;
-                if (t.Pages) si += `<span class="cite-pages">(${t.Pages})</span>`;
+                if (t.author) si += `<span class="cite-author">${t.author}. </span>`;
+                if (t.year) si += `<span class="cite-year">${t.year}. </span>`;
+                if (t.title) si += `<span class="cite-title">${t.title}. </span>`;
+                if (t.journal) si += `<span class="cite-journal">${t.journal} </span>`;
+                if (t.volume) si += `<span class="cite-volume">${t.volume} </span>`;
+                if (t.timestamp) si += `<span class="cite-timestamp">(${t.timestamp}), </span>`;
+                if (t.pages) si += `<span class="cite-pages">(${t.pages})</span>`;
                 si += '</div>';
                 si += '</li>'
                 s += si;
