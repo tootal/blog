@@ -9,7 +9,11 @@ const path = require('path')
 fs.readdirSync(__dirname)
   .filter((t) => t !== 'index.js' && t.endsWith('.js'))
   .map((t) => {
-    const tag = path.basename(t, '.js')
-    const func = require('./' + tag)(hexo);
-    hexo.extend.tag.register(tag, func, func.length === 2);
+    const tagname = path.basename(t, '.js');
+    const tag = require('./' + tagname);
+    const tagnames = tag.names || [tagname];
+    const func = tag(hexo);
+    for (let name of tagnames) {
+      hexo.extend.tag.register(name, func, func.length === 2);
+    }
   });

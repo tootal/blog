@@ -94,30 +94,24 @@ or parallelism to speed up their counting. Besides the obvious problem that they
 for larger $k$, it is difficult to obtain more refined clique counts (such 
 as counts for every vertex or every edge).
 
-\begin{figure*}[t!]
-\begin{subfigure}[b]{0.33\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{Figures/timings-big4-maxk.pdf}{}
-    \caption{\footnotesize{Timings}}
-    {% label fig:timings %}
-    \end{subfigure}
-    ~
-    \begin{subfigure}[b]{0.33\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{Figures/as-skitter-occurrences.pdf}{}
-    \caption{\footnotesize{Frequency distribution}}
-    {% label fig:soc-pokec-occurrences %}
-    \end{subfigure}
-~
-    \begin{subfigure}[b]{0.33\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{Figures/web-Stanford-occurrences-5.pdf}{}
-    \caption{\footnotesize{Frequency distribution}}
-    {% label fig:web-Stanford-occurrences %}
-    \end{subfigure}
+{% figure %}
 
-            \caption{ {% figure timings %} shows the comparison of time taken (in seconds) by PIVOTER for 4 of our largest graphs to count \textit{all} $k-$cliques with the time taken by kClist40 (the parallel version of the state of the art algorithm kClist that uses 40 threads) to count the number of $k-$cliques, where $k$ is the maximum clique size in each graph. For Stanford, BerkStan, as-skitter, orkut, the maximum clique sizes were 61, 201, 67 and 51 resp. PIVOTER terminated for most graphs in minutes, (except for orkut, for which it took about 2 hours) whereas kClist40 had not terminated even after 3 days, giving a speedup of 100x to 10000x. {% figure timings %} also shows the time taken by PIVOTER to obtain the per-vertex and per-edge $k-$clique counts. They were within a factor of the time taken to obtain global $k-$clique counts. {% figure soc-pokec-occurrences %} and  {% figure web-Stanford-occurrences %} shows the frequency distribution of $k$-cliques i.e. for every number $r$ on the x-axis, the y-axis shows the number of vertices that participate in $r$ $k$-cliques, for $k \in [5, 10, 15, 20, 25]$ for as-skitter and web-Stanford graphs. } 
-\end{figure*}
+{% subfigure timings %}
+  ![Timings](timings-big4-maxk.png)
+{% endsubfigure %}
+
+{% subfigure soc-pokec-occurrences %}
+  ![Frequency distribution](as-skitter-occurrences.png)
+{% endsubfigure %}
+
+{% subfigure web-Stanford-occurrences %}
+  ![Frequency distribution](web-Stanford-occurrences-5.png)
+{% endsubfigure %}
+
+{% fig timings %} shows the comparison of time taken (in seconds) by PIVOTER for 4 of our largest graphs to count *all* $k-$cliques with the time taken by kClist40 (the parallel version of the state of the art algorithm kClist that uses 40 threads) to count the number of $k-$cliques, where $k$ is the maximum clique size in each graph. For Stanford, BerkStan, as-skitter, orkut, the maximum clique sizes were 61, 201, 67 and 51 resp. PIVOTER terminated for most graphs in minutes, (except for orkut, for which it took about 2 hours) whereas kClist40 had not terminated even after 3 days, giving a speedup of 100x to 10000x. {% fig timings %} also shows the time taken by PIVOTER to obtain the per-vertex and per-edge $k-$clique counts. They were within a factor of the time taken to obtain global $k-$clique counts. {% fig soc-pokec-occurrences %} and  {% fig web-Stanford-occurrences %} shows the frequency distribution of $k$-cliques i.e. for every number $r$ on the x-axis, the y-axis shows the number of vertices that participate in $r$ $k$-cliques, for $k \in [5, 10, 15, 20, 25]$ for as-skitter and web-Stanford graphs.
+
+{% endfigure %}
+
 
 ### Problem Statement
 
@@ -197,7 +191,7 @@ and various local counts in the graph. Remarkably, we can get all counts without
 **Excellent practical performance:** We implement PIVOTER on a commodity machine.
 For global clique counting, PIVOTER is able to process graphs of up to tens of millions
 of edges in *minutes*. Previous results either work only for small values of $k$ (typically up to $10$) or take much longer.
-Consider {% figure timings %}, where the time of PIVOTER is compared
+Consider {% fig timings %}, where the time of PIVOTER is compared
 with that of kClist (the state of the art parallel algorithm for clique counting){% cite DBS18 %}. 
 In the instances shown kClist did not terminate even after running for 3 days. By
 contrast, for the largest {\tt com-orkut} social network with
@@ -206,11 +200,11 @@ more than 100M edges, PIVOTER gets all values of $C_k$ within two hours.
 
 **Feasible computation of local counts:** PIVOTER is quite efficient for per-vertex counts, and runs
 in at most twice the time for global counts. The times for local clique counting
-are given in {% figure timings %}. Even for the extremely challenging problem
+are given in {% fig timings %}. Even for the extremely challenging problem
 of per-edge counts, in most instances PIVOTER gets these numbers in a few hours.
 (For the {\tt com-orkut} social network though, it takes a few days.) 
 
-This allows us to get data shown in {% figure soc-pokec-occurrences %} and {% figure web-Stanford-occurrences %}, 
+This allows us to get data shown in {% fig soc-pokec-occurrences %} and {% fig web-Stanford-occurrences %}, 
 that plots the frequency distribution
 of $k$-cliques. (In other words, for every number $r$, we plot the number of vertices
 that participate in $r$ $k$-cliques.) As mentioned earlier, this information is
@@ -882,7 +876,7 @@ com-orkut  & > 28800 &  > 172800  &5174\\ %36902 days
     {% label fig:trends-dblp %}
     \end{subfigure}
      
-\caption{ {% figure treesize %} shows the number of nodes in the SCT vs the number of edges (m) for different graphs. The running time of PIVOTER is directly proportional to the SCT size which seems to be roughly linear in the number of edges. {% figure trends %} shows the trends in clique counts for a number of graphs. For some of the graphs, the complete distribution of their clique counts has been obtained for the first time. {% figure trends-dblp %} shows the trends in the clique counts of 2 different versions over time of the dblp graph. }
+\caption{ {% fig treesize %} shows the number of nodes in the SCT vs the number of edges (m) for different graphs. The running time of PIVOTER is directly proportional to the SCT size which seems to be roughly linear in the number of edges. {% fig trends %} shows the trends in clique counts for a number of graphs. For some of the graphs, the complete distribution of their clique counts has been obtained for the first time. {% fig trends-dblp %} shows the trends in the clique counts of 2 different versions over time of the dblp graph. }
 
 \end{figure*}
 
@@ -933,7 +927,7 @@ for $k = 9$ and beyond. We note the astronomical number
 of 10-cliques ($> 10^{19}$), which makes enumeration infeasible, but PIVOTER
 was able to get the exact count.
 
-**Size of $\sct(G)$:** In {% figure treesize %}, we plot
+**Size of $\sct(G)$:** In {% fig treesize %}, we plot
 the number of nodes of $\sct(G)$ as a function of the number
 of edges in $G$. We observe that for most graphs, the size
 is quite close to $m$, explaining why PIVOTER is efficient.
@@ -947,7 +941,7 @@ outside the scope of this work for detailed demonstrations, but
 we show a few examples in this section.
 
 As mentioned earlier, local clique counts are an important aspect
-of graph processing. In {% figure soc-pokec-occurrences %} and {% figure web-Stanford-occurrences %}, we plot the per-vertex
+of graph processing. In {% fig soc-pokec-occurrences %} and {% fig web-Stanford-occurrences %}, we plot the per-vertex
 clique distributions, also called the *graphlet* degree
 distribution in bioinformatics{% cite Pr07 %} for the as-skitter and web-Stanford graphs. We choose values
 of $k = 5, 10, 15, 20, 25$. Then, we plot the function $f_k(b)$
@@ -957,13 +951,13 @@ has a nicely decaying $f_k$ function, there is much more noise
 in web-Stanford. It would be interesting to design models
 that can capture such behavior in the local clique counts.
 
-In {% figure trends %}, we plot the $C_k$ values for a number of graphs.
+In {% fig trends %}, we plot the $C_k$ values for a number of graphs.
 We notice, for example, that the {\tt soc-pokec} network has a "flatter" distribution of $C_k$ for some of the initial values,
 while the {\tt com-orkut} graph looks much closer to a binomial distribution. The latter suggests that the bulk of cliques are coming
 from the maximum clique in the {\tt com-orkut} graph, but not
 so in the {\tt soc-pokec} graph.
 
-In {% figure trends-dblp %}, we plot the $k$-clique counts (vs $k$)
+In {% fig trends-dblp %}, we plot the $k$-clique counts (vs $k$)
 for two different versions across time for the DBLP citation network{% cite Aminer %}. 
 Interestingly, despite the later version only having less than twice as many edges, 
 the clique distribution (plotted in semilog) has a much bigger difference. It appears
