@@ -2,7 +2,6 @@
 
 // 生成参考文献
 const fs = require('hexo-fs');
-const { parse } = require('path');
 const path = require('path');
 const logger = require('hexo-log')();
 
@@ -96,7 +95,7 @@ function generate_cites(data) {
             for (let i = 0; i < all_cites.length; i++) {
                 let t = all_cites_res[i];
                 let si = '<li class="cite-item">';
-                si += `<div class="cite-label" id="cite-${i+1}">[${i+1}]</div>`;
+                si += `<div class="cite-label" id="cite:${i+1}">[${i+1}]</div>`;
                 si += '<div class="cite-content">';
                 if (t.author) si += `<span class="cite-author">${t.author}. </span>`;
                 if (t.year) si += `<span class="cite-year">${t.year}. </span>`;
@@ -125,7 +124,7 @@ function generate_cites(data) {
                 process.exit(-1);
             }
             cite_id++; // index 1-base
-            s += `<a href="#cite-${cite_id}" class="cite-label">${cite_id}</a>`
+            s += `<a href="#cite:${cite_id}" class="cite-label">${cite_id}</a>`
         }
         s += "]</span>";
         return s;
@@ -134,6 +133,7 @@ function generate_cites(data) {
 
 hexo.extend.filter.register('before_post_render', function (data) {
     if (data.cite) {
+        fs.writeFile('test.md', data.content);
         generate_cites(data);
     }
     return data;

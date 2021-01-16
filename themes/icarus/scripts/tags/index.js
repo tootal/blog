@@ -14,6 +14,7 @@ fs.readdirSync(__dirname)
     const tagnames = tag.names || [tagname];
     const func = tag(hexo);
     for (let name of tagnames) {
+      func.tagname = name;
       hexo.extend.tag.register(name, func, func.length === 2);
     }
   });
