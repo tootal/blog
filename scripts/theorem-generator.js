@@ -2,6 +2,7 @@
 
 // 生成定理
 const logger = require('hexo-log')();
+const fs = require('hexo-fs');
 
 function generate_theorem(data) {
     let all_theorem = [];
@@ -17,10 +18,8 @@ function generate_theorem(data) {
             process.exit(-1);
         }
         all_theorem.push(theorem);
-        return `<div class="theorem" id="thm:${all_theorem.length}">
-                    THEOREM ${all_theorem.length}. 
-                    ${content}
-                </div>`;
+        return `<div class="theorem" id="thm:${all_theorem.length}">`
+        + `THEOREM ${all_theorem.length}. ${content}</div>`;
     });
     const rTHM = /\{% thm (.*?) %\}/g;
     data.content = data.content.replace(rTHM, function(full, thm) {

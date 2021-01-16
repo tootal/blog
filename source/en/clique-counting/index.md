@@ -18,7 +18,7 @@ date: 2021-01-14 20:43:51
 updated: 2021-01-14 20:43:51
 tagplugins:
   cite: index.bib
-  default: ['theorem', 'figure', 'lemma']
+  default: ['theorem', 'figure', 'lemma', 'algorithm', 'table']
 markdown:
   render:
     breaks: false
@@ -68,6 +68,8 @@ can be built without actually enumerating all cliques, and provides a succinct
 data structure from which exact clique statistics ($k$-clique counts, local counts)
 can be read off efficiently.
 
+<!-- more -->
+
 {% label sec:intro %}
 
 ## INTRODUCTION
@@ -86,7 +88,7 @@ work on exploiting clique counts for community detection and dense subgraph disc
 {% cite SaSePi14,Ts15,BeGlLe16,TPM17,lu2018community,YiBiKe19 %}.
 
 Despite much effort on this problem, it has been challenging to get scalable algorithms for
-clique counting.  
+clique counting.
 There is a large literature for counting $3$-cliques (triangles) and 
 some of these methods have been extended to counting cliques upto size $5${% cite JhSePi15, MarcusS10,AhNe+15,Escape %}. However, practical algorithms for counting cliques beyond size $5$ have proven to be much harder, and the reason for this is combinatorial explosion. Essentially, as $k$ increases, 
 the number of $k$-cliques blows up. 
@@ -98,17 +100,9 @@ as counts for every vertex or every edge).
 
 {% figure %}
 
-{% subfigure timings %}
-  ![Timings](timings-big4-maxk.png)
-{% endsubfigure %}
-
-{% subfigure soc-pokec-occurrences %}
-  ![Frequency distribution](as-skitter-occurrences.png)
-{% endsubfigure %}
-
-{% subfigure web-Stanford-occurrences %}
-  ![Frequency distribution](web-Stanford-occurrences-5.png)
-{% endsubfigure %}
+![timings](timings-big4-maxk.png "Timings")
+![soc-pokec-occurrences](as-skitter-occurrences.png "Frequency distribution")
+![web-Stanford-occurrences](web-Stanford-occurrences-5.png "Frequency distribution")
 
 {% fig timings %} shows the comparison of time taken (in seconds) by PIVOTER for 4 of our largest graphs to count *all* $k-$cliques with the time taken by kClist40 (the parallel version of the state of the art algorithm kClist that uses 40 threads) to count the number of $k-$cliques, where $k$ is the maximum clique size in each graph. For Stanford, BerkStan, as-skitter, orkut, the maximum clique sizes were 61, 201, 67 and 51 resp. PIVOTER terminated for most graphs in minutes, (except for orkut, for which it took about 2 hours) whereas kClist40 had not terminated even after 3 days, giving a speedup of 100x to 10000x. {% fig timings %} also shows the time taken by PIVOTER to obtain the per-vertex and per-edge $k-$clique counts. They were within a factor of the time taken to obtain global $k-$clique counts. {% fig soc-pokec-occurrences %} and  {% fig web-Stanford-occurrences %} shows the frequency distribution of $k$-cliques i.e. for every number $r$ on the x-axis, the y-axis shows the number of vertices that participate in $r$ $k$-cliques, for $k \in [5, 10, 15, 20, 25]$ for as-skitter and web-Stanford graphs.
 
@@ -437,8 +431,8 @@ $v$ will be an element of $S$.
 Consider a root to leaf path $T$ of $\bm T$. We have the following associated
 set of vertices. It is convenient to think of $T$ as a set of tree links.
 
-* $H(T)$: This is the set of vertices associated with "hold" call types, among the links of $T$. Formally, $H(T)$ is $\{v | \textrm{$(v,\mathfrak{h})$ is label of link in $T$}\}$.
-* $P(T)$: This is the set of vertices with "pivot" calls. Formally $P(T)$ is $\{v | \textrm{$(v,\mathfrak{p})$ is label of link in $T$}\}$.
+* $H(T)$: This is the set of vertices associated with "hold" call types, among the links of $T$. Formally, $H(T)$ is $\{v | (v,\mathfrak{h})$ is label of link in $T \}$.  
+* $P(T)$: This is the set of vertices with "pivot" calls. Formally $P(T)$ is $\{v | (v,\mathfrak{p})$ is label of link in $T \}$.
 
 We now describe our algorithm. We stress that the presentation here is different
 from the implementation. The following presentation is easier for mathematical
@@ -825,17 +819,9 @@ Table shows the time taken to count $k$-cliques for com-lj graph. For $k$=9, PIV
 
 {% figure %}
 
-{% subfigure treesize %}
-![Number of nodes in SCT vs m](Figures/nCalls_vs_m.png)
-{% endsubfigure %}
-
-{% subfigure trends %}
-![Trends in different graphs](Figures/trends.png)
-{% endsubfigure %}
-
-{% subfigure trends-dblp %}
-![Trends in dblp over time.](Figures/trends-dblp.png)
-{% endsubfigure %}
+![treesize](nCalls_vs_m.png "Number of nodes in SCT vs m")
+![trends](trends.png "Trends in different graphs")
+![trends-dblp](trends-dblp.png "Trends in dblp over time.")
 
 {% fig treesize %} shows the number of nodes in the SCT vs the number of edges (m) for different graphs. The running time of PIVOTER is directly proportional to the SCT size which seems to be roughly linear in the number of edges. {% fig trends %} shows the trends in clique counts for a number of graphs. For some of the graphs, the complete distribution of their clique counts has been obtained for the first time. {% fig trends-dblp %} shows the trends in the clique counts of 2 different versions over time of the dblp graph.
 

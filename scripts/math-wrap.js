@@ -1,10 +1,8 @@
 'use strict';
 
-// 导入hexo输出工具类
-const logger = require('hexo-log')();
-const webp = require('webp-converter');
-const path = require('path');
-const fs = require('hexo-fs');
+function isLetters(s){
+    return s.test(/^[A-Za-z]+$/);
+}
 
 // 使用html标签包裹公式
 function math_wrap(s) {
@@ -27,10 +25,11 @@ function math_wrap(s) {
                 i++;
             }
         else {
-            // 转义\\ (仅转义行内公式)
-            if (lineMath && s[i] === '\\' && i + 1 < n && s[i+1] === '\\') {
-                t += '\\\\';
+            // 转义行内公式的\（后面跟的必须是非字母）
+            if (lineMath && s[i] === '\\' && i + 1 < n && !/[a-zA-Z]/.test(s[i+1])) {
+                t += '\\'; // 额外加一个\
             }
+            // 转义\{
             t += s[i];
         }
     }

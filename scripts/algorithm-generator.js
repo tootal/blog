@@ -4,6 +4,7 @@
 const logger = require('hexo-log')();
 
 function generate_algorithm(data) {
+    return ;
     let all_theorem = [];
     const rTHEO = /\{%\s*theorem (.*?)\s*%\}([\w\W\s\S]*?)\{% endtheorem %\}/g;
     data.content = data.content.replace(rTHEO, function(full, thm, content) {
