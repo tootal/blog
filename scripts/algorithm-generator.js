@@ -1,37 +1,61 @@
 'use strict';
 
 // 生成算法
+// 用法：
+// {% algorithm %}
+// algorithm head (option)
+// <!-- begin -->
+// algorithm body
+// <!-- end -->
+// algorithm foot (option)
+// {% endalgorithm %}
+
+// algorithm body会自动处理换行与空格
+
 const logger = require('hexo-log')();
+const fs = require('hexo-fs');
+
+function count_lead_space(s) {
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] !== ' ') return i;
+    }
+    return s.length;
+}
 
 function generate_algorithm(data) {
-    return ;
-    let all_theorem = [];
-    const rTHEO = /\{%\s*theorem (.*?)\s*%\}([\w\W\s\S]*?)\{% endtheorem %\}/g;
-    data.content = data.content.replace(rTHEO, function(full, thm, content) {
-        let theorem = thm.trim();
-        if (theorem === '') {
-            logger.error(`Empty theorem id: ${cites[0]}`);
-            process.exit(-1);
-        }
-        if (theorem in all_theorem) {
-            logger.error(`Duplicated theorem id: ${theorem}`);
-            process.exit(-1);
-        }
-        all_theorem.push(theorem);
-        return `<div class="theorem" id="thm:${all_theorem.length}">
-                    THEOREM ${all_theorem.length}. 
-                    ${content}
-                </div>`;
-    });
-    const rTHM = /\{% thm (.*?) %\}/g;
-    data.content = data.content.replace(rTHM, function(full, thm) {
-        let thm_id = all_theorem.indexOf(thm.trim());
-        if (thm_id === -1) {
-            logger.error('Can not found theorem ', thm.trim());
-            process.exit(-1);
-        }
-        thm_id++;
-        return `<a class="theorem" href="#thm:${thm_id}">Theorem ${thm_id}</a>`;
+    let algo_id = 0;
+    const rTHEO = /\{% algorithm %\}([\w\W\s\S]*?)\{% endalgorithm %\}/g;
+    data.content = data.content.replace(rTHEO, function(full, content) {
+        algo_id++;
+        const rBODY = /([\w\W\s\S]*?)<!-- begin -->([\w\W\s\S]*?)<!-- end -->([\w\W\s\S]*)/g;
+        content = content.replace(rBODY, function(full, head, body, foot) {
+            let s = `<table class="algorithm" id="algo:${algo_id}">`;
+            head = head.trim();
+            body = body.trim();
+            foot = foot.trim();
+            if (head !== '') {
+                head = hexo.render.renderSync({ text: head, engine: 'markdown' });
+                s += `<thead><tr><th colspan="2">${head}</th></tr></thead>`;
+            }
+            // 按行分隔body
+            body = body.split('\n');
+            // body = hexo.render.renderSync({ text: body, engine: 'markdown' });
+            let code = '';
+            for (let i = 0; i < body.length; i++) {
+                let indent = count_lead_space(body[i]);
+                let line =  hexo.render.renderSync({ text: body[i].trim(), engine: 'markdown' });
+                code += `<tr><td><span class="line">${i+1}</span></td>`
+                + `<td style="padding-left: ${0.5*indent}em">${line}</td></tr>`;
+            }
+            s += `<tbody>${code}</tbody>`;
+            if (foot !== '') {
+                foot = hexo.render.renderSync({ text: foot, engine: 'markdown' });
+                s += `<tfoot><tr><td colspan="2">${foot}</td></tr></tfoot>`;
+            }
+            s += '</table>';
+            return `<div>${s}</div>`;
+        });
+        return content;
     });
 }
 

@@ -452,9 +452,9 @@ time a node is processed, the algorithm creates its children and labels all the 
 nodes and links created.
 
 {% algorithm %}
-SCTBuilder($G$)
+SCTBuilder($G$)  
 Output: SCT of $G$ 
-<!-- algorithm-more -->
+<!-- begin -->
 Find degeneracy orientation of $G$, and let $N^+(v)$ denote the outneighborhood of a vertex $v$.  
 Initialize tree $\bm T$ with root labeled $V$.  
 For every $v \in V$, create a child of root with node label $N^+(v)$. Set the edge label to $(v,\mathfrak{h})$.  
@@ -469,6 +469,7 @@ While $\bm Q$ is non-empty:
 $N(S,v_i) \setminus \{v_1, v_2, \ldots, v_{i-1}\}$. Add this node to $\bm T$ and set link label to $(v_i, \mathfrak{h})$.  
 Also add this node to $\bm Q$. {% label step:nncall %}  
 Return $\bm T$.  
+<!-- end -->
 {% endalgorithm %}
 
 As mentioned earlier, the child of the node labeled $S$ has one child corresponding
@@ -553,9 +554,9 @@ implies the uniquesness of $T'$.
 The tree $\bm T$ is succinct and yet one can extract fine-grained information from it about all cliques.
 
 {% algorithm %}
-PIVOTER($G$)
+PIVOTER($G$)  
 Output: Clique counts of $G$
-<!-- algorithm-more -->
+<!-- begin -->
 Let $\bm T = SCTBuilder(G)$. 
 Initialize all clique counts to zero. 
 For every root to leaf path $T$ in $\bm T$: 
@@ -566,6 +567,7 @@ For every root to leaf path $T$ in $\bm T$:
     For every edge $e(u,v), u \in P(T), v \in H(T)$ and every $0 \leq i \leq |P(T)|-1$, increment $c_{|H(T)|+i+1}(e)$ by ${ {P(T)-1} \choose i}$. {% label step:pht %}  
     For every edge $e(u,v), u \in P(T), v \in P(T), u \neq v$ and every $0 \leq i \leq |P(T)|-2$, increment $c_{|H(T)|+i+2}(e)$ by ${ {P(T)-2} \choose i}$. {% label step:ppt %}  
 Output the sets of values $\{C_k\}$, $\{c_k(v)\}$ and $\{c_k(e)\}$.
+<!-- end -->
 {% endalgorithm %}
 
 The storage complexity of the algorithm, as given, is potentially $O(\alpha^2 |SCT(G)|)$,

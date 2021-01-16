@@ -1,8 +1,6 @@
 'use strict';
 
-function isLetters(s){
-    return s.test(/^[A-Za-z]+$/);
-}
+const fs = require('hexo-fs');
 
 // 使用html标签包裹公式
 function math_wrap(s) {
@@ -26,6 +24,7 @@ function math_wrap(s) {
             }
         else {
             // 转义行内公式的\（后面跟的必须是非字母）
+            // (注意渲染tag内的数学公式！默认是不渲染的）
             if (lineMath && s[i] === '\\' && i + 1 < n && !/[a-zA-Z]/.test(s[i+1])) {
                 t += '\\'; // 额外加一个\
             }
@@ -39,4 +38,5 @@ function math_wrap(s) {
 hexo.extend.filter.register('before_post_render', function (data) {
     data.content = math_wrap(data.content);
     return data;
-});
+}, 9);
+// 确保math_wrap在其他过滤器前执行
