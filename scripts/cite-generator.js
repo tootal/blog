@@ -77,7 +77,8 @@ function generate_cites(data) {
     }
     all_cites = Array.from(all_cites);
     all_cites.sort();
-    let bib = fs.readFileSync(path.resolve('source', path.dirname(source_path), data.cite));
+    let bib_path = path.resolve('source', path.dirname(source_path), data.tagplugins.cite);
+    let bib = fs.readFileSync(bib_path);
     let all_cites_res = []
     for (let cite of all_cites) {
         let rcite = cite.replace('+', '\\+');
@@ -132,8 +133,7 @@ function generate_cites(data) {
 }
 
 hexo.extend.filter.register('before_post_render', function (data) {
-    if (data.cite) {
-        fs.writeFile('test.md', data.content);
+    if (data.tagplugins && data.tagplugins.cite) {
         generate_cites(data);
     }
     return data;

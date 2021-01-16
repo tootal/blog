@@ -16,7 +16,9 @@ reprint:
 lang: en
 date: 2021-01-14 20:43:51
 updated: 2021-01-14 20:43:51
-cite: index.bib
+tagplugins:
+  cite: index.bib
+  default: ['theorem', 'figure', 'lemma']
 markdown:
   render:
     breaks: false
@@ -445,8 +447,8 @@ version of the same algorithm, which is more space efficient. This
 is explained in the proof of {% thm main %}.
 
 {% label sec:scr %}
-## BUILDING THE SCT
 
+## BUILDING THE SCT
 
 We give the algorithm to construct the SCT. 
 We keep track
@@ -462,16 +464,16 @@ Output: SCT of $G$
 Find degeneracy orientation of $G$, and let $N^+(v)$ denote the outneighborhood of a vertex $v$.  
 Initialize tree $\bm T$ with root labeled $V$.  
 For every $v \in V$, create a child of root with node label $N^+(v)$. Set the edge label to $(v,\mathfrak{h})$.  
-Insert all these child nodes into a queue $\bQ$.  
-While $\bQ$ is non-empty:  
+Insert all these child nodes into a queue $\bm Q$.  
+While $\bm Q$ is non-empty:  
     Dequeue to get node $\gamma$. Let node label be $S$.  
     If $S = \emptyset$, continue.  
     Find $p \in S$ with largest $N(S,p)$ value. {% label step:pivot %}  
-    Create child node of $\gamma$ with vertex label $N(S,p)$. Add this node to $\bm T$ and set the link label (of the new link) to $(p,\mathfrak{p})$. Also, add this node to $\bQ$. {% label step:pcall %}  
+    Create child node of $\gamma$ with vertex label $N(S,p)$. Add this node to $\bm T$ and set the link label (of the new link) to $(p,\mathfrak{p})$. Also, add this node to $\bm Q$. {% label step:pcall %}  
     Let $S \setminus (p \cup N(p)) = \{v_1, v_2, \ldots, v_\ell\}$ (listed in arbitrary order).  
     For each $i \leq \ell$: create child node of $\gamma$ labeled  
 $N(S,v_i) \setminus \{v_1, v_2, \ldots, v_{i-1}\}$. Add this node to $\bm T$ and set link label to $(v_i, \mathfrak{h})$.  
-Also add this node to $\bQ$. {% label step:nncall %}  
+Also add this node to $\bm Q$. {% label step:nncall %}  
 Return $\bm T$.  
 {% endalgorithm %}
 
