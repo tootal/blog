@@ -20,5 +20,9 @@ hexo.extend.filter.register('before_post_render', function (data) {
             }
         }
     }
+    // 未指定thumbnail，若存在cover则自动将其作为thumbnail
+    if (data.thumbnail === undefined || data.thumbnail === null) {
+        data.thumbnail = data.cover;
+    }
     return data;
 });
