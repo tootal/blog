@@ -111,6 +111,5 @@ hexo.extend.filter.register('before_post_render', function (data) {
         || data.tagplugins.default.indexOf('table') !== -1)) {
         generate_table(data);
     }
-    fs.writeFileSync('test.md', data.content);
     return data;
 });

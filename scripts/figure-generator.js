@@ -36,7 +36,7 @@ function generate_figure(data) {
             process.exit(-1);
         }
         const { alt, title } = all_figures[fig_id];
-        return `<a class="figure" title="${title}" href="#fig:${alt}" >Theorem ${fig_id}</a>`;
+        return `<a class="figure" title="${title}" href="#fig:${alt}" >Figure ${fig_id+1}</a>`;
     });
 }
 

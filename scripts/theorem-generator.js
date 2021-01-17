@@ -18,7 +18,7 @@ function generate_theorem(data) {
             process.exit(-1);
         }
         all_theorem.push(theorem);
-        return `<div class="theorem" id="thm:${all_theorem.length}">`
+        return `<div class="theorem" id="thm:${theorem}">`
         + `THEOREM ${all_theorem.length}. ${content}</div>`;
     });
     const rTHM = /\{% thm (.*?) %\}/g;
@@ -28,8 +28,7 @@ function generate_theorem(data) {
             logger.error('Can not found theorem ', thm.trim());
             process.exit(-1);
         }
-        thm_id++;
-        return `<a class="theorem" href="#thm:${thm_id}">Theorem ${thm_id}</a>`;
+        return `<a class="theorem" href="#thm:${all_theorem[thm_id]}">Theorem ${thm_id+1}</a>`;
     });
 }
 

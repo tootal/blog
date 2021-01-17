@@ -122,9 +122,9 @@ We focus on the following problems, in increasing order of difficulty.
 We stress that $k$ is *not* part
 of the input, and we want results for all values of $k$.
 
-* Global clique counts: Output, $\forall k \geq 3$, $C_k$.
-* Per-vertex clique counts: Output, $\forall k$, $\forall v \in V$, the value $c_k(v)$.
-* Per-edge clique counts: Output, $\forall k$, $\forall e \in E$, the value $c_k(e)$.
+* Global clique counts: Output, $\forall k \geq 3$, $C_k$.  
+* Per-vertex clique counts: Output, $\forall k$, $\forall v \in V$, the value $c_k(v)$.  
+* Per-edge clique counts: Output, $\forall k$, $\forall e \in E$, the value $c_k(e)$.  
 
 The per-vertex and per-edge counts are sometimes called *local counts*.
 In clustering applications, the local counts
@@ -390,7 +390,7 @@ that $G$ is connected. We use vertices
 to denote the elements of $V$ (the term *nodes* will be used for a different construct).
 We use the following notation for neighborhoods.
 
-* $N(v)$: This is the neighborhood of $v$.
+* $N(v)$: This is the neighborhood of $v$.  
 * $N(S,v)$: For any subset of vertices $S$, we use $N(S,v)$ to denote $N(v) \cap S$.
 Alternately, this is the neighborhood of $v$ in $S$.
 
@@ -417,9 +417,9 @@ we list out technical notation associated with the SCT $\bm T$.
 Formally, $\bm T$ is a tree where nodes are labeled with subsets of $V$, with the following
 properties.
 
-* The root is labeled $V$.
-* Parent labels are strict supersets of child labels.
-* Leaves are labeled with the empty set $\emptyset$.
+* The root is labeled $V$.  
+* Parent labels are strict supersets of child labels.  
+* Leaves are labeled with the empty set $\emptyset$.  
 
 An important aspect of $\bm T$ are *link labels*. A link label is a
 pair with a vertex of $V$ and a "call type".

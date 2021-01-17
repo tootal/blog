@@ -96,7 +96,7 @@ function generate_cites(data) {
             for (let i = 0; i < all_cites.length; i++) {
                 let t = all_cites_res[i];
                 let si = '<li class="cite-item">';
-                si += `<div class="cite-label" id="cite:${i+1}">[${i+1}]</div>`;
+                si += `<div class="cite-label" id="cite:${all_cites[i]}">[${i+1}]</div>`;
                 si += '<div class="cite-content">';
                 if (t.author) si += `<span class="cite-author">${t.author}. </span>`;
                 if (t.year) si += `<span class="cite-year">${t.year}. </span>`;
@@ -121,11 +121,10 @@ function generate_cites(data) {
             else s += ',';
             let cite_id = all_cites.indexOf(cite.trim());
             if (cite_id === -1) {
-                logger.error('Something wrong when finding', cite.trim());
+                logger.error('Something wrong when finding cite ', cite.trim());
                 process.exit(-1);
             }
-            cite_id++; // index 1-base
-            s += `<a href="#cite:${cite_id}" class="cite-label">${cite_id}</a>`
+            s += `<a href="#cite:${all_cites[cite_id]}" class="cite-label">${cite_id+1}</a>`
         }
         s += "]</span>";
         return s;
