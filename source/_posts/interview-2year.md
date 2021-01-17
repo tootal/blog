@@ -13,7 +13,6 @@ reprint:
   author: 刘未鹏
   link: http://mindhacks.cn/2011/11/04/how-to-interview-a-person-for-two-years/
   date: 2011-11-04
-cite: url
 ---
 
 最近参加了两场面试，也是挺有感触的。分享一篇与面试相关的文章，里面很多内容即使十年过去了也丝毫不过时，甚至每次读过都有新的感悟。例如里面提到了关于大作业的部分：
