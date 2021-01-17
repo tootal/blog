@@ -1,6 +1,6 @@
 ---
 title: The Power of Pivoting for Exact Clique Counting
-toc: true
+toc: false
 tags:
   - Social network analysis
   - clique counting
@@ -768,59 +768,51 @@ and only gives counts of $7$-cliques. We can get some partial results for *com-l
 as explained later.
 
 {% table main %}
-Graph properties
-<!-- table-header -->
 
-|                Graph                 | Vertices |  Edges   | Degen | Max clique | PIVOTER($C_k$) | PIVOTER($c_k(v)$) | PIVOTER($c_k(e)$) | PIVOTER($C_k$) parallel |
-| ------------------------------------ | -------- | -------- | ----- | ---------- | -------------- | ----------------- | ----------------- | ----------------------- |
-| Feasible by previous algorithms      |          |          |       |            |                |                   |                   |                         |
-| dblp-v5                              | 1.56E+06 | 2.08E+06 | 15    | 10         | 7              | 7                 | 8                 | 19                      |
-| dblp-v7                              | 3.67E+06 | 4.18E+06 | 19    | 12         | 15             | 16                | 19                | 34                      |
-| amazon0601                           | 4.03E+05 | 2.44E+06 | 10    | 11         | 4              | 5                 | 6                 | 4                       |
-| web-Google                           | 8.76E+05 | 4.32E+06 | 44    | 44         | 8              | 9                 | 15                | 9                       |
-| youtube                              | 1.13E+06 | 2.99E+06 | 51    | 17         | 7              | 8                 | 11                | 9                       |
-| cit-Patents                          | 3.77E+06 | 1.65E+07 | 64    | 11         | 40             | 41                | 53                | 46                      |
-| soc-pokec                            | 1.63E+06 | 2.23E+07 | 47    | 29         | 68             | 75                | 93                | 44                      |
-| Not feasible for previous algorithms |          |          |       |            |                |                   |                   |                         |
-| Stanford                             | 2.82E+05 | 1.99E+06 | 71    | 61         | 5              | 5                 | 38                | 3                       |
-| BerkStan                             | 6.85E+05 | 6.65E+06 | 201   | 201        | 25             | 26                | 237               | 9                       |
-| as-skitter                           | 1.70E+06 | 1.11E+07 | 111   | 67         | 120            | 200               | 9245              | 75                      |
-| com-orkut                            | 3.07E+06 | 1.17E+08 | 253   | 51         | 5174           | 8802              | 99389             | 3441                    |
+|Graph|Vertices|Edges|Degen|Max clique|PIVOTER ($C_k$)|PIVOTER ($c_k(v)$)|PIVOTER ($c_k(e)$)|PIVOTER($C_k$) parallel|  
+|-----|--------|-----|-----|----------|--------------|-----------------|-----------------|-----------------------|  
+|                  Feasible by previous algorithms              |||||||||  
+| dblp-v5     | 1.56E+06 | 2.08E+06 | 15  | 10  | 7   | 7   | 8   | 19  |  
+| dblp-v7     | 3.67E+06 | 4.18E+06 | 19  | 12  | 15  | 16  | 19  | 34  |  
+| amazon0601  | 4.03E+05 | 2.44E+06 | 10  | 11  | 4   | 5   | 6   | 4   |  
+| web-Google  | 8.76E+05 | 4.32E+06 | 44  | 44  | 8   | 9   | 15  | 9   |  
+| youtube     | 1.13E+06 | 2.99E+06 | 51  | 17  | 7   | 8   | 11  | 9   |  
+| cit-Patents | 3.77E+06 | 1.65E+07 | 64  | 11  | 40  | 41  | 53  | 46  |  
+| soc-pokec   | 1.63E+06 | 2.23E+07 | 47  | 29  | 68  | 75  | 93  | 44  |  
+|               Not feasible for previous algorithms                |||||||||  
+| Stanford   | 2.82E+05 | 1.99E+06 | 71  | 61  | 5    | 5    | 38    | 3    |  
+| BerkStan   | 6.85E+05 | 6.65E+06 | 201 | 201 | 25   | 26   | 237   | 9    |  
+| as-skitter | 1.70E+06 | 1.11E+07 | 111 | 67  | 120  | 200  | 9245  | 75   |  
+| com-orkut  | 3.07E+06 | 1.17E+08 | 253 | 51  | 5174 | 8802 | 99389 | 3441 |  
 
-
-<!-- table-more -->
 Table shows the sizes, degeneracy, maximum clique size, and the time taken (in seconds) by PIVOTER to obtain global $k-$clique counts, per-vertex and per edge $k-$cliques counts for all k. *For the com-lj graph, we were not able to get all $k-$clique counts in 1 day so we tested for the maximum $k$ we could count in about a day. PIVOTER was able to count the number of 9-cliques in 30 hours whereas kClist40 had not terminated even after 6 days.
 {% endtable %}
 
 {% table comparison %}
 
-|   Graph    | k=13,TS | k=13, kClist40 | all k, Pivoter |
-| ---------- | ------- | -------------- | -------------- |
-| Stanford   | 230     | 12600          | 5              |
-| BerkStan   | 1198    | > 172800       | 25             |
-| as-skitter | 798     | 12480          | 120            |
-| com-orkut  | > 28800 | > 172800       | 5174           |
+|   Graph    |  k=13,TS   | k=13, kClist40 | all k, Pivoter |  
+| ---------- | ---------- | -------------- | -------------- |  
+| Stanford   | 230        | 12600          | 5              |  
+| BerkStan   | 1198       | &gt; 172800    | 25             |  
+| as-skitter | 798        | 12480          | 120            |  
+| com-orkut  | &gt; 28800 | &gt; 172800    | 5174           |  
 
-<!-- table-more -->
 Time taken in seconds by the state-of-the-art randomized (TS, short for Tur&aacute;nShadow) and parallel (kClist40) algorithms. Note that PIVOTER obtains **all** $k-$clique counts for these graphs in a fraction of the time taken by other methods to count just 13-cliques.
 {% endtable %}
 
 {% table com-lj %}
 
-|  k  | $k$-cliques |  kClist40  |  PIVOTER  |
-| --- | ----------- | ---------- | --------- |
-| 7   | 4.49E+15    | 2.2 hours  | 1.2 hours |
-| 8   | 1.69E+16    | 42.5 hours | 6.4 hours |
-| 9   | 5.87E+17    | > 6 days   | 30 hours  |
-| 10  | 1.89E+19    | > 6 days   | 5.9 days  |
+|  k  | $k$-cliques |  kClist40   |  PIVOTER  |  
+| --- | ----------- | ----------- | --------- |  
+| 7   | 4.49E+15    | 2.2 hours   | 1.2 hours |  
+| 8   | 1.69E+16    | 42.5 hours  | 6.4 hours |  
+| 9   | 5.87E+17    | &gt; 6 days | 30 hours  |  
+| 10  | 1.89E+19    | &gt; 6 days | 5.9 days  |  
 
-<!-- table-more -->
 Table shows the time taken to count $k$-cliques for com-lj graph. For $k$=9, PIVOTER terminated in about 30 hours where kClist40 had not terminated in 6 days.
 {% endtable %}
 
-
 {% figure %}
-
 ![treesize](nCalls_vs_m.png "Number of nodes in SCT vs m")
 ![trends](trends.png "Trends in different graphs")
 ![trends-dblp](trends-dblp.png "Trends in dblp over time.")

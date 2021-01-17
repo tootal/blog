@@ -8,4 +8,4 @@ module.exports = function(ctx) {
     return `{% ${this.tagname} ${args.join(' ')} %}${content}{% end${this.tagname} %}`;
   }
 };
-module.exports.names = ['figure', 'theorem', 'algorithm', 'lemma'];
+module.exports.names = ['figure', 'theorem', 'algorithm', 'lemma', 'table'];
