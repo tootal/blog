@@ -27,6 +27,7 @@ class KaTeX extends Component {
         {left: "$$", right: "$$", display: true},
         {left: "$", right: "$", display: false}
       ],
+      strict: false,
       throwOnError: false
     };
     window.addEventListener("load", function() {
