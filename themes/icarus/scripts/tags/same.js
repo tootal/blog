@@ -8,4 +8,4 @@ module.exports = function(ctx) {
     return `{% ${this.tagname} ${args.join(' ')} %}`
   }
 };
-module.exports.names = ['cite', 'fig', 'thm', 'step', 'tab'];
+module.exports.names = ['cite', 'fig', 'thm', 'lem', 'step', 'tab'];
