@@ -17,6 +17,7 @@ hexo.extend.filter.register('before_post_render', function (data) {
         for (var s of ['webp', 'png', 'jpg']) {
             if (checkExist(String(data.urlname), s)) {
                 data.cover = '/posts/' + data.urlname + '/cover.' + s;
+                break;
             }
         }
     }

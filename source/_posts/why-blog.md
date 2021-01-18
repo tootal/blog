@@ -11,7 +11,9 @@ reprint:
   date: 2009-02-15
 ---
 
-为什么要写博客？以下摘录[刘未鹏](http://mindhacks.cn/)09年的一篇[文章](http://mindhacks.cn/2009/02/15/why-you-should-start-blogging-now/)，加入了我自己的一些注解，希望能对你我有所启发。
+{% msg primary lightbulb %}
+以下内容摘自[[BetterExplained]为什么你应该（从现在开始就）写博客 – 刘未鹏 | Mind Hacks](http://mindhacks.cn/2009/02/15/why-you-should-start-blogging-now/)，加入了我自己的一些注解，希望能对你我有所启发。
+{% endmsg %}
 
 ## 为什么你应该（从现在开始就）写博客 
 用一句话来说就是，写一个博客有很多好处，却没有任何明显的坏处。（[阿灵顿](https://baike.baidu.com/item/迈克尔·阿灵顿/14113616)的情况属于例外，而非常态，就像不能拿抽烟活到一百岁的英国老太太的个例来反驳抽烟对健康的极大损伤一样）
