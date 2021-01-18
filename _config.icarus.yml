@@ -174,7 +174,7 @@ search:
 comment:
     type: twikoo
     envId: tootal-6g2y019v6b37e4be
-    version: '0.5.1'
+    version: '1.0.0'
     region: ap-guangzhou
 # Donate plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Donation/
