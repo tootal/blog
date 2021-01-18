@@ -1,3 +1,11 @@
+navbar:
+    menu:
+        index: 'Index'
+        archives: 'Archives'
+        categories: 'Categories'
+        tags: 'Tags'
+        note: 'Note'
+        about: 'About'
 common:
     archive:
         one: 'Archive'

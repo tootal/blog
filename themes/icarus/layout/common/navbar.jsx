@@ -50,7 +50,7 @@ class Navbar extends Component {
                     {Object.keys(menu).length ? <div class="navbar-start">
                         {Object.keys(menu).map(name => {
                             const item = menu[name];
-                            return <a class={classname({ 'navbar-item': true, 'is-active': item.active })} href={item.url}>{name}</a>;
+                            return <a class={classname({ 'navbar-item': true, 'is-active': item.active })} href={item.url}>{item.title}</a>;
                         })}
                     </div> : null}
                     <div class="navbar-end">
@@ -89,7 +89,8 @@ module.exports = cacheComponent(Navbar, 'common.navbar', props => {
         Object.keys(navbar.menu).forEach(name => {
             const url = url_for(navbar.menu[name]);
             const active = isSameLink(url, pageUrl);
-            menu[name] = { url, active };
+            const title = __(`navbar.menu.${name}`) || name;
+            menu[name] = { url, active, title };
         });
     }
 

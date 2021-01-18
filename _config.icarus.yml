@@ -114,12 +114,12 @@ head:
 navbar:
     # Navigation menu items
     menu:
-        首页: /
-        存档: /archives
-        分类: /categories
-        标签: /tags
-        笔记: 'https://note.tootal.xyz'
-        关于: /about
+        index: /
+        archives: /archives
+        categories: /categories
+        tags: /tags
+        note: 'https://note.tootal.xyz'
+        about: /about
     # Links to be shown on the right of the navigation bar
     links:
         View on GitHub:
