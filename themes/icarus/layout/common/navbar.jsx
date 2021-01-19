@@ -109,7 +109,7 @@ module.exports = cacheComponent(Navbar, 'common.navbar', props => {
         logo,
         logoUrl: url_for(logo),
         siteUrl: url_for('/'),
-        siteTitle: title,
+        siteTitle: __('common.title') || title,
         menu,
         links,
         showToc,

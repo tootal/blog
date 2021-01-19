@@ -67,7 +67,7 @@ class Footer extends Component {
 
 module.exports = cacheComponent(Footer, 'common.footer', props => {
     const { config, helper } = props;
-    const { url_for, _p, date } = helper;
+    const { url_for, _p, __, date } = helper;
     const { logo, title, author, footer, plugins } = config;
 
     const links = {};
@@ -89,9 +89,9 @@ module.exports = cacheComponent(Footer, 'common.footer', props => {
         logo,
         logoUrl: url_for(logo),
         siteUrl: url_for('/'),
-        siteTitle: title,
+        siteTitle: __('common.title') || title,
         siteYear: date(new Date(), 'YYYY'),
-        author,
+        author: __('common.author') || author,
         links,
         showVisitorCounter: plugins && plugins.busuanzi === true,
         visitorCounterTitle: _p('plugin.visitor_count', '<span id="busuanzi_value_site_uv">0</span>'),

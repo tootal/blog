@@ -7,6 +7,8 @@ navbar:
         note: 'Note'
         about: 'About'
 common:
+    title: 'Tootal Blog'
+    author: 'Huang Zhiquan'
     archive:
         one: 'Archive'
         other: 'Archives'

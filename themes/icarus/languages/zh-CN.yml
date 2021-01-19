@@ -7,6 +7,8 @@ navbar:
         note: '笔记'
         about: '关于'
 common:
+    title: '头头博客'
+    author: '黄智权'
     archive:
         one: '归档'
         other: '归档'
