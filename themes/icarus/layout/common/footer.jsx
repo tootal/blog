@@ -13,6 +13,7 @@ class Footer extends Component {
             links,
             showVisitorCounter,
             visitorCounterTitle,
+            poweredByTitle,
             beianTitle
         } = this.props;
 
@@ -36,8 +37,7 @@ class Footer extends Component {
                         </a>
                         <p class="is-size-7">
                             <span dangerouslySetInnerHTML={{ __html: `&copy; ${siteYear} ${author || siteTitle}` }}></span>
-                            &nbsp;&nbsp;Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>&nbsp;&&nbsp;
-                            <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                            <span dangerouslySetInnerHTML={{ __html: `&nbsp;&nbsp; ${poweredByTitle}` }}></span>
                             {showVisitorCounter ? <br /> : null}
                             {showVisitorCounter ? <span id="busuanzi_container_site_uv"
                                 dangerouslySetInnerHTML={{ __html: visitorCounterTitle }}></span> : null}
@@ -95,6 +95,8 @@ module.exports = cacheComponent(Footer, 'common.footer', props => {
         links,
         showVisitorCounter: plugins && plugins.busuanzi === true,
         visitorCounterTitle: _p('plugin.visitor_count', '<span id="busuanzi_value_site_uv">0</span>'),
+        poweredByTitle: _p('common.powered_by', '<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>&nbsp;&&nbsp;'
+            + '<a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>'),
         beianTitle
     };
 });

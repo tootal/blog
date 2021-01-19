@@ -26,6 +26,7 @@ common:
         other: '页面'
     prev: '上一页'
     next: '下一页'
+    powered_by: '由 %s 驱动'
 widget:
     follow: '关注我'
     recents: '最新文章'

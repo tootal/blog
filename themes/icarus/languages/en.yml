@@ -26,6 +26,7 @@ common:
         other: 'Pages'
     prev: 'Previous'
     next: 'Next'
+    powered_by: 'Powered by %s'
 widget:
     follow: 'Follow'
     recents: 'Recent posts'
