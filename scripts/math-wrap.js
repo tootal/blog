@@ -8,7 +8,23 @@ function math_wrap(s) {
     var t = s[0];
     var mathFlag = false;
     var lineMath = false;
+    let codeFlag = false;
+    let lineCodeFlag = false;
     for (var i = 1; i < n; i++) {
+        if (s[i] === '`' // 行内代码
+            && (i - 1 >= 0 && s[i - 1] !== '`')
+            && (i + 1 < n && s[i + 1] !== '`')) {
+                lineCodeFlag = !lineCodeFlag;
+            }
+        if (s[i] === '`' // 多行代码
+            && (i - 1 >= 0 && s[i - 1] === '`')
+            && (i + 1 < n && s[i + 1] === '`')) {
+                codeFlag = !codeFlag;
+            }
+        if (codeFlag || lineCodeFlag) {
+            t += s[i];
+            continue;
+        }
         if (s[i] === '$'  // 单行公式
             && (i - 1 >= 0 && s[i - 1] !== '$')
             && (i + 1 < n && s[i + 1] !== '$')) {
@@ -36,7 +52,13 @@ function math_wrap(s) {
 }
 
 hexo.extend.filter.register('before_post_render', function (data) {
+    if (data.urlname === 'vnote-task') {
+        fs.writeFileSync('test.md', data.content);
+    }
     data.content = math_wrap(data.content);
+    if (data.urlname === 'vnote-task') {
+        fs.writeFileSync('test2.md', data.content);
+    }
     return data;
 }, 9);
 // 确保math_wrap在其他过滤器前执行

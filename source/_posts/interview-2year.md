@@ -23,7 +23,7 @@ reprint:
 
 我在写[数据结构大作业](https://github.com/tootal/DBLParse)的时候就干过这事，把一个2学分的课程大作业当作一个大项目来完成，提交了800多次[commits](https://github.com/tootal/DBLParse/commits/master)，给软件加上版本号，发布了[Windows、MacOS以及Ubuntu](https://github.com/tootal/DBLParse/releases)三个系统的软件包，加上持续构建脚本……
 
-{% msg primary lightbulb %}
+{% msg primary fas-lightbulb %}
 以下内容摘自[怎样花两年时间去面试一个人 – 刘未鹏 | Mind Hacks](http://mindhacks.cn/2011/11/04/how-to-interview-a-person-for-two-years/)，修正了一些笔误以及将失效链接换成了[Web Archive](http://web.archive.org/)的链接。
 {% endmsg %}
 

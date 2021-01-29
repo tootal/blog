@@ -11,7 +11,7 @@ reprint:
   date: 2009-02-15
 ---
 
-{% msg primary lightbulb %}
+{% msg primary fas-lightbulb %}
 以下内容摘自[[BetterExplained]为什么你应该（从现在开始就）写博客 – 刘未鹏 | Mind Hacks](http://mindhacks.cn/2009/02/15/why-you-should-start-blogging-now/)，加入了我自己的一些注解，希望能对你我有所启发。
 {% endmsg %}
 
