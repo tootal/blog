@@ -97,16 +97,17 @@ updated: 2021-01-29 15:40:16
 
 目前任务系统仍然处于开发过程中，可以[在此](https://github.com/tootal/vnote/tree/feat-task)查看相关代码。
 
-通过下面的链接可以下载包含任务系统功能的测试版本：
+通过下面的按钮可以下载包含任务系统功能的测试版本：
 
-{% menulist %}
+<p class="buttons are-large">
+{% buttons are-large %}
 
-[{% icon fab-windows %} Windows x64](https://github.com/tootal/vnote/suites/1924447822/artifacts/37905429)
-[{% icon fab-windows%} Windows x86](https://github.com/tootal/vnote/suites/1924447822/artifacts/37905430)
-[{% icon fab-linux %} macOS](https://github.com/tootal/vnote/suites/1924447823/artifacts/37904897)
-[{% icon fab-apple %} Linux](https://github.com/tootal/vnote/suites/1924447829/artifacts/37904695)
+[Windows x64@fab-windows, button, is-primary](https://github.com/tootal/vnote/suites/1924447822/artifacts/37905429)
+[Windows x86@fab-windows, button, is-info](https://github.com/tootal/vnote/suites/1924447822/artifacts/37905430)
+[macOS@fab-apple, button, is-dark](https://github.com/tootal/vnote/suites/1924447823/artifacts/37904897)
+[Linux@fab-linux, button, is-warning](https://github.com/tootal/vnote/suites/1924447829/artifacts/37904695)
 
-{% endmenulist %}
+{% endbuttons %}
 
 ## 快速上手
 

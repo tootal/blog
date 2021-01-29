@@ -52,13 +52,7 @@ function math_wrap(s) {
 }
 
 hexo.extend.filter.register('before_post_render', function (data) {
-    if (data.urlname === 'vnote-task') {
-        fs.writeFileSync('test.md', data.content);
-    }
     data.content = math_wrap(data.content);
-    if (data.urlname === 'vnote-task') {
-        fs.writeFileSync('test2.md', data.content);
-    }
     return data;
 }, 9);
 // 确保math_wrap在其他过滤器前执行
