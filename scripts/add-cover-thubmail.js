@@ -11,19 +11,22 @@ function checkExist(name, suffix) {
 }
 
 hexo.extend.filter.register('before_post_render', function (data) {
-    // 未指定cover，则检查文件夹下是否存在cover图片文件
-    // 若存在则添加上cover
+    // 未指定cover，则检查文章开头是否为图片
+    // 若是则将其作为cover并在文章中删除。
     if (data.cover === undefined || data.cover === null) {
-        for (var s of ['webp', 'png', 'jpg']) {
-            if (checkExist(String(data.urlname), s)) {
-                data.cover = '/posts/assets/' + data.urlname + '.cover.' + s;
-                break;
-            }
+        let lines = data.content.trim().split('\n');
+        // 图片路径必须是以 ../asset/ 开头的！
+        let match = lines[0].match(/^!\[(.*?)\]\(..\/asset\/(.*?)\)$/);
+        if (match) {
+            data.cover = `/asset/${match[2]}`;
+            logger.info('Add the front picture as cover: ', data.cover);
+            data.content = lines.slice(1, lines.length).join('\n');
         }
     }
     // 未指定thumbnail，若存在cover则自动将其作为thumbnail
     if (data.thumbnail === undefined || data.thumbnail === null) {
         data.thumbnail = data.cover;
+        logger.info("Use cover as thumbnail.");
     }
     return data;
 });

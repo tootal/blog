@@ -3,8 +3,6 @@ title: 2019GDCPC总结
 urlname: 2019GDCPC-summary
 date: 2019-05-12 17:05:12
 updated: 2019-05-12 17:05:12
-tags:
-- ACM
 categories:
 - 计算机
 - 算法竞赛

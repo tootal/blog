@@ -3,15 +3,15 @@ title: hello world
 urlname: hello-world
 date: 2019-01-23 18:44:33  
 updated: 2019-01-23 18:44:33  
-tags:
-- 编程
 categories:
 - 计算机
 - 技术
 ---
 
+![93aeb1c3ly1fzgx1tyq10j20ix0ch75a](../asset/20210130134328911_29475.jpg)
+
 最近上午下午都在搞ACM，晚上实在不想做题，就打起了其他编程语言的主意。虽然编程的水平不能用通晓的编程语言数目来衡量，但多接触一些其他类型的编程语言也可以增长见识，开阔视野，了解一下计算机语言的发展进程。  
-![Hello World!](http://wx4.sinaimg.cn/large/93aeb1c3ly1fzgx1tyq10j20ix0ch75a.jpg)  
+
 <!--more-->  
 初步打算是利用helloworld这个著名的程序来体验一下，各种语言的helloworld程序也比较容易查询，更难的其实是编程环境的配置。  
 # 工具软件  

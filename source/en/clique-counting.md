@@ -17,7 +17,7 @@ lang: en
 date: 2021-01-14 20:43:51
 updated: 2021-01-14 20:43:51
 tagplugins:
-  cite: index.bib
+  cite: pivote.bib
   default: ['theorem', 'figure', 'lemma', 'algorithm', 'table']
 markdown:
   render:

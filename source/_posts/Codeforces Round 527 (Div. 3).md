@@ -3,9 +3,6 @@ title: Codeforces Round 527 (Div. 3)
 urlname: cf-1092
 date: 2018-12-18 23:56:15
 updated: 2018-12-18 23:56:15
-tags: 
-- ACM
-- codeforces
 categories:
 - 计算机
 - 算法竞赛

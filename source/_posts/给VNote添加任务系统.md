@@ -2,11 +2,6 @@
 title: 给VNote添加任务系统
 urlname: vnote-task
 toc: true
-tags:
-  - Qt
-  - C++
-  - 笔记
-  - 技术
 categories:
   - ARTS
   - Technology

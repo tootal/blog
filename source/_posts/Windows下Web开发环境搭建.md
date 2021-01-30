@@ -4,8 +4,6 @@ urlname: webdev-setup
 toc: true
 date: 2019-08-22 21:34:19
 updated: 2019-08-22 21:34:19
-tags:
-- web
 categories:
 - 大学课程
 - Web程序设计

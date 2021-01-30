@@ -77,7 +77,7 @@ function generate_cites(data) {
     }
     all_cites = Array.from(all_cites);
     all_cites.sort();
-    let bib_path = path.resolve('source', path.dirname(source_path), data.tagplugins.cite);
+    let bib_path = path.resolve('source', 'asset', data.tagplugins.cite);
     let bib = fs.readFileSync(bib_path);
     let all_cites_res = []
     for (let cite of all_cites) {

@@ -3,9 +3,6 @@ title: Avito Cool Challenge 2018
 urlname: cf-1081
 date: 2018-12-18 12:46:33
 updated: 2018-12-18 12:46:33
-tags: 
-- ACM
-- codeforces
 categories:
 - 计算机
 - 算法竞赛
