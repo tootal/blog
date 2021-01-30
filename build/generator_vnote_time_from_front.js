@@ -17,5 +17,5 @@ for (let dir of svnote["sub_directories"]) {
         logger.info(`Override ${file["name"]} modified_time ${file["modified_time"]} with ${fm.updated.toISOString()}.`);
         file["modified_time"] = fm.updated.toISOString();
     }
-    fs.writeFileSync(`source/${dir["name"]}/_vnote.json`, JSON.stringify(vnote));
+    fs.writeFileSync(`source/${dir["name"]}/_vnote.json`, JSON.stringify(vnote, null, 4));
 }
