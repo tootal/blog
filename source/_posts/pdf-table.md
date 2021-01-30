@@ -95,7 +95,7 @@ with open('data.txt', 'r', encoding='utf-8') as fin:
 
 然后使用PDF Patcher导入书签文件，注意把之前的书签删除。
 
-![](/images/20200830134726729_9844.webp)
+![](assets/20200830134726729_9844.webp)
 
 
 

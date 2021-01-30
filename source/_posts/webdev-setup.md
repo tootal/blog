@@ -31,7 +31,7 @@ nginx: [alert] could not open error log file: CreateFile() "logs/error.log" fail
 
 说明当前路径不对，需要到安装目录下运行，我这里是[C:\Users\awesome\scoop\apps\nginx\current](file:///C:/Users/awesome/scoop/apps/nginx/current)，或者利用`-p`选项指定安装路径也可以。允许通过防火墙后，就运行成功了。注意命令行界面是没有显示的。可以打开浏览器，访问[http://localhost/](http://localhost/)，如果出现以下画面就说明安装成功了。
 
-![](20200614214232884_15842.webp)
+![](assets/20200614214232884_15842.webp)
 
 如果要停止Nginx，可以输入`nginx -s stop`，官网的简短的[使用说明](http://nginx.org/en/docs/beginners_guide.html)可以参考一下。
 ## 将Nginx注册成系统服务
@@ -119,7 +119,7 @@ nginx 服务已经启动成功。
 
 这时候打开localhost出现的就是新创建的HTML文件了。
 
-![](20200614225450450_9422.webp)
+![](assets/20200614225450450_9422.webp)
 
 如果不想更改文件夹位置，可以选择更改Nginx的配置，在[conf文件夹](file:///C:/Users/awesome/scoop/apps/nginx/current/conf)下有一个文件名为`nginx.conf`的文件。内容大致如下：
 
@@ -155,7 +155,7 @@ http {
 ```
 为了验证改动生效了，我把标题改成了`Hello, new world!`。重新启动nginx服务（可以先停止、再启动），打开localhost即可查看效果。
 
-![](20200614234424065_3762.webp)
+![](assets/20200614234424065_3762.webp)
 
 如果想再添加一个服务器，可以参考：[Setting Up Virtual Servers](https://docs.nginx.com/nginx/admin-guide/web-server/web-server/#virtual-server)。
 
@@ -220,9 +220,9 @@ index.html更改内容：
 
 显示效果：
 
-![](20200615081958300_27651.webp)
+![](assets/20200615081958300_27651.webp)
 
-![](20200615082022414_11747.webp)
+![](assets/20200615082022414_11747.webp)
 
 说明PHP运行成功。
 
@@ -257,7 +257,7 @@ Fast, flexible and pragmatic, PHP powers everything from your blog to the most p
 
 放置好后大概这个效果：
 
-![](20200615082629264_15097.webp)
+![](assets/20200615082629264_15097.webp)
 
 **以管理员权限**运行cmd：
 
@@ -408,7 +408,7 @@ date.timezone = Asia/Shanghai
 </ul>
 ```
 
-![](20200615091024411_6210.webp)
+![](assets/20200615091024411_6210.webp)
 
 这时候如果直接访问可能会出现403 Forbidden错误，这是因为默认的首页文件是index.html或index.htm，而phpMyAdmin提供的首页文件是index.php。我们可以改一下nginx的配置。
 
@@ -422,7 +422,7 @@ location / {
 
 重启一下Nginx，就可以访问了。
 
-![](20200615091954048_15547.webp)
+![](assets/20200615091954048_15547.webp)
 
 根据提示，在php.ini配置文件中启用mysqli扩展。
 
@@ -448,11 +448,11 @@ php 服务已经启动成功。
 
 此时就能正常启动了。
 
-![](20200615092303332_31879.webp)
+![](assets/20200615092303332_31879.webp)
 
 默认是禁止空密码登录的，也可以启用。在phpMyAdmin根目录下找到config.sample.inc.php，复制为config.inc.php。
 
-![](20200615092641553_20205.webp)
+![](assets/20200615092641553_20205.webp)
 
 ```php
 $cfg['Servers'][$i]['AllowNoPassword'] = true;
@@ -460,4 +460,4 @@ $cfg['Servers'][$i]['AllowNoPassword'] = true;
 
 修改好后就可以直接用root账号登录了，密码不用输入即可。
 
-![](20200615092903752_5647.webp)
+![](assets/20200615092903752_5647.webp)

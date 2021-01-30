@@ -14,7 +14,7 @@ categories:
 
 ## 选择/填空/判断题知识点
 ### Java 的关键字
-![Java关键字](20190623210630603_7678.webp)
+![Java关键字](assets/20190623210630603_7678.webp)
 <!--more-->
 说明：上图是根据书上内容总结的。在[Java文档](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/_keywords.html)中有特别提到：
 > `true`, `false`, and `null` might seem like keywords, but they are actually literals; you cannot use them as identifiers in your programs.
@@ -66,7 +66,7 @@ try{
 ```
 先执行try中的语句，当异常对象抛出时，catch语句从上至下逐个匹配，当捕获一个异常时，剩下的catch语句就不再匹配，执行catch块中的语句。try块中无论是否发生异常，最终都将执行finally语句。
 ### float/int/char/byte/double等类型
-![Java数据类型](20190623214055178_30050.webp)
+![Java数据类型](assets/20190623214055178_30050.webp)
 这些都属于Java的数据类型中的基本类型，基本类型还包括布尔类型（boolean）。Java中的数值类型占用位数和数的范围参考下表。
 
 | 数据类型 | 所占位数 |                    数的范围                     |
@@ -748,4 +748,4 @@ public class Client extends Thread{
 }
 ```
 运行结果：
-![编程题运行结果截图](20190625170109346_7540.webp)
+![编程题运行结果截图](assets/20190625170109346_7540.webp)

@@ -5,8 +5,8 @@ const fs = require('fs')
 const path = require('path')
 
 function checkExist(name, suffix) {
-    var pwd = path.resolve('source', '_posts');
-    var coverPath = path.resolve(pwd, name, 'cover.' + suffix);
+    var pwd = path.resolve('source', '_posts', 'assets');
+    var coverPath = path.resolve(pwd, name + '.cover.' + suffix);
     return fs.existsSync(coverPath);
 }
 
@@ -16,7 +16,7 @@ hexo.extend.filter.register('before_post_render', function (data) {
     if (data.cover === undefined || data.cover === null) {
         for (var s of ['webp', 'png', 'jpg']) {
             if (checkExist(String(data.urlname), s)) {
-                data.cover = '/posts/' + data.urlname + '/cover.' + s;
+                data.cover = '/posts/assets/' + data.urlname + '.cover.' + s;
                 break;
             }
         }

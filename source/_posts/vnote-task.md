@@ -23,6 +23,8 @@ updated: 2021-01-29 15:40:16
 
 在本文中，我将为VNote设计实现一个任务系统来运行外部工具，从而解决上面这些问题。
 
+
+
 <!-- more -->
 
 这些常用的功能大多可以通过运行命令行工具来完成，鉴于它们的常用性，有必要将其集成在VNote内部，这样无需在需要调用外部工具时输入命令行，或是编写代码。在 [VNote 2.10](https://github.com/vnotex/vnote/releases/tag/v2.10) 版本中，添加了调用Git的功能。但局限性较大，无法进行扩展。
@@ -85,9 +87,9 @@ updated: 2021-01-29 15:40:16
 
 {% gallery %}
 
-![Visual Studio的External Tools](20210127163819794_16451.png)
-![IntelliJ IDEA的External Tools](20210127164032786_2913.png)
-![Qt Creator的External Tools](20210127164143272_23092.png)
+![Visual Studio的External Tools](assets/20210127163819794_16451.png)
+![IntelliJ IDEA的External Tools](assets/20210127164032786_2913.png)
+![Qt Creator的External Tools](assets/20210127164143272_23092.png)
 
 {% endgallery %}
 
@@ -113,7 +115,7 @@ updated: 2021-01-29 15:40:16
 
 一个最简单的示例莫过于在屏幕上输出Hello world了。通过右上角的菜单打开用户配置文件夹。
 
-![](20210128231558685_805.png)
+![](assets/20210128231558685_805.png)
 
 若不存在`tasks`文件夹，则创建一个新的空文件夹`tasks`，并在其内新建一个`hello.json`文件，输入如下内容。
 
@@ -126,7 +128,7 @@ updated: 2021-01-29 15:40:16
 
 保存文件后重新启动VNote，可以发现主菜单多了一个`hello`菜单项，点击该菜单项即可运行上述任务。
 
-![](20210128232527132_24467.png)
+![](assets/20210128232527132_24467.png)
 
 
 运行任务时会自动弹出下方的输出面板，在输出面板可以查看任务运行过程中的输出信息。
@@ -221,7 +223,7 @@ VNote任务系统支持如下三个层级的配置文件：
 * 当前打开的文件`C:\Users\tootal\Documents\vnote_notebooks\testtask\test2\note.md`。
 * 当前选中的文字为第二行的`a test`。
 
-![](20210127220155516_27704.png)
+![](assets/20210127220155516_27704.png)
 
 
 - [x] `${notebookFolder}`，当前打开的笔记本文件夹路径，如`C:\Users\tootal\Documents\vnote_notebooks\testtask`。
@@ -365,7 +367,7 @@ VNote任务系统支持如下三个层级的配置文件：
 
 运行效果如下图所示：
 
-![VNote任务输入变量](20210129144746219_987.gif)
+![VNote任务输入变量](assets/20210129144746219_987.gif)
 
 ### Shell变量
 
@@ -447,7 +449,7 @@ int main() {
 
 注意尽管命令较长，但不能将其拆分成`command`和`args`，否则可能由于转义字符导致任务执行失败。运行效果如下图所示：
 
-![VNote任务交互输入](20210129141938465_12914.gif)
+![VNote任务交互输入](assets/20210129141938465_12914.gif)
 
 <!-- endtab -->
 
@@ -491,7 +493,7 @@ TODO
 
 运行效果如下图所示：
 
-![VNote任务后台运行](20210129141434261_32283.gif)
+![VNote任务后台运行](assets/20210129141434261_32283.gif)
 
 <!-- endtab -->
 
