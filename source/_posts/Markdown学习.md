@@ -200,12 +200,12 @@ http://www.baidu.com
 
 ### 图片
 ```md
-![黑客](assets/hacker.webp)
-![矩阵](assets/matrix.webp "矩阵")
+![黑客](../asset/hacker.webp)
+![矩阵](../asset/matrix.webp "矩阵")
 ```
 
-![黑客](assets/hacker.webp)
-![矩阵](assets/matrix.webp "矩阵")
+![黑客](../asset/hacker.webp)
+![矩阵](../asset/matrix.webp "矩阵")
 
 * 链接后面的说明信息会在鼠标悬停时显示
 
