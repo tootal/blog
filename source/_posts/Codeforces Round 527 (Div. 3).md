@@ -1,11 +1,14 @@
 ---
 title: Codeforces Round 527 (Div. 3)
 urlname: cf-1092
+categories:
+  - 计算机
+  - 算法竞赛
+tags:
+  - ACM
+  - Codeforces
 date: 2018-12-18 23:56:15
 updated: 2018-12-18 23:56:15
-categories:
-- 计算机
-- 算法竞赛
 ---
 被自己菜哭::>_<::
 

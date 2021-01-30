@@ -1,11 +1,13 @@
 ---
 title: 2018年SCUT软件学院ACM新生杯
 urlname: scutpc2018-newcup
+categories:
+  - 计算机
+  - 算法竞赛
+tags:
+  - ACM
 date: 2018-11-11 22:53:25
 updated: 2018-11-11 22:53:25
-categories:
-- 计算机
-- 算法竞赛
 ---
 难度非常友好！！
 就是我打炸了。奖品只有气球。。。

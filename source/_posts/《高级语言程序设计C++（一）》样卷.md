@@ -1,11 +1,13 @@
 ---
 title: 《高级语言程序设计C++（一）》样卷
 urlname: cppprograming-test1
+categories:
+  - 大学课程
+  - C++程序设计
+tags:
+  - C++
 date: 2018-12-17 16:35:23
 updated: 2018-12-17 16:35:23
-categories:
-- 大学课程
-- C++程序设计
 ---
 答案不一定正确，水平有限。
 仅用于自己记录整理。

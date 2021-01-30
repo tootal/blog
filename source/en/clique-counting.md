@@ -1,27 +1,34 @@
 ---
 title: The Power of Pivoting for Exact Clique Counting
 toc: false
-tags:
-  - Social network analysis
-  - clique counting
-  - local clique counting
 categories:
-  - [Theory of computation, Graph algorithms analysis]
-  - [Theory of computation, Social networks]
-  - [Information systems, Data mining]
+  - - Theory of computation
+    - Graph algorithms analysis
+  - - Theory of computation
+    - Social networks
+  - - Information systems
+    - Data mining
 reprint:
-  author: Shweta Jain, C. Seshadhri
+  author: 'Shweta Jain, C. Seshadhri'
   link: 'https://arxiv.org/abs/2001.06784'
-  date: 2020-01-19
+  date: 2020-01-19T00:00:00.000Z
 lang: en
-date: 2021-01-14 20:43:51
-updated: 2021-01-14 20:43:51
 tagplugins:
   cite: pivote.bib
-  default: ['theorem', 'figure', 'lemma', 'algorithm', 'table']
+  default:
+    - theorem
+    - figure
+    - lemma
+    - algorithm
+    - table
 markdown:
   render:
     breaks: false
+tags:
+  - 算法
+  - 图论
+date: 2021-01-14 20:43:51
+updated: 2021-01-14 20:43:51
 ---
 
 <!-- 

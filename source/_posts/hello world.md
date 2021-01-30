@@ -1,11 +1,13 @@
 ---
-title: hello world  
+title: hello world
 urlname: hello-world
-date: 2019-01-23 18:44:33  
-updated: 2019-01-23 18:44:33  
 categories:
-- 计算机
-- 技术
+  - 计算机
+  - 技术
+tags:
+  - 编程
+date: 2019-01-23 18:44:33
+updated: 2019-01-23 18:44:33
 ---
 
 ![93aeb1c3ly1fzgx1tyq10j20ix0ch75a](../asset/20210130134328911_29475.jpg)

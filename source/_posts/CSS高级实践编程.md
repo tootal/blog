@@ -2,11 +2,14 @@
 title: CSS高级实践编程
 urlname: css-programming
 toc: false
+categories:
+  - 大学课程
+  - Web程序设计
+tags:
+  - Web
+  - CSS
 date: 2020-04-20 17:53:57
 updated: 2020-04-20 17:53:57
-categories:
-- 大学课程
-- Web程序设计
 ---
 
 其实起这个标题还是有点尴尬的，毕竟这次的内容实在算不上什么“高级”，但这就是Web程序设计课程的第三次实验名称，还是按照实验名来发布了。由于Web实验均要求提交HTML文档（当然不可能是Markdown文档），因此就只在这里记录一个[正文的链接](/html/css-advanced-practical-programming/)，内容同样保存在博客内部，但不会在其他地方有链接。

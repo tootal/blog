@@ -1,11 +1,13 @@
 ---
 title: C++声明浅析
 urlname: cpp-typedef
+categories:
+  - 大学课程
+  - C++程序设计
+tags:
+  - C++
 date: 2018-12-26 23:22:03
 updated: 2018-12-26 23:22:03
-categories:
-- 大学课程
-- C++程序设计
 ---
 明天就要考C++了，赶紧复习一下C++。
 <!--more-->

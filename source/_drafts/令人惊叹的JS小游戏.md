@@ -1,13 +1,10 @@
 ---
 title: 令人惊叹的JS小游戏
 urlname: top10-js13kGames
+toc: true
+tags: []
 date: 2020-12-05 00:11:20
 updated: 2020-12-05 00:11:20
-toc: true
-tags:
-- web
-- javascript
-- 游戏
 ---
 
 ![](../asset/top10-js13kGames.cover.webp)

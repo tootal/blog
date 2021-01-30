@@ -2,11 +2,13 @@
 title: Windows下Web开发环境搭建
 urlname: webdev-setup
 toc: true
+categories:
+  - 大学课程
+  - Web程序设计
+tags:
+  - Web
 date: 2019-08-22 21:34:19
 updated: 2019-08-22 21:34:19
-categories:
-- 大学课程
-- Web程序设计
 ---
 ![](../asset/webdev-setup.cover.webp)
 

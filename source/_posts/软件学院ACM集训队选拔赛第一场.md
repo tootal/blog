@@ -1,11 +1,13 @@
 ---
 title: 软件学院ACM集训队选拔赛第一场
 urlname: scutpc2018-c1
+categories:
+  - 计算机
+  - 算法竞赛
+tags:
+  - ACM
 date: 2018-11-26 00:40:18
 updated: 2018-11-26 00:40:18
-categories:
-- 计算机
-- 算法竞赛
 ---
 [题目](https://www.luogu.org/contestnew/show/13317)
 

@@ -5,6 +5,10 @@ toc: true
 categories:
   - ARTS
   - Technology
+tags:
+  - Qt
+  - C++
+  - 技术
 date: 2021-01-28 22:09:41
 updated: 2021-01-29 15:40:16
 ---

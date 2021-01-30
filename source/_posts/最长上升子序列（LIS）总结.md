@@ -2,11 +2,15 @@
 title: 最长上升子序列（LIS）总结
 urlname: lis-summary
 toc: true
+categories:
+  - 计算机
+  - 算法竞赛
+tags:
+  - 算法
+  - LIS
+  - 动态规划
 date: 2020-07-12 16:09:49
 updated: 2020-07-12 16:09:49
-categories:
-- 计算机
-- 算法竞赛
 ---
 
 子序列：可以通过删除原序列中一些元素获得的序列。

@@ -1,12 +1,14 @@
 ---
 title: Markdown学习
 urlname: learn-markdown
-date: 2020-02-14 11:44:58
-updated: 2020-02-14 11:44:58
 toc: true
 categories:
-- 计算机
-- 技术
+  - 计算机
+  - 技术
+tags:
+  - Markdown
+date: 2020-02-14 11:44:58
+updated: 2020-02-14 11:44:58
 ---
 ![](../asset/learn-markdown.cover.webp)
 

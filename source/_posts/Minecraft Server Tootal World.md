@@ -1,6 +1,8 @@
 ---
 title: Minecraft Server Tootal World
 urlname: mc-server
+tags:
+  - Minecraft
 date: 2018-12-14 22:26:19
 updated: 2018-12-14 22:26:19
 ---

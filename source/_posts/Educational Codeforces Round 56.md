@@ -1,11 +1,13 @@
 ---
 title: Educational Codeforces Round 56
 urlname: cf-1093
+categories:
+  - 计算机
+  - 算法竞赛
+tags:
+  - ACM
 date: 2018-12-16 21:10:21
 updated: 2018-12-16 21:10:21
-categories:
-- 计算机
-- 算法竞赛
 ---
 [题目](https://codeforces.com/contest/1093)
 

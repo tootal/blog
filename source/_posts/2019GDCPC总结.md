@@ -1,11 +1,13 @@
 ---
 title: 2019GDCPC总结
 urlname: 2019GDCPC-summary
+categories:
+  - 计算机
+  - 算法竞赛
+tags:
+  - ACM
 date: 2019-05-12 17:05:12
 updated: 2019-05-12 17:05:12
-categories:
-- 计算机
-- 算法竞赛
 ---
 OI退役后还是第一次参加这么大型的比赛，感觉还是很不错的。至少比当初NOIP好多了。
 同时感觉大学氛围也还是挺不错的。有队友督促训练。
