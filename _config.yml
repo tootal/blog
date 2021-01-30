@@ -53,9 +53,6 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-# 新建博客时创建一个文件夹而不是文件
-folder_wapper: true
-post_asset_folder: true
 relative_link: false
 future: true
 highlight:
