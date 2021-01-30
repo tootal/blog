@@ -192,7 +192,7 @@ if (logo) {
 # Path or URL to the website's logo
 logo:
     text: 头头世界
-    icon: /img/logo.png
+    icon: /asset/logo.png
 ```
 
 图标在前，文字在后。

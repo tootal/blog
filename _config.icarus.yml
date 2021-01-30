@@ -8,7 +8,7 @@ logo: ''
 # Page metadata configurations
 head:
     # URL or path to the website's icon
-    favicon: /img/favicon.png
+    favicon: /asset/favicon.png
     # Web application manifests configuration
     # https://developer.mozilla.org/en-US/docs/Web/Manifest
     manifest:
@@ -30,21 +30,21 @@ head:
         icons:
             -
                 # The path to the image file
-                src: '/img/favicon96.png'
+                src: '/asset/favicon96.png'
                 # A string containing space-separated image dimensions
                 sizes: '96x96'
                 # A hint as to the media type of the image
                 type: 'image/png'
             -
                 # The path to the image file
-                src: '/img/favicon144.png'
+                src: '/asset/favicon144.png'
                 # A string containing space-separated image dimensions
                 sizes: '144x144'
                 # A hint as to the media type of the image
                 type: 'image/png'
             -
                 # The path to the image file
-                src: '/img/favicon192.png'
+                src: '/asset/favicon192.png'
                 # A string containing space-separated image dimensions
                 sizes: '192x192'
                 # A hint as to the media type of the image
@@ -188,7 +188,7 @@ donates:
     -
         type: alipay
         # Alipay qrcode image URL
-        qrcode: '/img/alipay.webp'
+        qrcode: '/asset/alipay.webp'
     # "Buy me a coffee" donate button configurations
     # -
         # type: buymeacoffee
@@ -210,7 +210,7 @@ donates:
     -
         type: wechat
         # Wechat qrcode image URL
-        qrcode: '/img/wechat_pay.webp'
+        qrcode: '/asset/wechat_pay.webp'
 # Share plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Share/
 # share:
@@ -243,7 +243,7 @@ widgets:
         # Author's current location
         location: 中国 广州
         # URL or path to the avatar image
-        avatar: '/img/avatar.webp'
+        avatar: '/asset/avatar.webp'
         # Whether show the rounded avatar image
         avatar_rounded: true
         # Email address for the Gravatar
