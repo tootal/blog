@@ -7,13 +7,15 @@ let svnote = JSON.parse(fs.readFileSync('source/_vnote.json'));
 for (let dir of svnote["sub_directories"]) {
     let vnote = JSON.parse(fs.readFileSync(`source/${dir["name"]}/_vnote.json`));
     for (let file of vnote["files"]) {
-        let tags = file["tags"];
         let fm = parse(fs.readFileSync(`source/${dir["name"]}/${file["name"]}`));
-        if (!tags.equals(fm.tags)) {
-            logger.info('Override front matter tag', fm.tags, "with", tags);
-            fm.tags = tags;
-            let content = `---\n${stringify(fm)}`;
-            fs.writeFileSync(`source/${dir["name"]}/${file["name"]}`, content);
+        if (!fm.date || !fm.updated) {
+            logger.info(`No date or updated in ${file["name"]}`);
+            process.exit(-1);
         }
+        logger.info(`Override ${file["name"]} created_time ${file["created_time"]} with ${fm.date.toISOString()}.`);
+        file["created_time"] = fm.date.toISOString();
+        logger.info(`Override ${file["name"]} modified_time ${file["modified_time"]} with ${fm.updated.toISOString()}.`);
+        file["modified_time"] = fm.updated.toISOString();
     }
+    fs.writeFileSync(`source/${dir["name"]}/_vnote.json`, JSON.stringify(vnote));
 }
