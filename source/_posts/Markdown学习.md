@@ -4,8 +4,6 @@ urlname: learn-markdown
 date: 2020-02-14 11:44:58
 updated: 2020-02-14 11:44:58
 toc: true
-tags:
-- markdown
 categories:
 - 计算机
 - 技术

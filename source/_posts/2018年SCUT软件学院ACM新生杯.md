@@ -3,7 +3,6 @@ title: 2018年SCUT软件学院ACM新生杯
 urlname: scutpc2018-newcup
 date: 2018-11-11 22:53:25
 updated: 2018-11-11 22:53:25
-tags: ACM
 categories:
 - 计算机
 - 算法竞赛

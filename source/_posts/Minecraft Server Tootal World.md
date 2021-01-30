@@ -3,8 +3,8 @@ title: Minecraft Server Tootal World
 urlname: mc-server
 date: 2018-12-14 22:26:19
 updated: 2018-12-14 22:26:19
-tags: Minecraft
 ---
+![](../asset/20190729212150244_17376.webp)
 
 {% msg warning %}
 服务器已不再维护，以下信息可能已过时。

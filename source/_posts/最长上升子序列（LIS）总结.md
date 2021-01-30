@@ -4,11 +4,6 @@ urlname: lis-summary
 toc: true
 date: 2020-07-12 16:09:49
 updated: 2020-07-12 16:09:49
-tags:
-- ACM
-- 算法
-- LIS
-- 动态规划
 categories:
 - 计算机
 - 算法竞赛

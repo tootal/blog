@@ -4,9 +4,6 @@ urlname: pdf-table
 toc: false
 date: 2020-08-30 13:53:57
 updated: 2020-08-30 13:53:57
-tags:
-- pdf
-- python
 categories:
 - 计算机
 - 技术

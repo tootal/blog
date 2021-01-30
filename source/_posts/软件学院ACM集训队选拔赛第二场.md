@@ -3,7 +3,6 @@ title: 软件学院ACM集训队选拔赛第二场
 urlname: scutpc2018-c2
 date: 2018-12-01 23:59
 updated: 2018-12-01 23:59
-tags: ACM
 categories:
 - 计算机
 - 算法竞赛
