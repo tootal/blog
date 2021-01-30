@@ -15,7 +15,7 @@ OI退役后还是第一次参加这么大型的比赛，感觉还是很不错的
 一直找不到重现赛或是提交的链接,先记录一下类似的题目吧.
 hex
 * [A](https://atcoder.jp/contests/agc031/tasks/agc031_e)
-* [G](href="https://vjudge.net/problem/CodeForces-340B)
+* [G](https://vjudge.net/problem/CodeForces-340B)
 * [I](https://www.cometoj.com/contest/37/problem/D?problem_id=1531)
 
 (已经有重现赛了,但是还是没时间补题...)

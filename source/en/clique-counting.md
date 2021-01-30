@@ -107,9 +107,9 @@ as counts for every vertex or every edge).
 
 {% figure %}
 
-![timings](timings-big4-maxk.png "Timings")
-![soc-pokec-occurrences](as-skitter-occurrences.png "Frequency distribution")
-![web-Stanford-occurrences](web-Stanford-occurrences-5.png "Frequency distribution")
+![timings](../asset/timings-big4-maxk.png "Timings")
+![soc-pokec-occurrences](../asset/as-skitter-occurrences.png "Frequency distribution")
+![web-Stanford-occurrences](../asset/web-Stanford-occurrences-5.png "Frequency distribution")
 
 {% fig timings %} shows the comparison of time taken (in seconds) by PIVOTER for 4 of our largest graphs to count *all* $k-$cliques with the time taken by kClist40 (the parallel version of the state of the art algorithm kClist that uses 40 threads) to count the number of $k-$cliques, where $k$ is the maximum clique size in each graph. For Stanford, BerkStan, as-skitter, orkut, the maximum clique sizes were 61, 201, 67 and 51 resp. PIVOTER terminated for most graphs in minutes, (except for orkut, for which it took about 2 hours) whereas kClist40 had not terminated even after 3 days, giving a speedup of 100x to 10000x. {% fig timings %} also shows the time taken by PIVOTER to obtain the per-vertex and per-edge $k-$clique counts. They were within a factor of the time taken to obtain global $k-$clique counts. {% fig soc-pokec-occurrences %} and  {% fig web-Stanford-occurrences %} shows the frequency distribution of $k$-cliques i.e. for every number $r$ on the x-axis, the y-axis shows the number of vertices that participate in $r$ $k$-cliques, for $k \in [5, 10, 15, 20, 25]$ for as-skitter and web-Stanford graphs.
 
