@@ -7,6 +7,7 @@ categories:
 date: 2018-11-05 14:25:56
 updated: 2019-06-13 17:37:28
 ---
+![](../asset/hello-welcome.cover.webp)
 
 欢迎来到**头头博客**！
 Welcome to **tootal blog**!

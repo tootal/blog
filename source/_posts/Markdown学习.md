@@ -10,6 +10,7 @@ categories:
 - 计算机
 - 技术
 ---
+![](../asset/learn-markdown.cover.webp)
 
 ## Markdown与标记语言介绍
 Markdown是一种轻量级标记语言。那么什么是标记语言（Markup Language）呢？记得以前在课本上看到关键句子的时候，我通常会用黑笔在句子下面划线，比如下面这样：

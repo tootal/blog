@@ -8,6 +8,7 @@ categories:
 date: 2021-01-28 22:09:41
 updated: 2021-01-29 15:40:16
 ---
+![](../asset/vnote-task.cover.png)
 
 [VNote](https://vnotex.github.io/vnote/zh_cn/)是一款专为Markdown设计的Vim风格笔记应用程序。目前使用已经两年多了，平时用来记录、摘抄都挺方便的。略有不方便的地方就是VNote不能方便地运行一些外部工具，例如：
 

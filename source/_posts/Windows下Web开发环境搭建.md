@@ -8,6 +8,7 @@ categories:
 - 大学课程
 - Web程序设计
 ---
+![](../asset/webdev-setup.cover.webp)
 
 虽然Web程序大多运行在Linux服务器上，从兼容性角度来说，当然是在与服务器一致的环境下开发最好。但是我本地的机器是Windows系统，实在要用Linux的时候是采用虚拟机的方式。在虚拟机里面写代码着实麻烦，因此还是决定在Windows下搭建一套Web开发环境，方便测试。
 
