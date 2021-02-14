@@ -34,8 +34,9 @@ module.exports = ctx => function (args, content) {
                 } else {
                     icon = `<i class="${icon} mr-2"></i>`;
                 }
+            } else {
+                icon = `<i class="${icon} mr-2"></i>`;
             }
-            icon = `<i class="${icon} mr-2"></i>`;
         }
 
         caption = caption.trim();
