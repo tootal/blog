@@ -95,13 +95,12 @@ updated: 2021-01-29 15:40:16
 
 考虑到目前VNote也是主要采用JSON格式的配置文件，因此任务系统也通过JSON文件进行配置。后续会考虑在设置里添加图形化配置方式。
 
-## 下载开发
+## 下载开发版本
 
 目前任务系统仍然处于开发过程中，可以[在此](https://github.com/tootal/vnote/tree/feat-task)查看相关代码。
 
 通过下面的按钮可以下载包含任务系统功能的测试版本：
 
-<p class="buttons are-large">
 {% buttons are-large %}
 
 [Windows x64@fab-windows, button, is-primary](https://github.com/tootal/vnote/suites/1924447822/artifacts/37905429)
@@ -111,35 +110,320 @@ updated: 2021-01-29 15:40:16
 
 {% endbuttons %}
 
+如果你对VSCode Task熟悉，想知道它们之间有什么区别，可以直接查看[对比VSCode Task](#VS-Code-Task)。
+
 ## 快速上手
 
-一个最简单的示例莫过于在屏幕上输出Hello world了。通过右上角的菜单打开用户配置文件夹。
+### Hello World
 
-![](../asset/20210128231558685_805.png)
+一个最简单的示例莫过于在屏幕上输出`helloworld`了。通过右上角的设置菜单打开用户配置文件夹。
 
-若不存在`tasks`文件夹，则创建一个新的空文件夹`tasks`，并在其内新建一个`hello.json`文件，输入如下内容。
+![](../asset/20210130205350994_4518.png)
+
+在`tasks`文件夹内新建一个`hello.json`文件，输入如下内容。
 
 ```json
 {
-    "command": "echo",
-    "args": ["Hello world"]
+    "command": "echo helloworld"
 }
 ```
 
-保存文件后重新启动VNote，可以发现主菜单多了一个`hello`菜单项，点击该菜单项即可运行上述任务。
+保存文件后，可以发现主菜单多了一个`hello`菜单项，点击该菜单项即可运行上述任务。
 
-![](../asset/20210128232527132_24467.png)
+![](../asset/20210130233534445_30193.png)
 
 
-运行任务时会自动弹出下方的输出面板，在输出面板可以查看任务运行过程中的输出信息。
+运行任务时会自动弹出下方的输出面板，在输出面板可以查看任务运行过程中的输出信息。如果你看到了`helloworld`显示在下方的输出面板中，说明任务运行成功了。在默认情况下，VNote会把命令传递给系统默认的命令解释器（Windows平台使用`PowerShell.exe`，Linux和macOS平台使用`/bin/bash`）执行，并接收输出的结果显示在输出面板上。对于支持的所有配置项及其含义，请参考[任务配置](#任务配置)。
 
-## 配置任务
+### 自定义菜单项
 
-VNote任务系统支持如下三个层级的配置文件：
+对于每个任务，VNote会自动在主界面生成一个菜单项与之对应，默认使用文件名或命令值作为菜单名称。通过`label`、`icon`以及`shortcut`可以指定任务的名称（Hello）、图标（[tasks-solid.svg](https://fontawesome.com/icons/tasks?style=solid)）以及快捷键（`Alt+H, T`）。
 
-- [x] 全局任务配置：配置文件保存在全局配置文件夹中，软件安装时自动添加。例如`C:\Users\tootal\AppData\Roaming\VNote\VNote\tasks`文件夹下的`*.json`文件。
-- [x] 用户任务配置：配置文件保存在用户配置文件夹中，由用户自行添加。例如`C:\Users\tootal\AppData\Local\VNote\VNote\tasks`文件夹下的`*.json`文件。
-- [ ] 笔记本任务配置：配置文件保存在笔记本文件夹中，由用户自行添加。例如`C:\Users\tootal\Documents\vnote_notebooks\testtask\vx_notebook\tasks`文件夹下的`*.json`文件。
+```json
+{
+    "label": "Hello",
+    "icon": "tasks-solid.svg",
+    "shortcut": "Alt+H, T",
+    "command": "echo",
+    "args": [
+        "Hello tasks!"
+    ]
+}
+```
+
+此时主界面的菜单项会加上图标及快捷键。按快捷键`Alt+H, T`即可运行该任务。
+
+{% gallery %}
+![纯净](../asset/20210131013045872_3571.png)
+![月夜](../asset/20210131013811773_17529.png)
+![原素](../asset/20210131013855368_1962.png)
+{% endgallery %}
+
+提示：尽量使用SVG格式的图标，VNote会根据当前主题调整图标颜色，以达到更好的显示效果。
+
+任务同时还可以包含若干个子任务，支持无限层级的嵌套，在菜单栏中展示为多级子菜单。如下是一个`Hello Tasks`任务，包含三个子任务`Hello Cat`、`Hello Dove`和`Hello Fish`。
+
+```json
+{
+    "label": "Hello Tasks",
+    "icon": "tasks-solid.svg",
+    "shortcut": "Alt+H, T",
+    "command": "echo",
+    "args": ["Hello tasks!"],
+    "tasks": [
+        {
+            "label": "Hello Cat",
+            "icon": "cat-solid.svg",
+            "shortcut": "Alt+H, C",
+            "args": ["Hello cat!"]
+        },
+        {
+            "label": "Hello Dove",
+            "icon": "dove-solid.svg",
+            "shortcut": "Alt+H, D",
+            "args": ["Hello dove!"]
+        },
+        {
+            "label": "Hello Fish",
+            "icon": "fish-solid.svg",
+            "shortcut": "Alt+H, F",
+            "args": ["Hello fish!"]
+        }
+    ]
+}
+```
+
+上面的子任务没有配置`command`但依然可以执行，这是因为子任务会从父任务中继承大部分常见属性（如`type`、`command`、`args`）。
+
+![](../asset/20210131143000015_8523.png)
+
+注意：请尽量不要在包含子任务的任务中配置命令，因为菜单项的点击操作默认实现为展开下一级菜单，从而导致无法通过点击菜单项来触发任务执行，但仍然可以通过快捷键方式执行任务。
+
+### 特殊字符处理
+
+当命令或参数包含特殊字符（如空格）时通常需要进行特殊的处理，由于不同命令解释器的语法大相径庭，没有统一的处理方法。默认情况下，VNote会进行如下处理。
+
+当满足下面所有条件时，VNote会自动在**参数**两端加上双引号。
+
+* 当不指定`type`或`type`为`shell`
+* 同时指定`command`和`args`
+* 参数中包含空格
+
+
+
+当满足下面所有条件时，VNote会用空格分隔将命令和参数合并成一个字符串并在两端加上双引号，同时转义内部的双引号。
+
+* 当不指定`type`或`type`为`shell`
+* 当`shell`为`bash`
+
+例如在Linux下运行之前的Hello Tasks 示例，命令将被处理成：（可在运行日志中查看）
+
+`run task "/bin/bash" ("-c", "echo \\\"Hello tasks!\\\"")`
+
+![](../asset/20210131150114081_29346.png)
+
+输出结果两端会出现多余的双引号，通过仅指定`command`或用`process`方式启动任务可以手动处理特殊字符。
+
+### 启动外部程序
+
+默认情况下`command`会作为shell命令执行（即默认`type`为`shell`），通过指定`type`为`process`可以将`command`作为外部程序运行。下面是一个示例，在Typora或VS Code中打开当前文件。其中`${file}`是一个变量，会在运行时替换为当前打开的文件路径。关于变量的更多信息，请参考[变量替换](#变量替换)。
+
+{% tabs openexternal %}
+<!-- tab Windows@fab-windows -->
+
+```json
+{
+    "type": "process",
+    "label": "Open File with",
+    "args": ["${file}"],
+    "tasks": [
+        {
+            "label": "Typora",
+            "icon": "Typora.svg",
+            "command": "C:\\Programs\\Typora0.9.98\\x64\\Typora.exe"
+        },
+        {
+            "label": "VS Code",
+            "icon": "vscode.svg",
+            "command": "C:\\Users\\tootal\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+        }
+    ]
+}
+```
+
+![启动Typora和VSCode](../asset/20210131161734576_12333.gif)
+<!-- endtab -->
+
+<!-- tab Linux@fab-linux -->
+```json
+{
+    "type": "process",
+    "label": "Open File with",
+    "args": ["${file}"],
+    "tasks": [
+        {
+            "label": "Typora",
+            "icon": "Typora.svg",
+            "command": "/usr/bin/typora"
+        },
+        {
+            "label": "VS Code",
+            "icon": "vscode.svg",
+            "command": "/usr/bin/code"
+        }
+    ]
+}
+```
+
+![在Typora或VSCode打开当前文件](../asset/20210131165036397_2406.gif)
+
+<!-- endtab -->
+
+{% endtabs %}
+
+由于VNote默认不包含控制台窗口，因此启动一些命令行程序时可能会出现问题，此时可以通过`shell`命令启动一个单独的窗口来解决。对于Windows可以用`start vim.exe`，对于Linux平台可以用`gnome-terminal`、`konsole`或`xterm`等。
+
+```json
+{
+    "label": "Vim",
+    "icon": "vim.svg",
+    "type": "process",
+    "command": "gnome-terminal",
+    "args": [
+        "--execute",
+        "vim",
+        "${file}"
+    ]
+}
+```
+
+![在VIM打开当前文件](../asset/20210131174128746_9517.gif)
+
+### 多语言与多平台
+
+任务配置文件支持针对特定平台进行配置，通过`windows`、`linux`或`osx`属性可以指定Windows、Linux、macOS平台下特定的配置。平台特定配置会对基础配置进覆盖，但`tasks`配置会进行合并。例如可以将上面的启动外部程序的配置文件合并，使其在Windows平台和Linux平台均能正常工作。
+
+```json
+{
+    "type": "process",
+    "label": "Open File with",
+    "args": ["${file}"],
+    "tasks": [
+        {
+            "label": "Typora",
+            "icon": "Typora.svg",
+            "windows": {
+                "command": "C:\\Programs\\Typora0.9.98\\x64\\Typora.exe"
+            },
+            "linux": {
+                "command": "/usr/bin/typora"
+            }
+        },
+        {
+            "label": "VS Code",
+            "icon": "vscode.svg",
+            "windows": {
+                "command": "C:\\Users\\tootal\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+            },
+            "linux": {
+                "command": "/usr/bin/code"
+            }
+        }
+    ]
+}
+```
+
+任务配置文件也支持多语言配置，对于`label`、`command`、`args`属性，除字符串外还可传入一个`LocaleString`对象。
+
+```json
+{
+    "label": {
+        "en_US": "Hello",
+        "zh_CN": "你好"
+    },
+    "icon": "tasks-solid.svg",
+    "command": "echo",
+    "tasks": [
+        {
+            "label": {
+                "en_US": "Cat",
+                "zh_CN": "猫"
+            },
+            "icon": "cat-solid.svg",
+            "shortcut": "Alt+H, C",
+            "args": [
+                {
+                    "en_US": "Hello cat!",
+                    "zh_CN": "你好，猫！"
+                }
+            ]
+        },
+        {
+            "label": {
+                "en_US": "Dove",
+                "zh_CN": "鸽子"
+            },
+            "icon": "dove-solid.svg",
+            "shortcut": "Alt+H, D",
+            "args": [
+                {
+                    "en_US": "Hello dove!",
+                    "zh_CN": "你好，鸽子！"
+                }
+            ]
+        },
+        {
+            "label": "Fish",
+            "icon": "fish-solid.svg",
+            "shortcut": "Alt+H, F",
+            "args": [
+                {
+                    "en_US": "Hello fish!",
+                    "zh_CN": "你好，鱼！"
+                }
+            ]
+        }
+    ]
+}
+```
+
+![](../asset/20210131171051185_10427.png)
+
+注意：切换VNote语言后需要重启才能生效。
+
+### 任务运行出错
+
+当任务运行出错时，会在输出面板显示错误消息，例如：
+
+```
+[Task Typora error occurred with code 0]
+```
+
+其中[错误代码](https://doc.qt.io/qt-5.12/qprocess.html#ProcessError-enum)的含义如下：
+
+| 错误代码 |               含义                |
+| -------- | --------------------------------- |
+| 0       | 任务启动失败，可能是命令或参数错误。 |
+| 1       | 任务启动成功，但在运行时崩溃了。     |
+| 2       | 任务运行超时。                     |
+| 3       | 尝试读取时出现错误。                |
+| 4       | 尝试写入时出现错误。                |
+| 5       | 未知错误。                         |
+
+### 笔记本任务配置
+
+有些任务并不是每个笔记本都需要执行的，例如“通过[Hexo](https://hexo.io/zh-cn/)渲染预览并发布”通常仅在特定的笔记本需要，此时可以创建一个笔记本层级的任务配置。VNote任务系统支持如下三个层级的配置文件：
+
+- 全局任务配置：配置文件保存在全局配置文件夹中，软件安装时自动添加。例如`C:\Users\tootal\AppData\Roaming\VNote\VNote\tasks`文件夹下的`*.json`文件。
+- 用户任务配置：配置文件保存在用户配置文件夹中，由用户自行添加。例如`C:\Users\tootal\AppData\Local\VNote\VNote\tasks`文件夹下的`*.json`文件。
+- 笔记本任务配置：配置文件保存在笔记本文件夹中，由用户自行添加。例如`C:\Users\tootal\Documents\vnote_notebooks\testtask\vx_notebook\tasks`文件夹下的`*.json`文件。
+
+
+注意：笔记本层级的任务，如果之前不存在`tasks`文件夹，需要新建一个并刷新笔记本。
+
+
+
+## 任务配置
 
 在VNote启动时会自动加载任务配置文件，配置文件修改后需要重新启动VNote生效。在上述文件夹及其子文件夹下的`*.json`文件均会被识别为任务配置文件。一个任务可以包含若干个子任务，在界面上显示为多级菜单项。任务配置文件与VSCode的相似而略有不同，一个任务包含如下配置项：
 
@@ -154,7 +438,7 @@ VNote任务系统支持如下三个层级的配置文件：
         - 当前笔记本根目录
         - 当前文件所在目录
         - 当前任务配置文件所在目录。
-    - [ ] `env`，任务运行时环境变量。
+    - [x] `env`，任务运行时环境变量。
     - [x] `shell`，shell配置，仅当任务类型为`shell`时生效。
         - [x] `executable`，shell可执行文件。
         - [x] `args`，shell启动参数
@@ -164,10 +448,10 @@ VNote任务系统支持如下三个层级的配置文件：
     - [x] `type`，输入变量类型，可以是下列值，默认值为`promptString`。
         - `promptString`，弹出一个输入框
         - `pickString`，弹出一个选择框（尚未完全实现）
-    - [ ] `description`，输入变量描述（可翻译）。
-    - [ ] `default`，输入变量默认值 （可翻译），当输入变量类型为`pickString`时，`options`需要包含`default`。
-    - [ ] `password`，输入模式，布尔值，默认值为`false`，仅当输入变量类型为`promptString`时生效。
-    - [ ] `options`，输入选项（可翻译），仅当输入变量类型为`promptString`时生效。
+    - [x] `description`，输入变量描述（可翻译）。
+    - [x] `default`，输入变量默认值 （可翻译），当输入变量类型为`pickString`时，`options`需要包含`default`。
+    - [x] `password`，输入模式，布尔值，默认值为`false`，仅当输入变量类型为`promptString`时生效。
+    - [x] `options`，输入选项（可翻译），仅当输入变量类型为`promptString`时生效。
 - [x] `windows`，Windows平台特定配置。
 - [x] `linux`，Linux平台特定配置。
 - [x] `osx`，macOS平台特定配置。
@@ -181,6 +465,8 @@ VNote任务系统支持如下三个层级的配置文件：
         - `default`，手动触发。
         - `notebookOpen`，打开笔记本时触发（仅支持笔记本级别的任务配置）。
         - `notebookClose`，关闭笔记本时触发（仅支持笔记本级别的任务配置）。
+        - `appOpen`，打开VNote时触发。
+        - `appClose`，关闭VNote时触发。
 
 
 所有配置项除注明【必要】外均为可选，标注有（可翻译）的配置项可以传入一个字符串或一个指定`locale`的对象。子任务会从父任务中继承除`label`、`inputs`和`tasks`以外的值。平台特定配置中的`tasks`会进行合并，其余配置会被覆盖。配置项缺失时采用默认值。具体用法可参考下方示例或文章末尾处的完整的配置文件格式。
@@ -197,7 +483,7 @@ VNote任务系统支持如下三个层级的配置文件：
 一个配置好的任务可以通过如下方式进行调用：
 
 - [x] 主界面菜单项。在软件主菜单界面添加一个**任务**菜单项，其下列出一些功能以及通过配置文件定义的任务。触发该菜单项即可运行对应的任务。这也是目前主流的做法。
-- [ ] 快捷键。如果需要频繁运行某个任务，可以为其定义一个快捷键。
+- [x] 快捷键。如果需要频繁运行某个任务，可以为其定义一个快捷键。
 - [ ] 通用入口。在VNote v2版本中存在的一个功能，类似于VSCode或Sublime Text的快速命令面板，但目前在v3版本尚未迁移。
 - [ ] 自动调用。默认情况下只有手动触发才能调用工具，但有时在恰当的时机自动运行工具可能会非常方便。例如打开笔记本时自动与云端进行同步，关闭笔记本时自动提交所有修改到版本控制系统。这样不仅缩短了操作流程，还可以避免忘记运行。
 
@@ -205,15 +491,14 @@ VNote任务系统支持如下三个层级的配置文件：
 
 在配置文件中获取当前运行时的一些参数是非常有用的，例如当前打开的笔记本，正在编辑或查看的文件。参考[VSCode提供的变量](https://code.visualstudio.com/docs/editor/variables-reference)，VNote的任务系统配置同样采用`${variableName}`的语法，支持以下类型的变量，
 
-- [ ] 预定义变量，提供上下文信息，如`${notebookFolder}`、`${file}`。
-- [ ] 幻词变量，如`${magic:datetime}`、`${magic:random}`。
-- [ ] 环境变量，提供系统环境变量，如`${env:USERNAME}`、`${env:JAVA_HOME}`。
-- [ ] 配置变量，提供VNote配置信息，如`${config:core.locale}`。
-- [ ] 输入变量，提供简单的交互功能，如`${input:who}`。
-- [ ] Shell变量，获取Shell命令的结果，如`${shell:}`，对于复杂的命令可以使用输出变量。
-- [ ] 输出变量，获取其它任务的输出，如`${output:task.id}`。
+- [x] 预定义变量，提供上下文信息，如`${notebookFolder}`、`${file}`。
+- [x] 幻词变量，如`${magic:datetime}`、`${magic:random}`。
+- [x] 环境变量，提供系统环境变量，如`${env:USERNAME}`、`${env:JAVA_HOME}`。
+- [x] 配置变量，提供VNote配置信息，如`${config:core.locale}`。
+- [x] 输入变量，提供简单的交互功能，如`${input:who}`。
+- [x] Shell变量，获取Shell命令的结果，如`${shell:}`，对于复杂的命令可以使用输出变量。
 
-目前变量替换为简单的字符替换，对于同一个配置项中出现的同一个输入变量仅求值一次。暂不支持嵌套变量替换。
+对于同一个配置项中出现的同一个输入变量仅求值一次。暂不支持嵌套变量替换。
 
 ### 预定义变量
 
@@ -226,22 +511,33 @@ VNote任务系统支持如下三个层级的配置文件：
 ![](../asset/20210127220155516_27704.png)
 
 
-- [x] `${notebookFolder}`，当前打开的笔记本文件夹路径，如`C:\Users\tootal\Documents\vnote_notebooks\testtask`。
-- [x] `${notebookFolderBasename}`，当前打开的笔记本文件夹名，如`testtask`。
-- [ ] `${notebookName}`，当前打开的笔记本名，如`test-task`。
-- [ ] `${notebookDescription}`，当前打开的笔记本描述，如`This notebook for task test.`。
-- [x] `${file}`，当前打开的文件路径，如`C:\Users\tootal\Documents\vnote_notebooks\testtask\test2\note.md`。
-- [ ] `${fileNotebookFolder}`，当前打开的文件所在的笔记本文件夹路径，如`C:\Users\tootal\Documents\vnote_notebooks\testtask`。
-- [ ] `${relativeFile}`，当前打开的文件相对于`${fileNotebookFolder}`的路径，如`test2\note.md`。
-- [x] `${fileBasename}`，当前打开的文件名，如`note.md`。
-- [x] `${fileBasenameNoExtension}`，当前打开的文件名（不含扩展名），如`note`。
-- [x] `${fileDirname}`，当前打开的文件所在的文件夹路径，如`C:\Users\tootal\Documents\vnote_notebooks\testtask\test2`。
-- [x] `${fileExtname}`，当前打开的文件的扩展名（包含点），如`.md`。
-- [ ] `${cwd}`，当前任务开始运行时的工作目录，如`C:\Users\tootal\Documents\vnote_notebooks\testtask`。
-- [ ] `${lineNumber}`，当前光标所在处的行号，如`2`。
-- [ ] `${selectedText}`，当前选中的文本，如`a test`。
-- [ ] `${execPath}`， VNote可执行文件的路径，如`C:\Programs\vnote3\vnote.exe`。
-- [ ] `${pathSeparator}`，当前操作系统所用的路径分隔符，如`\`。
+- `${notebookFolder}`，当前打开的笔记本文件夹路径，如`C:\Users\tootal\Documents\vnote_notebooks\testtask`。
+- `${notebookFolderBasename}`，当前打开的笔记本文件夹名，如`testtask`。
+- `${notebookName}`，当前打开的笔记本名，如`test-task`。
+- `${notebookDescription}`，当前打开的笔记本描述，如`This notebook for task test.`。
+- `${file}`，当前打开的文件路径，如`C:\Users\tootal\Documents\vnote_notebooks\testtask\test2\note.md`。
+- `${fileNotebookFolder}`，当前打开的文件所在的笔记本文件夹路径，如`C:\Users\tootal\Documents\vnote_notebooks\testtask`。
+- `${relativeFile}`，当前打开的文件相对于`${fileNotebookFolder}`的路径，如`test2\note.md`。
+- `${fileBasename}`，当前打开的文件名，如`note.md`。
+- `${fileBasenameNoExtension}`，当前打开的文件名（不含扩展名），如`note`。
+- `${fileDirname}`，当前打开的文件所在的文件夹路径，如`C:\Users\tootal\Documents\vnote_notebooks\testtask\test2`。
+- `${fileExtname}`，当前打开的文件的扩展名（包含点），如`.md`。
+- `${cwd}`，当前任务开始运行时的工作目录，如`C:\Users\tootal\Documents\vnote_notebooks\testtask`。
+- `${lineNumber}`，当前光标所在处的行号，如`2`。
+- `${selectedText}`，当前选中的文本，如`a test`。
+- `${execPath}`， VNote可执行文件的路径，如`C:\Programs\vnote3\vnote.exe`。
+- `${pathSeparator}`，当前操作系统所用的路径分隔符，如`\`。
+- `${taskFile}`，当前正在运行的任务配置文件路径。
+- `${taskDirname}`，当前正在运行的任务配置文件所在的文件夹路径。
+- `${notebookTaskFolder}`，当前笔记本任务配置文件夹路径，如`C:\Users\tootal\Documents\vnote_notebooks\testtask\vx_notebook\tasks`。
+- `${userTaskFolder}`，VNote用户任务配置文件夹路径，如`C:\Users\tootal\AppData\Local\VNote\VNote\tasks`。
+- `${appTaskFolder}`，VNote全局任务配置文件夹路径，如`C:\Users\tootal\AppData\Roaming\VNote\VNote\tasks`。
+- `${userThemeFolder}`，VNote用户主题文件夹路径，如`C:\Users\tootal\AppData\Local\VNote\VNote\themes`。
+- `${appThemeFolder}`，VNote全局主题文件夹路径，如`C:\Users\tootal\AppData\Roaming\VNote\VNote\themes`。
+- `${userDocsFolder}`，VNote用户文档文件夹路径，如`C:\Users\tootal\AppData\Local\VNote\VNote\docs`。
+- `${appDocsFolder}`，VNote全局文档文件夹路径，如`C:\Users\tootal\AppData\Roaming\VNote\VNote\docs`。
+
+TODO: `${lineNumber}`、`${selectedText}`尚未实现。
 
 变量基本与VSCode兼容。注意变量替换只在以下配置项中有效：`command`、`args`、`options.cwd`、`options.env`。如果变量的值不存在，则会被替换为空字符串。注意变量中的路径会使用**平台相关**的路径分隔符。
 
@@ -249,49 +545,49 @@ VNote任务系统支持如下三个层级的配置文件：
 
 通过`${magic:word}`的语法可以引用幻词变量，下面列出了VNote支持的所有幻词及其含义：
 
-- [ ] `d`, the day as number without a leading zero (`1` to `31`)
-- [ ] `dd`, the day as number with a leading zero (`01` to `31`)
-- [ ] `ddd`, the abbreviated localized day name (e.g. `Mon` to `Sun`)
-- [ ] `dddd`, the long localized day name (e.g. `Monday` to `Sunday`)
-- [ ] `M`, the month as number without a leading zero (`1` to `12`)
-- [ ] `MM`, the month as number with a leading zero (`01` to `12`)
-- [ ] `MMM`, the abbreviated localized month name (e.g. `Jan` to `Dec`)
-- [ ] `MMMM`, the long localized month name (e.g. `January` to `December`)
-- [ ] `yy`, the year as two digit number (`00` to `99`)
-- [ ] `yyyy`, the year as four digit number
-- [ ] `h`, the hour without a leading zero (`0` to `23` or `1` to `12` if AM/PM display)
-- [ ] `hh`, the hour with a leading zero (`00` to `23` or `01` to `12` if AM/PM display)
-- [ ] `H`, the hour without a leading zero (`0` to `23` even with AM/PM display)
-- [ ] `HH`, the hour with a leading zero (`00` to `23` even with AM/PM display)
-- [ ] `m`, the minute without a leading zero (`0` to `59`)
-- [ ] `mm`, the minute with a leading zero (`00` to `59`)
-- [ ] `s`, the second without a leading zero (`0` to `59`)
-- [ ] `ss`, the second with a leading zero (`00` to `59`)
-- [ ] `z`, the milliseconds without leading zeroes (`0` to `999`)
-- [ ] `zzz`, the milliseconds with leading zeroes (`000` to `999`)
-- [ ] `AP`, use AM/PM display (`AM` or `PM`)
-- [ ] `A`, use AM/PM display (`AM` or `PM`)
-- [ ] `ap`, use am/pm display (`am` or `pm`)
-- [ ] `a`, use am/pm display (`am` or `pm`)
-- [ ] `t`, the timezone (e.g. `CEST`)
-- [ ] `random`, a random number
-- [ ] `random_d`, dynamic version of `random`
-- [ ] `date`, yyyy-MM-dd,
-- [ ] `da`, yyyyMMdd
-- [ ] `time`, hh:mm:ss
-- [x] `datetime`, date time
-- [ ] `dt`, da-time
-- [ ] `note`, name of current note
-- [ ] `no`, complete base name of current note
-- [ ] `att`, relative path of current note's attachment folder
-- [ ] `w`, the week number (`1` to `53`)
-- [ ] 自定义幻词
-
+- `d`, the day as number without a leading zero (`1` to `31`)
+- `dd`, the day as number with a leading zero (`01` to `31`)
+- `ddd`, the abbreviated localized day name (e.g. `Mon` to `Sun`)
+- `dddd`, the long localized day name (e.g. `Monday` to `Sunday`)
+- `M`, the month as number without a leading zero (`1` to `12`)
+- `MM`, the month as number with a leading zero (`01` to `12`)
+- `MMM`, the abbreviated localized month name (e.g. `Jan` to `Dec`)
+- `MMMM`, the long localized month name (e.g. `January` to `December`)
+- `yy`, the year as two digit number (`00` to `99`)
+- `yyyy`, the year as four digit number
+- `h`, the hour without a leading zero (`0` to `23` or `1` to `12` if AM/PM display)
+- `hh`, the hour with a leading zero (`00` to `23` or `01` to `12` if AM/PM display)
+- `H`, the hour without a leading zero (`0` to `23` even with AM/PM display)
+- `HH`, the hour with a leading zero (`00` to `23` even with AM/PM display)
+- `m`, the minute without a leading zero (`0` to `59`)
+- `mm`, the minute with a leading zero (`00` to `59`)
+- `s`, the second without a leading zero (`0` to `59`)
+- `ss`, the second with a leading zero (`00` to `59`)
+- `z`, the milliseconds without leading zeroes (`0` to `999`)
+- `zzz`, the milliseconds with leading zeroes (`000` to `999`)
+- `AP`, use AM/PM display (`AM` or `PM`)
+- `A`, use AM/PM display (`AM` or `PM`)
+- `ap`, use am/pm display (`am` or `pm`)
+- `a`, use am/pm display (`am` or `pm`)
+- `t`, the timezone (e.g. `CEST`)
+- `random`, a random number
+- `random_d`, dynamic version of `random`
+- `date`, yyyy-MM-dd,
+- `da`, yyyyMMdd
+- `time`, hh:mm:ss
+- `datetime`, date time
+- `dt`, da-time
+- `note`, name of current note
+- `no`, complete base name of current note
+- `att`, relative path of current note's attachment folder
+- `w`, the week number (`1` to `53`)
 
 例如：
 
 * `${magic:datetime}` → `2021-01-29 12:59:03`
 * `${magic:random}` → `56`
+
+TODO: `att`、`random_d`尚未实现。
 
 ### 环境变量
 
@@ -344,6 +640,8 @@ VNote任务系统支持如下三个层级的配置文件：
 * `${config:core.locale}` → `en_US`
 * `${config:metadata.version}` → `3.0.0-beta.6`
 
+配置变量只能返回字符串类型的值，对于`Array`和`Object`返回空字符串、其余类型返回字符串结果。仅支持`object.key`的语法，不支持`object["key"]`，对于数组类型，支持`array[0]`的语法。
+
 ### 输入变量
 
 上面的变量在一般情况下已经足够使用，但它们无法在运行时动态调整参数。例如要求在运行`git commit`时手动输入一些信息。参考[VSCode Tasks的Input variables](https://code.visualstudio.com/docs/editor/variables-reference#_input-variables)，VNote同样提供类似的功能。通过`${input:varid}`的语法可以引用一个输入变量。
@@ -371,7 +669,7 @@ VNote任务系统支持如下三个层级的配置文件：
 
 ### Shell变量
 
-通过`${shell:commandString}`可以获取一些简单的Shell命令的结果，执行时会先通过系统默认的shell执行commandString，将结果作为变量值进行替换。对于较复杂的命令，请使用输出变量。
+通过`${shell:commandString}`可以获取一些简单的Shell命令的结果，执行时会先通过系统默认的shell执行 `commandString` ，将结果作为变量值进行替换。对于较复杂的命令，请使用输出变量。
 
 例如：
 
@@ -379,35 +677,17 @@ VNote任务系统支持如下三个层级的配置文件：
 * `${shell:whoami}` → `tootal`
 * `${shell:dig github.com -4 +short}` → `52.69.186.44`
 
-### 输出变量
-
-通过`${output:taskid}`可以获取其它任务成功执行后的输出结果。
-
-按照如下方式查找`taskid`：
-
-* 相对ID。类似于相对路径。
-* 绝对ID。类似于绝对路径。
-
+shell的工作目录与任务工作目录相同。变量解析超过1秒后，会中断任务的执行。
 
 ## 输入输出
 
-任务运行结果及错误信息可以通过输出面板进行查看，目前任务的输出字符会依次尝试下列编码：
+任务运行结果及错误信息可以通过输出面板进行查看，目前输出面板会依次尝试使用下列编码来显示输出：
 
 * `UTF-8`
 * `System`
 * `UTF-16`
 * `GB18030`
 
-当出现任务运行错误时，[错误代码](https://doc.qt.io/qt-5.12/qprocess.html#ProcessError-enum)的含义如下：
-
-| 错误代码 |               含义                |
-| -------- | --------------------------------- |
-| 0       | 任务启动失败，可能是命令或参数错误。 |
-| 1       | 任务启动成功，但在运行时崩溃了。     |
-| 2       | 任务运行超时。                     |
-| 3       | 尝试读取时出现错误。                |
-| 4       | 尝试写入时出现错误。                |
-| 5       | 未知错误。                         |
 
 虽然有了输入变量可以进行一定程度的交互，但仍然不能很好的处理一些特殊情况。例如一些任务运行时需要进行多次输入确认、一些任务需要在后台保持运行等。VNote任务系统没有内置相关功能，但仍然可以通过启动一个额外的命令窗口来解决这些问题。下面以两个简单的示例来说明如何运行需要交互输入和后台运行的任务。
 
@@ -506,256 +786,52 @@ TODO
 <!-- endtab -->
 {% endtabs %}
 
+<!--
+### 交互命令
+
+上面两种方式虽然可以在一定程度上解决问题，但无法调用一些VNote已有的功能，通过交互命令可以在运行过程中于VNote进行沟通。
+
+
+目前支持以下交互命令：
+
+* `::show-info title={title}::{info}`
+* `::show-question title={title}::{question}`
+
+-->
 
 ## 任务示例
 
 前面展示的一些任务示例较为简单，下面包含四个较完善的任务示例，用来解决文章开头的四个问题。
 
-- [ ] 通过[Git](https://git-scm.com/)进行笔记的版本控制
+- [x] 通过[Git](https://git-scm.com/)进行笔记的版本控制
 - [ ] 将多个终端的笔记通过[坚果云](https://help.jianguoyun.com/?p=2064)进行同步
 - [ ] 将写好的Markdown文档通过[Hexo](https://hexo.io/zh-cn/)渲染预览并发布
 - [ ] 调用外部编辑器如[Typora](https://typora.io/)或是[VS Code](https://code.visualstudio.com/)进行进一步编辑
 
-所有任务均支持以下特性：
-
-- [ ] 多语言
-- [ ] 多平台
+所有任务均支持多语言与多平台。
 
 
 ### Git
 
-```json
-{
-    "version": "0.1.4",
-    "label": "Git",
-    "tasks": [
-        {
-            "label": {
-                "en_US": "Initialize",
-                "zh_CN": "初始化"
-            },
-            "command": "git init --quiet"
-        },
-        {
-            "label": {
-                "en_US": "Status",
-                "zh_CN": "状态"
-            },
-            "command": "git status"
-        },
-        {
-            "label": {
-                "en_US": "Commit",
-                "zh_CN": "提交"
-            },
-            "command": "git add -A -- . ; git commit --message=\"${input:msg}\"",
-            "inputs": [
-                {
-                    "id": "msg",
-                    "type": "promptString",
-                    "description": {
-                        "en_US": "Please provide a commit message",
-                        "zh_CN": "请输入提交信息"
-                    },
-                    "default": {
-                        "en_US": "Update note on ${magic:datetime}",
-                        "zh_CN": "更新笔记于 ${magic:datetime}"
-                    }
-                }
-            ]
-        },
-        {
-            "label": {
-                "en_US": "Push",
-                "zh_CN": "上传"
-            },
-            "command": "git push"
-        },
-        {
-            "label": {
-                "en_US": "Pull",
-                "zh_CN": "下载"
-            },
-            "command": "git pull"
-        },
-        {
-            "label": {
-                "en_US": "Log",
-                "zh_CN": "日志"
-            },
-            "command": "git log --graph --pretty=format:'%h -%d %s (%cr) <%an>' --abbrev-commit"
-        }
-    ]
-}
-```
+通过Git进行版本控制是目前主流的选择，利用任务可以将一些Git的常用操作（如初始化、提交、上传、下载、查看日志）集成到VNote内部，大大方便了日常使用。如果目前笔记本尚未进行Git版本控制，需要先进行初始化，相当于命令`git init`。默认的分支名为`main`。
 
-### Sync
+![Git初始化](../asset/20210206221845368_28581.png)
 
-TODO
+查看当前状态，相当于命令`git status`。
 
-### Hexo
+![Git状态](../asset/20210206220301577_17552.png)
 
-```json
-{
-    "version": "0.1.4",
-    "label": "Hexo",
-    "tasks": [
-        {
-            "label": "Generate",
-            "command": "hexo generate"
-        },
-        {
-            "label": "Clean",
-            "command":"hexo clean"
-        },
-        {
-            "label": "Deploy",
-            "command":"hexo deploy"
-        },
-        {
-            "label": "Server",
-            "command":"hexo server"
-        }
-    ]
-}
-```
+提交可以把所有文件加入版本库中并生成一个记录，类似与命令`git add .` 与`git commit`同时执行。此时会弹出窗口请求输入提交信息，默认的提交信息是：`更新笔记于 ${magic:datetime}`，后面的变量表示当前时间。也可使用快捷键`Alt+G, Alt+C`执行提交。
 
-### Open
+![Git提交](../asset/20210206220626228_15337.png)
 
-```json
-{
-    "version": "0.1.4",
-    "label": {
-        "en_US": "Open",
-        "zh_CN": "打开"
-    },
-    "tasks": [
-        {
-            "label": {
-                "en_US": "Current File with",
-                "zh_CN": "当前文件"
-            },
-            "args": [
-                "${file}"
-            ],
-            "tasks": [
-                {
-                    "label": "Visual Studio Code",
-                    "command": "code"
-                }
-            ],
-            "linux": {
-                "tasks": [
-                    {
-                        "label": "Vim",
-                        "command": "vim"
-                    }
-                ]
-            },
-            "windows": {
-                "tasks": [
-                    {
-                        "label": "Vim",
-                        "type": "shell",
-                        "command": "start",
-                        "args": ["vim.exe", "`\"${file}`\""]
-                    },
-                    {
-                        "label": {
-                            "en_US": "Notepad",
-                            "zh_CN": "记事本"
-                        },
-                        "command": "notepad.exe"
-                    },
-                    {
-                        "label": {
-                            "en_US": "Wordpad",
-                            "zh_CN": "写字板"
-                        },
-                        "type": "process",
-                        "command": "C:\\Program Files\\Windows NT\\Accessories\\wordpad.exe"
-                    },
-                    {
-                        "label": {
-                            "en_US": "File Explorer",
-                            "zh_CN": "文件资源管理器"
-                        },
-                        "type": "shell",
-                        "options": {
-                            "shell": {
-                                "executable": "cmd.exe"
-                            }
-                        },
-                        "command": "explorer.exe /select, ${file}",
-                        "args": []
-                    }
-                ]
-            }
-        },
-        {
-            "label": {
-                "en_US": "Current Notebook",
-                "zh_CN": "当前笔记本"
-            },
-            "options": {
-                "cwd": "${notebookFolder}"
-            },
-            "tasks": [
-                {
-                    "label": "Visual Studio Code",
-                    "command": "code.cmd",
-                    "args": [
-                        "${notebookFolder}"
-                    ]
-                },
-                {
-                    "label": {
-                        "en_US": "Python HTTP Server",
-                        "zh_CN": "Python HTTP 服务器"
-                    },
-                    "command": "start cmd.exe \"/c python -m http.server\" ; start http://localhost:8000"
-                }
-            ],
-            "windows": {
-                "tasks": [
-                    {
-                        "label": {
-                            "en_US": "Command Prompt",
-                            "zh_CN": "命令提示符"
-                        },
-                        "command": "start cmd.exe"
-                    },
-                    {
-                        "label": "PowerShell",
-                        "command": "start powershell.exe"
-                    },
-                    {
-                        "label": {
-                            "en_US": "File Explorer",
-                            "zh_CN": "文件资源管理器"
-                        },
-                        "command": "start",
-                        "args": [
-                            "${notebookFolder}"
-                        ]
-                    }
-                ]
-            },
-            "linux": {
-                "tasks": [
-                    {
-                        "label": {
-                            "en_US": "Terminal",
-                            "zh_CN": "终端模拟器"
-                        },
-                        "command": "/bin/bash"
-                    }
-                ]
-            }
-        }
-    ]
-}
-```
+
+![Git提交结果](../asset/20210206220644016_25187.png)
+
+提交后需要手动配置云端库如Github等（利用`git remote`命令），便可使用快捷的菜单命令进行上传下载，相当于执行`git push`与`git pull`命令，默认的`merge`策略是`rebase`。通过日志可以查看目前的版本记录。
+
+![](../asset/20210206220942154_25617.png)
+
 
 ## 常见问题
 
@@ -771,8 +847,9 @@ TODO
 参考[VSCode Task的配置格式](https://code.visualstudio.com/docs/editor/tasks-appendix)，定义VNote任务系统配置文件的格式如下。目前还在开发过程中，因此格式还在逐步调整。
 
 
-{% select taskconfig , 6 %}
+{% select taskconfig , 8 %}
 <!-- option v0.1.0 -->
+### v0.1.0
 
 根task的默认label就是文件名，子label默认用数字从0开始编号。
 
@@ -844,7 +921,7 @@ interface TaskDescription {
 <!-- endoption -->
 
 <!-- option v0.1.2 -->
-
+### v0.1.2
 
 ```ts
 interface TaskConfiguration extends TaskDescription {
@@ -935,8 +1012,8 @@ export interface CommandOptions {
 <!-- endoption -->
 
 <!-- option v0.1.3 -->
+### v0.1.3
 支持了翻译、平台相关配置。
-
 
 ```ts
 interface TaskConfiguration {
@@ -1056,7 +1133,7 @@ interface TranslatableString {
 
 <!-- endoption -->
 <!-- option v0.1.4 -->
-
+### v0.1.4
 支持输入变量
 
 ```ts
@@ -1220,7 +1297,7 @@ interface InputConfiguration {
 
 
 <!-- option v0.1.5 -->
-
+### v0.1.5
 支持可翻译的命令字符串及参数。
 
 ```ts
@@ -1309,6 +1386,355 @@ interface CommandOptions {
      * If omitted the parent process' environment is used.
      */
     env?: { [key: string]: string };
+
+    /**
+     * Configuration of the shell when task type is `shell`
+     */
+    shell?: {
+        /**
+         * The shell to use. 
+         * If omitted, the parent shell is used
+         * If no parent specific, the OS-specific shell is used.
+         * - `PowerShell.exe` for windows
+         * - `/bin/bash` for linux or macOS
+         */
+        executable: string;
+
+        /**
+         * The arguments to be passed to the shell executable to run in command mode.
+         * If omitted, the parent shell is used
+         * If no parent specific, the default value is used.
+         * - ['/D', '/S', '/C'] for `cmd.exe`
+         * - ['-Command'] for `PowerShell.exe`
+         * - ['-c'] for `/bin/bash`
+         */
+        args?: string[];
+    };
+}
+
+/**
+ * Localization
+ */
+interface LocaleString {
+    en_US?: string,
+    zh_CN?: string
+}
+
+type TranslatableString = string | LocaleString;
+
+/**
+ * Configuration of input variables
+ */
+interface InputConfiguration {
+    /**
+     * Input variable id
+     */
+    id: string,
+    /**
+     * the type of input variable
+     * if omitted, `promptString` is used.
+     */
+    type?: 'promptString' | 'pickString',
+    /**
+     * Provides context for the input.
+     */
+    description?: TranslatableString,
+    /**
+     * Default value that will be used if the user doesn't enter something else.
+     * If type is pickString, it must be one of the option values.
+     */
+    default?: TranslatableString,
+    /**
+     * Only avaliable when type is promptString
+     * Set to true to input with a password prompt that will not show the typed value.
+     */
+    password?: boolean,
+    /**
+     * Only avaliable when type is pickString
+     * An array of options for the user to pick from.
+     */
+    options?: TranslatableString[]
+}
+```
+
+<!-- endoption -->
+
+<!-- option v0.1.6 -->
+### v0.1.6
+支持了图标`icon`和快捷键`shortcut`。
+
+```ts
+interface TaskConfiguration {
+    /**
+     * The configuration's version number
+     * If omitted latest version is used.
+     */
+    version?: '0.1.6';
+
+    /**
+     * Windows specific task configuration
+     */
+    windows?: TaskConfiguration;
+
+    /**
+     * macOS specific task configuration
+     */
+    osx?: TaskConfiguration;
+
+    /**
+     * Linux specific task configuration
+     */
+    linux?: TaskConfiguration;
+
+    /**
+     * The type of a custom task. Tasks of type "shell" are executed
+     * inside a shell (e.g. bash, cmd, powershell, ...)
+     * If omitted, the parent type is used
+     * If no parent specific, the `shell` is used.
+     */
+    type?: 'shell' | 'process';
+
+    /**
+     * The command to be executed. Can be an external program or a shell
+     * command. Can be omitted.
+     */
+    command?: TranslatableString;
+
+    /**
+     * The arguments passed to the command. Can be omitted.
+     */
+    args?: TranslatableString[];
+
+    /**
+     * The task's name.
+     * If task has no parent, the file name is used.
+     * If task has command, the command is used.
+     */
+    label?: TranslatableString;
+
+    /**
+     * The task's icon.
+     * task icon will not be inherited
+     */
+    icon?: string;
+
+    /**
+     * The task's shortcut.
+     * task icon will not be inherited
+     */
+    shortcut?: string;
+
+    /**
+      * The command options used when the command is executed. Can be omitted.
+      */
+    options?: CommandOptions;
+
+    /**
+     * The configuration of the available tasks.
+     * Tasks will not be inherited.
+     * Tasks in OS-specific will be merged.
+     */
+    tasks?: TaskConfiguration[];
+
+    /**
+     * The configuration of the input variables.
+     */
+    inputs?: InputConfiguration[];
+}
+
+/**
+ * Options to be passed to the external program or shell
+ */
+interface CommandOptions {
+    /**
+     * The current working directory of the executed program or shell.
+     * If omitted try the following valus in turn.
+     * - the parent task working dir
+     * - the current notebook's root
+     * - the directory of current file
+     * - the directory of executing task file
+     */
+    cwd?: string;
+
+    /**
+     * The environment of the executed program or shell.
+     * If omitted the parent process' environment is used.
+     */
+    env?: { [key: string]: string };
+
+    /**
+     * Configuration of the shell when task type is `shell`
+     */
+    shell?: {
+        /**
+         * The shell to use. 
+         * If omitted, the parent shell is used
+         * If no parent specific, the OS-specific shell is used.
+         * - `PowerShell.exe` for windows
+         * - `/bin/bash` for linux or macOS
+         */
+        executable: string;
+
+        /**
+         * The arguments to be passed to the shell executable to run in command mode.
+         * If omitted, the parent shell is used
+         * If no parent specific, the default value is used.
+         * - ['/D', '/S', '/C'] for `cmd.exe`
+         * - ['-Command'] for `PowerShell.exe`
+         * - ['-c'] for `/bin/bash`
+         */
+        args?: string[];
+    };
+}
+
+/**
+ * Localization
+ */
+interface LocaleString {
+    en_US?: string,
+    zh_CN?: string
+}
+
+type TranslatableString = string | LocaleString;
+
+/**
+ * Configuration of input variables
+ */
+interface InputConfiguration {
+    /**
+     * Input variable id
+     */
+    id: string,
+    /**
+     * the type of input variable
+     * if omitted, `promptString` is used.
+     */
+    type?: 'promptString' | 'pickString',
+    /**
+     * Provides context for the input.
+     */
+    description?: TranslatableString,
+    /**
+     * Default value that will be used if the user doesn't enter something else.
+     * If type is pickString, it must be one of the option values.
+     */
+    default?: TranslatableString,
+    /**
+     * Only avaliable when type is promptString
+     * Set to true to input with a password prompt that will not show the typed value.
+     */
+    password?: boolean,
+    /**
+     * Only avaliable when type is pickString
+     * An array of options for the user to pick from.
+     */
+    options?: TranslatableString[]
+}
+```
+<!-- endoption -->
+
+<!-- option v0.1.7 -->
+### v0.1.7
+支持环境变量多语言。
+
+```ts
+interface TaskConfiguration {
+    /**
+     * The configuration's version number
+     * If omitted latest version is used.
+     */
+    version?: '0.1.7';
+
+    /**
+     * Windows specific task configuration
+     */
+    windows?: TaskConfiguration;
+
+    /**
+     * macOS specific task configuration
+     */
+    osx?: TaskConfiguration;
+
+    /**
+     * Linux specific task configuration
+     */
+    linux?: TaskConfiguration;
+
+    /**
+     * The type of a custom task. Tasks of type "shell" are executed
+     * inside a shell (e.g. bash, cmd, powershell, ...)
+     * If omitted, the parent type is used
+     * If no parent specific, the `shell` is used.
+     */
+    type?: 'shell' | 'process';
+
+    /**
+     * The command to be executed. Can be an external program or a shell
+     * command. Can be omitted.
+     */
+    command?: TranslatableString;
+
+    /**
+     * The arguments passed to the command. Can be omitted.
+     */
+    args?: TranslatableString[];
+
+    /**
+     * The task's name.
+     * If task has no parent, the file name is used.
+     * If task has command, the command is used.
+     */
+    label?: TranslatableString;
+
+    /**
+     * The task's icon.
+     * task icon will not be inherited
+     */
+    icon?: string;
+
+    /**
+     * The task's shortcut.
+     * task icon will not be inherited
+     */
+    shortcut?: string;
+
+    /**
+      * The command options used when the command is executed. Can be omitted.
+      */
+    options?: CommandOptions;
+
+    /**
+     * The configuration of the available tasks.
+     * Tasks will not be inherited.
+     * Tasks in OS-specific will be merged.
+     */
+    tasks?: TaskConfiguration[];
+
+    /**
+     * The configuration of the input variables.
+     */
+    inputs?: InputConfiguration[];
+}
+
+/**
+ * Options to be passed to the external program or shell
+ */
+interface CommandOptions {
+    /**
+     * The current working directory of the executed program or shell.
+     * If omitted try the following valus in turn.
+     * - the parent task working dir
+     * - the current notebook's root
+     * - the directory of current file
+     * - the directory of executing task file
+     */
+    cwd?: string;
+
+    /**
+     * The environment of the executed program or shell.
+     * If omitted the parent process' environment is used.
+     */
+    env?: { [key: string]: TranslatableString };
 
     /**
      * Configuration of the shell when task type is `shell`

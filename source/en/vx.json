@@ -3,9 +3,9 @@
     "files": [
         {
             "attachment_folder": "",
-            "attachments": [],
-            "created_time": "2021-01-14T12:43:51.000Z",
-            "modified_time": "2021-01-14T12:43:51.000Z",
+            "created_time": "2021-01-14T12:43:51Z",
+            "id": "0",
+            "modified_time": "2021-01-14T12:43:51Z",
             "name": "clique-counting.md",
             "tags": [
                 "算法",
@@ -13,6 +13,8 @@
             ]
         }
     ],
-    "sub_directories": [],
+    "folders": [
+    ],
+    "id": "0",
     "version": "1"
 }

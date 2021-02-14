@@ -1,0 +1,11 @@
+{
+    "attachment_folder": "../asset",
+    "config_mgr": "vx.vnotex",
+    "created_time": "2021-01-30T04:57:56Z",
+    "description": "Tootal Blog，管理source文件夹，使用hexo。",
+    "image_folder": "../asset",
+    "name": "头头博客",
+    "next_node_id": "4",
+    "version": "1",
+    "version_controller": "dummy.vnotex"
+}
