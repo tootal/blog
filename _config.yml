@@ -42,6 +42,7 @@ skip_render:
   - 'css/**'
   - 'js/**'
   - '.github'
+  - '_posts/vx.json'
 
 # Writing
 new_post_name: :title.md # File name of new posts
