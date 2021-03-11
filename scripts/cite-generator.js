@@ -69,8 +69,9 @@ function generate_cites(data) {
     const source_path = data.source;
     let all_cites = new Set();
     const rCITE = /{% cite (.*?) %}/g;
-    for (let cites of data.content.matchAll(rCITE)) {
-        for (let cite of cites[1].split(',')) {
+    let match;
+    while ((match = rCITE.exec(data.content)) != null) {
+        for (let cite of match[1].split(',')) {
             if (!cite.trim().startsWith('@'))
                 all_cites.add(cite.trim());
         }
