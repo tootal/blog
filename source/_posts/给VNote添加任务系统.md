@@ -2,16 +2,15 @@
 title: 给VNote添加任务系统
 urlname: vnote-task
 toc: true
-categories:
-  - ARTS
-  - Technology
 tags:
   - Qt
+  - VNote
   - C++
   - 技术
 date: 2021-01-28 22:09:41
 updated: 2021-01-29 15:40:16
 ---
+
 ![](../asset/vnote-task.cover.png)
 
 [VNote](https://vnotex.github.io/vnote/zh_cn/)是一款专为Markdown设计的Vim风格笔记应用程序。目前使用已经两年多了，平时用来记录、摘抄都挺方便的。略有不方便的地方就是VNote不能方便地运行一些外部工具，例如：
@@ -22,8 +21,6 @@ updated: 2021-01-29 15:40:16
 * 调用外部编辑器如[Typora](https://typora.io/)或是[VS Code](https://code.visualstudio.com/)进行进一步编辑
 
 在本文中，我将为VNote设计实现一个任务系统来运行外部工具，从而解决上面这些问题。
-
-
 
 <!-- more -->
 
@@ -103,10 +100,10 @@ updated: 2021-01-29 15:40:16
 
 {% buttons are-large %}
 
-[Windows x64@fab-windows, button, is-primary](https://github.com/tootal/vnote/suites/1924447822/artifacts/37905429)
-[Windows x86@fab-windows, button, is-info](https://github.com/tootal/vnote/suites/1924447822/artifacts/37905430)
-[macOS@fab-apple, button, is-dark](https://github.com/tootal/vnote/suites/1924447823/artifacts/37904897)
-[Linux@fab-linux, button, is-warning](https://github.com/tootal/vnote/suites/1924447829/artifacts/37904695)
+[Windows x64@fab-windows, button, is-primary](https://github.com/tootal/vnote/releases/download/continuous-build/vnote-win-x64.zip)
+[Windows x86@fab-windows, button, is-info](https://github.com/tootal/vnote/releases/download/continuous-build/vnote-win-x86.zip)
+[macOS@fab-apple, button, is-dark](https://github.com/tootal/vnote/releases/download/continuous-build/vnote-mac-x64.dmg)
+[Linux@fab-linux, button, is-warning](https://github.com/tootal/vnote/releases/download/continuous-build/vnote-linux-x64.AppImage)
 
 {% endbuttons %}
 
@@ -794,7 +791,7 @@ TODO
 
 目前支持以下交互命令：
 
-* `::show-info title={title}::{info}`
+* `::show-message title={title}::{info}`
 * `::show-question title={title}::{question}`
 
 -->
@@ -821,7 +818,9 @@ TODO
 
 ![Git状态](../asset/20210206220301577_17552.png)
 
-提交可以把所有文件加入版本库中并生成一个记录，类似与命令`git add .` 与`git commit`同时执行。此时会弹出窗口请求输入提交信息，默认的提交信息是：`更新笔记于 ${magic:datetime}`，后面的变量表示当前时间。也可使用快捷键`Alt+G, Alt+C`执行提交。
+提示：查看状态时，中文文件名可能会显示为十六进制，这是由于Git默认会对值大于`0x80`的字符进行转义，可以使用`git config -–global core.quotepath false`关闭转义，详细信息可参考[core.quotePath](https://git-scm.com/docs/git-config#Documentation/git-config.txt-corequotePath)。
+
+提交可以把所有文件加入版本库中并生成一个记录，类似于命令`git add .` 与`git commit`同时执行。此时会弹出窗口请求输入提交信息，默认的提交信息是：`更新笔记于 ${magic:datetime}`，后面的变量表示当前时间。也可使用快捷键`Alt+G, Alt+C`执行提交。
 
 ![Git提交](../asset/20210206220626228_15337.png)
 
@@ -832,9 +831,9 @@ TODO
 
 ![](../asset/20210206220942154_25617.png)
 
+任务代码可在[Github](https://github.com/tootal/vnote-task-git)上查看。
 
 ## 常见问题
-
 
 {% msg warning fas-question-circle %}
 为何不采用系统环境变量`ComSpec`或`SHELL`的值作为默认shell？
