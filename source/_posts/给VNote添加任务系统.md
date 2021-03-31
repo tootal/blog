@@ -818,7 +818,7 @@ TODO
 
 ![Git状态](../asset/20210206220301577_17552.png)
 
-提示：查看状态时，中文文件名可能会显示为十六进制，这是由于Git默认会对值大于`0x80`的字符进行转义，可以使用`git config -–global core.quotepath false`关闭转义，详细信息可参考[core.quotePath](https://git-scm.com/docs/git-config#Documentation/git-config.txt-corequotePath)。
+提示：查看状态时，中文文件名可能会显示为十六进制，这是由于Git默认会对值大于`0x80`的字符进行转义，可以使用`git config --global core.quotepath false`关闭转义，详细信息可参考[core.quotePath](https://git-scm.com/docs/git-config#Documentation/git-config.txt-corequotePath)。
 
 提交可以把所有文件加入版本库中并生成一个记录，类似于命令`git add .` 与`git commit`同时执行。此时会弹出窗口请求输入提交信息，默认的提交信息是：`更新笔记于 ${magic:datetime}`，后面的变量表示当前时间。也可使用快捷键`Alt+G, Alt+C`执行提交。
 
