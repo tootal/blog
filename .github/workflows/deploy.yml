@@ -29,11 +29,11 @@ jobs:
       run: |
         sudo npm install hexo-cli -g
         hexo generate
-        cp -r source/.github public
-        cd public
-        git init
-        git config user.name "tootal"
-        git config user.email "tootal@yeah.net"
-        git add .
-        git commit -m "update site"
-        git push --force --quiet "https://tootal:${{ secrets.GH_PWD }}@github.com/tootal/tootal.github.io" master:master
+
+    - name: GitHub Pages
+      uses: crazy-max/ghaction-github-pages@v2.3.0
+      with:
+        target_branch: gh-pages
+        build_dir: public
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
