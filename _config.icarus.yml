@@ -124,7 +124,7 @@ navbar:
     links:
         View on GitHub:
             icon: fab fa-github
-            url: 'https://github.com/tootal/tootal.github.io'
+            url: 'https://github.com/tootal/blog'
 # Page footer configurations
 footer:
     # Links to be shown on the right of the footer section
@@ -137,7 +137,7 @@ footer:
             url: 'https://creativecommons.org/licenses/by/4.0/'
         View on GitHub:
             icon: fab fa-github
-            url: 'https://github.com/tootal/tootal.github.io'
+            url: 'https://github.com/tootal/blog'
     # 网站底部显示备案号
     beian: 赣ICP备20007667号-1
 # Article related configurations
