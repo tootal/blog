@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>头头世界</title>
+	<link rel="icon" type="image/x-ico" href="/static/img/logo.ico" />
+	<!-- BEGIN CSS -->
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+	<!-- END CSS -->
+	<!-- BEGIN HEAD JAVASCRIPT -->
+
+	<!-- END HEAD JAVASCRIPT -->
+</head>
+<body>
+	<!-- BEGIN NAV -->
+	<nav class="nav">
+		<a href="/" class="nav-brand left">
+			<img src="/static/img/logo.ico" alt="Danboard" height="50px" width="50px">
+			头头世界
+		</a>
+		<div class="nav-content">
+			<ul class="nav-list">
+				<li id="nav-blog" class="nav-item left">
+					<a class="nav-link" href="/blog">博客</a>
+				</li>
+				<li id="nav-discuss" class="nav-item left">
+					<a class="nav-link" href="/message">讨论</a>
+				</li>
+				<li id="nav-login" class="nav-item right">
+					<a href="javascript:void(0)" class="nav-link" onclick="modal_login_show()">登录</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<!-- END NAV -->
+	<!-- BEGIN MODAL -->
+	<div class="modal-cover" id="modal-user" onclick="modal_login_hide()">
+		<div class="modal fade" onclick="event.stopPropagation();">
+			<div class="modal-header">
+				<div class="modal-title left">
+					登录
+				</div>
+				<button class="modal-close right" type="button" onclick="modal_login_hide()">
+					X
+				</button>
+			</div>
+			<div class="modal-content">
+				<form class="modal-form">
+					<input class="modal-input" type="text" name="username" placeholder="用户名"><br>
+					<input class="modal-input" type="password" name="password" placeholder="密码"><br>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<div class="modal-info">
+					提示信息
+				</div>
+				<button class="modal-button left" type="button" onclick="modal_login_forgetPassword()">
+					忘记密码
+				</button>
+				<button class="modal-button primary-button right" type="button" onclick="modal_login_login()">
+					登录
+				</button>
+				<button class="modal-button right" type="button" onclick="modal_login_hide()">
+					取消
+				</button>
+			</div>
+		</div>
+	</div>
+	<!-- END MODAL -->
+	<!-- BEGIN CONTENT -->
+	<div id="content" class="content">
+		<button type="button" onclick="loadXMLDoc()">Ajax!</button>
+	</div>
+	<!-- END CONTENT -->
+	<!-- BEGIN FOOTER -->
+	<div class="footer">
+		<ul class="footer-social">
+			<li class="footer-social-item">
+				<a href="mailto:tootal@yeah.net?subject=头头世界网站反馈" target="_blank">
+					<img src="/static/img/email.svg" alt="邮箱" class="footer-social-item-img">
+				</a>
+			</li>
+			<li class="footer-social-item">
+				<img src="/static/img/weixin.svg" alt="微信公众号" class="footer-social-item-img"  onmouseover="footer_wechat_pop_show()" onmouseout="footer_wechat_pop_hide()">
+				<div class="pop" id="footer-social-wechat-qr">
+					<i></i>
+					微信扫一扫关注<br>
+					<img src="/static/img/wechat_qr.jpg" width="104" height="104">
+					<img class="shot-img" src="static/img/logo.ico" width="32" height="32">
+				</div>
+			</li>
+			<li class="footer-social-item">
+				<a href="https://github.com/tootal" target="_blank">
+					<img src="/static/img/github.svg" alt="GitHub" class="footer-social-item-img">
+				</a>
+			</li>
+			<li class="footer-social-item">
+				<a href="https://www.zhihu.com/people/toto-78-30/activities" target="_blank">
+					<img src="/static/img/zhihu.svg" alt="知乎" class="footer-social-item-img">
+				</a>
+			</li>
+			<li class="footer-social-item">
+				<a href="https://space.bilibili.com/41684252" target="_blank">
+					<img src="/static/img/bilibili.svg" alt="bilibili" class="footer-social-item-img">
+				</a>
+			</li>
+		</ul>
+		<p class="footer-item">
+			© 2018 黄智权
+			<a href="http://icp.chinaz.com/info?q=tootal.xyz" target="_blank">赣ICP备18016795号-1</a>
+		</p>
+		<p class="footer-item">
+			现在时间：<span class="footer-time"></span>
+		</p>
+	</div>
+	<!-- END FOOTER -->
+	<!-- BEGIN BODY JAVASCRIPT -->
+	<script src="/static/js/main.js"></script>
+	<!-- END BODY JAVASCRIPT -->
+</body>
+</html>

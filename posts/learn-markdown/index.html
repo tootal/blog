@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Markdown学习 - 头头博客</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#fff"><meta name="application-name" content="头头博客"><meta name="msapplication-TileImage" content="/asset/favicon144.png"><meta name="msapplication-TileColor" content="#fff"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="头头博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" sizes="96x96" href="/asset/favicon96.png"><link rel="apple-touch-icon" sizes="144x144" href="/asset/favicon144.png"><link rel="apple-touch-icon" sizes="192x192" href="/asset/favicon192.png"><meta name="description" content="Markdown与标记语言介绍# Markdown是一种轻量级标记语言。那么什么是标记语言（Markup Language）呢？记得以前在课本上看到关键句子的时候，我通常会用黑笔在句子下面划线，比如下面这样：  当代大学生要坚定理想信念，自觉做中国特色社会主义共同理想的坚定信仰者、忠诚实践者。为此，就要深入学习马克思主义基本原理及马克思主义中国化的理论成果，特别是学习习近平新时代中国特色社会主义思"><meta property="og:type" content="blog"><meta property="og:title" content="Markdown学习"><meta property="og:url" content="https://blog.tootal.xyz/posts/learn-markdown/"><meta property="og:site_name" content="头头博客"><meta property="og:description" content="Markdown与标记语言介绍# Markdown是一种轻量级标记语言。那么什么是标记语言（Markup Language）呢？记得以前在课本上看到关键句子的时候，我通常会用黑笔在句子下面划线，比如下面这样：  当代大学生要坚定理想信念，自觉做中国特色社会主义共同理想的坚定信仰者、忠诚实践者。为此，就要深入学习马克思主义基本原理及马克思主义中国化的理论成果，特别是学习习近平新时代中国特色社会主义思"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://blog.tootal.xyz/asset/learn-markdown.cover.webp"><meta property="article:published_time" content="2020-02-14T03:44:58.000Z"><meta property="article:modified_time" content="2020-02-14T03:44:58.000Z"><meta property="article:author" content="黄智权"><meta property="article:tag" content="Markdown"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/asset/learn-markdown.cover.webp"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.tootal.xyz/posts/learn-markdown/"},"headline":"头头博客","image":[],"datePublished":"2020-02-14T03:44:58.000Z","dateModified":"2020-02-14T03:44:58.000Z","author":{"@type":"Person","name":"黄智权"},"description":"Markdown与标记语言介绍# Markdown是一种轻量级标记语言。那么什么是标记语言（Markup Language）呢？记得以前在课本上看到关键句子的时候，我通常会用黑笔在句子下面划线，比如下面这样：  当代大学生要坚定理想信念，自觉做中国特色社会主义共同理想的坚定信仰者、忠诚实践者。为此，就要深入学习马克思主义基本原理及马克思主义中国化的理论成果，特别是学习习近平新时代中国特色社会主义思"}</script><link rel="canonical" href="https://blog.tootal.xyz/posts/learn-markdown/"><link rel="icon" href="/asset/favicon.png"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.15.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?a0752fdc3e7a9d538e1cb45af25201a4";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="头头博客" type="application/atom+xml">
+</head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">头头博客</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">存档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" target="_blank" rel="noopener" href="https://note.tootal.xyz">笔记</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="View on GitHub" href="https://github.com/tootal/blog"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/asset/learn-markdown.cover.webp" alt="Markdown学习"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-02-14T03:44:58.000Z" title="2020-02-14T03:44:58.000Z">2020-02-14</time>发表</span><span class="level-item"><time dateTime="2020-02-14T03:44:58.000Z" title="2020-02-14T03:44:58.000Z">2020-02-14</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a><span> / </span><a class="link-muted" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%8A%80%E6%9C%AF/">技术</a></span><span class="level-item">28 分钟读完 (大约4194个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span><span class="level-item"><a target="_blank" rel="noopener" href="https://github.com/tootal/blog/edit/master/source/_posts/learn-markdown.md"><i class="far fa-edit"></i></a></span></div></div><h1 class="title is-3 is-size-4-mobile">Markdown学习</h1><div class="content"><h2 id="Markdown与标记语言介绍">Markdown与标记语言介绍<a class="header-anchor" href="#Markdown与标记语言介绍">#</a></h2>
+<p>Markdown是一种轻量级标记语言。那么什么是标记语言（Markup Language）呢？记得以前在课本上看到关键句子的时候，我通常会用黑笔在句子下面划线，比如下面这样：</p>
+<blockquote>
+<p>当代大学生要坚定理想信念，自觉做中国特色社会主义共同理想的坚定信仰者、忠诚实践者。为此，就要深入学习马克思主义基本原理及马克思主义中国化的理论成果，特别是学习习近平新时代中国特色社会主义思想，让真理武装我们的头脑，让真理指引我们的理想，让真理坚定我们的信仰。要坚持学而信、学而用、学而行，把学习成果转化为不可撼动的理想信念，转化为正确的世界观、人生观、价值观，<span style="border-bottom: 2px solid black">用理想之光照亮奋斗之路，用信仰之力开创美好未来。</span>当代青年要积极投身新时代中国特色社会主义事业，勇做担当中华民族伟大复兴大任的时代新人。要以勇于担当的精神，做走在新时代前列的奋进者、开拓者、奉献者，以执着的信念、优良的品德、丰富的知识、过硬的本领，同人民群众一道，担负起历史赋予的重任，在实现中华民族伟大复兴中国梦的生动实践中放飞青春梦想。</p>
+</blockquote>
+<a id="more"></a>
+<p>显然，在标记出重点之后，一眼就能看出大段文字中的关键之处。那么如何表达这种标记呢？用word的同学可能会告诉我：“很简单啊，先用鼠标选中需要标记的文字，然后点一下菜单上的下划线按钮就好了。”word的功能确实很强大，甚至有点臃肿了，而且安装起来不是很方便。更进一步的，word是如何保存这种标记的呢？用压缩软件打开一个word文档，你会发现里面有很多xml文件，而xml的全称是可扩展标记语言（Extensible Markup Language）。也就是说，word实际上也是通过一种标记语言来保存这些标记信息的。</p>
+<p>通常来说，标记语言都是长这样的：（例子来自<a target="_blank" rel="noopener" href="https://www.runoob.com/xml/xml-intro.html">菜鸟教程</a>）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">note</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">to</span>&gt;</span>Tove<span class="tag">&lt;/<span class="name">to</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">from</span>&gt;</span>Jani<span class="tag">&lt;/<span class="name">from</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">heading</span>&gt;</span>Reminder<span class="tag">&lt;/<span class="name">heading</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span>Don&#x27;t forget me this weekend!<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">note</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>不用我解释你大概也能知道上面标记语言表达的意思：它描述了一封Jani 写给 Tove 的便签，标题为Reminder，内容为Don’t forget me this weekend!。注意到上面的标记和我之前说的标记其实含义是不同的，这里的标记指的是内容的含义，而上面的标记指的是文字的外观。我今天准备学习的Markdown的标记就是指标记文字的外观。来看一个用标记语言描述外观的例子：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>自三峡七百里中，两岸连山，略无<span class="tag">&lt;<span class="name">b</span>&gt;</span>阙<span class="tag">&lt;/<span class="name">b</span>&gt;</span>处。重岩叠<span class="tag">&lt;<span class="name">b</span>&gt;</span>嶂<span class="tag">&lt;/<span class="name">b</span>&gt;</span>，隐天蔽日，自非亭午夜分，不见<span class="tag">&lt;<span class="name">b</span>&gt;</span>曦<span class="tag">&lt;/<span class="name">b</span>&gt;</span>月。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以发现，如果不解释的话，很难看出这些标记的意思，事实上这不是标记语言的缺陷，而是为了书写方便，把段落（paragraph）缩写成p，粗体（bold）缩写成b。这样大概就能看出它的意思了，描述了一个段落，其中加粗了三个字。这个例子的标记确实可以完成标记文字外观的功能，但是他有一个缺点——不直观。在word中，加粗、下划线都可以直观的看到，而不用像上面的标记一样在脑海中想象。为了解决这个问题，一种轻量级标记语言诞生了。</p>
+<p>先来看看一个非常简单的Markdown的例子：</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">至于夏水<span class="strong">**襄陵**</span>，沿<span class="strong">**溯**</span>阻绝。或王命急宣，有时朝发白帝，暮到江陵，其间千二百里，虽乘奔御风，不以疾也。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这和上面的标记语言的功能是类似的，同样是描述一个段落、加粗几个字。可以发现Markdown的语法非常直观，甚至你都没有感受到它用了Markdown的段落语法（空行）。</p>
+<h2 id="使用Markdown的方式">使用Markdown的方式<a class="header-anchor" href="#使用Markdown的方式">#</a></h2>
+<p>由于简单的标记语法，你甚至可以直接使用系统自带的记事本软件来编写Markdown文档。但我并不推荐这样做，就像不推荐用记事本写C++代码一样。如果你对代码比较感兴趣，更喜欢手动编辑修改代码的话，我推荐使用左右分栏的预览模式，例如<a target="_blank" rel="noopener" href="https://www.zybuluo.com/mdeditor">Cmd Markdown编辑阅读器</a>，<a target="_blank" rel="noopener" href="http://jbt.github.io/markdown-editor/">MarkdownEditor</a>、<a target="_blank" rel="noopener" href="https://maxiang.io/">马克飞象</a>以及<a target="_blank" rel="noopener" href="https://pandao.github.io/editor.md/">Editor.md</a>，当然利用编辑模式和阅读模式区分的<a target="_blank" rel="noopener" href="https://tamlok.gitee.io/vnote/zh_cn/">VNote</a>也是一个不错的选择，能让你更加专注于写作。如果你比较厌烦这些标记，那么在原地渲染、隐藏标记的<a target="_blank" rel="noopener" href="https://www.typora.io/">Typora</a>，以及类似的网页端<a target="_blank" rel="noopener" href="https://wtdf.io/">Writing Different</a>也不错。另外，直接用现代的代码编辑器如<a target="_blank" rel="noopener" href="https://code.visualstudio.com/">Visual Studio Code</a>、<a target="_blank" rel="noopener" href="http://www.sublimetext.com/">Sublime Text</a>、<a target="_blank" rel="noopener" href="https://github.com/atom/atom">Atom</a>来编写Markdown也非常不错。网页端和本地客户端各有各的使用场景，选择适合自己的就好。另外，实现一个简单的Markdown编辑器并不难，难的是如何找到写作与排版二者的平衡，找到Markdown最合适的应用场景（如Github的README文件）。</p>
+<h2 id="Markdown语法指南">Markdown语法指南<a class="header-anchor" href="#Markdown语法指南">#</a></h2>
+<p>事实上Markdown并没有一个标准的语法规则定义，各种平台所支持的Markdown标准也都大同小异。目前我看到最细致的定义可以在<a target="_blank" rel="noopener" href="https://commonmark.org/">CommonMark</a>找到。如果想进一步了解Markdown可以访问<a target="_blank" rel="noopener" href="https://guides.github.com/features/mastering-markdown/">Github Mastering Markdown</a>、<a target="_blank" rel="noopener" href="https://segmentfault.com/markdown">SegmentFault Markdown 编辑器语法指南</a>、<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/179680">牛客网 Markdown 语法说明</a>、少数派 Markdown 完全入门<a target="_blank" rel="noopener" href="https://sspai.com/post/36610">（上）</a> 、<a target="_blank" rel="noopener" href="https://sspai.com/post/36682">（下）</a>。</p>
+<p>下面把我以前学习Markdown时写的一篇文档再抄一遍，就当是测试页面的渲染效果了吧。注意Markdown往往是兼容HTML的，所以如果有些效果使用Markdown无法实现可以考虑使用HTML实现。以下仅仅说明一些广泛使用，兼容性好的Markdown语法。</p>
+<h3 id="标题">标题<a class="header-anchor" href="#标题">#</a></h3>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 第一部</span></span><br><span class="line"><span class="section">## 第一卷</span></span><br><span class="line"><span class="section">### 第一回</span></span><br><span class="line"><span class="section">#### 第一节</span></span><br><span class="line"><span class="section">##### 第一段</span></span><br><span class="line"><span class="section">###### 第一句</span></span><br></pre></td></tr></table></figure>
+<pre>
+# 第一部
+## 第一卷
+### 第一回
+#### 第一节
+##### 第一段
+###### 第一句
+</pre>
+<ul>
+<li><code>#</code>之后一般需要至少一个空格</li>
+<li>标题应该单独占一行</li>
+<li>如果上面的内容没有显示出来，通常是为了不干扰文章目录而特殊处理了</li>
+<li>标题还有一些特殊写法如文字下加<code>---</code>，在此不做介绍</li>
+</ul>
+<h3 id="字体">字体<a class="header-anchor" href="#字体">#</a></h3>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="strong">**粗体**</span>和<span class="emphasis">*斜体*</span>往往用于产生强调作用，本质上是因为<span class="strong">__粗体__</span>和<span class="emphasis">_斜体_</span>对阅读者产生了干扰，降低了阅读者的阅读速度。因此大段的<span class="strong">**<span class="emphasis">*粗斜体<span class="strong">**<span class="emphasis">*，是不必要的，效果会<span class="strong">__<span class="emphasis">_适得其反<span class="strong">__<span class="emphasis">_。</span></span></span></span></span></span></span></span></span><br><span class="line"><span class="strong"><span class="emphasis"><span class="strong"><span class="emphasis"><span class="strong"><span class="emphasis"><span class="strong"><span class="emphasis">~~删除线~~使用的范围就比较广泛了，通常用于批改审阅，团队协作，公共编辑中保留证据，或许还是~~一种娱乐方式~~？</span></span></span></span></span></span></span></span></span><br></pre></td></tr></table></figure>
+<p><strong>粗体</strong>和<em>斜体</em>往往用于产生强调作用，本质上是因为 <strong>粗体</strong> 和 <em>斜体</em> 对阅读者产生了干扰，降低了阅读者的阅读速度。因此大段的 <em><strong>粗斜体</strong></em>，是不必要的，效果会 <em><strong>适得其反</strong></em> 。<br>
+<s>删除线</s>使用的范围就比较广泛了，通常用于批改审阅，团队协作，公共编辑中保留证据，或许还是<s>一种娱乐方式</s>？</p>
+<ul>
+<li>推荐使用更加通用的<code>*</code>写法</li>
+<li>若出现错误可在标记前后添加一个空格</li>
+<li>用删除线标记的内容并不会真的删除-_-</li>
+</ul>
+<h3 id="列表">列表<a class="header-anchor" href="#列表">#</a></h3>
+<p><strong>无序列表</strong>：</p>
+<p>常见的编程语言有：</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> C</span><br><span class="line"><span class="bullet">*</span> C++</span><br><span class="line"><span class="bullet">*</span> Python</span><br><span class="line"><span class="bullet">    *</span> Python2</span><br><span class="line"><span class="bullet">    *</span> Python3</span><br><span class="line"><span class="bullet">*</span> Java</span><br><span class="line"><span class="bullet">*</span> PHP</span><br></pre></td></tr></table></figure>
+<ul>
+<li>C</li>
+<li>C++</li>
+<li>Python
+<ul>
+<li>Python2</li>
+<li>Python3</li>
+</ul>
+</li>
+<li>Java</li>
+<li>PHP</li>
+</ul>
+<p><strong>有序列表</strong>：</p>
+<p>Windows版本历程：</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> Windows 2000 （2000年-2005年）</span><br><span class="line"><span class="bullet">2.</span> Windows XP （2001年-2014年）</span><br><span class="line"><span class="bullet">    1.</span> Windows XP SP1 （2002年）</span><br><span class="line"><span class="bullet">    2.</span> Windows XP SP2 （2004年）</span><br><span class="line"><span class="bullet">    3.</span> Windows XP SP3 （2008年）</span><br><span class="line"><span class="bullet">4.</span> Windows 7 （2009年-2015年）</span><br><span class="line"><span class="bullet">    1.</span> Windows 7 SP1 （2011年）</span><br><span class="line"><span class="bullet">5.</span> Windows 8 （2012年-2018年）</span><br><span class="line"><span class="bullet">6.</span> Windows 10 （2015年至今）</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Windows 2000 （2000年-2005年）</li>
+<li>Windows XP （2001年-2014年）
+<ol>
+<li>Windows XP SP1 （2002年）</li>
+<li>Windows XP SP2 （2004年）</li>
+<li>Windows XP SP3 （2008年）</li>
+</ol>
+</li>
+<li>Windows 7 （2009年-2015年）
+<ol>
+<li>Windows 7 SP1 （2011年）</li>
+</ol>
+</li>
+<li>Windows 8 （2012年-2018年）</li>
+<li>Windows 10 （2015年至今）</li>
+</ol>
+<ul>
+<li>有序列表前的序号通常会被重新标注</li>
+<li>使用一个空行来结束列表</li>
+</ul>
+<h3 id="表格">表格<a class="header-anchor" href="#表格">#</a></h3>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">linux主流发行版参考表：</span><br><span class="line"></span><br><span class="line">|   发行版    | 评价                                |</span><br><span class="line">| :--------: | :---------------------------------- |</span><br><span class="line">|   Ubuntu   | Linux 新用户的完美起点                |</span><br><span class="line">|   Debian   | 现代 Linux 版本的始祖                |</span><br><span class="line">|    Mint    | 易于使用且功能强大,基于Ubuntu开发     |</span><br><span class="line">|   Deepin   | 基于 Ubuntu 的发行版,界面简单直观     |</span><br><span class="line">| Arch Linux | 为经验丰富的用户而设计的发行版         |</span><br><span class="line">| Kali Linux | 渗透测试发行版                       |</span><br><span class="line">|   Fedora   | 社区构建的面向日常应用的发行版         |</span><br><span class="line">|  Red Hat   | Fedora的商业衍生产品，专为企业客户设计 |</span><br><span class="line">|   CentOS   | 由社区重建的Red Hat企业版Linux        |</span><br><span class="line">| SUSE Linux | 专为企业使用而设计                    |</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>linux主流发行版参考表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">发行版</th>
+<th style="text-align:left">评价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Ubuntu</td>
+<td style="text-align:left">Linux 新用户的完美起点</td>
+</tr>
+<tr>
+<td style="text-align:center">Debian</td>
+<td style="text-align:left">现代 Linux 版本的始祖</td>
+</tr>
+<tr>
+<td style="text-align:center">Mint</td>
+<td style="text-align:left">易于使用且功能强大,基于Ubuntu开发</td>
+</tr>
+<tr>
+<td style="text-align:center">Deepin</td>
+<td style="text-align:left">基于 Ubuntu 的发行版,界面简单直观</td>
+</tr>
+<tr>
+<td style="text-align:center">Arch Linux</td>
+<td style="text-align:left">为经验丰富的用户而设计的发行版</td>
+</tr>
+<tr>
+<td style="text-align:center">Kali Linux</td>
+<td style="text-align:left">渗透测试发行版</td>
+</tr>
+<tr>
+<td style="text-align:center">Fedora</td>
+<td style="text-align:left">社区构建的面向日常应用的发行版</td>
+</tr>
+<tr>
+<td style="text-align:center">Red Hat</td>
+<td style="text-align:left">Fedora的商业衍生产品，专为企业客户设计</td>
+</tr>
+<tr>
+<td style="text-align:center">CentOS</td>
+<td style="text-align:left">由社区重建的Red Hat企业版Linux</td>
+</tr>
+<tr>
+<td style="text-align:center">SUSE Linux</td>
+<td style="text-align:left">专为企业使用而设计</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>可以利用冒号位置调节列的位置，如<code>:---:</code>表示居中，<code>:---</code>表示靠左。</li>
+<li>一般在表格前后均添加一个空行</li>
+</ul>
+<h3 id="链接">链接<a class="header-anchor" href="#链接">#</a></h3>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http://www.baidu.com</span><br><span class="line">[<span class="string">搜狗</span>](<span class="link">https://www.sogou.com/</span>)</span><br><span class="line">[<span class="string">Yadex</span>](<span class="link">https://yandex.com/</span>)</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="http://www.baidu.com">http://www.baidu.com</a><br>
+<a target="_blank" rel="noopener" href="https://yandex.com/">Yadex</a><br>
+<a target="_blank" rel="noopener" href="https://www.google.cm/">Google</a></p>
+<ul>
+<li>部分渲染器支持将纯文本链接转化为链接（自动链接）</li>
+</ul>
+<h3 id="图片">图片<a class="header-anchor" href="#图片">#</a></h3>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">黑客</span>](<span class="link">../asset/hacker.webp</span>)</span><br><span class="line">![<span class="string">矩阵</span>](<span class="link">../asset/matrix.webp &quot;矩阵&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/asset/hacker.webp" alt="黑客"><br>
+<img src="/asset/matrix.webp" alt="矩阵" title="矩阵"></p>
+<ul>
+<li>链接后面的说明信息会在鼠标悬停时显示</li>
+</ul>
+<h3 id="引用">引用<a class="header-anchor" href="#引用">#</a></h3>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 《前赤壁赋》 苏轼</span></span><br><span class="line">&gt;&gt; 客曰：“‘月明星稀，乌鹊南飞’此非曹孟德之诗乎？西望夏口，东望武昌，山川相缪，郁乎苍苍，此非孟德之困于周郎者乎？方其破荆州，下江陵，顺流而东也，舳舻千里，旌旗蔽空，酾酒临江，横槊赋诗，固一世之雄也，而今安在哉？况吾与子渔樵于江渚之上，侣鱼虾而友麋鹿；驾一叶之扁舟，举匏樽以相属。寄蜉蝣于天地，渺沧海之一粟。哀吾生之须臾，羡长江之无穷。挟飞仙以遨游，抱明月而长终。知不可乎骤得，托遗响于悲风。”</span><br><span class="line">&gt;&gt;</span><br><span class="line">&gt;&gt; 苏子曰：“客亦知夫水与月乎？逝者如斯，而未尝往也；盈虚者如彼，而卒莫消长也，盖将自其变者而观之，则天地曾不能以一瞬；自其不变者而观之，则物与我皆无尽也，而又何羡乎？且夫天地之间，物各有主，苟非吾之所有，虽一毫而莫取。惟江上之清风，与山间之明月，耳得之而为声，目遇之而成色，取之无禁，用之不竭，是造物者之无尽藏也，而吾与子之所共适。”</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>《前赤壁赋》 苏轼</p>
+<blockquote>
+<p>客曰：“‘月明星稀，乌鹊南飞’此非曹孟德之诗乎？西望夏口，东望武昌，山川相缪，郁乎苍苍，此非孟德之困于周郎者乎？方其破荆州，下江陵，顺流而东也，舳舻千里，旌旗蔽空，酾酒临江，横槊赋诗，固一世之雄也，而今安在哉？况吾与子渔樵于江渚之上，侣鱼虾而友麋鹿；驾一叶之扁舟，举匏樽以相属。寄蜉蝣于天地，渺沧海之一粟。哀吾生之须臾，羡长江之无穷。挟飞仙以遨游，抱明月而长终。知不可乎骤得，托遗响于悲风。”</p>
+<p>苏子曰：“客亦知夫水与月乎？逝者如斯，而未尝往也；盈虚者如彼，而卒莫消长也，盖将自其变者而观之，则天地曾不能以一瞬；自其不变者而观之，则物与我皆无尽也，而又何羡乎？且夫天地之间，物各有主，苟非吾之所有，虽一毫而莫取。惟江上之清风，与山间之明月，耳得之而为声，目遇之而成色，取之无禁，用之不竭，是造物者之无尽藏也，而吾与子之所共适。”</p>
+</blockquote>
+</blockquote>
+<ul>
+<li><code>&gt;</code>后面需要至少一个空格</li>
+<li>需要一个空行来结束引用</li>
+</ul>
+<h3 id="分割线">分割线<a class="header-anchor" href="#分割线">#</a></h3>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">分割线通常是用来分割装饰文字~~凑字数~~的，它可以让文字更加美观。</span><br><span class="line"></span><br><span class="line">！！！！！！这是一个分割线，看到这里想必也累了，可以放松一下！！！！！</span><br><span class="line"></span><br><span class="line">上面是假的分割线，下面的才是真的！</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">----</span><br><span class="line"></span><br><span class="line"><span class="strong">**<span class="emphasis">*</span></span></span><br><span class="line"><span class="strong"><span class="emphasis"></span></span></span><br><span class="line"><span class="strong"><span class="emphasis"><span class="strong">****</span></span></span></span><br><span class="line"><span class="strong"><span class="emphasis"></span></span></span><br></pre></td></tr></table></figure>
+<p>分割线通常是用来分割装饰文字<s>凑字数</s>的，它可以让文字更加美观。</p>
+<p>！！！！！！这是一个分割线，看到这里想必也累了，可以放松一下！！！！！</p>
+<p>上面是假的分割线，下面的才是真的！</p>
+<hr>
+<hr>
+<hr>
+<hr>
+<ul>
+<li>需要三个或三个以上标记</li>
+<li>需要单独占据一行</li>
+<li>显示效果可能会有粗细上的差别</li>
+</ul>
+<h3 id="行内代码">行内代码<a class="header-anchor" href="#行内代码">#</a></h3>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">有时候需要用到一些特殊符号，如<span class="code">`*`</span>，<span class="code">`&gt;`</span>这些与Markdown的标记相冲突，或是想<span class="code">`printf(&quot;代码&quot;);`</span>在文字中，就可以使用行内代码。这时只需用两个<span class="code">`` `</span> ``包围内容。</span><br><span class="line">注意：</span><br><span class="line"><span class="bullet">*</span> <span class="code">`` `</span> `` 是反引号，通常在Esc键下方（键盘的左上方）</span><br><span class="line"><span class="bullet">*</span> 如果需要显示一个<span class="code">`` `</span> <span class="code">`` 那么要用两个`</span><span class="code">` `</span> `` 包围它</span><br></pre></td></tr></table></figure>
+<p>有时候需要用到一些特殊符号，如<code>*</code>，<code>&gt;</code>这些与Markdown的标记相冲突，或是想<code>printf(&quot;代码&quot;);</code>在文字中，就可以使用行内代码。这时只需用两个<code>`</code>包围内容。</p>
+<ul>
+<li><code>`</code> 是反引号，通常在Esc键下方（键盘的左上方）</li>
+<li>如果需要显示一个<code>`</code> 那么要用两个<code>`</code> 包围它</li>
+</ul>
+<h3 id="代码块">代码块<a class="header-anchor" href="#代码块">#</a></h3>
+<p>代码块可以在文章中便捷地插入一段代码，来回顾一下经典的helloworld代码吧！</p>
+<pre><code>C++版本：
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;hello world!&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+Java版本：
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;hello world!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p>C++版本：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;hello world!&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Java版本：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;hello world!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>还可以简单地选中代码后按tab键来形成代码块</li>
+</ul>
+<h3 id="任务列表">任务列表<a class="header-anchor" href="#任务列表">#</a></h3>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">近代中国的两大历史任务：</span><br><span class="line"><span class="bullet">-</span> [x] 求得民族独立和人民解放</span><br><span class="line"><span class="bullet">-</span> [ ] 实现国家的繁荣富强和人民的共同富裕</span><br></pre></td></tr></table></figure>
+<p>近代中国的两大历史任务：</p>
+<ul>
+<li>[x] 求得民族独立和人民解放</li>
+<li>[ ] 实现国家的繁荣富强和人民的共同富裕</li>
+</ul>
+<h3 id="数学公式">数学公式<a class="header-anchor" href="#数学公式">#</a></h3>
+<p>Markdown本身是不支持数学公式的，通常靠其他工具的支持如<a target="_blank" rel="noopener" href="https://www.mathjax.org/">Mathjax</a>、<a target="_blank" rel="noopener" href="https://katex.org/">Katex</a>。这些工具配置、学习起来都比较麻烦。想进一步了解可以访问官网，或者查阅以下资料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000008317350">前端整合MathjaxJS的配置笔记</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.douban.com/note/534786000/">MathJax的一些坑</a></li>
+</ul>
+<p><strong>行内公式</strong></p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在数理统计中，若$X \sim \Gamma(\frac n 2 , \frac 1 2)$，则称 $X$ 服从<span class="strong">**自由度为**</span> $n$ <span class="strong">**的**</span> $\chi^2$ <span class="strong">**分布**</span>，记为$X\sim \chi^2(n)$</span><br></pre></td></tr></table></figure>
+<p>在数理统计中，若 <span role="math">$X \sim \Gamma(\frac n 2 , \frac 1 2)$</span> ，则称 <span role="math">$X$</span> 服从<strong>自由度为</strong> <span role="math">$n$</span> <strong>的</strong> <span role="math">$\chi^2$</span> <strong>分布</strong>，记为<span role="math">$X\sim \chi^2(n)$</span></p>
+<ul>
+<li>为了更好的兼容性，可以在<code>$$</code>外侧添加一个空格。</li>
+</ul>
+<p><strong>块公式</strong></p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">x=\frac&#123;-b \pm \sqrt&#123;b^2-4ac&#125;&#125;&#123;2a&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<div>
+<div role="math">$$
+x=\frac{-b \pm \sqrt{b^2-4ac}}{2a}
+$$</div>
+</div>
+<h2 id="写在最后">写在最后<a class="header-anchor" href="#写在最后">#</a></h2>
+<p>写本文的目的主要是总结整理一下我了解到的关于Markdown的知识，同时顺便测试一下目前博客的渲染效果和对Markdown的支持效果。并不是推荐Markdown或者是推荐某个软件。在我看来，使用Markdown能给我一种自由的感觉，这就足够了。顺便提一句，如果你想测试一下Markdown的话，下面评论框是个不错的选择。😀</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Markdown学习</p><p><a href="https://blog.tootal.xyz/posts/learn-markdown/">https://blog.tootal.xyz/posts/learn-markdown/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>黄智权</p></div></div><div class="level-item is-narrow"><div><h6>本文发布于</h6><p>2020-02-14</p></div></div><div class="level-item is-narrow"><div><h6>本文更新于</h6><p>2020-02-14</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Markdown/">Markdown</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="http://afdian.net/@tootal" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>爱发电</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/asset/alipay.webp" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/asset/wechat_pay.webp" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/posts/css-programming/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">CSS高级实践编程</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/why-blog/"><span class="level-item">为什么要写博客？</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content twikoo" id="twikoo"></div><script src="https://cdn.jsdelivr.net/npm/twikoo@1.3.1/dist/twikoo.all.min.js"></script><script>twikoo.init({
+      envId: 'tootal-6g2y019v6b37e4be',
+      region: 'ap-guangzhou',
+      path: "'/posts/learn-markdown/'",
+      katex: {
+        delimiters: 
+        [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false}
+        ],
+        throwOnError: false
+      }
+    });</script></div></div></div><!--!--><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#Markdown与标记语言介绍"><span class="level-left"><span class="level-item">Markdown与标记语言介绍</span></span></a></li><li><a class="level is-mobile" href="#使用Markdown的方式"><span class="level-left"><span class="level-item">使用Markdown的方式</span></span></a></li><li><a class="level is-mobile" href="#Markdown语法指南"><span class="level-left"><span class="level-item">Markdown语法指南</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#标题"><span class="level-left"><span class="level-item">标题</span></span></a></li><li><a class="level is-mobile" href="#字体"><span class="level-left"><span class="level-item">字体</span></span></a></li><li><a class="level is-mobile" href="#列表"><span class="level-left"><span class="level-item">列表</span></span></a></li><li><a class="level is-mobile" href="#表格"><span class="level-left"><span class="level-item">表格</span></span></a></li><li><a class="level is-mobile" href="#链接"><span class="level-left"><span class="level-item">链接</span></span></a></li><li><a class="level is-mobile" href="#图片"><span class="level-left"><span class="level-item">图片</span></span></a></li><li><a class="level is-mobile" href="#引用"><span class="level-left"><span class="level-item">引用</span></span></a></li><li><a class="level is-mobile" href="#分割线"><span class="level-left"><span class="level-item">分割线</span></span></a></li><li><a class="level is-mobile" href="#行内代码"><span class="level-left"><span class="level-item">行内代码</span></span></a></li><li><a class="level is-mobile" href="#代码块"><span class="level-left"><span class="level-item">代码块</span></span></a></li><li><a class="level is-mobile" href="#任务列表"><span class="level-left"><span class="level-item">任务列表</span></span></a></li><li><a class="level is-mobile" href="#数学公式"><span class="level-left"><span class="level-item">数学公式</span></span></a></li></ul></li><li><a class="level is-mobile" href="#写在最后"><span class="level-left"><span class="level-item">写在最后</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">头头博客</a><p class="is-size-7"><span>&copy; 2021 黄智权</span><span>&nbsp;&nbsp; 由 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>&nbsp;&&nbsp;<a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a> 驱动</span><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span><br><a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener">赣ICP备20007667号-1</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="View on GitHub" href="https://github.com/tootal/blog"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/mhchem.js" defer></script><script>
+    var katex_config = {
+      delimiters: 
+      [
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false}
+      ],
+      strict: false,
+      throwOnError: false
+    };
+    window.addEventListener("load", function() {
+      document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+        renderMathInElement(element, katex_config);
+      });
+      document.querySelectorAll('#toc .level-item').forEach(function(element) {
+        renderMathInElement(element, katex_config);
+      });
+    });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

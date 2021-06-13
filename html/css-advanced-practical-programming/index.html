@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>CSS高级实践编程</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="logo">
+        <h1>CSS高级实践编程</h1>
+        <p>由黄智权设计</p>
+    </div>
+    <div class="contents card">
+        <h3>目录</h3>
+        <ul>
+            <li>
+                <a href="#p1">绪论以及因特网与万维网简介</a>
+                <ul>
+                    <li>
+                        <a href="#p11">Web程序设计课程主要内容</a>
+                    </li>
+                    <li>
+                        <a href="#p12">因特网</a>
+                    </li>
+                    <li>
+                        <a href="#p13">因特网的关键点</a>
+                    </li>
+                    <li>
+                        <a href="#p14">分层架构</a>
+                    </li>
+                    <li>
+                        <a href="#p15">超文本传输协议 (HTTP)</a>
+                    </li>
+                    <li>
+                        <a href="#p16">HTTP 错误码</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#p2">超文本标记语言(HTML)</a>
+                <ul>
+                    <li>
+                        <a href="#p21">XHTML 网页的结构</a>
+                    </li>
+                    <li>
+                        <a href="#p22">基础CSS</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#p3">CSS基础与高级实践</a>
+                <ul>
+                    <li>
+                        <a href="#p31">更多HTML元素</a>
+                    </li>
+                    <li>
+                        <a href="#p32">更多基础的CSS</a>
+                    </li>
+                    <li>
+                        <a href="#p33">CSS实践</a>
+                    </li>
+                    <li>
+                        <a href="#p34">更多CSS知识</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+<div class="container card">
+    <div class="content">
+        <h2 id="p1">绪论以及因特网与万维网简介</h2>
+        <h3 id="p11">Web程序设计课程主要内容</h3>
+        <ul>
+            <li>因特网与万维网简介</li>
+            <li>HTML与CSS</li>
+            <li>网页区域和 CSS 盒子模型</li>
+            <li>PHP服务端编程</li>
+            <li>JavaScript和DOM</li>
+            <li>Cookie与Session</li>
+            <li>Web安全基础</li>
+            <li>HTML5</li>
+            <li>XML</li>
+            <li>Mashup</li>
+            <li>……</li>
+        </ul>
+        <h3 id="p12">因特网</h3>
+        <q>在互联网上，没人知道你是一条狗。</q>
+        <blockquote>
+            互联网（英语：Internet）是指20世纪末期兴起电脑网络与电脑网络之间所串连成的庞大网络系统。这些网络以一些标准的网络协议相连。它是由从地方到全球范围内几百万个私人、学术界、企业和政府的网络所构成，通過电子，无线和光纤网络技术等等一系列广泛的技术联系在一起。互联网承载范围广泛的信息资源和服务，例如相互关系的超文本文件，还有万维网（WWW）的应用，电子邮件，通话，以及文件共享服务。
+        </blockquote>
+        <blockquote>
+            互联网的起源可以追溯到1960年代美国联邦政府委托进行的一项研究，目的是创建容错与电脑网络的通信。互联网的前身ARPANET最初在1980年代作为区域学术和军事网络连接的骨干。1980年代，NSFNET（英语：NSFNET）成为新的骨干而得到资助，以及其他商业化扩展得到了私人资助，导致了全世界網絡技术的发展，以及许多网络的合并。到1990年代初，商业网络和企业之间的连接标志着向现代互联网的过渡。尽管互联网在1980年代被学术界广泛使用 ， 但商业化的服务和技术融入了现代每个人的生活 。
+        </blockquote>
+        
+        <h3 id="p13">因特网的关键点</h3>
+        <ul>
+            <li>因特网是为信息自由而存在的</li>
+            <li>互联网 Vs. 因特网</li>
+            <li>子网络能够独立存在</li>
+            <li>计算机能够动态加入与离开网络</li>
+            <li>建立于开放标准之上; 每个人都能建立一个新的设备</li>
+            <li>缺乏中心控制(大部分)</li>
+            <li>任何人都能借助简单的软件使用它</li>
+        </ul>
+        <h3 id="p14">分层架构</h3>
+        <p>互联网使用一个分层的硬件/软件架构 (OSI模型)。</p>
+        <ul>
+            <li>物理层: 设备, 例如同轴电缆, 光纤,调制解调器</li>
+            <li>数据链路层: 基础硬件协议 (以太网, Wi-Fi, DSL, ATM, PPP)</li>
+            <li>网络/因特网层: 基础软件协议 (IP)</li>
+            <li>运输层: 保证网络层的可靠性 (TCP, UDP)</li>
+            <li>应用层: 为各种应用程序实现通信(HTTP, POP3/IMAP, SSH, FTP)</li>
+        </ul>
+        <h3 id="p15">超文本传输协议 (HTTP)</h3>
+        <ul>
+            <li>由浏览器发送并由服务器解析的一组命令</li>
+            <li>部分 HTTP 命令 (浏览器在内部传送)：
+                <ul>
+                    <li>GET  filename : 下载</li>
+                    <li>POST filename : 传送一个Web表单</li>
+                    <li>PUT  filename : 上传</li>
+                    <li>DELETE filename: 移除实体</li>
+                    <li>HEAD filename: 只是状态信息, 而不是全部内容</li>
+                </ul>
+            </li>
+        </ul>
+        <h3 id="p16">HTTP 错误码</h3>
+        <p>当某些地方出现问题, Web服务器会返回一个特殊的”错误码”数字给浏览器, 有时会附上一个HTML文档</p>
+        <p>常见错误码：</p>
+        <table>
+        <thead>
+            <tr>
+                <th>数字</th> <th>含义</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>200</td>
+                <td>OK</td>
+            </tr>
+            <tr>
+                <td>301-303</td>
+                <td>页面已经被移除(永久性或者临时性)</td>
+            </tr>
+            <tr>
+                <td>403</td>
+                <td>你不允许访问此页面</td>
+            </tr>
+            <tr>
+                <td>404</td>
+                <td>找不到页面</td>
+            </tr>
+            <tr>
+                <td>500</td>
+                <td>服务器内部错误</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+    
+    <div class="content">
+        <h2 id="p2">超文本标记语言(HTML)</h2>
+        <ul>
+            <li>
+                <p>描述网页信息的内容跟结构</p>
+            </li>
+            <li>
+                <p>不同于网页效果的展示（在屏幕上显示的外观）</p>
+            </li>
+            <li>
+                <p>用开始标签跟结束标签(tags)环绕文本内容</p>
+            </li>
+            <li>
+                <p>每个标签称为一个元素</p>
+            </li>
+            <li>
+                <p>
+                    语法: <code>&lt;element&gt;内容&lt;/element&gt;</code>
+                </p>
+            </li>
+            <li>
+                <p>
+                    示例: <code>&lt;p&gt;这是一个段落&lt;/p&gt;</code>
+                </p>
+            </li>
+            <li>
+                <p>大多数空格字符在HTML中是可忽略的（被忽略或合并为一个空格）</p>
+            </li>
+            <li>
+                <p>我们将使用的是更严谨，更标准的版本XHTML</p>
+            </li>
+        </ul>
+        <p>注释: <code>&lt;!-- … --&gt;</code></p>
+        <p>
+            注释也可使网页的一段代码无效<br>
+            注释不能嵌套使用，也不能包含 –<br>
+            许多网页不能彻底（或完全地）被注释掉<br>
+            添加注释是一种沟通途径,，用来向你的同事解释你的设计方法和目的，甚至有时也是为了方便你以后查看.<br>
+            添加注释不是为了给浏览器跟用户看，而是为了开发者跟设计者.
+        </p>
+        <h3 id="p21">XHTML 网页的结构</h3>
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt; 
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt; 
+    &lt;head&gt; 
+        information about the page 
+    &lt;/head&gt; 
+    &lt;body&gt; 
+        page contents 
+    &lt;/body&gt; 
+&lt;/html&gt; 
+</pre>
+        <ul>
+            <li>用head部分描述网页，用body部分来装载网页的内容</li>
+            <li>一个HTML网页被保存在以扩展名.html结尾的文件中</li>
+        </ul>
+        <p>
+            网页的标题: <code>&lt;title&gt;</code><br>
+            网页元数据: <code>&lt;meta&gt;</code><br>
+            段落: <code>&lt;p&gt;</code><br>
+            换行符: <code>&lt;br /&gt;</code><br>
+            标题: <code>&lt;h1&gt;, &lt;h2&gt;, …&lt;h6&gt;</code><br>
+            水平线: <code>&lt;hr /&gt;</code><br>
+            链接: <code>&lt;a&gt;</code><br>
+            图像: <code>&lt;img&gt;</code><br>
+            短语元素: <code>&lt;em&gt;, &lt;strong&gt;</code><br>
+            无序列表: <code>&lt;ul&gt;, &lt;li&gt;</code><br>
+            有序列表: <code>&lt;ol&gt;</code>
+        </p>
+        <h3 id="p22">基础CSS</h3>
+        <p>层叠样式表(CSS): <code>&lt;link&gt;</code></p>
+        <p>基础 CSS 规则的语法</p>
+<pre>
+selector {
+    property 1: value 1;
+    …
+    property n: value n;
+}
+</pre>
+        <ul>
+            <li>注释 : <code>/* …. */</code></li>
+            <li>一个 CSS 文件包含一条或多条规则</li>
+            <li>每条规则以一个选择器(selector)开始， 该选择器选中了一个（或多个）HTML 元素 然后对它们应用样式属性</li>
+        </ul>
+        <p>CSS 字体属性</p>
+        <table>
+        <thead>
+            <tr>
+                <th>属性</th>
+                <th>描述</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>font-family</td>
+                <td>指定使用的字体</td>
+            </tr>
+            <tr>
+                <td>font-size</td>
+                <td>指定字体大小</td>
+            </tr>
+            <tr>
+                <td>font-style</td>
+                <td>用于使用/取消 斜体字</td>
+            </tr>
+            <tr>
+                <td>font-weight</td>
+                <td>用于使用/取消 粗体字</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+    <div class="content">
+        <h2 id="p3">CSS基础与高级实践</h2>
+        <h3 id="p31">更多HTML元素</h3>
+        <p>网页元数据: <code>&lt;meta&gt;</code><br>
+        表格: <code>&lt;table&gt;, &lt;tr&gt;, &lt;td&gt;, &lt;th&gt;, &lt;caption&gt;</code><br>
+        定义列表: <code>&lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;</code><br>
+        引用: <code>&lt;blockquote&gt;</code><br>
+        行内引用: <code>&lt;q&gt;</code></p>
+        <p>HTML字符实体<br>
+        在网页中表示任何unicode字符的方法</p>
+        <table>
+        <thead>
+        <tr>
+            <th><strong>字符</strong></th>
+            <th><strong>实体</strong></th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>&lt; &gt;</td>
+                <td><code>&amp;lt; &amp;gt;</code></td>
+            </tr>
+            <tr>
+                <td>é è ñ</td>
+                <td><code>&amp;eacute; &amp;egrave; &amp;ntilde;</code></td>
+            </tr>
+            <tr>
+                <td>™ ©</td>
+                <td><code>&amp;trade; &amp;copy;</code></td>
+            </tr>
+            <tr>
+                <td>π δ Δ</td>
+                <td><code>&amp;pi; &amp;delta; &amp;Delta;</code></td>
+            </tr>
+            <tr>
+                <td>И</td>
+                <td><code>&amp;#1048;</code></td>
+            </tr>
+            <tr>
+                <td>" &amp;</td>
+                <td><code>&amp;quot; &amp;amp;</code></td>
+            </tr>
+        </tbody>
+        </table>
+        <p>
+            计算机代码: <code>&lt;code&gt;</code><br>
+            预编排文字: <code>&lt;pre&gt;</code>
+        </p>
+        <h3 id="p32">更多基础的CSS</h3>
+        <p>
+            一种样式可以选择多个元素, 由逗号分隔<br>
+            单独的元素也可以拥有自己的样式 (例如上面的h2)
+        </p>
+        <p>CSS的文本属性</p>
+        <table>
+        <thead>
+            <tr>
+            <th><strong>属性</strong></th>
+            <th><strong>描述</strong></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>text-align</td>
+                <td>文本的水平对齐方式</td>
+            </tr>
+            <tr>
+                <td>text-decoration</td>
+                <td>文本的修饰,  例如下划线</td>
+            </tr>
+            <tr>
+                <td>line-height,  letter-spacing</td>
+                <td>文本的间隔</td>
+            </tr>
+            <tr>
+                <td>text-indent</td>
+                <td>每一段落的首字符缩进</td>
+            </tr>
+        </tbody>
+        </table>
+        <h3 id="p33">CSS实践</h3>
+        <p>Body 样式</p>
+<pre>
+body {
+    font-size: 16px; 
+}
+</pre>
+        <p>
+            要把一种样式应用到网页中的整个body, 你需要写一个body元素的选择器<br>
+            避免让你手动为每一个元素添加样式。
+        </p>
+        <p>它被称为层叠样式表是因为元素的属性以以下的顺序 层叠 在一起:</p>
+        <ul>
+            <li>浏览器的默认样式</li>
+            <li>外部样式表文件 (在<code>&lt;link&gt;</code>标签里面)</li>
+            <li>内部样式表 (在网页头的<code>&lt;style&gt;</code>标签里面)</li>
+            <li>行内样式 (HTML 元素的样式属性)</li>
+        </ul>
+    
+        <p>CSS的背景属性</p>
+        <table>
+        <thead>
+            <tr>
+            <th><strong>属性</strong></th>
+            <th><strong>描述</strong></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>background-color</td>
+                <td>背景色</td>
+            </tr>
+            <tr>
+                <td>background-image</td>
+                <td>背景图</td>
+            </tr>
+            <tr>
+                <td>background-position</td>
+                <td>相对于元素的背景位置</td>
+            </tr>
+            <tr>
+                <td>background-repeat</td>
+                <td>背景是否/如何被重复</td>
+            </tr>
+            <tr>
+                <td>background-attachmen</td>
+                <td>背景是否随页面滚动</td>
+            </tr>
+        </tbody>
+        </table>
+        <h3 id="p34">更多CSS知识</h3>
+        <p>HTML 的id 属性</p>
+        <p>允许你给网页上任一个元素分配一个唯一的ID<br>
+        每个ID必须唯一；在网页中只能定义一次</p>
+        <p>链接到Web 网页的某个区域</p>
+        <p>一个链接目标可以以#开头，以ID名称结束<br>
+        浏览器会加载指定页面，并跳转到给定ID的元素处</p>
+        <p>CSS ID 选择器</p>
+        <p>仅对拥有ID为 mission 的段落应用样式规则<br>
+        元素也可被明确地指定为 <code>p#mission { … }</code></p>
+        <p>HTML 的类(class) 属性</p>
+        <p>使用类，可以选定一组元素并为该组元素应用样式规则<br>
+        不同于 id, 一个 class 名称可以在网页中被多次使用</p>
+        <p>CSS 类选择器（class selector）</p>
+        <p>为拥有任何类为special 的元素 或者 类为shout 的p 元素应用相应的样式规则</p>
+        <p>一个元素可以拥有多个类属性 (用空格分隔开)</p>
+        <p>CSS  伪类</p>
+        <table>
+        <thead>
+            <tr>
+                <th><strong>类</strong></th>
+                <th><strong>描述</strong></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>:active</td>
+                <td>向被激活或被选择的元素添加样式</td>
+            </tr>
+            <tr>
+                <td>:focus</td>
+                <td>向拥有键盘输入焦点的元素添加样式</td>
+            </tr>
+            <tr>
+                <td>:hover</td>
+                <td>当鼠标悬浮在元素上方时，向元素添加样式</td>
+            </tr>
+            <tr>
+                <td>:link</td>
+                <td>向未被访问的链接添加样式</td>
+            </tr>
+            <tr>
+                <td>:visited</td>
+                <td>向已被访问的链接添加样式</td>
+            </tr>
+            <tr>
+                <td>:first-letter</td>
+                <td>向元素中的文本的首字母添加样式</td>
+            </tr>
+            <tr>
+                <td>:first-line</td>
+                <td>向元素中的文本的第一行添加样式</td>
+            </tr>
+            <tr>
+                <td>:first-child</td>
+                <td>向元素的第一个子元素添加样式</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

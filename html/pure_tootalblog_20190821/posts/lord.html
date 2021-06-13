@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>斗地主</title>
+</head>
+<body>
+为什么我这么执着于 <a href="https://ac.nowcoder.com/acm/contest/874/H">这道斗地主</a>的题目呢？
+<br>
+最早见到类似的题目是在NOIP2015，当时Day1T3就是 <a href="https://www.luogu.org/problemnew/show/P2668">斗地主</a>，不过比这个更难一点，要求的是求最少出牌次数，当时我是根本没写，一方面是心理畏惧，一方面是当时对竞赛的热情也没有那么高了，只想着混个省一就行了。结果那次结果很惨。。。。
+<br>
+今年（2019）四月的时候，软件学院举办了一场<a href="https://ac.nowcoder.com/acm/contest/874">比赛</a>，又出现了这题，而且是简化版的，正好当时我们队处于无题可做的状态，我就打了一下这题。
+结果是WA了。
+<br>
+后来由于时间匆忙，这道题就先搁置了，直到前几天想起了，我决定把它调对来。
+<br>
+于是我先找到我 <a href="https://raw.githubusercontent.com/tootal/share/master/lord/origin.cpp">比赛时的代码</a>。
+分析了一下，测试样例通过了。找不出什么错误，又找不到数据，但是可以找到 <a href="https://raw.githubusercontent.com/tootal/share/master/lord/std.cpp">标程</a>，于是我就想写个对拍看看。说实话这个 <a href="https://raw.githubusercontent.com/tootal/share/master/lord/test.py">数据生成器</a>不是很好写，但是后来我忽然想到了shuffle，顿时感觉可以写了。赶紧写了个 <a href="https://raw.githubusercontent.com/tootal/share/master/lord/test.sh">脚本</a>开始跑了。
+<br>
+果然发现了很多弱智问题。比如：
+<br>
+<pre>
+bool SingleStraight(){				   
+    if(n>=5&&n<=12){
+        int i;
+        for(i=3;i<=10;i++){
+            if(card[i])break;
+        }
+        if(i==11)return false;
+        bool flag=true;
+        for(int j=i;j&lt;i+n;j++){								   
+            <b>if(card[i]!=1){</b>
+                flag=false;
+                break;
+            }
+        }
+        return flag;
+    }
+    return false;
+}
+</pre>
+这段判断顺子的代码就有很多问题,比如循环变量j写成i，没有充分考虑好j的上限。
+事实上上面第二个循环应该改成：
+<br>
+<pre>
+for(int j=i;j&lt;i+n;j++){
+    if(j&gt;14)return false;
+    if(card[j]!=1){
+        flag=false;
+        break;
+    }
+}
+</pre>
+<br>
+除此之外，我还发现判断飞机的情况我考虑不周，两种情况都写错了。
+<br>
+第一种（连续的三带一） <br>
+<pre>
+bool Airplane1(){						  
+    if(n%4==0){
+        int k=n/4;
+        int i;
+        for(i=3;i&lt;=13;i++){
+            if(card[i]&gt;=3)break;
+        }
+        if(i==14)return false;
+        bool flag=true;
+        for(int j=i;j&lt;i+k;j++){
+            if(card[i]&lt;3){
+                flag=false;
+                break;	 
+            }
+        }
+        return flag;
+    }
+    return false;
+}
+</pre>
+<br>
+无法判断 4 4 4 4 6 6 6 7 7 7 8 8 8 9 9 9 这种情况。
+<br>
+改进的写法为：
+<br>
+<pre>
+bool Airplane1(){
+    if(n%4==0){
+        int k=n/4;
+        int i;
+        for(i=3;i&lt;=13;i++){
+            if(card[i]&gt;=3){
+		 
+							  
+                bool f=true;
+                for(int j=i;j&lt;i+k;j++){
+                    if(j&gt;14||card[j]&lt;3){
+                        f=false;
+                        break;
+                    }
+                }
+                if(f)return true;
+            }
+        }
+					
+    }
+    return false;
+}
+</pre>
+<br>
+第二种飞机（连续的三带二）
+<br>
+<pre>
+bool Airplane2(){
+								  
+    if(n%5==0){
+        int k=n/5;
+							
+        int i;
+        for(i=3;i&lt;=13;i++){
+            if(card[i]&gt;=3)break;
+        }
+        if(i==14)return false;
+        bool flag=true;
+        for(int j=i;j&gt;i+k;j++){
+            if(card[j]&lt;3){
+                flag=false;
+                break;
+            }
+            card[j]-=3;
+        }
+        if(!flag)return false;
+        for(int i=2;i&lt;=16;i++){
+            if(card[i]&gt;0&&card[i]%2!=0){
+                flag=false;
+                break;
+            }
+            card[i]=0;
+        }
+        return flag;
+    }
+    return false;
+}
+</pre>
+这个错误，在我把对拍程序在服务器上跑了一晚才发现， <br>
+J J J J K K K A A A 
+<br>
+问题是这组数据在问题描述里就有类似的！！。。
+<br>
+果然以后还是要仔细看描述。
+<br>
+<pre>
+bool Airplane2(){
+    if(n%5==0){
+        int k=n/5;
+        if(k<2)return false;
+        int i;
+        for(i=3;i<=13;i++){
+            if(card[i]==3)break;
+        }
+        if(i==14)return false;
+        bool flag=true;
+        for(int j=i;j&gt;i+k;j++){
+            if(card[j]!=3){
+                flag=false;
+                break;
+            }
+            card[j]-=3;
+        }
+        if(!flag)return false;
+        for(int i=2;i<=16;i++){
+            if(card[i]>0&&card[i]%2!=0){
+                flag=false;
+                break;
+            }
+            card[i]=0;
+        }
+        return flag;
+    }
+    return false;
+}
+</pre>
+<br>
+希望以后不再犯这些小错误，勇于挑战难题。
+<br>
+
+</body>
+</html>

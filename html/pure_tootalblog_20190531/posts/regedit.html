@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>注册表</title>
+</head>
+<body>
+	<h3>
+		
+		<a href="https://www.cnblogs.com/owenzhou/p/10063939.html">添加右键菜单和子菜单</a>
+	</h3>
+	<ul>
+		<li>
+			<a href="https://blog.csdn.net/amdd9582/article/details/83025287">注册表添加桌面右键二级菜单</a>
+		</li>
+		<li>
+			<a href="https://blog.csdn.net/yang382197207/article/details/79712166">Windows特定文件添加右键菜单（一）</a>
+		</li>
+		<li>
+			<a href="https://blog.csdn.net/yang382197207/article/details/80079052">Windows特定文件添加右键菜单（二）</a>
+		</li>
+		<li>
+			<a href="https://blog.csdn.net/taipion/article/details/7479598">在右键菜单中添加复制文件路径功能</a>(此功能按住shift即可,不必额外添加)
+		</li>
+	</ul>
+	<p>
+		计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\
+	</p>
+<p>
+	计算机\HKEY_CLASSES_ROOT\Directory\Background\shell\
+</p>
+
+
+
+	<p>
+	</p>
+	<h3>
+		快速进入一些文件夹
+	</h3>
+	<p><a href="https://zhidao.baidu.com/question/505026290.html">shell:</a></p>
+	<b>
+		计算机\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+	</b>
+<h3>修改右键菜单</h3>
+<h4>扩展新建菜单</h4>
+<p>
+	<b>
+		计算机\HKEY_CLASSES_ROOT\.txt\ShellNew
+	</b>
+	<br>
+	仿照这个修改就行了。
+	<br>
+	一般只需要新建 <b>NullFile</b>，值为空即可。
+	<br>
+	<a href="https://blog.csdn.net/liyongbing1122/article/details/81912699">进一步配置</a>
+	<br>
+	同样仿照txtfile项创建即可，只需改默认值。
+<table border="1" cellspacing="0">
+	<tr>
+		<th>名称</th>
+		<th>类型</th>
+		<th>数据</th>
+	</tr>
+	<tr>
+		<td>（默认）</td>
+		<td>REG_SZ</td>
+		<td>textfile</td>
+	</tr>
+	<tr>
+		<td>Content Type</td>
+		<td>REG_SZ</td>
+		<td>text/plain</td>
+	</tr>
+	<tr>
+		<td>PerceivedType</td>
+		<td>REG_SZ</td>
+		<td>text</td>
+	</tr>
+</table>
+	<br>
+</p>
+<h4>
+	<a href="http://tieba.baidu.com/p/2209627407">更改新建菜单顺序</a>
+</h4>
+<p>
+	<b>计算机\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Discardable\PostSetup\ShellNew</b>
+	<br>
+先修改Classes键，然后编辑ShellNew项的权限-高级-禁用继承-再将权限条目均改为读取
+<br>
+注意每次修改后都要改，总结来说就时修改前放宽权限，修改后缩减权限。
+</p>
+<h4><p>去除多余的右键菜单</p></h4>
+一般在以下几个位置
+<br>
+<b>
+	计算机\HKEY_CLASSES_ROOT\Folder\shellex\ContextMenuHandlers
+</b>
+<br>
+<b>
+	计算机\HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers
+</b>
+<br>
+<b>
+	计算机\HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers
+</b>
+<br>
+<p><a href="git.html#menu">Git Bash Here</a></p>
+<p><a href="https://www.jianshu.com/p/a734f1489772">在此处打开命令窗口</a></p>
+<p>
+	更改权限步骤： <br>
+	右键 权限 添加 输入当前用户名 检查名称 确定 勾选完全控制 确定
+</p>
+<p><a href="https://jingyan.baidu.com/article/22a299b51e7ad89e19376ad5.html">在当前文件夹下打开cmd</a></p>
+
+
+</body>
+</html>

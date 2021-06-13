@@ -1,0 +1,89 @@
+body {
+    background-color: #fafafa;
+    background-image: url("bg.png");
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 50px;
+}
+
+.container,
+.logo {
+    width: 60%;
+    margin: 32px auto;
+    margin-left: 200px;
+}
+
+.content {
+    border-bottom: 1px solid gray;
+    padding: 16px 32px;
+    padding-bottom: 32px;
+}
+
+.contents {
+    position: fixed;
+    top: 126px;
+    right: 100px;
+    padding: 10px 22px;
+}
+
+.contents a {
+    text-decoration: none;
+    color: #4a4a4a;
+}
+
+.contents a:hover {
+    color: gray;
+}
+
+.card {
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.logo h1 {
+    margin-bottom: 0;
+}
+
+.logo p {
+    margin: 0;
+    color: gray;
+    font-style: italic;
+}
+
+blockquote {
+    color: #646464;
+    border-left: 3px solid #d3d3d3;
+    margin: 16px 0;
+    padding-left: 16px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+table {
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+table td,
+table th {
+    border: 1px solid;
+    padding: 8px 10px;
+}
+
+code, pre {
+    font-family: Consolas, monospace;
+}
+
+code {
+    color: #dd0055;
+}
+
+pre {
+    padding: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    background-color: #f6f6f6;
+}

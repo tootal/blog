@@ -1,0 +1,11 @@
+{
+    "version": "0.1.6",
+    "label": "Hexo",
+    "icon": "hexo.svg",
+    "tasks": [
+        {
+            "label": "启动服务器",
+            "command":"start ${taskDirname}\\server.bat"
+        }
+    ]
+}

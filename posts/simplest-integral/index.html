@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>四种最简真分式的积分 - 头头博客</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#fff"><meta name="application-name" content="头头博客"><meta name="msapplication-TileImage" content="/asset/favicon144.png"><meta name="msapplication-TileColor" content="#fff"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="头头博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" sizes="96x96" href="/asset/favicon96.png"><link rel="apple-touch-icon" sizes="144x144" href="/asset/favicon144.png"><link rel="apple-touch-icon" sizes="192x192" href="/asset/favicon192.png"><meta name="description" content="有理函数的原函数一定是初等函数，因此，理论上说有理函数的积分是一定能算出来的。有理函数可以写成多项式的商的形式，且根据多项式除法知，假分式&amp;#x3D;多项式+真分式，而多项式的积分是容易计算的，根据代数学有关知识，真分式又可化为四种最简真分式之和。因此，有理函数的积分可以归结为四种最简真分式的积分。"><meta property="og:type" content="blog"><meta property="og:title" content="四种最简真分式的积分"><meta property="og:url" content="https://blog.tootal.xyz/posts/simplest-integral/"><meta property="og:site_name" content="头头博客"><meta property="og:description" content="有理函数的原函数一定是初等函数，因此，理论上说有理函数的积分是一定能算出来的。有理函数可以写成多项式的商的形式，且根据多项式除法知，假分式&amp;#x3D;多项式+真分式，而多项式的积分是容易计算的，根据代数学有关知识，真分式又可化为四种最简真分式之和。因此，有理函数的积分可以归结为四种最简真分式的积分。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://blog.tootal.xyz/img/og_image.png"><meta property="article:published_time" content="2018-12-01T13:08:27.000Z"><meta property="article:modified_time" content="2018-12-01T13:08:27.000Z"><meta property="article:author" content="黄智权"><meta property="article:tag" content="数学"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.tootal.xyz/posts/simplest-integral/"},"headline":"头头博客","image":["https://blog.tootal.xyz/img/og_image.png"],"datePublished":"2018-12-01T13:08:27.000Z","dateModified":"2018-12-01T13:08:27.000Z","author":{"@type":"Person","name":"黄智权"},"description":"有理函数的原函数一定是初等函数，因此，理论上说有理函数的积分是一定能算出来的。有理函数可以写成多项式的商的形式，且根据多项式除法知，假分式&#x3D;多项式+真分式，而多项式的积分是容易计算的，根据代数学有关知识，真分式又可化为四种最简真分式之和。因此，有理函数的积分可以归结为四种最简真分式的积分。"}</script><link rel="canonical" href="https://blog.tootal.xyz/posts/simplest-integral/"><link rel="icon" href="/asset/favicon.png"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.15.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?a0752fdc3e7a9d538e1cb45af25201a4";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="头头博客" type="application/atom+xml">
+</head><body class="is-1-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">头头博客</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">存档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" target="_blank" rel="noopener" href="https://note.tootal.xyz">笔记</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="View on GitHub" href="https://github.com/tootal/blog"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-12"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2018-12-01T13:08:27.000Z" title="2018-12-01T13:08:27.000Z">2018-12-01</time>发表</span><span class="level-item"><time dateTime="2018-12-01T13:08:27.000Z" title="2018-12-01T13:08:27.000Z">2018-12-01</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/">大学课程</a><span> / </span><a class="link-muted" href="/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/">数学分析</a></span><span class="level-item">4 分钟读完 (大约633个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span><span class="level-item"><a target="_blank" rel="noopener" href="https://github.com/tootal/blog/edit/master/source/_posts/simplest-integral.md"><i class="far fa-edit"></i></a></span></div></div><h1 class="title is-3 is-size-4-mobile">四种最简真分式的积分</h1><div class="content"><p>有理函数的原函数一定是初等函数，因此，理论上说有理函数的积分是一定能算出来的。有理函数可以写成多项式的商的形式，且根据多项式除法知，假分式=多项式+真分式，而多项式的积分是容易计算的，根据代数学有关知识，真分式又可化为四种最简真分式之和。因此，有理函数的积分可以归结为四种最简真分式的积分。</p>
+<a id="more"></a>
+<p>最简真分式只有以下四种：</p>
+<div role="math">$$
+\begin{aligned}
+(1)&\frac{A}{x-a}\\
+(2)&\frac{A}{(x-a)^m}\qquad\quad (m>1)\\
+(3)&\frac{Mx+N}{x^2+px+q}\qquad (p^2-4q<0)\\
+(4)&\frac{Mx+N}{(x^2+px+q)^k}\quad (k>1,p^2-4q<0)
+\end{aligned}
+$$</div>
+<p>下面讨论这四种积分：</p>
+<h2 id="1">1<a class="header-anchor" href="#1">#</a></h2>
+<div role="math">$$
+\int \frac{A}{x-a}dx=A\ln|x-a|+C
+$$</div>
+<h2 id="2">2<a class="header-anchor" href="#2">#</a></h2>
+<div role="math">$$
+\int \frac{A}{(x-a)^m}
+=A\int(x-a)^{-m}d(x-a)
+=\frac{A}{1-m}(x-a)^{1-m}+C
+$$</div>
+<h2 id="3">3<a class="header-anchor" href="#3">#</a></h2>
+<div role="math">$$
+\begin{aligned}
+\int \frac{Mx+N}{x^2+px+q}dx
+&=\frac{M}{2}\int \frac{d(x^2+px+q)}{x^2+px+q}+\int \frac{(N-\frac{Mp}{2})dx}{x^2+px+q}\\
+&=\frac{M}{2}\ln(x^2+px+q)+(N-\frac{Mp}{2})\int\frac{dx}{(x+\frac{p}{2})^2+\frac{4q-p^2}{4}}\\
+&=\frac{M}{2}\ln(x^2+px+q)+\frac{N-\frac{Mp}{2}}{\frac{4q-p^2}{4}}\cdot\sqrt{\frac{4q-p^2}{4}}\int\frac{d(\frac{x+\frac{p}{2}}{\sqrt{\frac{4q-p^2}{4}}})}{(\frac{x+\frac{p}{2}}{\sqrt{\frac{4q-p^2}{4}}})^2+1}\\
+&=\frac{M}{2}\ln(x^2+px+q)+\frac{2N-Mp}{\sqrt{4q-p^2}}arctan\frac{2x+p}{\sqrt{4q-p^2}}+C\\
+\end{aligned}
+$$</div>
+<h2 id="4">4<a class="header-anchor" href="#4">#</a></h2>
+<div role="math">$$
+\begin{aligned}
+\int\frac{Mx+N}{(x^2+px+q)^k}
+&=\frac{M}{2}\int\frac{d(x^2+px+q)}{(x^2+px+q)^k}+\int\frac{(N-\frac{Mp}{2})dx}{\left[(x+\frac{p}{2})^2+\frac{4q-p^2}{4}\right]^k}\\
+&=\frac{M}{2(1-k)}(x^2+px+q)^{1-k}+(N-\frac{Mp}{2})\int\frac{dx}{\left[(x+\frac{p}{2})^2+\frac{4q-p^2}{4}\right]^k}
+\end{aligned}
+$$</div>
+不妨设<span role="math">$t=x+\frac{p}{2},a=\sqrt{\frac{4q-p^2}{4}}$</span>
+则有
+<div role="math">$$
+\int\frac{dx}{\left[(x+\frac{p}{2})^2+\frac{4q-p^2}{4}\right]^k}
+=\int\frac{dt}{(t^2+a^2)^k}
+$$</div>
+设<span role="math">$I_k=\int\frac{dt}{(t^2+a^2)^k}$</span>
+则有
+<div role="math">$$
+\begin{aligned}
+I_k&=\int\frac{dt}{(t^2+a^2)^k}\\
+&=\frac{t}{(t^2+a^2)^k}-\int td\left[\frac{1}{(t^2+a^2)^k}\right]\\
+&=\frac{t}{(t^2+a^2)^k}+2k\int \frac{t^2+a^2-a^2}{(t^2+a^2)^{k+1}}dt\\
+&=\frac{t}{(t^2+a^2)^k}+2k\int \frac{dt}{(t^2+a^2)^{k}}-2ka^2\int\frac{dt}{(t^2+a^2)^{k+1}}
+\end{aligned}
+$$</div>
+即有递推式
+<div role="math">$$
+I_k=\frac{t}{(t^2+a^2)^k}+2kI_k-2ka^2I_{k+1}\\
+$$</div>
+因此对于第四种情况，可以通过以下递推式计算。
+<div role="math">$$
+\left\{
+\begin{array}{}
+I_{k+1}=\frac{2k-1}{2ka^2}I_k+\frac{t}{2ka^2(t^2+a^2)^k}\\
+I_1=\frac{1}{a}arctan\frac{t}{a}+C
+\end{array}
+\right.
+$$</div>
+<p>如有错误，望在评论区指出。<br>
+参考资料：<br>
+《工科数学分析第三版上册》华中科技大学出版社<br>
+<a target="_blank" rel="noopener" href="https://www.zybang.com/question/360235fb5c1b8715f822669e02490bed.html">https://www.zybang.com/question/360235fb5c1b8715f822669e02490bed.html</a><br>
+<a target="_blank" rel="noopener" href="https://wenku.baidu.com/view/45280e1010a6f524ccbf85cf.html">https://wenku.baidu.com/view/45280e1010a6f524ccbf85cf.html</a></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>四种最简真分式的积分</p><p><a href="https://blog.tootal.xyz/posts/simplest-integral/">https://blog.tootal.xyz/posts/simplest-integral/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>黄智权</p></div></div><div class="level-item is-narrow"><div><h6>本文发布于</h6><p>2018-12-01</p></div></div><div class="level-item is-narrow"><div><h6>本文更新于</h6><p>2018-12-01</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/%E6%95%B0%E5%AD%A6/">数学</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="http://afdian.net/@tootal" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>爱发电</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/asset/alipay.webp" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/asset/wechat_pay.webp" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/posts/scutpc2018-summary1/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">2018年计算机科学与工程学院新生赛</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/scutpc2018-c1/"><span class="level-item">软件学院ACM集训队选拔赛第一场</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content twikoo" id="twikoo"></div><script src="https://cdn.jsdelivr.net/npm/twikoo@1.3.1/dist/twikoo.all.min.js"></script><script>twikoo.init({
+      envId: 'tootal-6g2y019v6b37e4be',
+      region: 'ap-guangzhou',
+      path: "'/posts/simplest-integral/'",
+      katex: {
+        delimiters: 
+        [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false}
+        ],
+        throwOnError: false
+      }
+    });</script></div></div></div><!--!--><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">头头博客</a><p class="is-size-7"><span>&copy; 2021 黄智权</span><span>&nbsp;&nbsp; 由 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>&nbsp;&&nbsp;<a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a> 驱动</span><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span><br><a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener">赣ICP备20007667号-1</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="View on GitHub" href="https://github.com/tootal/blog"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/mhchem.js" defer></script><script>
+    var katex_config = {
+      delimiters: 
+      [
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false}
+      ],
+      strict: false,
+      throwOnError: false
+    };
+    window.addEventListener("load", function() {
+      document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+        renderMathInElement(element, katex_config);
+      });
+      document.querySelectorAll('#toc .level-item').forEach(function(element) {
+        renderMathInElement(element, katex_config);
+      });
+    });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

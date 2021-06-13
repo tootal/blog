@@ -1,0 +1,11 @@
+#content{
+	margin: 0;
+	padding: 90px 50px 20px 50px;
+	color: #333;
+	font-size: 16px;
+	line-height: 1.75em;
+}
+#content h1,h2,h3,h4,h5,h6,p,ol,ul,li{
+	margin: 0;
+	padding: 0;
+}

@@ -1,0 +1,633 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Tri",
+				"TriplePlusPair"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 1138,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/User/Java.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/User/C++.sublime-build",
+					""
+				],
+				[
+					"Packages/User/C++.sublime-build",
+					"Compile"
+				],
+				[
+					"Packages/User/C++.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/User/C++.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/User/C.sublime-build",
+					""
+				],
+				[
+					"Packages/User/C.sublime-build",
+					"Compile"
+				],
+				[
+					"Packages/User/C.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/User/C.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/User/HTML.sublime-build",
+					""
+				],
+				[
+					"Packages/User/HTML.sublime-build",
+					"Git Update"
+				]
+			],
+			[
+				"Packages/User/HTML.sublime-build",
+				"Git Update"
+			]
+		],
+		[
+			[
+				[
+					"Packages/User/Java.sublime-build",
+					""
+				],
+				[
+					"Packages/User/Java.sublime-build",
+					"Compile"
+				],
+				[
+					"Packages/User/Java.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/User/Java.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/User/Pascal.sublime-build",
+					""
+				],
+				[
+					"Packages/User/Pascal.sublime-build",
+					"Compile"
+				],
+				[
+					"Packages/User/Pascal.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/User/Pascal.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"gitcom",
+				"Git: Commit"
+			],
+			[
+				"gitadd",
+				"Git: Add All"
+			],
+			[
+				"gitpush",
+				"Git: Push"
+			],
+			[
+				"push",
+				"Git: Push"
+			],
+			[
+				"gitad",
+				"Git: Add All"
+			],
+			[
+				"git add",
+				"Git: Add All"
+			],
+			[
+				"git com",
+				"Git: Commit"
+			],
+			[
+				"git push",
+				"Git: Push"
+			],
+			[
+				"git add ",
+				"Git: Add All"
+			],
+			[
+				"gitco",
+				"Git: Commit"
+			],
+			[
+				"git",
+				"Git: Add All"
+			],
+			[
+				"gitpsh",
+				"Git: Push"
+			],
+			[
+				"git add .",
+				"Git: Add..."
+			],
+			[
+				"gitpus",
+				"Git: Push"
+			],
+			[
+				"gitcomm",
+				"Git: Commit"
+			],
+			[
+				"git commit",
+				"Git: Commit"
+			],
+			[
+				"gtiadd",
+				"Git: Add All"
+			],
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				":C++",
+				"Set Syntax: C++"
+			],
+			[
+				":x",
+				"Set Syntax: XML"
+			],
+			[
+				"gitcmo",
+				"Git: Commit"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 157.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/awesome/Documents/tootal.github.io"
+	],
+	"file_history":
+	[
+		"/C/Users/awesome/Documents/共享文件夹/SCL/Main.java",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/SCL.sublime-project",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello.java/Socket/ServerLog.html",
+		"/C/Users/awesome/Documents/tootal.github.io/index.html",
+		"/C/Users/awesome/Documents/tootal.github.io/posts/javaSocket.html",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello.java/Socket/Server.java",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello.java/Socket/Client.java",
+		"/C/Users/awesome/Documents/Java/java实验课0527/ServerLog.html",
+		"/C/Users/awesome/Documents/Java/java实验课0527/Server.java",
+		"/C/Users/awesome/Documents/Java/java实验课0527/Client.java",
+		"/C/Users/awesome/Documents/Java/java实验课0527/MultClient.java",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/Test.java",
+		"/C/Users/awesome/Desktop/Personal-addressbook-management-system/Personal-addressbook-management-system/pch.h",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello.java/Socket/ServerLog.txt",
+		"/C/Users/awesome/Desktop/JavatarDemo/src/Main.java",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/input.txt",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/std.cpp",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/test.cpp",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/std",
+		"/C/Users/awesome/Documents/tootal.github.io/posts/gdcpc.html",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/combinatorial.h",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/dateTime.h",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/test/Test3.java",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/test/MyObject3.java",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello.java/TypeRange.java",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello.java/BaseIO.java",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello.java/baseIO.java",
+		"/C/Program Files/Sublime Text Build 3207 x64/Data/Packages/User/Java.sublime-build",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/test.bat",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/test.py",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/answer.txt",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/output.txt",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/.gitignore",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/std.py",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/precision.h",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/main.cpp",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/test.java",
+		"/C/Program Files/Sublime Text Build 3207 x64/Data/Packages/User/OmniMarkupPreviewer.sublime-settings",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello.py/email.py",
+		"/C/Users/awesome/Documents/tootal.github.io/posts/telnet.html",
+		"/C/Program Files/Sublime Text Build 3207 x64/Data/Packages/User/Pascal.sublime-build",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/test.pas",
+		"/C/Users/awesome/Documents/tootal.github.io/posts/noip-icpc.html",
+		"/C/Users/awesome/Documents/tootal.github.io/posts/regedit.html",
+		"/C/Users/awesome/Desktop/c.cpp",
+		"/C/Users/awesome/Desktop/input.txt",
+		"/C/Users/awesome/Desktop/cc.cpp",
+		"/C/Users/awesome/Desktop/c.py",
+		"/C/Users/awesome/Desktop/c.bat",
+		"/C/Users/awesome/Desktop/d.bat",
+		"/C/Users/awesome/Desktop/a.cpp",
+		"/C/Users/awesome/Desktop/d.py",
+		"/C/Users/awesome/Desktop/dd.cpp",
+		"/C/Users/awesome/Desktop/i.cpp",
+		"/C/Users/awesome/Desktop/b.cpp",
+		"/C/Users/awesome/Desktop/d.cpp",
+		"/C/Users/awesome/Desktop/b.py",
+		"/C/Users/awesome/Desktop/in",
+		"/C/Program Files/Sublime Text Build 3207 x64/Sublime_merge/Data/Packages/User/Preferences.sublime-settings",
+		"/C/Users/awesome/Documents/tootal.github.io/posts/android.html",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/a.cpp",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello.cpp/test.c",
+		"/C/Program Files/Sublime Text Build 3207 x64/Data/Packages/User/C.sublime-build",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello.cpp/theread.cpp",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello/interactive.md",
+		"/C/Program Files/Sublime Text Build 3207 x64/Data/Packages/OmniMarkupPreviewer/OmniMarkupPreviewer.sublime-settings",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/interactive.cpp",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello/interactive.cpp",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello.py/tuple_.py",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello.py/set_.py",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello.py/number_.py",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello.py/list_.py",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello.py/itertools_.py",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello.py/decimal_.py",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello.py/baseIO.py",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello.py/str_.py",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello.py/dict_.py",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/hello.py/str_",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/str_.py",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/BigDecimal_.java",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/b.cpp",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/itertools_.py",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/list_.py",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/number_.py",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/decimal_.py",
+		"/C/Users/awesome/Documents/tootal.github.io/posts/test.py",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/d.cpp",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/e.cpp",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/main.py",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/c.cpp",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/union_find.h",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/Binary_Indexed_Tree.h",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/geometry.h",
+		"/C/Users/awesome/Documents/vnote_notebooks/vnotebook/C++课程/11章作业.md",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/main.bat",
+		"/C/Program Files/Sublime Text Build 3207 x64/Data/Packages/ConvertToUTF8/ConvertToUTF8.sublime-settings",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/Segment_Tree.h",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/baseIO.py",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/test.cp",
+		"/C/Users/awesome/Desktop/sort3.in",
+		"/C/Users/awesome/Desktop/sort3.out",
+		"/C/Users/awesome/Documents/note_old/vnote_notebooks/vnotebook/ACM/ACM省赛前整理.md",
+		"/C/Users/awesome/Documents/tootal.github.io/posts/bitset.h",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/dp.bat",
+		"/C/Program Files/Sublime Text Build 3207 x64/Data/Packages/User/Python.sublime-build",
+		"/C/Program Files/Sublime Text Build 3207 x64/Data/Packages/User/C++.sublime-build",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/algorithm.h",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/Fenwick_Tree.h",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/Matrix_Det.h",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/Fight_The_Landlord.cpp",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/matrixInv.h",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/Matrix_Star.h",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/graph.h",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/Range_Minimum_Query.h",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/RMQ-Sparse_Table.cpp",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/FenwickTree.h",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/bitwise.h",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/bitwise.cpp",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/fightTheLandlord.cpp",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/BigInteger.h",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/typeinfo.cpp",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/Int.h",
+		"/C/Users/awesome/Documents/共享文件夹/SCL/2-sat.h",
+		"/C/Users/awesome/Documents/cmd_alias.bat",
+		"/C/Users/awesome/Documents/tootal.github.io/posts/cmd.html",
+		"/C/Users/awesome/Documents/tootal.github.io/posts/lord.html",
+		"/C/Program Files/Sublime Text Build 3207 x64/Data/Packages/User/Batch.sublime-build",
+		"/C/Users/awesome/Documents/tootal.github.io/posts/better/cmd.html"
+	],
+	"find":
+	{
+		"height": 40.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			" = ",
+			"<",
+			"FixTest",
+			"System.out.println",
+			"：",
+			"fe",
+			"find",
+			"cnt",
+			"size",
+			"id",
+			"cc",
+			"dd",
+			"bb",
+			"aa",
+			"mult",
+			" * ",
+			" , ",
+			" < ",
+			"    ",
+			"树状数组",
+			"min",
+			"max",
+			"min",
+			"+",
+			"C",
+			"A",
+			"a",
+			"A",
+			"a",
+			"A",
+			"a",
+			"A",
+			"C",
+			";\n",
+			"int",
+			"cipher",
+			", ",
+			" >> ",
+			" | ",
+			" << ",
+			" & ",
+			" = ",
+			"a",
+			"__int128",
+			" - ",
+			" \\n",
+			" + ",
+			" >= ",
+			" || ",
+			" != ",
+			" < ",
+			" && ",
+			" == ",
+			" { } ",
+			" ; ",
+			" , ",
+			" = ",
+			"    ",
+			"(1<<t)",
+			"u",
+			" >> ",
+			" + ",
+			" = ",
+			" & ",
+			"printf",
+			"short int",
+			",endl;",
+			"<<",
+			"cout<<"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"Find",
+			"\\t",
+			"\\n",
+			"\\t",
+			");",
+			",",
+			"printf("
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1138,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1084,
+								1084
+							]
+						],
+						"settings":
+						{
+							"is_init_dirty_state": false,
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 46.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 166.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 191.0
+	},
+	"pinned_build_system": "",
+	"project": "blog.sublime-project",
+	"replace":
+	{
+		"height": 72.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "tomcat",
+		"selected_items":
+		[
+			[
+				"tomcat",
+				"C:\\User Program\\apache-tomcat-9.0.20\\webapps\\tomcat.sublime-project"
+			],
+			[
+				"scl",
+				"C:\\Users\\awesome\\Documents\\共享文件夹\\SCL\\SCL.sublime-project"
+			],
+			[
+				"SCL",
+				"C:\\Users\\awesome\\Documents\\共享文件夹\\SCL\\SCL.sublime-project"
+			],
+			[
+				"",
+				"C:\\Users\\awesome\\Documents\\共享文件夹\\SCL\\SCL.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 592.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 217.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

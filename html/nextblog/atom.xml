@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>头头のblog</title>
+  
+  <subtitle>在时光的流逝中，逐渐成为更好的自己。</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://tootal.github.io/"/>
+  <updated>2019-08-28T14:43:14.810Z</updated>
+  <id>http://tootal.github.io/</id>
+  
+  <author>
+    <name>Tootal</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello LaTeX</title>
+    <link href="http://tootal.github.io/posts/Hello-LaTeX/"/>
+    <id>http://tootal.github.io/posts/Hello-LaTeX/</id>
+    <published>2019-08-28T14:41:15.000Z</published>
+    <updated>2019-08-28T14:43:14.810Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;数学公式&quot;&gt;&lt;a href=&quot;#数学公式&quot; class=&quot;headerlink&quot; title=&quot;数学公式&quot;&gt;&lt;/a&gt;数学公式&lt;/h3&gt;&lt;p&gt;在文章中嵌入数学公式是很常见的需求，尤其在一些科普类文章中。Markdown一般通过和LaTeX结合使用来嵌入数学公式。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="测试" scheme="http://tootal.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello Markdown</title>
+    <link href="http://tootal.github.io/posts/Hello-Markdown/"/>
+    <id>http://tootal.github.io/posts/Hello-Markdown/</id>
+    <published>2019-08-28T03:35:48.000Z</published>
+    <updated>2019-08-29T04:27:44.766Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://guides.github.com/features/mastering-markdown/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Reference&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;以下内容仅仅用来&lt;strong&gt;测试页面&lt;/strong&gt;显示是否正确！  &lt;/p&gt;
+&lt;p&gt;Markdown是一种轻量级的易用的书写语法。本文是Markdown的介绍页面，在这里可以查询Markdown的各种语法，也可以测试页面的渲染是否正常。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="测试" scheme="http://tootal.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+</feed>

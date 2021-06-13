@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>C++声明浅析 - 头头博客</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#fff"><meta name="application-name" content="头头博客"><meta name="msapplication-TileImage" content="/asset/favicon144.png"><meta name="msapplication-TileColor" content="#fff"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="头头博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="apple-touch-icon" sizes="96x96" href="/asset/favicon96.png"><link rel="apple-touch-icon" sizes="144x144" href="/asset/favicon144.png"><link rel="apple-touch-icon" sizes="192x192" href="/asset/favicon192.png"><meta name="description" content="明天就要考C++了，赶紧复习一下C++。"><meta property="og:type" content="blog"><meta property="og:title" content="C++声明浅析"><meta property="og:url" content="https://blog.tootal.xyz/posts/cpp-typedef/"><meta property="og:site_name" content="头头博客"><meta property="og:description" content="明天就要考C++了，赶紧复习一下C++。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://5b0988e595225.cdn.sohucs.com/images/20180710/00768203dd10471d8c8341df15b451f1.jpeg"><meta property="article:published_time" content="2018-12-26T15:22:03.000Z"><meta property="article:modified_time" content="2018-12-26T15:22:03.000Z"><meta property="article:author" content="黄智权"><meta property="article:tag" content="C++"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="http://5b0988e595225.cdn.sohucs.com/images/20180710/00768203dd10471d8c8341df15b451f1.jpeg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.tootal.xyz/posts/cpp-typedef/"},"headline":"头头博客","image":[],"datePublished":"2018-12-26T15:22:03.000Z","dateModified":"2018-12-26T15:22:03.000Z","author":{"@type":"Person","name":"黄智权"},"description":"明天就要考C++了，赶紧复习一下C++。"}</script><link rel="canonical" href="https://blog.tootal.xyz/posts/cpp-typedef/"><link rel="icon" href="/asset/favicon.png"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.15.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?a0752fdc3e7a9d538e1cb45af25201a4";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="头头博客" type="application/atom+xml">
+</head><body class="is-1-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">头头博客</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">存档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" target="_blank" rel="noopener" href="https://note.tootal.xyz">笔记</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="View on GitHub" href="https://github.com/tootal/blog"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-12"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2018-12-26T15:22:03.000Z" title="2018-12-26T15:22:03.000Z">2018-12-26</time>发表</span><span class="level-item"><time dateTime="2018-12-26T15:22:03.000Z" title="2018-12-26T15:22:03.000Z">2018-12-26</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/">大学课程</a><span> / </span><a class="link-muted" href="/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">C++程序设计</a></span><span class="level-item">29 分钟读完 (大约4281个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span><span class="level-item"><a target="_blank" rel="noopener" href="https://github.com/tootal/blog/edit/master/source/_posts/cpp-typedef.md"><i class="far fa-edit"></i></a></span></div></div><h1 class="title is-3 is-size-4-mobile">C++声明浅析</h1><div class="content"><p>明天就要考C++了，赶紧复习一下C++。</p>
+<a id="more"></a>
+<h1 id="变量">变量<a class="header-anchor" href="#变量">#</a></h1>
+<p><code>int a;</code><br>
+a是一个整型变量，可以在声明时同时给定初值<code>int a=1;</code>.<br>
+其中全局变量若不显示指定初值，会自动初始化为0.<br>
+而局部变量若不初始化，值是任意的。</p>
+<h1 id="常量">常量<a class="header-anchor" href="#常量">#</a></h1>
+<p><code>const int a=1;</code><br>
+a是一个整型常量，声明时必须给定初值（可以是字面量、常量或者<strong>变量</strong>），声明后a的值不会改变.<br>
+也可写成<code>int const a=1;</code>，两种写法没有区别.</p>
+<h1 id="指针">指针<a class="header-anchor" href="#指针">#</a></h1>
+<p><code>int a=1;</code><br>
+<code>int *b;</code><br>
+<code>b=&amp;a;</code><br>
+b是一个整型指针，指向一个整型变量，b中存储的值为指向整型变量的地址.<br>
+无论指针指向的变量是什么类型，指针所占用的内存空间一般是固定的.<br>
+注意<code>int* a,b;</code>声明的a是指针，b是变量。</p>
+<h1 id="指针的指针（二级指针）">指针的指针（二级指针）<a class="header-anchor" href="#指针的指针（二级指针）">#</a></h1>
+<p><code>int a;</code><br>
+<code>int *b=&amp;a;</code><br>
+<code>int **c=&amp;b;</code><br>
+c是一个二级整型指针，指向一个整型指针b，b指向整型变量a.<br>
+注意不能写成<code>int **c=&amp;&amp;a;</code><br>
+依次类推有三级指针、多级指针.</p>
+<h1 id="常量指针（指向常量的指针）">常量指针（指向常量的指针）<a class="header-anchor" href="#常量指针（指向常量的指针）">#</a></h1>
+<p><code>const int c=1;</code><br>
+<code>const int d=1;</code><br>
+<code>const int *b;</code><br>
+<code>b=&amp;c;</code><br>
+<code>b=&amp;d;</code><br>
+上面b的声明也可以写成<code>int const *b;</code> 但不能写成<code>const int const *b;</code>.<br>
+b是一个指向整型常量的指针，可以用整型常量的地址给b复制，b的值可以改变，不能通过<code>*b</code>改变指向常量的值.<br>
+（但由于b的值可变，<code>*b</code>的值也可能变化）<br>
+<strong>注意</strong>：指向常量的指针说法不一定准确，如下面的声明也是合法的：<br>
+<code>int a=1;</code><br>
+<code>const int *b=&amp;a;</code><br>
+此时，b是一个指向整型变量的指针，a、b的值均可变，但不能通过<code>*b</code>来改变a的值.</p>
+<h1 id="常指针（指针常量）">常指针（指针常量）<a class="header-anchor" href="#常指针（指针常量）">#</a></h1>
+<p><code>int a=1;</code><br>
+<code>int *const b=&amp;a;</code><br>
+<code>*b=2;</code><br>
+b是一个整型常指针，声明时必须用整型变量的地址赋初值，声明后b的值不可改变，但可以通过<code>*b</code>改变指向变量的值.</p>
+<h1 id="指向常量的常指针（常指针常量）">指向常量的常指针（常指针常量）<a class="header-anchor" href="#指向常量的常指针（常指针常量）">#</a></h1>
+<p><code>const int a=1;</code><br>
+<code>const int *const b=&amp;a;</code><br>
+b是一个指向整型常量的常指针，同时具备上述两种特性.<br>
+同样可以写成<code>int const *const b=&amp;a;</code>但不存在<code>const int const *const b=&amp;a;</code>的写法.<br>
+注：由于指向常量的指针和常指针声明类似（仅仅const位置不同）容易混淆，记录一种（来源网上）的方法记忆.<br>
+先忽略类型关键字（如上面的int），然后看const修饰的是谁，谁就不可变.<br>
+如<code>const int *p;</code>const修饰的是<code>*p</code>，则<code>*p</code>不可变（实际若p可变的话<code>*p</code>也会变），那么p是指向常量的指针.<br>
+如<code>const int * const p;</code>const同时修饰p和<code>*p</code>，则p和<code>*p</code>不可变，那么p是指向常量的常指针.<br>
+至于<code>const int const *p;</code>忽略int后两个const重复，显然声明有问题.</p>
+<h1 id="引用">引用<a class="header-anchor" href="#引用">#</a></h1>
+<p><code>int a=1;</code><br>
+<code>int &amp;b=a;</code><br>
+<code>int &amp;c=b;</code><br>
+<code>int *d=new int;</code><br>
+<code>int &amp;e=*d;</code><br>
+b是一个整型引用，声明时必须初始化，可以用变量，也可以用变量引用、或地址对应变量初始化，但不能用常量初始化.<br>
+可以把b看作a的一个别名，对b的操作就是对a的操作，b的内存地址和a的内存地址相同.<br>
+引用常常用在函数参数的传递过程中，若是希望能修改参数的值或是减少参数复制带来的开销，一般用引用传参.<br>
+引用应该也是通过常指针来实现的.</p>
+<h1 id="常引用（常量引用）">常引用（常量引用）<a class="header-anchor" href="#常引用（常量引用）">#</a></h1>
+<p><code>int a=1;</code><br>
+<code>const int &amp;b=a;</code><br>
+b是一个整型常引用，声明时必须初始化，此处用变量初始化，与引用类似，b的内存地址和a的内存地址相同，只不过不能通过b修改a的值，但a的值可以修改（从而b的值也可变），同样可以写成<code>int const &amp;b=a;</code>.（类似于常量指针）<br>
+<code>const int a=1;</code><br>
+<code>const int &amp;b=a;</code><br>
+b还可以用常量初始化，此时b的内存地址和a的内存地址相同，但由于a是常量不可变，b的值也不可变.（类似于常指针常量）<br>
+<code>const int &amp;b=1;</code><br>
+b甚至还可以用字面量初始化，此时会隐含创建一个匿名常量，再把b作为匿名常量的引用，b的值显然不可变.<br>
+由此就不难理解下面的声明语句。<br>
+<code>int a=1;</code><br>
+<code>const int &amp;b=a+1;</code><br>
+<code>const int &amp;c=a+a;</code><br>
+其中a+1和a+a都可以看作常量（因为隐含创建的变量是匿名的），b、c和a的内存地址都不同，即使a的值改变了，b、c的值也不会变化.<br>
+与引用类似，常引用也可用常引用初始化.<br>
+<code>int a=1;</code><br>
+<code>const int &amp;b=a;</code><br>
+<code>const int &amp;c=b;</code><br>
+常引用常常用在函数参数的传递过程中，若是希望能减少参数复制带来的开销同时不修改参数的值，一般用常引用传参.</p>
+<h1 id="引用常量">引用常量<a class="header-anchor" href="#引用常量">#</a></h1>
+<p><code>int a=1;</code><br>
+<code>int &amp; const b=a;</code><br>
+上述写法是错误的，一般编译器会报错，但在VS中可以通过编译，<code>&amp;</code>后的const会被忽略.<br>
+因此可以说不存在引用常量.</p>
+<h1 id="指针的引用">指针的引用<a class="header-anchor" href="#指针的引用">#</a></h1>
+<p><code>int *b;</code><br>
+<code>int *&amp;d=b;</code><br>
+与引用类似，d可看作是b的别名.<br>
+注意不可写成：<br>
+<code>int a;</code><br>
+<code>int *&amp;b=&amp;a;</code><br>
+因为<code>&amp;a</code>是常指针，而b是普通引用，可以通过常指针引用解决这个问题.</p>
+<h1 id="常量指针的引用">常量指针的引用<a class="header-anchor" href="#常量指针的引用">#</a></h1>
+<p><code>const int *b;</code><br>
+<code>const int *&amp;c=b;</code><br>
+可看作常量指针的别名.<br>
+注意c不是指针的常引用，可以通过c更改b的值.</p>
+<h1 id="常指针的引用">常指针的引用<a class="header-anchor" href="#常指针的引用">#</a></h1>
+<p><code>int a=1;</code><br>
+<code>int * const b=&amp;a;</code><br>
+<code>int * const &amp;c=b;</code><br>
+c是一个常指针引用，类似常指针的别名.<br>
+再如指针的引用时提到的问题：<br>
+<code>int a;</code><br>
+<code>int * const &amp;b=&amp;a;</code><br>
+上述写法可以.</p>
+<h1 id="常指针常量的引用">常指针常量的引用<a class="header-anchor" href="#常指针常量的引用">#</a></h1>
+<p><code>int a=1;</code><br>
+<code>const int * const b=&amp;a;</code><br>
+<code>const int * const &amp;d=b;</code><br>
+类似常指针常量的别名.</p>
+<h1 id="常量指针的常引用">常量指针的常引用<a class="header-anchor" href="#常量指针的常引用">#</a></h1>
+<p>注意到由于常量指针的引用声明时const已经占据了常引用声明时const的位置，那如何声明一个常量指针的常引用？<br>
+先来看常量指针的引用的情况：<br>
+<code>int a=1;</code><br>
+<code>int d=2;</code><br>
+<code>const int *b=&amp;a;</code><br>
+<code>const int *&amp;c=b;</code><br>
+<code>c=&amp;d;</code><br>
+此时可通过c改变b的值，显然c不是常引用.</p>
+<h2 id="方法一：typedef">方法一：typedef<a class="header-anchor" href="#方法一：typedef">#</a></h2>
+<p>利用typedef把常量指针包装成一个新的类型，就不会占据const位置了.<br>
+<code>int a=1;</code><br>
+<code>int d=2;</code><br>
+<code>const int *b=&amp;a;</code><br>
+<code>typedef const int *pci;</code><br>
+<code>const pci &amp;c=b;</code><br>
+<code>//c=&amp;d;</code><br>
+此时就不能用c改变b的值了，c是常量指针的常引用.</p>
+<h2 id="方法二：auto">方法二：auto<a class="header-anchor" href="#方法二：auto">#</a></h2>
+<p><code>int a=1;</code><br>
+<code>int d=2;</code><br>
+<code>const int *b=&amp;a;</code><br>
+<code>const auto &amp;c=b;</code><br>
+<code>//c=&amp;d;</code><br>
+c被自动推断为b类型的常引用，而b是常量指针.</p>
+<h2 id="方法三：decltype">方法三：decltype<a class="header-anchor" href="#方法三：decltype">#</a></h2>
+<p><code>int a=1;</code><br>
+<code>int d=2;</code><br>
+<code>const int *b=&amp;a;</code><br>
+<code>const decltype(b) &amp;c=b;</code><br>
+<code>//c=&amp;d;</code><br>
+利用<code>decltype(b)</code>获取b的类型.</p>
+<h1 id="指针的常引用">指针的常引用<a class="header-anchor" href="#指针的常引用">#</a></h1>
+<p>上述方法具有一般性，指针的常引用也可如此声明.</p>
+<h1 id="常量的常引用">常量的常引用<a class="header-anchor" href="#常量的常引用">#</a></h1>
+<h1 id="常指针的常引用">常指针的常引用<a class="header-anchor" href="#常指针的常引用">#</a></h1>
+<h1 id="常指针常量的常引用">常指针常量的常引用<a class="header-anchor" href="#常指针常量的常引用">#</a></h1>
+<p>由于上述三者本身不可变，故声明其对应的常引用没有意义.<br>
+可以仿照常量指针的常引用的声明方法进行声明，不会报错.</p>
+<h1 id="数组">数组<a class="header-anchor" href="#数组">#</a></h1>
+<p><code>int a[3];</code></p>
+<p>a是一个含3个整型变量（从<code>a[0]~a[2]</code>）的整型数组，可以在声明时同时初始化，如<code>int a[3]=&#123;1,2,3&#125;;</code>即表示a[0]=1,a[1]=2,a[2]=3,若初始化的值个数少于数组总元素个数，后面的值会被初始化为0.<br>
+当有初始化时，数组个数可以省略，由编译器根据初始化元素自动判断数组大小，如<code>int a[]=&#123;1,2,3,4&#125;</code>.<br>
+与变量类似，全局数组会自动初始化，局部数组不会，但通过<code>int a[105]=&#123;0&#125;;</code>即可全部初始化为0.<br>
+一般而言，数组申明是若未初始化，需要用常量指定数组大小。但在一些较新的编译器里已经支持（VS会报错）用变量定义数组.<br>
+如以下代码不会报错：<br>
+<code>int n;</code><br>
+<code>cin&gt;&gt;n;</code><br>
+<code>int a[n];</code><br>
+但极不推荐这样做，若要使用动态数组可以用new申请空间或是用STL中的vector容器，而且这种用法可能存在潜在的问题.<br>
+a可以看做是常指针类型（<code>int * const</code>）,a的地址就是数组首地址<code>&amp;a[0]</code>，但数组首地址对应的值为a[0]，a中的值也是数组首地址（a的值与a的地址相同，这一点与指针不同），a+1是<code>&amp;a[1]</code>,但要注意a实质为一个数组类型，如<code>sizeof(a)=12</code>，<code>&amp;a+1</code>会跨越一个数组的长度，此时可以看作a的类型为<code>int[3]</code>.<br>
+值得一提的是，当数组名作为函数形参时，会被’降维’处理，不再具备<code>int[3]</code>的性质，而彻底变成了<code>int *</code>类型（可以修改，sizeof为指针大小）.</p>
+<h1 id="二维数组">二维数组<a class="header-anchor" href="#二维数组">#</a></h1>
+<p><code>int a[2][3];</code><br>
+a是一个含6个整型变量的二维整型数组（从<code>a[0][0]~a[1][2]</code>）,可以在声明时同时初始化，如<code>int a[2][3]=&#123;&#123;1,2,3&#125;,&#123;4,5,6&#125;&#125;;</code>即表示<code>a[0][0]=1,a[0][1]=2,a[0][2]=3,a[1][0]=4,a[1][1]=5,a[1][2]=6</code>，同样，若初始化的值个数少于数组总元素个数，后面的值会被初始化为0.<br>
+与一维数组不同，二维数组也可对每行的前面部分初始化，如<code>int a[2][3]=&#123;&#123;1,2&#125;, &#123;4&#125;&#125;;</code>表示<code>a[0][0]=1,a[0][1]=2,a[0][2]=0,a[1][0]=4,a[1][1]=0,a[1][2]=0</code>.同时还支持线性初始化，如用<code>int a[2][3]=&#123;1,2,0,4&#125;;</code>初始化结果与上面相同.<br>
+但是，初始化时仅能省略第一维的大小，其余维大小必须指明，例如上面的声明语句还可写成<code>int a[][3]=&#123;1,2,3,4&#125;;</code>，第一维大小被自动判断为2.<br>
+二维数组与指针的关系就更加复杂了，仿照一维数组，此时a可以看作是数组常指针<code>int (*const)[3]</code>类型，<code>&amp;a[0][0]=a[0]=&amp;a[0]=a=&amp;a</code>,同样a实质为<code>int[2][3]</code>类型，<code>a+1=&amp;a[1][0]</code>,<code>sizeof(a)=24</code>，由此不难理解一些用指针处理数组的方法，如:（n，m为整型常量）<br>
+<code>int a[n][m];</code><br>
+<code>a[i][j]=*(a[i]+j)=*(*(a+i)+j)=*(*a+i*m+j)=*(a[0]+i*m+j)=a[0][i*m+j]=*(*(&amp;a[0]+i)+j)=*(&amp;a[0][0]+i*m+j)</code><br>
+由此也可以发现，在用指针处理高维数组时，第一维的大小相对而言不那么重要.<br>
+一维数组时提到可以用变量作为数组大小申明，二维数组其实也可以，但仍然可能有问题，如下面这个例子：<br>
+<code>int n=2,m=3;</code><br>
+<code>int a[n][m]=&#123;1,2,3,4,5,6&#125;;</code><br>
+输出a中元素会发现a[1][0]=a[1][1]=a[1][2]=0，而若第一行改成<code>const int n=2,m=3;</code>就不会有这个问题.<br>
+类比一维数组，二维数组在作为函数形参时，也会被’降维’处理，（即使函数参数写成<code>int[2][3]</code>,第一维可省略）,不再具备<code>int[2][3]</code>的性质，而彻底变成了<code>int (*)[3]</code>类型（可以修改，sizeof为指针大小）.</p>
+<h1 id="常量数组">常量数组<a class="header-anchor" href="#常量数组">#</a></h1>
+<p><code>const int a[3]=&#123;1,2,3&#125;;</code><br>
+a是一个含3个整型常量的常量数组，声明时必须初始化，但可以初始化前面一部分，如<code>const int a[3]=&#123;1,2&#125;;</code>剩下的会自动初始化为0，数组大小也可以省略不写.<br>
+常用在误差表的处理或简化判断语句。</p>
+<h1 id="常量二维数组">常量二维数组<a class="header-anchor" href="#常量二维数组">#</a></h1>
+<p><code>const int a[2][3]=&#123;1,2,3,4,5,6&#125;;</code><br>
+与二维数组和常量数组具有类似的性质.</p>
+<h1 id="指针数组">指针数组<a class="header-anchor" href="#指针数组">#</a></h1>
+<p><code>int *a[3];</code><br>
+与数组类似，元素为指针类型.<br>
+注意此时[]的优先级较高，先与a结合，说明a是一个数组.</p>
+<h1 id="指针二维数组">指针二维数组<a class="header-anchor" href="#指针二维数组">#</a></h1>
+<p><code>int *a[2][3];</code><br>
+与指针数组和二维数组有类似的性质.</p>
+<h1 id="数组指针（指向一维数组的指针、行指针）">数组指针（指向一维数组的指针、行指针）<a class="header-anchor" href="#数组指针（指向一维数组的指针、行指针）">#</a></h1>
+<p><code>int a[3]=&#123;1,2,3&#125;;</code><br>
+<code>int (*b)[3]=&amp;a;</code><br>
+数组指针实质为指针，指向一个一维数组.<br>
+此时<code>()</code>优先级更高，先与b结合，b是一个指针.<br>
+数组指针中数组大小不能省略.</p>
+<h1 id="数组常指针">数组常指针<a class="header-anchor" href="#数组常指针">#</a></h1>
+<p><code>int a[3]=&#123;1,2,3&#125;;</code><br>
+<code>int (*const b)[3]=&amp;a;</code><br>
+声明时必须初始化，与二维数组名类似.</p>
+<h1 id="常数组指针">常数组指针<a class="header-anchor" href="#常数组指针">#</a></h1>
+<p><code>const int a[3]=&#123;1,2,3&#125;;</code><br>
+<code>const int (*b)[3]=&amp;a;</code></p>
+<h1 id="常数组常指针">常数组常指针<a class="header-anchor" href="#常数组常指针">#</a></h1>
+<p><code>const int a[3]=&#123;1,2,3&#125;;</code><br>
+<code>const int (* const b)[3]=&amp;a;</code></p>
+<h1 id="二维数组指针">二维数组指针<a class="header-anchor" href="#二维数组指针">#</a></h1>
+<p><code>int a[][3]=&#123;1,2,3,4,5,6&#125;;</code><br>
+<code>int (*b)[2][3]=&amp;a;</code><br>
+同样b是指针，大小均不能省略.</p>
+<h1 id="二维数组常指针">二维数组常指针<a class="header-anchor" href="#二维数组常指针">#</a></h1>
+<p><code>int a[2][3]=&#123;1,2,3&#125;;</code><br>
+<code>int (*const b)[2][3]=&amp;a;</code></p>
+<h1 id="常二维数组常指针">常二维数组常指针<a class="header-anchor" href="#常二维数组常指针">#</a></h1>
+<p><code>const int a[2][3]=&#123;1,2,3,4,5,6&#125;;</code><br>
+<code>const int (* const b)[2][3]=&amp;a;</code></p>
+<h1 id="引用数组">引用数组<a class="header-anchor" href="#引用数组">#</a></h1>
+<p>下面语句试图申明元素为引用的数组，会报错.<br>
+<code>int a[3]=&#123;1,2,3&#125;;</code><br>
+<code>int &amp;b[3]=&#123;a[0],a[1],a[2]&#125;;</code><br>
+因此可以说不存在引用数组.</p>
+<h1 id="数组引用">数组引用<a class="header-anchor" href="#数组引用">#</a></h1>
+<p>类比数组指针有:<br>
+<code>int a[3]=&#123;1,2,3&#125;;</code><br>
+<code>int (&amp;b)[3]=a;</code></p>
+<h1 id="指针数组引用">指针数组引用<a class="header-anchor" href="#指针数组引用">#</a></h1>
+<p><code>int* a[3];</code><br>
+<code>int* (&amp;b)[3]=a;</code><br>
+a是指针数组，b是指针数组的引用.</p>
+<h1 id="数组指针引用">数组指针引用<a class="header-anchor" href="#数组指针引用">#</a></h1>
+<p><code>int a[3]=&#123;1,2,3&#125;;</code><br>
+<code>int (*b)[3]=&amp;a;</code><br>
+<code>int (*&amp;c)[3]=b;</code><br>
+a是数组，b是数组指针，c是数组指针的引用.</p>
+<h1 id="二维数组引用">二维数组引用<a class="header-anchor" href="#二维数组引用">#</a></h1>
+<p><code>int a[2][3]=&#123;1,2,3,4,5,6&#125;;</code><br>
+<code>int (&amp;b)[2][3]=a;</code></p>
+<h1 id="数组常引用">数组常引用<a class="header-anchor" href="#数组常引用">#</a></h1>
+<p><code>int a[3]=&#123;1,2,3&#125;;</code><br>
+<code>const int (&amp;b)[3]=a;</code></p>
+<h1 id="常数组引用">常数组引用<a class="header-anchor" href="#常数组引用">#</a></h1>
+<p>与数组常引用相同.<br>
+<code>const int a[3]=&#123;1,2,3&#125;;</code><br>
+<code>const int (&amp;b)[3]=a;</code></p>
+<h1 id="函数">函数<a class="header-anchor" href="#函数">#</a></h1>
+<p><code>void func();</code><br>
+func的地址就是函数首地址，（函数首地址对应的值也是函数首地址）func的值也是函数首地址，比数组名更特殊，因此可以对函数名无限次间值运算仍然正确.<code>(***************func)();</code>可以通过编译，而且函数运行正常！</p>
+<h1 id="函数指针">函数指针<a class="header-anchor" href="#函数指针">#</a></h1>
+<p><code>int func(int x)&#123;return 0;&#125;</code><br>
+<code>int (*pfunc)(int)=func;</code><br>
+与函数名类似，但指针可变，函数名不可变.</p>
+<h1 id="指针函数（返回值为指针的函数）">指针函数（返回值为指针的函数）<a class="header-anchor" href="#指针函数（返回值为指针的函数）">#</a></h1>
+<p><code>int* func(int x)&#123;return nullptr;&#125;</code></p>
+<h1 id="函数常指针">函数常指针<a class="header-anchor" href="#函数常指针">#</a></h1>
+<p><code>int func(int x)&#123;return 0;&#125;</code><br>
+<code>int (* const pfunc)(int)=func;</code></p>
+<h1 id="函数引用">函数引用<a class="header-anchor" href="#函数引用">#</a></h1>
+<p><code>int func(int x)&#123;return 0;&#125;</code><br>
+<code>int (&amp;pfunc)(int)=func;</code></p>
+<h1 id="函数指针数组">函数指针数组<a class="header-anchor" href="#函数指针数组">#</a></h1>
+<p><code>int (*pfunc[3])(int);</code></p>
+<h1 id="函数指针数组引用">函数指针数组引用<a class="header-anchor" href="#函数指针数组引用">#</a></h1>
+<p><code>int (*pfunc[3])(int);</code><br>
+<code>int (*(&amp;fun)[3])(int)=pfunc;</code><br>
+pfunc是函数指针数组，fun是函数指针数组引用.</p>
+<h1 id="引用的引用（右值引用）">引用的引用（右值引用）<a class="header-anchor" href="#引用的引用（右值引用）">#</a></h1>
+<p>注意并<strong>不是</strong>说引用的引用又称为右值引用，只是放在一块记录.<br>
+在说明引用时，提到可以用引用来初始化，这样也算一种引用的引用，但实质还是原始变量的引用.<br>
+<code>int a=1;</code><br>
+<code>int &amp;b=a;</code><br>
+<code>int &amp;c=b;</code><br>
+如c是a的引用的引用.<br>
+但下面的代码是错误的:（试图声明c为a引用的引用）<br>
+<code>int a=1;</code><br>
+<code>int &amp;&amp;c=a;</code><br>
+<code>&amp;&amp;</code>是用来声明右值引用的，其中涉及到深浅复制、移动构造函数、移动语义，可以参考这篇文章：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/qicosmos/p/4283455.html">从4行代码看右值引用</a><br>
+上述都是一些基本的类型申明，事实上还有许多复杂的类型声明，虽然一般不会用到，但理解一下有助于开阔思维。<br>
+<strong>Keep It Simple &amp; Stupid</strong><br>
+下面列举几个较为复杂的例子，可以参考网上的’<a target="_blank" rel="noopener" href="https://www.cnblogs.com/bobsoldier/p/5977988.html">右左法则</a>’理解这些声明.（先右后左，遇括号反向）</p>
+<h1 id="参数为函数指针的函数">参数为函数指针的函数<a class="header-anchor" href="#参数为函数指针的函数">#</a></h1>
+<p><code>int func(int (*)(int));</code><br>
+func是一个函数，返回值为int，有一个参数，该参数是一个指针，指向一个函数，被指向的函数返回值为int，有一个参数int.</p>
+<h1 id="返回值为函数指针的函数">返回值为函数指针的函数<a class="header-anchor" href="#返回值为函数指针的函数">#</a></h1>
+<p><code>int (*fun(int))(int *);</code><br>
+fun是一个函数，有一个int型参数，返回值为指针，指向一个函数，被指向的函数返回值为int，有一个int型指针参数.</p>
+<h1 id="const叠加二级指针">const叠加二级指针<a class="header-anchor" href="#const叠加二级指针">#</a></h1>
+<p><code>const char *p1;</code><br>
+<code>const char * const * const p2=&amp;p1;</code><br>
+p1是一个常量指针，p2是一个指向常量指针的常指针常量.</p>
+<p>最后用一个声明结束本文，<s>赶紧复习英语</s>.</p>
+<p><br><br><br><br></p>
+<p><code>char*const*(*(*tootal())[520])(int **(&amp;&amp;),double *(&amp;)[666],void*&amp;());</code></p>
+<p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+<blockquote>
+<p>Eternity is a very long time, especially towards the end.<br>
+永恒是很长的时间，特别是对尽头而言。</p>
+</blockquote>
+<p><img src="http://5b0988e595225.cdn.sohucs.com/images/20180710/00768203dd10471d8c8341df15b451f1.jpeg" alt="To see a world in a grain of sand,And a heaven in a wild flower,Hold infinity in the palm of your hand,And eternity in an hour."></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>C++声明浅析</p><p><a href="https://blog.tootal.xyz/posts/cpp-typedef/">https://blog.tootal.xyz/posts/cpp-typedef/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>黄智权</p></div></div><div class="level-item is-narrow"><div><h6>本文发布于</h6><p>2018-12-26</p></div></div><div class="level-item is-narrow"><div><h6>本文更新于</h6><p>2018-12-26</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/C/">C++</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="http://afdian.net/@tootal" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>爱发电</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/asset/alipay.webp" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/asset/wechat_pay.webp" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/posts/zhihu-spider/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">提取知乎问题下回答和评论数据</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/163music-spider/"><span class="level-item">批量下载网易云音乐歌单歌曲</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content twikoo" id="twikoo"></div><script src="https://cdn.jsdelivr.net/npm/twikoo@1.3.1/dist/twikoo.all.min.js"></script><script>twikoo.init({
+      envId: 'tootal-6g2y019v6b37e4be',
+      region: 'ap-guangzhou',
+      path: "'/posts/cpp-typedef/'",
+      katex: {
+        delimiters: 
+        [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false}
+        ],
+        throwOnError: false
+      }
+    });</script></div></div></div><!--!--><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">头头博客</a><p class="is-size-7"><span>&copy; 2021 黄智权</span><span>&nbsp;&nbsp; 由 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>&nbsp;&&nbsp;<a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a> 驱动</span><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span><br><a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener">赣ICP备20007667号-1</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="View on GitHub" href="https://github.com/tootal/blog"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/mhchem.js" defer></script><script>
+    var katex_config = {
+      delimiters: 
+      [
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false}
+      ],
+      strict: false,
+      throwOnError: false
+    };
+    window.addEventListener("load", function() {
+      document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+        renderMathInElement(element, katex_config);
+      });
+      document.querySelectorAll('#toc .level-item').forEach(function(element) {
+        renderMathInElement(element, katex_config);
+      });
+    });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

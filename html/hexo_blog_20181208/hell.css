@@ -1,0 +1,66 @@
+/*
+Wating
+Queuing
+Running
+Judging
+Accepted
+Compiling
+Wrong Answer
+Runtime Error
+Compilation Error
+Presentation Error
+Time Limit Exceeded
+Memory Limit Exceeded
+*/
+body{
+	background-color:#d0e4f4;
+	/*background-color:gray;*/
+}
+#Wat{
+	color:gray;
+	text-align:center;
+}
+#Que{
+	color:blue;
+	text-align:center;
+}
+#Run{
+	color:blue;
+	text-align:center;
+}
+#Jud{
+	color:blue;
+	text-align:center;
+}
+#AC{
+	color:green;
+	text-align:center;
+}
+#Comp{
+	color:blue;
+	text-align:center;
+}
+#WA{
+	color:red;
+	text-align:center;
+}
+#RE{
+	color:blue;
+	text-align:center;
+}
+#CE{
+	color:blue;
+	text-align:center;
+}
+#PE{
+	color:purple;
+	text-align:center;
+}
+#TLE{
+	color:orange;
+	text-align:center;
+}
+#MLE{
+	color:blue;
+	text-align:center;
+}

@@ -1,0 +1,334 @@
+<!--
+This is a test html page!
+Creat  20181017 by tootal
+Smile every day!
+>
+<!DOCTYPE>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="learn html">
+<meta name="author" content="hzq">
+<meta name="keywords" content="learn html">
+<!--meta htttp-equiv="refresh" content="30"-->
+<!--base target="_blank"-->
+<title>Hello</title>
+</head>
+<body>
+<p id="put_sum">sum</p>
+<button onclick="printsum()">Submit Print</button><br><br>
+<script>
+function printsum(){
+	var printstring="1";
+	for(var i=2;i<=100;i++){
+		printstring=printstring+"+"+i;
+		if(i%10==0)printstring=printstring+"<br>";
+	}
+	printstring=printstring+"=5050";
+	document.getElementById("put_sum").innerHTML=printstring;
+}
+</script>
+<textarea id="add_num1" rows="1" cols="1"></textarea>+
+<textarea id="add_num2" rows="1" cols="1"></textarea>=
+<code id="add_result"></code><br>
+<button type="button" id="calc_add" onclick="sum()">Calc</button>
+<script>
+function sum(){
+	var a=document.getElementById("add_num1");
+	var b=document.getElementById("add_num2");
+	document.getElementById("add_result").innerHTML=a+b;
+}
+</script>
+<hr><br><br>
+<input id="name_input" type="text"><button type="button" id="submit_name" onclick="welcome_message()">Enter</button>
+<script>
+function welcome_message(){
+	name=document.getElementById("name_input").value;
+	alert("Welcome "+name+" to tootal blog!");
+}
+</script>
+
+
+
+
+<br><br><hr>
+<button type="button" onclick="console_hello()">hello</button>
+<script src="hello.js"></script>
+<hr><br><br>
+<p>Please input number string.</p>
+<input id="input_number" type="text">
+<script>
+function check_input(){
+	var num_string=document.getElementById("input_number").value;
+	if(num_string==""||isNaN(num_string)){
+		alert("Not a num string!");
+	}else{
+		alert("Success submit!");
+	}
+}
+</script>
+<button type="button" onclick="check_input()">Submit
+</button>
+<br>
+<script>
+function change_image(){
+	media_photo=document.getElementById('media_control');
+	if(media_photo.src.match("play")){
+		media_photo.src="pauseicon.png";
+	}else{
+		media_photo.src="playicon.png";
+	}
+}
+</script>
+<img id="media_control" onclick="change_image()" 
+	src="playicon.png" width="50" height="50">
+<hr>
+<script>
+function change_hello(){
+	hello=document.getElementById("hello1");
+	hello.innerHTML="hello tootal!";
+}
+</script>
+<p id="hello1">hello world!</p>
+<button type="button" onclick="change_hello()">click to change hello</button>
+<hr>
+<video controls preload="meta">
+<source src="bike.mp4" type="audio/mpeg">
+</video>
+<br>
+<!--object data="catemoj.gif">
+</object-->
+<hr>
+<canvas id="hellocanvas">Do not support canvas.</canvas>
+<script>
+var canv=document.getElementById('hellocanvas');
+var ctx=canv.getContext('2d');
+ctx.fillStyle='#00FFFF';
+ctx.fillRect(0,0,200,200);
+</script>
+<hr>
+Colbie Caillat - Try<br>
+<audio controls preload="meta">
+<source src="Colbie Caillat - Try.mp3" type="audio/mpeg">
+NOT support!
+</audio><br>
+<object data="Colbie Caillat - Try.txt" width="600px" height="1500px">
+</object><br>
+<hr>
+Is the <a href="matrix.html" target="_blank">Matrix</a> will be display correctly?<br>
+<object data="matrix.html" width="800px" height="1200px"></object>
+<hr>
+<article>
+<h2> Is design only about how things look?</h2>
+As the saying goes"One coin has two sides". The word design means different things to differential individuals. Nevertheless, quite a few individuals have a misconception about design. Thinking the design just about how things look like. It may be an erroneous opinion. A design that is perfect not only makes things more attractive and fashionable, but also more useful than any others. The appearance of a product is one of merits, but not all.Design is also about how things work, at the same time, designers who are good designers are frequently necessary to take into account the functional, economic, and environmental-friendly of the design object and design process.
+Design is not only about how things look, it can convey designer's thinking and wishes to who uses it. A simple design even can transform the world totally. So design is a profound knowledge, and requires investing a lot.
+</article>
+<hr>
+Click 
+<a href="aoapc_problem.pdf" download="aoapc_problem.pdf">
+	this
+</a> to download <b>aoapc_problem</b> PDF document.
+	<br>
+	or you can choose <a href="aoapc_problem.pdf">read it online.</a>
+<br><hr>
+<!--body style="background-color:yellow;"-->
+<!-- oh no it did not work !!
+//hahahh
+/*oh no hahah*/-->
+<!--object width="650px" height="700px" data="aoapc_problem.pdf"></object-->
+
+<p>
+!!!Use <a href="https://g.imwap.cn/webhp?hl=zh-CN&ictx=2&sa=X&ved=0ahUKEwjqs4yT2s7eAhXTLX0KHRmNCQIQPQgH">Google</a> to search anything.<br>
+Click <a href="hello.txt">it</a> to open hello.txt to see something.</address><br>
+This is a empty <a href="#">link</a>.<br>
+This will open an empty windows to open <a href="hello.txt" target="_blank">hello.txt</a>.<br>
+Jump to <a href="#hellocode">hello code</a>.<br>
+<a href="https://minecraft.net/zh-hans/" target="_blank"><img src="minecraft.jpg"></a>
+</p>
+<hr>
+<p style="background-color:green;">
+hello<br>
+<b>hello</b><br>
+<i>hello</i><br>
+<strong>hello</strong><br>
+<em>hello</em><br>
+<big>hello</big><br>
+<small>hello</small><br>
+<ins>hello</ins><br>
+<del>hello</del><br>
+<code>hello</code><br>
+<kbd>hello</kbd><br>
+<tt>hello</tt><br>
+<samp>hello</samp><br>
+<var>hello</var><br>
+<hr>
+<address>this is a address!<br>
+<abbr title="etcetera">etc.</abbr><br>
+<acronym title="World Wide Web">WWW.</acronym><br>
+<bdo dir="ltr">this sentence will be show from left to right.</bdo><br>
+<bdo dir="rtl">this sentence will be show from right to left.</bdo><br>
+She says<q>cat sat mat.</q><br>
+She says<blockquote>cat sat mat.</blockquote><br>
+She says <cite>cat sat mat.</cite><br>
+She says <dfn>cat sat mat.</dfn><br>
+<hr>
+<h1 style="background-color:red;">hello</h1><br>
+<h2 style="font-family:verdana;color:red;font-size:60px;">hello</h2><br>
+<h3 style="text-align:center;">hello</h2><br>
+<h4>hello</h2><br>
+<h5>hello</h2><br>
+<h6>hello</h2><br>
+</p>
+<hr>
+<p>
+a<sub>1</sub>+a<sub>2</sub>+...+a<sub>n-1</sub><br>
+2<sup>2</sup>=4<br>
+</p>
+<hr>
+<a id="hellocode">
+<h3>hello code</h3></a><br>
+<pre>
+#include <iostream>
+using namespace std;
+int main(){
+	cout<<"hello\n";
+	return 0;
+}
+</pre>
+<br><br><br><br>
+
+<table border="1" cellpadding="10" cellspacing="0">
+<caption>Number</caption>
+<colgroup>
+<col span="1" style="background-color:red">
+<col style="background-color:blue">
+<col style="background-color:yellow">
+</colgroup>
+<tr><th>0</th><th>0</th><th>0</th></tr>
+<tr><td>1</td><td colspan="2">23</td></tr>
+<tr><td>4</td><td rowspan="2">58</td><td>6</td></tr>
+<tr><td>7</td><td>9</td></tr>
+</table>
+<br><br>
+<table border="1" cellpadding="20" cellspacing="0">
+<tr>
+<th>Name</th><th>Score</th>
+</tr>
+<tr>
+<td>a<span style="color:red">bc</span></td>
+<td>99</td>
+</tr>
+<tr>
+<td><span style="color:blue">ccd</span></td>
+<td>96</td>
+</tr>
+<tr>
+<td><span style="color:green">pwd</span></td>
+<td>88</td>
+</tr>
+</table>
+<br><br>
+<br><br>
+<ul>
+<li>first</li>
+<li>second</li>
+<li>thrid</li>
+<li>forth</li>
+</ul>
+<ul style="list-style-type:disc">
+<li>first</li>
+<li>second</li>
+<li>thrid</li>
+<li>forth</li>
+</ul>
+<ul style="list-style-type:circle">
+<li>first</li>
+<li>second</li>
+<li>thrid</li>
+<li>forth</li>
+</ul>
+<ul style="list-style-type:square">
+<li>first</li>
+<li>second</li>
+<li>thrid</li>
+<li>forth</li>
+</ul>
+<br>
+<ol>
+<li>first</li>
+<li>second</li>
+<li>thrid</li>
+<li>forth</li>
+<br><br>
+</ol>
+<br><br>
+<dl>
+<dt>Coffee</dt>
+<dd>- black hot drink</dd>
+<dt>Milk</dt>
+<dd>- white cold drink</dd>
+</dl>
+<br><br>
+<b>Question 1 and 2 are based on the news report you have just heard.</b><br>
+1.<ol type="A">
+<li>The return of a bottled message to its owner's daughter.</li>
+<li>A New Hampshire man's joke with friends on his wife.</li>
+<li>A father's message for his daughter.</li>
+<li>The history of a century-old motel.</li>
+</ol>
+<br><br>
+<hr>
+<form>
+Name : <input type="text" name="name"><br>
+Score : <input type="text" name="score"><br>
+</form>
+<br><br>
+<form name="login" action="login.php" method="get">
+Username : <input type="text" name="username"><br>
+Password : <input type="password" name="password"><br>
+<input type="submit" value="Login">
+</form>
+<fieldset>
+<br><br>
+There are some questions below:<br>
+<br>1.What's your gender?<br>
+<input type="radio" name="gender" value="female">Female<br>
+<input type="radio" name="gender" value="male">Male<br>
+<br>2.What subjects do you like?<br>
+<input type="checkbox" name="subjects" value="english">English<br>
+<input type="checkbox" name="subjects" value="math">Math<br>
+<input type="checkbox" name="subjects" value="chinese">Chinese<br>
+<input type="checkbox" name="subjects" value="art">Art<br>
+<br>3.Which computer program language do you like best?
+<select name="programlanguage">
+<option value="c">C</option>
+<option value="cpp" selected>C++</option>
+<option value="java">Java</option>
+<option value="python">Python</option>
+<option value="php">PHP</option>
+<option value="pascal">Pascal</option>
+<option value="cpppp">C#</option>
+<option value="ada">Ada</option>
+<option>
+</select><br>
+<br>4.Please leave a message here.<br>
+<textarea rows="10" cols="50">
+Anything you want to say!
+</textarea>
+<br><br>
+<form action="">
+<input type="button" value="Submit">
+</form>
+</fieldset>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+
+</body>
+</html>
